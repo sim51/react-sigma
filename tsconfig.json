@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./lib/esm",
+    "sourceMap": true,
+    "declaration": true,
+    "declarationDir": "./lib/esm",
+    "target": "es6",
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "jsx": "react",
+    "lib": ["dom", "dom.iterable", "esnext"]
+  },
+  "files": ["./src/index.ts"]
+}
