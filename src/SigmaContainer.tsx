@@ -32,11 +32,16 @@ export const SigmaContainer: React.FC<SigmaContainerProps> = ({
   // When graphOptions or settings changed
   useEffect(() => {
     if (containerRef.current !== null) {
-      if (sigma !== null) sigma.kill();
       const instance = new Sigma(new Graph(graphOptions), containerRef.current, initialSettings);
       setSigma(instance);
     }
-  }, [graphOptions, initialSettings, containerRef]);
+    return () => {
+      setSigma(instance => {
+        if (instance) instance.kill();
+        return null;
+      });
+    };
+  }, [containerRef]);
 
   const context = useMemo(() => (sigma ? { sigma } : null), [sigma]);
   const contents = context !== null ? <SigmaProvider value={context}>{children}</SigmaProvider> : null;

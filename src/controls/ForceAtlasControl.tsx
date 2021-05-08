@@ -1,6 +1,6 @@
 import React, { CSSProperties, ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import FA2LayoutSupervisor, { FA2LayoutSupervisorParameters } from "graphology-layout-forceatlas2/worker";
-import { useSigma } from "./hooks";
+import { useSigma } from "../hooks";
 
 interface Props {
   /**
@@ -16,7 +16,7 @@ interface Props {
   autoRunFor?: number;
 }
 
-export const ForceAtlasControl: React.FC<Props> = ({ settings = {}, autoRunFor = -1 }) => {
+export const ForceAtlasControl: React.FC<Props> = ({ settings, autoRunFor = -1 }) => {
   // Get Sigma
   const sigma = useSigma();
   // The FA2 worker
@@ -27,7 +27,7 @@ export const ForceAtlasControl: React.FC<Props> = ({ settings = {}, autoRunFor =
   useEffect(() => {
     if (sigma) {
       // Create the FA2 worker
-      const nFa2 = new FA2LayoutSupervisor(sigma.getGraph(), settings);
+      const nFa2 = new FA2LayoutSupervisor(sigma.getGraph(), settings ? settings : {});
       setFa2(nFa2);
 
       // we run the algo
@@ -37,7 +37,7 @@ export const ForceAtlasControl: React.FC<Props> = ({ settings = {}, autoRunFor =
         // set a timeout to stop it
         timeout =
           autoRunFor > 0
-            ? setTimeout(() => {
+            ? window.setTimeout(() => {
                 setFa2IsRunning(false);
               }, autoRunFor)
             : null;
@@ -49,14 +49,16 @@ export const ForceAtlasControl: React.FC<Props> = ({ settings = {}, autoRunFor =
         if (timeout) clearTimeout(timeout);
       };
     }
-  }, []);
+  }, [autoRunFor, settings, sigma]);
 
   useEffect(() => {
     try {
-      if (fa2IsRunning === true) {
-        fa2.start();
-      } else {
-        fa2.stop();
+      if (fa2) {
+        if (fa2IsRunning === true) {
+          fa2.start();
+        } else {
+          fa2.stop();
+        }
       }
     } catch (e) {}
   }, [fa2, fa2IsRunning]);

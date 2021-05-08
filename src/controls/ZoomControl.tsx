@@ -1,5 +1,5 @@
 import React from "react";
-import { useSigma } from "./hooks";
+import { useSigma } from "../hooks";
 
 interface Props {
   animationDuration?: number;

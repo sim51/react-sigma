@@ -146,7 +146,7 @@ For the css, you need to import the file `./lib/react-sigma-v2.css`.
 == Npm scripts
 
 * `npm run build` : Build the project
-* `npm run examples` : Run the examples on http://localshot:8080 
+* `npm run examples` : Run the examples on http://localhost:8080 
 
 == Example
 

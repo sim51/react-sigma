@@ -1,9 +1,11 @@
 import { CameraState } from "sigma/core/camera";
 import { useSigma, useRegisterEvents, useLoadGraph, useSetSettings } from "./hooks";
-import { ForceAtlasControl } from "./ForceAtlasControl";
 import { SigmaContainer } from "./SigmaContainer";
-import { ZoomControl } from "./ZoomControl";
-import { ControlsContainer } from "./ControlsContainer";
+import { ControlsContainer } from "./controls/ControlsContainer";
+import { ForceAtlasControl } from "./controls/ForceAtlasControl";
+import { ZoomControl } from "./controls/ZoomControl";
+import { FullScreenControl } from "./controls/FullScreenControl";
+import { SearchControl } from "./controls/SearchControl";
 
 interface EventHandlers {
   clickNode: ({ node: NodeKey, event: MouseCoords }) => void;
@@ -22,6 +24,8 @@ export {
   ControlsContainer,
   EventHandlers,
   ForceAtlasControl,
+  FullScreenControl,
+  SearchControl,
   SigmaContainer,
   ZoomControl,
   useSigma,

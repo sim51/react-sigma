@@ -1,5 +1,5 @@
 $control-size: 30px;
-$container-position-margin: 25px;
+$container-position-margin: 5px;
 
 @keyframes rotation {
   0% {
@@ -37,6 +37,15 @@ $container-position-margin: 25px;
 div.react-sigma-v2 {
   height: 100%;
   width: 100%;
+  position: relative;
+
+  &.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100% !important;
+    width: 100% !important;
+  }
 
   div.sigma-container {
     height: 100%;
@@ -81,7 +90,7 @@ div.react-sigma-v2 {
     .react-sigma-control-zoom-center {
       @extend .react-sigma-control-btn;
       > button {
-        background-image: url("./icons/expand-solid.svg?encoding=base64");
+        background-image: url("./icons/dot-circle-regular.svg?encoding=base64");
       }
     }
     .react-sigma-control-zoom-in {
@@ -94,6 +103,19 @@ div.react-sigma-v2 {
       @extend .react-sigma-control-btn;
       > button {
         background-image: url("./icons/minus-solid.svg?encoding=base64");
+      }
+    }
+
+    .react-sigma-control-fullscreen {
+      @extend .react-sigma-control-btn;
+      > button {
+        background-image: url("./icons/expand-solid.svg?encoding=base64");
+      }
+    }
+    .react-sigma-control-normalscreen {
+      @extend .react-sigma-control-btn;
+      > button {
+        background-image: url("./icons/compress-solid.svg?encoding=base64");
       }
     }
 
