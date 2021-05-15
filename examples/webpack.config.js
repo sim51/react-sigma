@@ -1,10 +1,35 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
+const EXAMPLES = {
+  complete: {
+    id: "index",
+    title: "A realistic example",
+  },
+  multiple: {
+    id: "multiple",
+    title: "Multiple graphs",
+  },
+};
+
+const entry = {};
+const plugins = [];
+for (const key in EXAMPLES) {
+  const example = EXAMPLES[key];
+  entry[key] = `./${example.id}.tsx`;
+  plugins.push(
+    new HtmlWebpackPlugin({
+      filename: `${example.id}.html`,
+      title: `Example - ${example.title}`,
+      chunks: ["commons", key],
+      template: "./index.ejs",
+    }),
+  );
+}
+
 module.exports = {
   mode: "development",
-  entry: {
-    index: "./examples/index.tsx",
-  },
+  context: __dirname,
+  entry,
   output: {
     filename: "[name].js",
   },
@@ -12,13 +37,7 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx"],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      filename: `index.html`,
-      title: `Example`,
-      template: "examples/index.ejs",
-    }),
-  ],
+  plugins,
   module: {
     rules: [
       {

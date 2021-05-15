@@ -27,8 +27,6 @@ export const MyCustomGraph: React.FC<React.PropsWithChildren> = ({ children }) =
   const sigma = useSigma();
   const registerEvents = useRegisterEvents();
   const loadGraph = useLoadGraph();
-  const setSettings = useSetSettings();
-  const [hoveredNode, setHoveredNode] = useState<string | null>(null);
 
   useEffect(() => {
     // Create the graph
@@ -42,51 +40,43 @@ export const MyCustomGraph: React.FC<React.PropsWithChildren> = ({ children }) =
       });
     });
     loadGraph(graph);
-
-    // Register the events
-    registerEvents({
-      enterNode: event => setHoveredNode(event.node),
-      leaveNode: event => setHoveredNode(null),
-    });
   }, []);
-
-  useEffect(() => {
-    setSettings({
-      nodeReducer: (node: any, data: any) => {
-        const graph = sigma.getGraph();
-        const newData = { ...data, highlighted: data.highlighted || false };
-        if (hoveredNode) {
-          if (node === hoveredNode || graph.neighbors(hoveredNode).includes(node)) newData.highlighted = true;
-          else {
-            newData.color = "#E2E2E2";
-            newData.highlighted = false;
-          }
-        }
-        return newData;
-      },
-      edgeReducer: (edge: any, data: any) => {
-        const graph = sigma.getGraph();
-        const newData = { ...data, hidden: false };
-        if (hoveredNode && !graph.extremities(edge).includes(hoveredNode)) newData.hidden = true;
-        return newData;
-      },
-    });
-  }, [hoveredNode]);
 
   return <>{children}</>;
 };
 
 ReactDOM.render(
   <React.StrictMode>
-    <SigmaContainer style={{ height: "500px", width: "500px" }}>
+    <SigmaContainer style={{ height: "50%", width: "50%", float: "left", backgroundColor: "#FFF" }}>
+      <MyCustomGraph />
+      <ControlsContainer position={"top-left"}>
+        <ZoomControl />
+        <FullScreenControl />
+        <ForceAtlasControl autoRunFor={2000} />
+      </ControlsContainer>
+    </SigmaContainer>
+    <SigmaContainer style={{ height: "50%", width: "50%", float: "left", backgroundColor: "#FFF" }}>
+      <MyCustomGraph />
+      <ControlsContainer position={"top-right"}>
+        <ZoomControl />
+        <FullScreenControl />
+        <ForceAtlasControl autoRunFor={2000} />
+      </ControlsContainer>
+    </SigmaContainer>
+    <SigmaContainer style={{ height: "50%", width: "50%", float: "left", backgroundColor: "#FFF" }}>
+      <MyCustomGraph />
+      <ControlsContainer position={"bottom-left"}>
+        <ZoomControl />
+        <FullScreenControl />
+        <ForceAtlasControl autoRunFor={2000} />
+      </ControlsContainer>
+    </SigmaContainer>
+    <SigmaContainer style={{ height: "50%", width: "50%", float: "left", backgroundColor: "#FFF" }}>
       <MyCustomGraph />
       <ControlsContainer position={"bottom-right"}>
         <ZoomControl />
         <FullScreenControl />
         <ForceAtlasControl autoRunFor={2000} />
-      </ControlsContainer>
-      <ControlsContainer position={"top-right"}>
-        <SearchControl />
       </ControlsContainer>
     </SigmaContainer>
   </React.StrictMode>,

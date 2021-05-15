@@ -2,7 +2,7 @@
   "name": "react-sigma-v2",
   "version": "1.0.0",
   "description": "React Sigmav2 component",
-  "author": "",
+  "author": "Benoit Simard",
   "license": "ISC",
   "keywords": [
     "sigma",
@@ -66,5 +66,8 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.1",
     "sigma": "latest"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }
