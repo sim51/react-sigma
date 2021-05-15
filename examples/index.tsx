@@ -12,7 +12,6 @@ import {
   ControlsContainer,
   EventHandlers,
   ForceAtlasControl,
-  FullScreenControl,
   useSigma,
   useRegisterEvents,
   useLoadGraph,
@@ -78,11 +77,10 @@ export const MyCustomGraph: React.FC<React.PropsWithChildren> = ({ children }) =
 
 ReactDOM.render(
   <React.StrictMode>
-    <SigmaContainer style={{ height: "500px", width: "500px" }}>
+    <SigmaContainer>
       <MyCustomGraph />
       <ControlsContainer position={"bottom-right"}>
         <ZoomControl />
-        <FullScreenControl />
         <ForceAtlasControl autoRunFor={2000} />
       </ControlsContainer>
       <ControlsContainer position={"top-right"}>

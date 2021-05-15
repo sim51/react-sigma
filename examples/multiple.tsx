@@ -10,22 +10,15 @@ import { Sigma } from "sigma/sigma";
 import { Settings } from "sigma/settings";
 import {
   ControlsContainer,
-  EventHandlers,
   ForceAtlasControl,
   FullScreenControl,
-  useSigma,
-  useRegisterEvents,
   useLoadGraph,
-  useSetSettings,
-  SearchControl,
   SigmaContainer,
   ZoomControl,
 } from "../src/index";
 import "../src/assets/index.scss";
 
 export const MyCustomGraph: React.FC<React.PropsWithChildren> = ({ children }) => {
-  const sigma = useSigma();
-  const registerEvents = useRegisterEvents();
   const loadGraph = useLoadGraph();
 
   useEffect(() => {
