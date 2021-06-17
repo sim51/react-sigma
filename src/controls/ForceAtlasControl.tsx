@@ -1,4 +1,4 @@
-import React, { CSSProperties, ReactNode, useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import FA2LayoutSupervisor, { FA2LayoutSupervisorParameters } from "graphology-layout-forceatlas2/worker";
 import { isEqual } from "lodash";
 import { useSigma } from "../hooks";
@@ -21,8 +21,8 @@ export const ForceAtlasControl: React.FC<Props> = ({ settings, autoRunFor = -1 }
   // Get Sigma
   const sigma = useSigma();
   // FA2 Setting
-  const fa2Settings = useRef<FA2LayoutSupervisorParameters>(settings);
-  if (!isEqual(fa2Settings.current, settings)) fa2Settings.current = settings;
+  const fa2Settings = useRef<FA2LayoutSupervisorParameters | null>(null);
+  if (settings && !isEqual(fa2Settings.current, settings)) fa2Settings.current = settings;
   // FA2 worker
   const [fa2, setFa2] = useState<FA2LayoutSupervisor | null>(null);
   // Is FA2 is running
@@ -35,7 +35,7 @@ export const ForceAtlasControl: React.FC<Props> = ({ settings, autoRunFor = -1 }
       setFa2(nFa2);
 
       // we run the algo
-      let timeout = null;
+      let timeout: number | any = null;
       if (autoRunFor > -1 && sigma.getGraph().order > 0) {
         setFa2IsRunning(true);
         // set a timeout to stop it

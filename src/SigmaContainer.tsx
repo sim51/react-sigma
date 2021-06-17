@@ -1,14 +1,14 @@
 import React, { CSSProperties, ReactNode, useEffect, useMemo, useRef, useState } from "react";
-import Sigma from "sigma/sigma";
+import { Sigma } from "sigma";
 import { Settings } from "sigma/settings";
 import Graph from "graphology";
 import { GraphOptions } from "graphology-types";
+import { SigmaProvider } from "./context";
 import { isEqual } from "lodash";
-import { SigmaContext, SigmaProvider } from "./context";
 
 interface SigmaContainerProps {
-  graphOptions?: GraphOptions;
-  initialSettings?: Settings;
+  graphOptions?: Partial<GraphOptions>;
+  initialSettings?: Partial<Settings>;
   id?: string;
   className?: string;
   style?: CSSProperties;
@@ -30,10 +30,10 @@ export const SigmaContainer: React.FC<SigmaContainerProps> = ({
   // Sigma instance
   const [sigma, setSigma] = useState<Sigma | null>(null);
   // Sigma settings
-  const settings = useRef<Settings>(initialSettings);
+  const settings = useRef<Partial<Settings>>();
   if (!isEqual(settings.current, initialSettings)) settings.current = initialSettings;
   // Graph options
-  const graph = useRef<Settings>(graphOptions);
+  const graph = useRef<Partial<GraphOptions>>();
   if (!isEqual(graph.current, graphOptions)) graph.current = graphOptions;
 
   // When graphOptions or settings changed
@@ -41,10 +41,8 @@ export const SigmaContainer: React.FC<SigmaContainerProps> = ({
     if (containerRef.current !== null) {
       const instance = new Sigma(new Graph(graph.current), containerRef.current, settings.current);
       setSigma(instance);
-      console.log("New Sigma");
     }
     return () => {
-      console.log("kill");
       setSigma(instance => {
         if (instance) instance.kill();
         return null;
