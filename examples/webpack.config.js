@@ -32,7 +32,7 @@ module.exports = {
   context: __dirname,
   entry,
   output: {
-    path: path.resolve(__dirname, "../docs/example"),
+    path: path.resolve(__dirname, "../docs/examples"),
     filename: "[name].js",
   },
   devtool: "source-map",
