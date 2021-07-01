@@ -17,9 +17,9 @@ export const ZoomControl: React.FC<Props> = ({ animationDuration = 200 }) => {
       if (!ratio) {
         sigma.getCamera().animatedReset({ duration: animationDuration });
       } else if (ratio > 0) {
-        sigma.getCamera().animatedZoom({ duration: animationDuration });
+        sigma.getCamera().animatedZoom({ duration: animationDuration, factor: 1.5 });
       } else if (ratio < 0) {
-        sigma.getCamera().animatedUnzoom({ duration: animationDuration });
+        sigma.getCamera().animatedUnzoom({ duration: animationDuration, factor: 1.5 });
       }
     }
   }

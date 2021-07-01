@@ -61,17 +61,15 @@ export function useSetSettings(): (newSettings: Partial<Settings>) => void {
     if (sigma && settings) {
       const prevSettings: Partial<Settings> = {};
 
-      Object.keys(settings).forEach((name: string) => {
-        const key = name as keyof Settings;
-        prevSettings[key] = sigma.getSetting(key) as any;
-        sigma.setSetting(key, settings[key] as any);
+      Object.keys(settings).forEach((key: any) => {
+        prevSettings[key] = sigma.getSetting(key);
+        sigma.setSetting(key, settings[key]);
       });
 
       // cleanup
       return () => {
-        Object.keys(prevSettings).forEach(name => {
-          const key = name as keyof Settings;
-          sigma.setSetting(key, prevSettings[key] as any);
+        Object.keys(prevSettings).forEach((key: any) => {
+          sigma.setSetting(key, prevSettings[key]);
         });
       };
     }
