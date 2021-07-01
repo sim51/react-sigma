@@ -41,6 +41,10 @@ div.react-sigma-v2.fullscreen {
   left: 0;
   height: 100% !important;
   width: 100% !important;
+  z-index: 2000;
+}
+div.react-sigma-v2.fullscreen .react-sigma-controls {
+  z-index: 2001;
 }
 div.react-sigma-v2 div.sigma-container {
   height: 100%;

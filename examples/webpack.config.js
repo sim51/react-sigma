@@ -1,8 +1,9 @@
+const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const EXAMPLES = {
   complete: {
-    id: "index",
+    id: "complete",
     title: "A realistic example",
   },
   multiple: {
@@ -31,6 +32,7 @@ module.exports = {
   context: __dirname,
   entry,
   output: {
+    path: path.resolve(__dirname, "../docs/example"),
     filename: "[name].js",
   },
   devtool: "source-map",
