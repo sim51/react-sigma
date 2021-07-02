@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { Sigma } from "sigma/sigma";
+import Sigma from "sigma/sigma";
 
 export interface SigmaContextInterface {
   sigma: Sigma;

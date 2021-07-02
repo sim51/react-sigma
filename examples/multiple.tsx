@@ -6,7 +6,7 @@ import erdosRenyi from "graphology-generators/random/erdos-renyi";
 import randomLayout from "graphology-layout/random";
 import chroma from "chroma-js";
 import faker from "faker";
-import { Sigma } from "sigma/sigma";
+import Sigma from "sigma/sigma";
 import { Settings } from "sigma/settings";
 import {
   ControlsContainer,

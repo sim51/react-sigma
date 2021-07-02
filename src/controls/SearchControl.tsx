@@ -26,7 +26,7 @@ export const SearchControl: React.FC<Props> = ({}) => {
   useEffect(() => {
     if (selected) {
       sigma.getGraph().setNodeAttribute(selected, "highlighted", true);
-      sigma.getCamera().animate(sigma.getNodeAttributes(selected), {
+      sigma.getCamera().animate(sigma.getNodeDisplayData(selected), {
         easing: "linear",
         duration: 500,
       });

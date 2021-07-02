@@ -1,4 +1,4 @@
-import { CameraState } from "sigma/core/camera";
+import { CameraState } from "sigma/types";
 import { useSigma, useRegisterEvents, useLoadGraph, useSetSettings } from "./hooks";
 import { SigmaContainer } from "./SigmaContainer";
 import { ControlsContainer } from "./controls/ControlsContainer";

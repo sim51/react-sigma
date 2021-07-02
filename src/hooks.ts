@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Sigma } from "sigma";
+import Sigma from "sigma/sigma";
 import { Settings } from "sigma/settings";
 import Graph from "graphology";
 import { useSigmaContext } from "./context";
