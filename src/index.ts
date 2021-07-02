@@ -58,6 +58,7 @@ export {
   ControlsContainerProps,
   EventHandlers,
   ForceAtlasControl,
+  ForceAtlasControlProps,
   FullScreenControl,
   SearchControl,
   SigmaContainer,
