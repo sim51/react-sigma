@@ -6,15 +6,48 @@ import { GraphOptions } from "graphology-types";
 import { SigmaProvider } from "./context";
 import { isEqual } from "lodash";
 
-interface SigmaContainerProps {
+/**
+ * Properties for `SigmaContainer` component
+ */
+export interface SigmaContainerProps {
+  /**
+   * Graphology settings for the SIgma underlying graph
+   */
   graphOptions?: Partial<GraphOptions>;
+  /**
+   * Sigma initial settings
+   */
   initialSettings?: Partial<Settings>;
+  /**
+   * HTML id
+   */
   id?: string;
+  /**
+   * HTML class
+   */
   className?: string;
+  /**
+   * HTML CSS style
+   */
   style?: CSSProperties;
+  /**
+   * @hidden
+   */
   children?: ReactNode;
 }
 
+/**
+ * The `SigmaContainer` component is responsible of create the Sigma instance, and provide it to its child components using a React Context that can be accessible via the hook {@link useSigma}.
+ *
+ * ```typescript
+ * <SigmaContainer id="sigma-graph">
+ *   <MyCustomGraph />
+ * </SigmaContainer>
+ *```
+ * See [[SigmaContainerProps]] for more information.
+ *
+ * @category Component
+ */
 export const SigmaContainer: React.FC<SigmaContainerProps> = ({
   graphOptions,
   id,

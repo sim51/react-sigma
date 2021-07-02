@@ -3,7 +3,10 @@ import FA2LayoutSupervisor, { FA2LayoutSupervisorParameters } from "graphology-l
 import { isEqual } from "lodash";
 import { useSigma } from "../hooks";
 
-interface Props {
+/**
+ * Properties for `ForceAtlasControl` component
+ */
+export interface ForceAtlasControlProps {
   /**
    * The FA2 worker settings.
    */
@@ -17,7 +20,22 @@ interface Props {
   autoRunFor?: number;
 }
 
-export const ForceAtlasControl: React.FC<Props> = ({ settings, autoRunFor = -1 }) => {
+/**
+ * The `ForceAtlasControl` create a force atlas worker, as well as a UI button that allow the user to stop/start the layout
+ *
+ * ```typescript
+ * <SigmaContainer>
+ *   <ControlsContainer>
+ *     <ForceAtlasControl autoRunFor={2000} />
+ *   </ControlsContainer>
+ * </SigmaContainer>
+ * ```
+ *
+ * See [[ForceAtlasControlProps]] for more information.
+ *
+ * @category Component
+ */
+export const ForceAtlasControl: React.FC<ForceAtlasControlProps> = ({ settings, autoRunFor = -1 }) => {
   // Get Sigma
   const sigma = useSigma();
   // FA2 Setting

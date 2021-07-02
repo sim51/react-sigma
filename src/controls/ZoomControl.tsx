@@ -1,11 +1,35 @@
 import React from "react";
 import { useSigma } from "../hooks";
 
-interface Props {
+/**
+ * Properties for `ZoomControl` component
+ */
+export interface ZoomControlProps {
+  /**
+   * Number of ms for the zoom animation (default is 200)
+   */
   animationDuration?: number;
 }
 
-export const ZoomControl: React.FC<Props> = ({ animationDuration = 200 }) => {
+/**
+ * The `ZoomControl` create three UI buttons that allows the user to
+ * - zoom in
+ * - zoom out
+ * - reset zoom (ie. see the whole graph)
+ *
+ * ```typescript
+ * <SigmaContainer>
+ *   <ControlsContainer>
+ *     <ZoomControl />
+ *   </ControlsContainer>
+ * </SigmaContainer>
+ * ```
+ *
+ * See [[ZoomControlProps]] for more information.
+ *
+ * @category Component
+ */
+export const ZoomControl: React.FC<ZoomControlProps> = ({ animationDuration = 200 }) => {
   // Get sigma
   const sigma = useSigma();
 

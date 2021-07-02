@@ -2690,6 +2690,8 @@ img {
 							</div>
 							<input type="checkbox" id="tsd-filter-inherited" checked />
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
 							<input type="checkbox" id="tsd-filter-only-exported" />
 							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
@@ -2703,7 +2705,16 @@ img {
 <nav class="tsd-navigation secondary">
 	<ul>
 		<li class=" tsd-kind-interface">
+			<a href="interfaces/controlscontainerprops.html" class="tsd-kind-icon">Controls<wbr>Container<wbr>Props</a>
+		</li>
+		<li class=" tsd-kind-interface">
 			<a href="interfaces/eventhandlers.html" class="tsd-kind-icon">Event<wbr>Handlers</a>
+		</li>
+		<li class=" tsd-kind-interface">
+			<a href="interfaces/sigmacontainerprops.html" class="tsd-kind-icon">Sigma<wbr>Container<wbr>Props</a>
+		</li>
+		<li class=" tsd-kind-interface">
+			<a href="interfaces/zoomcontrolprops.html" class="tsd-kind-icon">Zoom<wbr>Control<wbr>Props</a>
 		</li>
 		<li class=" tsd-kind-variable">
 			<a href="modules.html#controlscontainer" class="tsd-kind-icon">Controls<wbr>Container</a>
@@ -2904,66 +2915,6 @@ img {
 <span style="color: #000000">  </span><span style="color: #001080">document</span><span style="color: #000000">.</span><span style="color: #795E26">getElementById</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;root&quot;</span><span style="color: #000000">),</span>
 <span style="color: #000000">);</span>
 </code></pre>
-			<a href="#components" id="components" style="color: inherit; text-decoration: none;">
-				<h2>Components</h2>
-			</a>
-			<a href="#sigmacontainer" id="sigmacontainer" style="color: inherit; text-decoration: none;">
-				<h3>SigmaContainer</h3>
-			</a>
-			<p>This is the component’s properties definition :</p>
-			<pre><code class="language-typescript"><span style="color: #0000FF">interface</span><span style="color: #000000"> </span><span style="color: #267F99">SigmaContainerProps</span><span style="color: #000000"> {</span>
-<span style="color: #000000">  </span><span style="color: #001080">graphOptions</span><span style="color: #000000">?: </span><span style="color: #267F99">GraphOptions</span><span style="color: #000000">;</span>
-<span style="color: #000000">  </span><span style="color: #001080">initialSettings</span><span style="color: #000000">?: </span><span style="color: #267F99">Settings</span><span style="color: #000000">;</span>
-<span style="color: #000000">  </span><span style="color: #001080">id</span><span style="color: #000000">?: </span><span style="color: #267F99">string</span><span style="color: #000000">;</span>
-<span style="color: #000000">  </span><span style="color: #001080">className</span><span style="color: #000000">?: </span><span style="color: #267F99">string</span><span style="color: #000000">;</span>
-<span style="color: #000000">  </span><span style="color: #001080">style</span><span style="color: #000000">?: </span><span style="color: #267F99">CSSProperties</span><span style="color: #000000">;</span>
-<span style="color: #000000">  </span><span style="color: #001080">children</span><span style="color: #000000">?: </span><span style="color: #267F99">ReactNode</span><span style="color: #000000">;</span>
-<span style="color: #000000">}</span>
-</code></pre>
-			<ul>
-				<li><code>graphOptions</code> is the options passed to the Graphology constructor. It defines the type of the graph, see <a href="https://graphology.github.io/instantiation.html#options">https://graphology.github.io/instantiation.html#options</a></li>
-				<li><code>initialSettings</code> is the settings passed to the Sigma constructor.</li>
-			</ul>
-			<a href="#controlscontainer" id="controlscontainer" style="color: inherit; text-decoration: none;">
-				<h3>ControlsContainer</h3>
-			</a>
-			<p>It’s just a component wrapper that create a <code>div</code> with the adequate class, so we know where to display the controls.<br>The only (optional) property of this component is : <code>position?: &quot;top-right&quot; | &quot;top-left&quot; | &quot;bottom-right&quot; | &quot;bottom-left&quot;;</code><br>Default value is <code>bottom-right</code>.</p>
-			<a href="#zoomcontrol" id="zoomcontrol" style="color: inherit; text-decoration: none;">
-				<h3>ZoomControl</h3>
-			</a>
-			<p>Create the zoom toolbar fir the graph. There is three controllers : <code>zoom in</code>, <code>zoom out</code> &amp; <code>see the whole graph</code></p>
-			<a href="#forceatlascontrol" id="forceatlascontrol" style="color: inherit; text-decoration: none;">
-				<h3>ForceAtlasControl</h3>
-			</a>
-			<p>This is the component’s properties definition :</p>
-			<pre><code class="language-typescript"><span style="color: #0000FF">interface</span><span style="color: #000000"> </span><span style="color: #267F99">Props</span><span style="color: #000000"> {</span>
-<span style="color: #000000">  </span><span style="color: #008000">/**</span>
-<span style="color: #008000">   * The FA2 worker settings.</span>
-<span style="color: #008000">   */</span>
-<span style="color: #000000">  </span><span style="color: #001080">settings</span><span style="color: #000000">?: </span><span style="color: #267F99">FA2LayoutSupervisorParameters</span><span style="color: #000000">;</span>
-<span style="color: #000000">  </span><span style="color: #008000">/**</span>
-<span style="color: #008000">   * Option to tell what we do when the component is mounted</span>
-<span style="color: #008000">   *  - &lt;code&gt;-1&lt;/code&gt; means that we do nothing (it&#039;s the same as no value)</span>
-<span style="color: #008000">   *  - &lt;code&gt;0&lt;/code&gt; means that we start the algo (and don&#039;t auto stop it)</span>
-<span style="color: #008000">   *  - &lt;code&gt;X&lt;/code&gt; mans that we start the algo, and stop it after X milliseconds</span>
-<span style="color: #008000">   */</span>
-<span style="color: #000000">  </span><span style="color: #001080">autoRunFor</span><span style="color: #000000">?: </span><span style="color: #267F99">number</span><span style="color: #000000">;</span>
-<span style="color: #000000">}</span>
-</code></pre>
-			<p>The component creates an a action button to stop/start a forceatlas2 layout on the graph. Moreover, if you define the option <code>autoRunFor</code>, the layout will be run on component mount.</p>
-			<a href="#hooks" id="hooks" style="color: inherit; text-decoration: none;">
-				<h2>Hooks</h2>
-			</a>
-			<ul>
-				<li><p><code>useSigma(): Sigma</code> : This is the main hook that give you access to the sigma instance.</p>
-				</li>
-				<li><p><code>useLoadGraph(): (graph: Graph, clear?: boolean) =&gt; void</code> : It’s an helper that allow you to load a graph into the sigma instance. It’s pretty much a <code>sigma.getGraph().import(graph)</code></p>
-				</li>
-				<li><p><code>useRegisterEvents(): (eventHandlers: Partial&lt;EventHandlers&gt;) =&gt; void</code>: It’s an helper that allow you to listen Sigma’s events.</p>
-				</li>
-				<li><p><code>useSetSettings(): (settings: Partial&lt;Settings&gt;) =&gt; void</code> : It’s an helper that allow you to change the Sigma’s settings.</p>
-				</li>
-			</ul>
 		</div>
 		<section class="tsd-panel-group tsd-index-group">
 			<h2>Index</h2>
@@ -2972,11 +2923,14 @@ img {
 					<section class="tsd-index-section ">
 						<h3>Interfaces</h3>
 						<ul class="tsd-index-list">
+							<li class="tsd-kind-interface"><a href="interfaces/controlscontainerprops.html" class="tsd-kind-icon">Controls<wbr>Container<wbr>Props</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/eventhandlers.html" class="tsd-kind-icon">Event<wbr>Handlers</a></li>
+							<li class="tsd-kind-interface"><a href="interfaces/sigmacontainerprops.html" class="tsd-kind-icon">Sigma<wbr>Container<wbr>Props</a></li>
+							<li class="tsd-kind-interface"><a href="interfaces/zoomcontrolprops.html" class="tsd-kind-icon">Zoom<wbr>Control<wbr>Props</a></li>
 						</ul>
 					</section>
 					<section class="tsd-index-section ">
-						<h3>Variables</h3>
+						<h3>Component Variables</h3>
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-variable"><a href="modules.html#controlscontainer" class="tsd-kind-icon">Controls<wbr>Container</a></li>
 							<li class="tsd-kind-variable"><a href="modules.html#forceatlascontrol" class="tsd-kind-icon">Force<wbr>Atlas<wbr>Control</a></li>
@@ -2987,7 +2941,7 @@ img {
 						</ul>
 					</section>
 					<section class="tsd-index-section ">
-						<h3>Functions</h3>
+						<h3>Hook Functions</h3>
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-function"><a href="modules.html#useloadgraph" class="tsd-kind-icon">use<wbr>Load<wbr>Graph</a></li>
 							<li class="tsd-kind-function"><a href="modules.html#useregisterevents" class="tsd-kind-icon">use<wbr>Register<wbr>Events</a></li>
@@ -2999,70 +2953,143 @@ img {
 			</section>
 		</section>
 		<section class="tsd-panel-group tsd-member-group ">
-			<h2>Variables</h2>
+			<h2>Component Variables</h2>
 			<section class="tsd-panel tsd-member tsd-kind-variable">
 				<a name="controlscontainer" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> Controls<wbr>Container</h3>
-				<div class="tsd-signature tsd-kind-icon">Controls<wbr>Container<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">React.FC</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Props</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
+				<div class="tsd-signature tsd-kind-icon">Controls<wbr>Container<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">React.FC</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/controlscontainerprops.html" class="tsd-signature-type" data-tsd-kind="Interface">ControlsContainerProps</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/c1475bb/src/controls/ControlsContainer.tsx#L8">controls/ControlsContainer.tsx:8</a></li>
+						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/c5a4624/src/controls/ControlsContainer.tsx#L33">controls/ControlsContainer.tsx:33</a></li>
 					</ul>
 				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>The <code>ControlsContainer</code> is just a wrapper for other control components.<br>It defines their position and also their style with its CSS class <code>react-sigma-controls</code>.</p>
+					</div>
+					<pre><code class="language-typescript"><span style="color: #000000">&lt;</span><span style="color: #267F99">SigmaContainer</span><span style="color: #000000">&gt;</span>
+<span style="color: #000000">  &lt;</span><span style="color: #001080">ControlsContainer</span><span style="color: #000000"> </span><span style="color: #001080">position</span><span style="color: #000000">={</span><span style="color: #A31515">&quot;bottom-right&quot;</span><span style="color: #000000">}&gt;</span>
+<span style="color: #000000">    &lt;</span><span style="color: #001080">ForceAtlasControl</span><span style="color: #000000"> </span><span style="color: #001080">autoRunFor</span><span style="color: #000000">={</span><span style="color: #098658">2000</span><span style="color: #000000">} /&gt;</span>
+<span style="color: #000000">  &lt;/</span><span style="color: #001080">ControlsContainer</span><span style="color: #000000">&gt;</span>
+<span style="color: #000000">&lt;/</span><span style="color: #001080">SigmaContainer</span><span style="color: #000000">&gt;</span>
+</code></pre>
+					<p>See <a href="interfaces/controlscontainerprops.html">ControlsContainerProps</a> for more information.</p>
+				</div>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-variable">
 				<a name="forceatlascontrol" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> Force<wbr>Atlas<wbr>Control</h3>
-				<div class="tsd-signature tsd-kind-icon">Force<wbr>Atlas<wbr>Control<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">React.FC</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Props</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
+				<div class="tsd-signature tsd-kind-icon">Force<wbr>Atlas<wbr>Control<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">React.FC</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ForceAtlasControlProps</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/c1475bb/src/controls/ForceAtlasControl.tsx#L20">controls/ForceAtlasControl.tsx:20</a></li>
+						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/c5a4624/src/controls/ForceAtlasControl.tsx#L38">controls/ForceAtlasControl.tsx:38</a></li>
 					</ul>
 				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>The <code>ForceAtlasControl</code> create a force atlas worker, as well as a UI button that allow the user to stop/start the layout</p>
+					</div>
+					<pre><code class="language-typescript"><span style="color: #000000">&lt;</span><span style="color: #267F99">SigmaContainer</span><span style="color: #000000">&gt;</span>
+<span style="color: #000000">  &lt;</span><span style="color: #267F99">ControlsContainer</span><span style="color: #000000">&gt;</span>
+<span style="color: #000000">    &lt;</span><span style="color: #001080">ForceAtlasControl</span><span style="color: #000000"> </span><span style="color: #001080">autoRunFor</span><span style="color: #000000">={</span><span style="color: #098658">2000</span><span style="color: #000000">} /&gt;</span>
+<span style="color: #000000">  &lt;/</span><span style="color: #001080">ControlsContainer</span><span style="color: #000000">&gt;</span>
+<span style="color: #000000">&lt;/</span><span style="color: #001080">SigmaContainer</span><span style="color: #000000">&gt;</span>
+</code></pre>
+					<p>See [[ForceAtlasControlProps]] for more information.</p>
+				</div>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-variable">
 				<a name="fullscreencontrol" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> Full<wbr>Screen<wbr>Control</h3>
-				<div class="tsd-signature tsd-kind-icon">Full<wbr>Screen<wbr>Control<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">React.FC</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Props</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
+				<div class="tsd-signature tsd-kind-icon">Full<wbr>Screen<wbr>Control<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">React.FC</span><span class="tsd-signature-symbol"> = ...</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/c1475bb/src/controls/FullScreenControl.tsx#L6">controls/FullScreenControl.tsx:6</a></li>
+						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/c5a4624/src/controls/FullScreenControl.tsx#L17">controls/FullScreenControl.tsx:17</a></li>
 					</ul>
 				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>The <code>FullScreenControl</code> create a UI button that allows the user to display the graph in fullscreen</p>
+					</div>
+					<pre><code class="language-typescript"><span style="color: #000000">&lt;</span><span style="color: #267F99">SigmaContainer</span><span style="color: #000000">&gt;</span>
+<span style="color: #000000">  &lt;</span><span style="color: #267F99">ControlsContainer</span><span style="color: #000000">&gt;</span>
+<span style="color: #000000">    &lt;</span><span style="color: #001080">FullScreenControl</span><span style="color: #000000"> /&gt;</span>
+<span style="color: #000000">  &lt;/</span><span style="color: #001080">ControlsContainer</span><span style="color: #000000">&gt;</span>
+<span style="color: #000000">&lt;/</span><span style="color: #001080">SigmaContainer</span><span style="color: #000000">&gt;</span>
+</code></pre>
+				</div>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-variable">
 				<a name="searchcontrol" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> Search<wbr>Control</h3>
-				<div class="tsd-signature tsd-kind-icon">Search<wbr>Control<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">React.FC</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Props</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
+				<div class="tsd-signature tsd-kind-icon">Search<wbr>Control<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">React.FC</span><span class="tsd-signature-symbol"> = ...</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/c1475bb/src/controls/SearchControl.tsx#L5">controls/SearchControl.tsx:5</a></li>
+						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/c5a4624/src/controls/SearchControl.tsx#L19">controls/SearchControl.tsx:19</a></li>
 					</ul>
 				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>The <code>SearchControl</code> create an input text where user can  search a node in the graph by its label.<br>There is an autocomplete based on the include &amp; lower case.<br>When a node is found, the graph will focus on the highligthed node</p>
+					</div>
+					<pre><code class="language-typescript"><span style="color: #000000">&lt;</span><span style="color: #267F99">SigmaContainer</span><span style="color: #000000">&gt;</span>
+<span style="color: #000000">  &lt;</span><span style="color: #267F99">ControlsContainer</span><span style="color: #000000">&gt;</span>
+<span style="color: #000000">    &lt;</span><span style="color: #001080">SearchControl</span><span style="color: #000000"> /&gt;</span>
+<span style="color: #000000">  &lt;/</span><span style="color: #001080">ControlsContainer</span><span style="color: #000000">&gt;</span>
+<span style="color: #000000">&lt;/</span><span style="color: #001080">SigmaContainer</span><span style="color: #000000">&gt;</span>
+</code></pre>
+				</div>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-variable">
 				<a name="sigmacontainer" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> Sigma<wbr>Container</h3>
-				<div class="tsd-signature tsd-kind-icon">Sigma<wbr>Container<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">React.FC</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">SigmaContainerProps</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
+				<div class="tsd-signature tsd-kind-icon">Sigma<wbr>Container<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">React.FC</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/sigmacontainerprops.html" class="tsd-signature-type" data-tsd-kind="Interface">SigmaContainerProps</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/c1475bb/src/SigmaContainer.tsx#L18">SigmaContainer.tsx:18</a></li>
+						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/c5a4624/src/SigmaContainer.tsx#L51">SigmaContainer.tsx:51</a></li>
 					</ul>
 				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>The <code>SigmaContainer</code> component is responsible of create the Sigma instance, and provide it to its child components using a React Context that can be accessible via the hook <a href="modules.html#usesigma">useSigma</a>.</p>
+					</div>
+					<pre><code class="language-typescript"><span style="color: #000000">&lt;</span><span style="color: #001080">SigmaContainer</span><span style="color: #000000"> </span><span style="color: #001080">id</span><span style="color: #000000">=</span><span style="color: #A31515">&quot;sigma-graph&quot;</span><span style="color: #000000">&gt;</span>
+<span style="color: #000000">  &lt;</span><span style="color: #001080">MyCustomGraph</span><span style="color: #000000"> /&gt;</span>
+<span style="color: #000000">&lt;/</span><span style="color: #001080">SigmaContainer</span><span style="color: #000000">&gt;</span>
+</code></pre>
+					<p>See <a href="interfaces/sigmacontainerprops.html">SigmaContainerProps</a> for more information.</p>
+				</div>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-variable">
 				<a name="zoomcontrol" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> Zoom<wbr>Control</h3>
-				<div class="tsd-signature tsd-kind-icon">Zoom<wbr>Control<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">React.FC</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Props</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
+				<div class="tsd-signature tsd-kind-icon">Zoom<wbr>Control<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">React.FC</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/zoomcontrolprops.html" class="tsd-signature-type" data-tsd-kind="Interface">ZoomControlProps</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/c1475bb/src/controls/ZoomControl.tsx#L8">controls/ZoomControl.tsx:8</a></li>
+						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/c5a4624/src/controls/ZoomControl.tsx#L32">controls/ZoomControl.tsx:32</a></li>
 					</ul>
 				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>The <code>ZoomControl</code> create three UI buttons that allows the user to</p>
+						<ul>
+							<li>zoom in</li>
+							<li>zoom out</li>
+							<li>reset zoom (ie. see the whole graph)</li>
+						</ul>
+					</div>
+					<pre><code class="language-typescript"><span style="color: #000000">&lt;</span><span style="color: #267F99">SigmaContainer</span><span style="color: #000000">&gt;</span>
+<span style="color: #000000">  &lt;</span><span style="color: #267F99">ControlsContainer</span><span style="color: #000000">&gt;</span>
+<span style="color: #000000">    &lt;</span><span style="color: #001080">ZoomControl</span><span style="color: #000000"> /&gt;</span>
+<span style="color: #000000">  &lt;/</span><span style="color: #001080">ControlsContainer</span><span style="color: #000000">&gt;</span>
+<span style="color: #000000">&lt;/</span><span style="color: #001080">SigmaContainer</span><span style="color: #000000">&gt;</span>
+</code></pre>
+					<p>See <a href="interfaces/zoomcontrolprops.html">ZoomControlProps</a> for more information.</p>
+				</div>
 			</section>
 		</section>
 		<section class="tsd-panel-group tsd-member-group ">
-			<h2>Functions</h2>
+			<h2>Hook Functions</h2>
 			<section class="tsd-panel tsd-member tsd-kind-function">
 				<a name="useloadgraph" class="tsd-anchor"></a>
 				<h3>use<wbr>Load<wbr>Graph</h3>
@@ -3073,9 +3100,17 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/c1475bb/src/hooks.ts#L12">hooks.ts:12</a></li>
+								<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/c5a4624/src/hooks.ts#L31">hooks.ts:31</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>React hook that helps you to load a graph.<br>If a graph was previously loaded in Sigma/Graphology, per default it is cleared.<br>You can change this behaviour by settings the parameter <code>clear</code> to false.</p>
+							</div>
+							<pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">loadGraph</span><span style="color: #000000"> = </span><span style="color: #795E26">useLoadGraph</span><span style="color: #000000">();</span>
+<span style="color: #795E26">loadGraph</span><span style="color: #000000">(</span><span style="color: #795E26">erdosRenyi</span><span style="color: #000000">(</span><span style="color: #001080">UndirectedGraph</span><span style="color: #000000">, { </span><span style="color: #001080">order:</span><span style="color: #000000"> </span><span style="color: #098658">100</span><span style="color: #000000">, </span><span style="color: #001080">probability:</span><span style="color: #000000"> </span><span style="color: #098658">0.2</span><span style="color: #000000"> }), </span><span style="color: #0000FF">true</span><span style="color: #000000">);</span>
+</code></pre>
+						</div>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">(</span>graph<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Graph</span>, clear<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h4>
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-signature">
@@ -3111,9 +3146,20 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/c1475bb/src/hooks.ts#L23">hooks.ts:23</a></li>
+								<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/c5a4624/src/hooks.ts#L55">hooks.ts:55</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>React hook that helps you to listen Sigma’s events.<br>It handles for you all the lifecyle of listener (ie. on / remove)</p>
+							</div>
+							<pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">registerEvents</span><span style="color: #000000"> = </span><span style="color: #795E26">useRegisterEvents</span><span style="color: #000000">();</span>
+<span style="color: #795E26">registerEvents</span><span style="color: #000000">({</span>
+<span style="color: #000000"> </span><span style="color: #795E26">enterNode</span><span style="color: #001080">:</span><span style="color: #000000"> </span><span style="color: #001080">event</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #795E26">setHoveredNode</span><span style="color: #000000">(</span><span style="color: #001080">event</span><span style="color: #000000">.</span><span style="color: #001080">node</span><span style="color: #000000">),</span>
+<span style="color: #000000"> </span><span style="color: #795E26">leaveNode</span><span style="color: #001080">:</span><span style="color: #000000"> </span><span style="color: #001080">event</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #795E26">setHoveredNode</span><span style="color: #000000">(</span><span style="color: #0000FF">null</span><span style="color: #000000">),</span>
+<span style="color: #000000">});</span>
+</code></pre>
+						</div>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">(</span>eventHandlers<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/eventhandlers.html" class="tsd-signature-type" data-tsd-kind="Interface">EventHandlers</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h4>
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-signature">
@@ -3146,9 +3192,20 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/c1475bb/src/hooks.ts#L56">hooks.ts:56</a></li>
+								<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/c5a4624/src/hooks.ts#L100">hooks.ts:100</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>React hook that helps you to update Sigma’s settings.</p>
+							</div>
+							<pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">setSettings</span><span style="color: #000000"> = </span><span style="color: #795E26">useSetSettings</span><span style="color: #000000">();</span>
+<span style="color: #795E26">setSettings</span><span style="color: #000000">({</span>
+<span style="color: #000000"> </span><span style="color: #001080">hideEdgesOnMove:</span><span style="color: #000000"> </span><span style="color: #0000FF">true</span><span style="color: #000000">,</span>
+<span style="color: #000000"> </span><span style="color: #001080">hideLabelsOnMove:</span><span style="color: #000000"> </span><span style="color: #0000FF">true</span><span style="color: #000000">,</span>
+<span style="color: #000000">});</span>
+</code></pre>
+						</div>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">(</span>newSettings<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Settings</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h4>
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-signature">
@@ -3181,9 +3238,16 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/c1475bb/src/hooks.ts#L8">hooks.ts:8</a></li>
+								<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/c5a4624/src/hooks.ts#L16">hooks.ts:16</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>React hook to retrieve the sigma instance (from the context).</p>
+							</div>
+							<pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">sigma</span><span style="color: #000000"> = </span><span style="color: #795E26">useSigma</span><span style="color: #000000">();</span>
+</code></pre>
+						</div>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Sigma</span></h4>
 					</li>
 				</ul>

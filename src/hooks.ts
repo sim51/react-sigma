@@ -5,10 +5,29 @@ import Graph from "graphology";
 import { useSigmaContext } from "./context";
 import { EventHandlers } from "./index";
 
+/**
+ * React hook to retrieve the sigma instance (from the context).
+ *
+ * ```typescript
+ * const sigma = useSigma();
+ *```
+ * @category Hook
+ */
 export function useSigma(): Sigma {
   return useSigmaContext().sigma;
 }
 
+/**
+ * React hook that helps you to load a graph.
+ * If a graph was previously loaded in Sigma/Graphology, per default it is cleared.
+ * You can change this behaviour by settings the parameter `clear` to false.
+ *
+ * ```typescript
+ * const loadGraph = useLoadGraph();
+ * loadGraph(erdosRenyi(UndirectedGraph, { order: 100, probability: 0.2 }), true);
+ *```
+ * @category Hook
+ */
 export function useLoadGraph(): (graph: Graph, clear?: boolean) => void {
   const sigma = useSigma();
 
@@ -20,6 +39,19 @@ export function useLoadGraph(): (graph: Graph, clear?: boolean) => void {
   };
 }
 
+/**
+ * React hook that helps you to listen Sigma’s events.
+ * It handles for you all the lifecyle of listener (ie. on / remove)
+ *
+ * ```typescript
+ * const registerEvents = useRegisterEvents();
+ * registerEvents({
+ *  enterNode: event => setHoveredNode(event.node),
+ *  leaveNode: event => setHoveredNode(null),
+ * });
+ *```
+ * @category Hook
+ */
 export function useRegisterEvents(): (eventHandlers: Partial<EventHandlers>) => void {
   const sigma = useSigma();
   const [eventHandlers, setEventHandlers] = useState<Partial<EventHandlers>>({});
@@ -53,6 +85,18 @@ export function useRegisterEvents(): (eventHandlers: Partial<EventHandlers>) => 
   return setEventHandlers;
 }
 
+/**
+ * React hook that helps you to update Sigma’s settings.
+ *
+ * ```typescript
+ * const setSettings = useSetSettings();
+ * setSettings({
+ *  hideEdgesOnMove: true,
+ *  hideLabelsOnMove: true,
+ * });
+ *```
+ * @category Hook
+ */
 export function useSetSettings(): (newSettings: Partial<Settings>) => void {
   const sigma = useSigma();
   const [settings, setSettings] = useState<Partial<Settings>>({});

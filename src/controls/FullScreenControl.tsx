@@ -1,9 +1,20 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useSigma } from "../hooks";
 
-interface Props {}
-
-export const FullScreenControl: React.FC<Props> = ({}) => {
+/**
+ * The `FullScreenControl` create a UI button that allows the user to display the graph in fullscreen
+ *
+ * ```typescript
+ * <SigmaContainer>
+ *   <ControlsContainer>
+ *     <FullScreenControl />
+ *   </ControlsContainer>
+ * </SigmaContainer>
+ * ```
+ *
+ * @category Component
+ */
+export const FullScreenControl: React.FC = () => {
   // Get Sigma
   const sigma = useSigma();
   // Is full screen mode enabled

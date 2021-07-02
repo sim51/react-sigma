@@ -2,7 +2,6 @@
   "entryPoints": ["./src/index.ts"],
   "out": "docs",
   "includeVersion": true,
-  "excludeExternals": true,
   "theme": "minimal",
   "markedOptions": {
     "breaks": true,

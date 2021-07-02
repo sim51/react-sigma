@@ -1,8 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useSigma } from "../hooks";
 
-interface Props {}
-export const SearchControl: React.FC<Props> = ({}) => {
+/**
+ * The `SearchControl` create an input text where user can  search a node in the graph by its label.
+ * There is an autocomplete based on the include & lower case.
+ * When a node is found, the graph will focus on the highligthed node
+ *
+ * ```typescript
+ * <SigmaContainer>
+ *   <ControlsContainer>
+ *     <SearchControl />
+ *   </ControlsContainer>
+ * </SigmaContainer>
+ * ```
+ *
+ * @category Component
+ */
+export const SearchControl: React.FC = () => {
   // Get sigma
   const sigma = useSigma();
   // Search value
