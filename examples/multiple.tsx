@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { ReactNode, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { UndirectedGraph } from "graphology";
-import { NodeKey, EdgeKey } from "graphology-types";
 import erdosRenyi from "graphology-generators/random/erdos-renyi";
 import randomLayout from "graphology-layout/random";
 import chroma from "chroma-js";
 import faker from "faker";
-import Sigma from "sigma/sigma";
-import { Settings } from "sigma/settings";
 import {
   ControlsContainer,
   ForceAtlasControl,
@@ -18,7 +15,11 @@ import {
 } from "../src/index";
 import "../src/assets/index.scss";
 
-export const MyCustomGraph: React.FC<React.PropsWithChildren> = ({ children }) => {
+interface MyCustomGraphProps {
+  children?: ReactNode;
+}
+
+export const MyCustomGraph: React.FC<MyCustomGraphProps> = ({ children }) => {
   const loadGraph = useLoadGraph();
 
   useEffect(() => {

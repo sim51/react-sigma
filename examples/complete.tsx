@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { UndirectedGraph } from "graphology";
-import { NodeKey, EdgeKey } from "graphology-types";
 import erdosRenyi from "graphology-generators/random/erdos-renyi";
 import randomLayout from "graphology-layout/random";
 import chroma from "chroma-js";
 import faker from "faker";
-import Sigma from "sigma/sigma";
-import { Settings } from "sigma/settings";
+
 import {
   ControlsContainer,
-  EventHandlers,
   ForceAtlasControl,
   useSigma,
   useRegisterEvents,
@@ -21,13 +18,18 @@ import {
   ZoomControl,
 } from "../src/index";
 import "../src/assets/index.scss";
+import { Attributes, NodeKey } from "graphology-types";
 
-export const MyCustomGraph: React.FC<React.PropsWithChildren> = ({ children }) => {
+interface MyCustomGraphProps {
+  children?: ReactNode;
+}
+
+export const MyCustomGraph: React.FC<MyCustomGraphProps> = ({ children }) => {
   const sigma = useSigma();
   const registerEvents = useRegisterEvents();
   const loadGraph = useLoadGraph();
   const setSettings = useSetSettings();
-  const [hoveredNode, setHoveredNode] = useState<string | null>(null);
+  const [hoveredNode, setHoveredNode] = useState<NodeKey | null>(null);
 
   useEffect(() => {
     // Create the graph
@@ -45,17 +47,21 @@ export const MyCustomGraph: React.FC<React.PropsWithChildren> = ({ children }) =
     // Register the events
     registerEvents({
       enterNode: event => setHoveredNode(event.node),
-      leaveNode: event => setHoveredNode(null),
+      leaveNode: () => setHoveredNode(null),
     });
   }, []);
 
   useEffect(() => {
     setSettings({
-      nodeReducer: (node: any, data: any) => {
+      nodeReducer: (node, data) => {
         const graph = sigma.getGraph();
-        const newData = { ...data, highlighted: data.highlighted || false };
+        const newData: Attributes = { ...data, highlighted: data.highlighted || false };
+
         if (hoveredNode) {
-          if (node === hoveredNode || graph.neighbors(hoveredNode).includes(node)) newData.highlighted = true;
+          const hoveredNodeIsANeighbor = graph.neighbors(hoveredNode).find(neighbor => neighbor === hoveredNode) !== undefined;
+          if (node === hoveredNode || hoveredNodeIsANeighbor) {
+            newData.highlighted = true;
+          }
           else {
             newData.color = "#E2E2E2";
             newData.highlighted = false;
@@ -63,10 +69,14 @@ export const MyCustomGraph: React.FC<React.PropsWithChildren> = ({ children }) =
         }
         return newData;
       },
-      edgeReducer: (edge: any, data: any) => {
+      edgeReducer: (edge, data) => {
         const graph = sigma.getGraph();
         const newData = { ...data, hidden: false };
-        if (hoveredNode && !graph.extremities(edge).includes(hoveredNode)) newData.hidden = true;
+
+        const extremitiesOfEdgeIncludeTheHoveredNode = graph.extremities(edge).find(extremity => extremity === hoveredNode);
+        if (hoveredNode && !extremitiesOfEdgeIncludeTheHoveredNode){
+          newData.hidden = true;
+        }
         return newData;
       },
     });
