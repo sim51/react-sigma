@@ -35,6 +35,7 @@
     "examples:build": "webpack build --config ./examples/webpack.config.js --progress",
     "site": "rimraf docs/ && typedoc && npm run examples:build",
     "prepublishOnly": "npm run build && npm run site",
+    "postinstall": "npx npm-install-peers",
     "tsc": "tsc"
   },
   "devDependencies": {
