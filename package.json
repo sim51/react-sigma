@@ -36,6 +36,7 @@
     "site": "rimraf docs/ && typedoc && npm run examples:build",
     "prepublishOnly": "npm run build && npm run site",
     "postinstall": "npx npm-install-peers",
+    "test": "npm run tsc",
     "tsc": "tsc"
   },
   "devDependencies": {
