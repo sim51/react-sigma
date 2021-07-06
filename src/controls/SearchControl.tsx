@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { useSigma } from "../hooks";
+import { Attributes } from "graphology-types";
 
 /**
  * The `SearchControl` create an input text where user can search a node in the graph by its label.
@@ -29,7 +30,7 @@ export const SearchControl: React.FC = () => {
   useEffect(() => {
     const newValues: Array<{ id: string; label: string }> = [];
     if (!selected && search.length > 1) {
-      sigma.getGraph().forEachNode((key: string, attributes: any): void => {
+      sigma.getGraph().forEachNode((key: string, attributes: Attributes): void => {
         if (attributes.label && attributes.label.toLowerCase().includes(search.toLowerCase()))
           newValues.push({ id: key, label: attributes.label });
       });
