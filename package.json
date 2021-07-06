@@ -29,15 +29,21 @@
   "scripts": {
     "clean": "rimraf lib/",
     "lint": "esw . --ext .ts",
-    "compile": "tsc",
+    "lint:examples": "esw ./examples --ext .ts --ext .tsx",
+    "lint:all": "npm run lint && npm run lint:examples",
+    "compile": "npm run tsc",
+    "compile:examples": "npm run tsc:examples",
+    "compile:all": "npm run tsc:all",
     "build": "npm run clean && npm run lint && npm run compile && webpack --progress",
     "examples": "webpack serve --config ./examples/webpack.config.js --progress",
     "examples:build": "webpack build --config ./examples/webpack.config.js --progress",
     "site": "rimraf docs/ && typedoc && npm run examples:build",
     "prepublishOnly": "npm run build && npm run site",
     "postinstall": "npx npm-install-peers",
-    "test": "npm run tsc",
-    "tsc": "tsc"
+    "test": "npm run tsc:all",
+    "tsc": "tsc -p ./tsconfig.base.json --noEmit",
+    "tsc:examples": "tsc -p ./examples/tsconfig.json --noEmit",
+    "tsc:all": "npm run tsc && npm run tsc:examples"
   },
   "devDependencies": {
     "@babel/core": "^7.13.16",
