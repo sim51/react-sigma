@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useSigma } from "../hooks";
 
 /**
- * The `SearchControl` create an input text where user can  search a node in the graph by its label.
+ * The `SearchControl` create an input text where user can search a node in the graph by its label.
  * There is an autocomplete based on the include & lower case.
- * When a node is found, the graph will focus on the highligthed node
+ * When a node is found, the graph will focus on the highlighted node
  *
  * ```typescript
  * <SigmaContainer>

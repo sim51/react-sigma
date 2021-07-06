@@ -11,7 +11,7 @@ import { isEqual } from "lodash";
  */
 export interface SigmaContainerProps {
   /**
-   * Graphology settings for the SIgma underlying graph
+   * Graphology settings for the Sigma underlying graph
    */
   graphOptions?: Partial<GraphOptions>;
   /**
