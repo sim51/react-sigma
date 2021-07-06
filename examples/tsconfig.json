@@ -1,13 +1,11 @@
 {
+  "extends": "../tsconfig.base.json",
   "compilerOptions": {
     "rootDir": "./../",
     "outDir": "./lib/esm",
     "sourceMap": false,
     "declaration": false,
-    "target": "es6",
-    "esModuleInterop": true,
-    "module": "commonjs",
-    "jsx": "react",
-    "lib": ["dom", "dom.iterable", "esnext"]
-  }
+    "declarationDir": null,
+  },
+  "include": ["./**/*"],
 }
