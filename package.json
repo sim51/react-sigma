@@ -34,7 +34,8 @@
     "examples": "webpack serve --config ./examples/webpack.config.js --progress",
     "examples:build": "webpack build --config ./examples/webpack.config.js --progress",
     "site": "rimraf docs/ && typedoc && npm run examples:build",
-    "prepublishOnly": "npm run build && npm run site"
+    "prepublishOnly": "npm run build && npm run site",
+    "tsc": "tsc"
   },
   "devDependencies": {
     "@babel/core": "^7.13.16",
