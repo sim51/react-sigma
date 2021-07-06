@@ -58,28 +58,32 @@ export function useRegisterEvents(): (eventHandlers: Partial<EventHandlers>) => 
 
   useEffect(() => {
     let event: keyof typeof eventHandlers;
-    if (sigma && eventHandlers) {
+
+    if (!sigma || !eventHandlers) {
+      return;
+    }
+
+    for (event in eventHandlers) {
+      const eventHandler = eventHandlers[event] as (...args: any[]) => void;
+      if (event === "cameraUpdated") {
+        sigma.getCamera().on(event, eventHandler);
+      } else {
+        sigma.on(event, eventHandler);
+      }
+    }
+
+    // cleanup
+    return () => {
+      let event: keyof typeof eventHandlers;
       for (event in eventHandlers) {
         const eventHandler = eventHandlers[event] as (...args: any[]) => void;
         if (event === "cameraUpdated") {
-          sigma.getCamera().on(event, eventHandler);
+          sigma.getCamera().removeListener(event, eventHandler);
         } else {
-          sigma.on(event, eventHandler);
+          sigma.removeListener(event, eventHandler);
         }
       }
-      // cleanup
-      return () => {
-        let event: keyof typeof eventHandlers;
-        for (event in eventHandlers) {
-          const eventHandler = eventHandlers[event] as (...args: any[]) => void;
-          if (event === "cameraUpdated") {
-            sigma.getCamera().removeListener(event, eventHandler);
-          } else {
-            sigma.removeListener(event, eventHandler);
-          }
-        }
-      };
-    }
+    };
   }, [sigma, eventHandlers]);
 
   return setEventHandlers;
@@ -102,21 +106,26 @@ export function useSetSettings(): (newSettings: Partial<Settings>) => void {
   const [settings, setSettings] = useState<Partial<Settings>>({});
 
   useEffect(() => {
-    if (sigma && settings) {
-      const prevSettings: Partial<Settings> = {};
-
-      Object.keys(settings).forEach((key: any) => {
-        prevSettings[key] = sigma.getSetting(key);
-        sigma.setSetting(key, settings[key]);
-      });
-
-      // cleanup
-      return () => {
-        Object.keys(prevSettings).forEach((key: any) => {
-          sigma.setSetting(key, prevSettings[key]);
-        });
-      };
+    if (!sigma || !settings) {
+      return;
     }
+
+    const prevSettings: Partial<Settings> = {};
+
+    (Object.keys(settings) as Array<keyof Settings>).forEach((key) => {
+      // as never because of https://stackoverflow.com/questions/58656353/how-to-avoid-dynamic-keyof-object-assign-error-in-typescript
+      prevSettings[key] = key as never;
+
+      sigma.setSetting(key, settings[key] as never);
+    });
+
+    // cleanup
+    return () => {
+      (Object.keys(prevSettings) as Array<keyof Settings>).forEach((key) => {
+        // as never because of https://stackoverflow.com/questions/58656353/how-to-avoid-dynamic-keyof-object-assign-error-in-typescript
+        sigma.setSetting(key, prevSettings[key] as never);
+      });
+    };
   }, [sigma, settings]);
 
   return setSettings;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import { useSigma } from "../hooks";
 
 /**
@@ -38,19 +38,26 @@ export const SearchControl: React.FC = () => {
   }, [search]);
 
   useEffect(() => {
-    if (selected) {
-      sigma.getGraph().setNodeAttribute(selected, "highlighted", true);
-      sigma.getCamera().animate(sigma.getNodeDisplayData(selected), {
+    if (!selected) {
+      return;
+    }
+
+    sigma.getGraph().setNodeAttribute(selected, "highlighted", true);
+    const nodeDisplayData = sigma.getNodeDisplayData(selected);
+
+    if(nodeDisplayData) {
+      sigma.getCamera().animate(nodeDisplayData, {
         easing: "linear",
         duration: 500,
       });
-      return () => {
-        sigma.getGraph().setNodeAttribute(selected, "highlighted", false);
-      };
     }
+
+    return () => {
+      sigma.getGraph().setNodeAttribute(selected, "highlighted", false);
+    };
   }, [selected]);
 
-  const onInputChange = e => {
+  const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const searchString = e.target.value;
     const valueItem = values.find(value => value.label === searchString);
     if (valueItem) {

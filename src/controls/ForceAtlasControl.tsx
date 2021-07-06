@@ -47,30 +47,36 @@ export const ForceAtlasControl: React.FC<ForceAtlasControlProps> = ({ settings, 
   const [fa2IsRunning, setFa2IsRunning] = useState<boolean>(false);
 
   useEffect(() => {
-    if (sigma) {
-      // Create the FA2 worker
-      const nFa2 = new FA2LayoutSupervisor(sigma.getGraph(), fa2Settings.current || {});
-      setFa2(nFa2);
-
-      // we run the algo
-      let timeout: number | any = null;
-      if (autoRunFor > -1 && sigma.getGraph().order > 0) {
-        setFa2IsRunning(true);
-        // set a timeout to stop it
-        timeout =
-          autoRunFor > 0
-            ? window.setTimeout(() => {
-                setFa2IsRunning(false);
-              }, autoRunFor)
-            : null;
-      }
-
-      //cleaning
-      return () => {
-        if (nFa2) nFa2.kill();
-        if (timeout) clearTimeout(timeout);
-      };
+    if (!sigma) {
+      return;
     }
+
+    // Create the FA2 worker
+    const nFa2 = new FA2LayoutSupervisor(sigma.getGraph(), fa2Settings.current || {});
+    setFa2(nFa2);
+
+    // we run the algo
+    let timeout: number | any = null;
+    if (autoRunFor > -1 && sigma.getGraph().order > 0) {
+      setFa2IsRunning(true);
+      // set a timeout to stop it
+      timeout =
+        autoRunFor > 0
+          ? window.setTimeout(() => {
+              setFa2IsRunning(false);
+            }, autoRunFor)
+          : null;
+    }
+
+    //cleaning
+    return () => {
+      if (nFa2) {
+        nFa2.kill();
+      }
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+    };
   }, [autoRunFor, fa2Settings, sigma]);
 
   useEffect(() => {
@@ -82,7 +88,9 @@ export const ForceAtlasControl: React.FC<ForceAtlasControlProps> = ({ settings, 
           fa2.stop();
         }
       }
-    } catch (e) {}
+    } catch (e) {
+      // Noop
+    }
   }, [fa2, fa2IsRunning]);
 
   return (

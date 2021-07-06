@@ -55,7 +55,7 @@ export const SigmaContainer: React.FC<SigmaContainerProps> = ({
   style,
   initialSettings,
   children,
-}) => {
+}: SigmaContainerProps) => {
   // HTML element for the sigma instance
   const containerRef = useRef<HTMLDivElement>(null);
   // Common html props for the container
@@ -71,13 +71,18 @@ export const SigmaContainer: React.FC<SigmaContainerProps> = ({
 
   // When graphOptions or settings changed
   useEffect(() => {
+    let instance: Sigma | null = null;
+
     if (containerRef.current !== null) {
-      const instance = new Sigma(new Graph(graph.current), containerRef.current, settings.current);
+      instance = new Sigma(new Graph(graph.current), containerRef.current, settings.current);
       setSigma(instance);
     }
+
     return () => {
-      setSigma(instance => {
-        if (instance) instance.kill();
+      setSigma(() => {
+        if (instance) {
+          instance.kill();
+        }
         return null;
       });
     };
