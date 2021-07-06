@@ -64,7 +64,7 @@ export function useRegisterEvents(): (eventHandlers: Partial<EventHandlers>) => 
     }
 
     for (event in eventHandlers) {
-      const eventHandler = eventHandlers[event] as (...args: any[]) => void;
+      const eventHandler = eventHandlers[event] as (...args: unknown[]) => void;
       if (event === "cameraUpdated") {
         sigma.getCamera().on(event, eventHandler);
       } else {
@@ -76,7 +76,7 @@ export function useRegisterEvents(): (eventHandlers: Partial<EventHandlers>) => 
     return () => {
       let event: keyof typeof eventHandlers;
       for (event in eventHandlers) {
-        const eventHandler = eventHandlers[event] as (...args: any[]) => void;
+        const eventHandler = eventHandlers[event] as (...args: unknown[]) => void;
         if (event === "cameraUpdated") {
           sigma.getCamera().removeListener(event, eventHandler);
         } else {
