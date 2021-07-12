@@ -3,10 +3,7 @@
 A set of react components to display graphs with Sigma v2.
 This project is in beta test.
 
-Some online examples :
-
-- https://sim51.github.io/react-sigma-v2/examples/complete.html
-- https://sim51.github.io/react-sigma-v2/examples/multiple.html
+You can find some online examples here : https://sim51.github.io/react-sigma-v2/examples/
 
 ## Philosophy
 
@@ -186,3 +183,9 @@ ReactDOM.render(
   document.getElementById("root"),
 );
 ```
+
+## Some screenshots
+
+![Complete](https://raw.githubusercontent.com/sim51/react-sigma-v2/main/test/e2e/screenshots/complete.valid.png)
+
+![Multiple](https://raw.githubusercontent.com/sim51/react-sigma-v2/main/test/e2e/screenshots/multiple.valid.png)
