@@ -44,7 +44,7 @@
     "tsc:all": "npm run tsc && npm run tsc:examples",
     "test:e2e": "mocha --require ts-node/register ./test/e2e/**/*.spec.ts --exit",
     "test:e2e:generate": "node -r ts-node/register ./test/e2e/generate.ts",
-    "test": "npm run tsc:all && test:e2e"
+    "test": "npm run tsc:all && npm run test:e2e"
   },
   "devDependencies": {
     "@babel/core": "^7.13.16",
