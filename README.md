@@ -55,7 +55,7 @@ $> npm install sigma graphology graphology-layout-forceatlas2 react-sigma-v2
 ```
 
 <div class="important">
-This package is based on the version of SigmaV2 `2.0.0-beta3` that has introduced new features. So be sure to have this version or an upper one.
+This package is based on the version of SigmaV2 `2.0.0-beta7` that has introduced new features. So be sure to have this version or an upper one.
 </div>
 
 ## How to use it
@@ -117,7 +117,7 @@ export const MyCustomGraph: React.FC<MyCustomGraphProps> = ({ children }) => {
   const registerEvents = useRegisterEvents();
   const loadGraph = useLoadGraph();
   const setSettings = useSetSettings();
-  const [hoveredNode, setHoveredNode] = useState<NodeKey | null>(null);
+  const [hoveredNode, setHoveredNode] = (useState < NodeKey) | (null > null);
 
   useEffect(() => {
     // Create the graph
@@ -146,11 +146,9 @@ export const MyCustomGraph: React.FC<MyCustomGraphProps> = ({ children }) => {
         const newData: Attributes = { ...data, highlighted: data.highlighted || false };
 
         if (hoveredNode) {
-          const hoveredNodeIsANeighbor = graph.neighbors(hoveredNode).find(neighbor => neighbor === hoveredNode) !== undefined;
-          if (node === hoveredNode || hoveredNodeIsANeighbor) {
+          if (node === hoveredNode || graph.neighbors(hoveredNode).includes(node)) {
             newData.highlighted = true;
-          }
-          else {
+          } else {
             newData.color = "#E2E2E2";
             newData.highlighted = false;
           }
@@ -161,8 +159,7 @@ export const MyCustomGraph: React.FC<MyCustomGraphProps> = ({ children }) => {
         const graph = sigma.getGraph();
         const newData = { ...data, hidden: false };
 
-        const extremitiesOfEdgeIncludeTheHoveredNode = graph.extremities(edge).find(extremity => extremity === hoveredNode);
-        if (hoveredNode && !extremitiesOfEdgeIncludeTheHoveredNode){
+        if (hoveredNode && !graph.extremities(edge).includes(hoveredNode)) {
           newData.hidden = true;
         }
         return newData;

@@ -5,7 +5,7 @@
     "outDir": "./lib/esm",
     "sourceMap": false,
     "declaration": false,
-    "declarationDir": null,
+    "declarationDir": null
   },
-  "include": ["./**/*"],
+  "include": ["./**/*"]
 }

@@ -1,6 +1,7 @@
 import React, { ReactNode, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { UndirectedGraph } from "graphology";
+import { Attributes, NodeKey } from "graphology-types";
 import erdosRenyi from "graphology-generators/random/erdos-renyi";
 import randomLayout from "graphology-layout/random";
 import chroma from "chroma-js";
@@ -18,7 +19,6 @@ import {
   ZoomControl,
 } from "../src/index";
 import "../src/assets/index.scss";
-import { Attributes, NodeKey } from "graphology-types";
 
 interface MyCustomGraphProps {
   children?: ReactNode;
@@ -58,11 +58,9 @@ export const MyCustomGraph: React.FC<MyCustomGraphProps> = ({ children }) => {
         const newData: Attributes = { ...data, highlighted: data.highlighted || false };
 
         if (hoveredNode) {
-          const hoveredNodeIsANeighbor = graph.neighbors(hoveredNode).find(neighbor => neighbor === hoveredNode) !== undefined;
-          if (node === hoveredNode || hoveredNodeIsANeighbor) {
+          if (node === hoveredNode || (graph.neighbors(hoveredNode) as Array<NodeKey>).includes(node)) {
             newData.highlighted = true;
-          }
-          else {
+          } else {
             newData.color = "#E2E2E2";
             newData.highlighted = false;
           }
@@ -73,8 +71,7 @@ export const MyCustomGraph: React.FC<MyCustomGraphProps> = ({ children }) => {
         const graph = sigma.getGraph();
         const newData = { ...data, hidden: false };
 
-        const extremitiesOfEdgeIncludeTheHoveredNode = graph.extremities(edge).find(extremity => extremity === hoveredNode);
-        if (hoveredNode && !extremitiesOfEdgeIncludeTheHoveredNode){
+        if (hoveredNode && !(graph.extremities(edge) as Array<NodeKey>).includes(hoveredNode)) {
           newData.hidden = true;
         }
         return newData;

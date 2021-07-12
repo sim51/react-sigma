@@ -46,7 +46,7 @@ export const SearchControl: React.FC = () => {
     sigma.getGraph().setNodeAttribute(selected, "highlighted", true);
     const nodeDisplayData = sigma.getNodeDisplayData(selected);
 
-    if(nodeDisplayData) {
+    if (nodeDisplayData) {
       sigma.getCamera().animate(nodeDisplayData, {
         easing: "linear",
         duration: 500,
