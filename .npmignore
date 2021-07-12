@@ -17,6 +17,6 @@ test
 CONTRIBUTING.md
 package-lock.json
 tsconfig.json
-typedoc.base.json
+tsconfig.base.json 
 typedoc.json
 webpack.config.js
