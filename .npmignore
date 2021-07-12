@@ -3,6 +3,7 @@
 *.swp
 .DS_Store
 
+.github
 node_modules
 docs
 examples
@@ -13,8 +14,9 @@ test
 .gitignore
 .npmignore
 .prettierrc.json
+CONTRIBUTING.md
 package-lock.json
 tsconfig.json
-typedoc.json
 typedoc.base.json
+typedoc.json
 webpack.config.js
