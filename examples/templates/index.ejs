@@ -5,13 +5,14 @@
     <title>React Sigma.js Examples</title>
   </head>
   <body>
-    <h1>SReact Sigma.js Examples</h1>
+    <h1>React Sigma.js Examples</h1>
     <ul>
       <% var pages = htmlWebpackPlugin.options.pages %>
       <% for(var i = 0, l = pages.length; i < l; i++) {%>
         <li>
           <a href="./<%= pages[i].id %>.html">
             <%= pages[i].title %>
+          </a>
         </li>
       <% } %>
     </ul>
