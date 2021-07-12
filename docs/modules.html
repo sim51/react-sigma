@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>react-sigma-v2 - v0.0.3 | react-sigma-v2 - v0.0.3</title>
-	<meta name="description" content="Documentation for react-sigma-v2 - v0.0.3">
+	<title>react-sigma-v2 - v0.0.4 | react-sigma-v2 - v0.0.4</title>
+	<meta name="description" content="Documentation for react-sigma-v2 - v0.0.4">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">:root {
   --color-background: #fdfdfd;
@@ -2674,7 +2674,7 @@ img {
 		<div class="container">
 			<div class="table-wrap">
 				<div class="table-cell">
-					<strong><a href="index.html">react-sigma-v2 - v0.0.3</a></strong>
+					<strong><a href="index.html">react-sigma-v2 - v0.0.4</a></strong>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -2754,8 +2754,8 @@ img {
 <div class="container container-main">
 	<div class="content-wrap">
 		<div class="tsd-panel tsd-typography">
-			<a href="#react-sigma-v2" id="react-sigma-v2" style="color: inherit; text-decoration: none;">
-				<h1>React Sigma v2</h1>
+			<a href="#react-sigma-v2-" id="react-sigma-v2-" style="color: inherit; text-decoration: none;">
+				<h1>React Sigma v2 <a href="https://github.com/sim51/react-sigma-v2/actions/workflows/test.yml"><img src="https://github.com/sim51/react-sigma-v2/actions/workflows/test.yml/badge.svg" alt="CI"></a></h1>
 			</a>
 			<p>A set of react components to display graphs with Sigma v2.<br>This project is in beta test.</p>
 			<p>Some online examples :</p>
@@ -2799,7 +2799,7 @@ img {
 			<pre><code class="language-bash"><span style="color: #000000">$&gt; npm install sigma graphology graphology-layout-forceatlas2 react-sigma-v2</span>
 </code></pre>
 			<div class="important">
-				This package is based on the version of SigmaV2 `2.0.0-beta3` that has introduced new features. So be sure to have this version or an upper one.
+				This package is based on the version of SigmaV2 `2.0.0-beta7` that has introduced new features. So be sure to have this version or an upper one.
 			</div>
 			<a href="#how-to-use-it" id="how-to-use-it" style="color: inherit; text-decoration: none;">
 				<h2>How to use it</h2>
@@ -2825,19 +2825,16 @@ img {
 			<a href="#example" id="example" style="color: inherit; text-decoration: none;">
 				<h2>Example</h2>
 			</a>
-			<pre><code class="language-javascript"><span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">React</span><span style="color: #000000">, { </span><span style="color: #001080">useEffect</span><span style="color: #000000">, </span><span style="color: #001080">useState</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;react&quot;</span><span style="color: #000000">;</span>
+			<pre><code class="language-javascript"><span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">React</span><span style="color: #000000">, { </span><span style="color: #001080">ReactNode</span><span style="color: #000000">, </span><span style="color: #001080">useEffect</span><span style="color: #000000">, </span><span style="color: #001080">useState</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;react&quot;</span><span style="color: #000000">;</span>
 <span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">ReactDOM</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;react-dom&quot;</span><span style="color: #000000">;</span>
 <span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">UndirectedGraph</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;graphology&quot;</span><span style="color: #000000">;</span>
-<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">NodeKey</span><span style="color: #000000">, </span><span style="color: #001080">EdgeKey</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;graphology-types&quot;</span><span style="color: #000000">;</span>
 <span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">erdosRenyi</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;graphology-generators/random/erdos-renyi&quot;</span><span style="color: #000000">;</span>
 <span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">randomLayout</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;graphology-layout/random&quot;</span><span style="color: #000000">;</span>
 <span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">chroma</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;chroma-js&quot;</span><span style="color: #000000">;</span>
 <span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">faker</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;faker&quot;</span><span style="color: #000000">;</span>
-<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">Sigma</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;sigma/sigma&quot;</span><span style="color: #000000">;</span>
-<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">Settings</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;sigma/settings&quot;</span><span style="color: #000000">;</span>
+
 <span style="color: #AF00DB">import</span><span style="color: #000000"> {</span>
 <span style="color: #000000">  </span><span style="color: #001080">ControlsContainer</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">EventHandlers</span><span style="color: #000000">,</span>
 <span style="color: #000000">  </span><span style="color: #001080">ForceAtlasControl</span><span style="color: #000000">,</span>
 <span style="color: #000000">  </span><span style="color: #001080">useSigma</span><span style="color: #000000">,</span>
 <span style="color: #000000">  </span><span style="color: #001080">useRegisterEvents</span><span style="color: #000000">,</span>
@@ -2848,13 +2845,18 @@ img {
 <span style="color: #000000">  </span><span style="color: #001080">ZoomControl</span><span style="color: #000000">,</span>
 <span style="color: #000000">} </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;../src/index&quot;</span><span style="color: #000000">;</span>
 <span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;../src/assets/index.scss&quot;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">Attributes</span><span style="color: #000000">, </span><span style="color: #001080">NodeKey</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;graphology-types&quot;</span><span style="color: #000000">;</span>
 
-<span style="color: #AF00DB">export</span><span style="color: #000000"> </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #795E26">MyCustomGraph</span><span style="color: #000000">: </span><span style="color: #267F99">React</span><span style="color: #000000">.</span><span style="color: #267F99">FC</span><span style="color: #000000">&lt;</span><span style="color: #267F99">React</span><span style="color: #000000">.</span><span style="color: #267F99">PropsWithChildren</span><span style="color: #000000">&gt; = ({ </span><span style="color: #001080">children</span><span style="color: #000000"> }) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #0000FF">interface</span><span style="color: #000000"> </span><span style="color: #267F99">MyCustomGraphProps</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #001080">children</span><span style="color: #000000">?: </span><span style="color: #267F99">ReactNode</span><span style="color: #000000">;</span>
+<span style="color: #000000">}</span>
+
+<span style="color: #AF00DB">export</span><span style="color: #000000"> </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #795E26">MyCustomGraph</span><span style="color: #000000">: </span><span style="color: #267F99">React</span><span style="color: #000000">.</span><span style="color: #267F99">FC</span><span style="color: #000000">&lt;</span><span style="color: #267F99">MyCustomGraphProps</span><span style="color: #000000">&gt; = ({ </span><span style="color: #001080">children</span><span style="color: #000000"> }) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
 <span style="color: #000000">  </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">sigma</span><span style="color: #000000"> = </span><span style="color: #795E26">useSigma</span><span style="color: #000000">();</span>
 <span style="color: #000000">  </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">registerEvents</span><span style="color: #000000"> = </span><span style="color: #795E26">useRegisterEvents</span><span style="color: #000000">();</span>
 <span style="color: #000000">  </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">loadGraph</span><span style="color: #000000"> = </span><span style="color: #795E26">useLoadGraph</span><span style="color: #000000">();</span>
 <span style="color: #000000">  </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">setSettings</span><span style="color: #000000"> = </span><span style="color: #795E26">useSetSettings</span><span style="color: #000000">();</span>
-<span style="color: #000000">  </span><span style="color: #0000FF">const</span><span style="color: #000000"> [</span><span style="color: #0070C1">hoveredNode</span><span style="color: #000000">, </span><span style="color: #0070C1">setHoveredNode</span><span style="color: #000000">] = (</span><span style="color: #001080">useState</span><span style="color: #000000"> &lt; </span><span style="color: #001080">string</span><span style="color: #000000">) | (</span><span style="color: #0000FF">null</span><span style="color: #000000"> &gt; </span><span style="color: #0000FF">null</span><span style="color: #000000">);</span>
+<span style="color: #000000">  </span><span style="color: #0000FF">const</span><span style="color: #000000"> [</span><span style="color: #0070C1">hoveredNode</span><span style="color: #000000">, </span><span style="color: #0070C1">setHoveredNode</span><span style="color: #000000">] = (</span><span style="color: #001080">useState</span><span style="color: #000000"> &lt; </span><span style="color: #001080">NodeKey</span><span style="color: #000000">) | (</span><span style="color: #0000FF">null</span><span style="color: #000000"> &gt; </span><span style="color: #0000FF">null</span><span style="color: #000000">);</span>
 
 <span style="color: #000000">  </span><span style="color: #795E26">useEffect</span><span style="color: #000000">(() </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
 <span style="color: #000000">    </span><span style="color: #008000">// Create the graph</span>
@@ -2872,28 +2874,33 @@ img {
 <span style="color: #000000">    </span><span style="color: #008000">// Register the events</span>
 <span style="color: #000000">    </span><span style="color: #795E26">registerEvents</span><span style="color: #000000">({</span>
 <span style="color: #000000">      </span><span style="color: #795E26">enterNode</span><span style="color: #001080">:</span><span style="color: #000000"> </span><span style="color: #001080">event</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #795E26">setHoveredNode</span><span style="color: #000000">(</span><span style="color: #001080">event</span><span style="color: #000000">.</span><span style="color: #001080">node</span><span style="color: #000000">),</span>
-<span style="color: #000000">      </span><span style="color: #795E26">leaveNode</span><span style="color: #001080">:</span><span style="color: #000000"> </span><span style="color: #001080">event</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #795E26">setHoveredNode</span><span style="color: #000000">(</span><span style="color: #0000FF">null</span><span style="color: #000000">),</span>
+<span style="color: #000000">      </span><span style="color: #795E26">leaveNode</span><span style="color: #001080">:</span><span style="color: #000000"> () </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #795E26">setHoveredNode</span><span style="color: #000000">(</span><span style="color: #0000FF">null</span><span style="color: #000000">),</span>
 <span style="color: #000000">    });</span>
 <span style="color: #000000">  }, []);</span>
 
 <span style="color: #000000">  </span><span style="color: #795E26">useEffect</span><span style="color: #000000">(() </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
 <span style="color: #000000">    </span><span style="color: #795E26">setSettings</span><span style="color: #000000">({</span>
-<span style="color: #000000">      </span><span style="color: #795E26">nodeReducer</span><span style="color: #001080">:</span><span style="color: #000000"> (</span><span style="color: #001080">node</span><span style="color: #000000">: </span><span style="color: #267F99">any</span><span style="color: #000000">, </span><span style="color: #001080">data</span><span style="color: #000000">: </span><span style="color: #267F99">any</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">      </span><span style="color: #795E26">nodeReducer</span><span style="color: #001080">:</span><span style="color: #000000"> (</span><span style="color: #001080">node</span><span style="color: #000000">, </span><span style="color: #001080">data</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
 <span style="color: #000000">        </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">graph</span><span style="color: #000000"> = </span><span style="color: #001080">sigma</span><span style="color: #000000">.</span><span style="color: #795E26">getGraph</span><span style="color: #000000">();</span>
-<span style="color: #000000">        </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">newData</span><span style="color: #000000"> = { ...</span><span style="color: #001080">data</span><span style="color: #000000">, </span><span style="color: #001080">highlighted:</span><span style="color: #000000"> </span><span style="color: #001080">data</span><span style="color: #000000">.</span><span style="color: #001080">highlighted</span><span style="color: #000000"> || </span><span style="color: #0000FF">false</span><span style="color: #000000"> };</span>
+<span style="color: #000000">        </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">newData</span><span style="color: #000000">: </span><span style="color: #267F99">Attributes</span><span style="color: #000000"> = { ...</span><span style="color: #001080">data</span><span style="color: #000000">, </span><span style="color: #001080">highlighted:</span><span style="color: #000000"> </span><span style="color: #001080">data</span><span style="color: #000000">.</span><span style="color: #001080">highlighted</span><span style="color: #000000"> || </span><span style="color: #0000FF">false</span><span style="color: #000000"> };</span>
+
 <span style="color: #000000">        </span><span style="color: #AF00DB">if</span><span style="color: #000000"> (</span><span style="color: #001080">hoveredNode</span><span style="color: #000000">) {</span>
-<span style="color: #000000">          </span><span style="color: #AF00DB">if</span><span style="color: #000000"> (</span><span style="color: #001080">node</span><span style="color: #000000"> === </span><span style="color: #001080">hoveredNode</span><span style="color: #000000"> || </span><span style="color: #001080">graph</span><span style="color: #000000">.</span><span style="color: #795E26">neighbors</span><span style="color: #000000">(</span><span style="color: #001080">hoveredNode</span><span style="color: #000000">).</span><span style="color: #795E26">includes</span><span style="color: #000000">(</span><span style="color: #001080">node</span><span style="color: #000000">)) </span><span style="color: #001080">newData</span><span style="color: #000000">.</span><span style="color: #001080">highlighted</span><span style="color: #000000"> = </span><span style="color: #0000FF">true</span><span style="color: #000000">;</span>
-<span style="color: #000000">          </span><span style="color: #AF00DB">else</span><span style="color: #000000"> {</span>
+<span style="color: #000000">          </span><span style="color: #AF00DB">if</span><span style="color: #000000"> (</span><span style="color: #001080">node</span><span style="color: #000000"> === </span><span style="color: #001080">hoveredNode</span><span style="color: #000000"> || </span><span style="color: #001080">graph</span><span style="color: #000000">.</span><span style="color: #795E26">neighbors</span><span style="color: #000000">(</span><span style="color: #001080">hoveredNode</span><span style="color: #000000">).</span><span style="color: #795E26">includes</span><span style="color: #000000">(</span><span style="color: #001080">node</span><span style="color: #000000">)) {</span>
+<span style="color: #000000">            </span><span style="color: #001080">newData</span><span style="color: #000000">.</span><span style="color: #001080">highlighted</span><span style="color: #000000"> = </span><span style="color: #0000FF">true</span><span style="color: #000000">;</span>
+<span style="color: #000000">          } </span><span style="color: #AF00DB">else</span><span style="color: #000000"> {</span>
 <span style="color: #000000">            </span><span style="color: #001080">newData</span><span style="color: #000000">.</span><span style="color: #001080">color</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;#E2E2E2&quot;</span><span style="color: #000000">;</span>
 <span style="color: #000000">            </span><span style="color: #001080">newData</span><span style="color: #000000">.</span><span style="color: #001080">highlighted</span><span style="color: #000000"> = </span><span style="color: #0000FF">false</span><span style="color: #000000">;</span>
 <span style="color: #000000">          }</span>
 <span style="color: #000000">        }</span>
 <span style="color: #000000">        </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #001080">newData</span><span style="color: #000000">;</span>
 <span style="color: #000000">      },</span>
-<span style="color: #000000">      </span><span style="color: #795E26">edgeReducer</span><span style="color: #001080">:</span><span style="color: #000000"> (</span><span style="color: #001080">edge</span><span style="color: #000000">: </span><span style="color: #267F99">any</span><span style="color: #000000">, </span><span style="color: #001080">data</span><span style="color: #000000">: </span><span style="color: #267F99">any</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">      </span><span style="color: #795E26">edgeReducer</span><span style="color: #001080">:</span><span style="color: #000000"> (</span><span style="color: #001080">edge</span><span style="color: #000000">, </span><span style="color: #001080">data</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
 <span style="color: #000000">        </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">graph</span><span style="color: #000000"> = </span><span style="color: #001080">sigma</span><span style="color: #000000">.</span><span style="color: #795E26">getGraph</span><span style="color: #000000">();</span>
 <span style="color: #000000">        </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">newData</span><span style="color: #000000"> = { ...</span><span style="color: #001080">data</span><span style="color: #000000">, </span><span style="color: #001080">hidden:</span><span style="color: #000000"> </span><span style="color: #0000FF">false</span><span style="color: #000000"> };</span>
-<span style="color: #000000">        </span><span style="color: #AF00DB">if</span><span style="color: #000000"> (</span><span style="color: #001080">hoveredNode</span><span style="color: #000000"> &amp;&amp; !</span><span style="color: #001080">graph</span><span style="color: #000000">.</span><span style="color: #795E26">extremities</span><span style="color: #000000">(</span><span style="color: #001080">edge</span><span style="color: #000000">).</span><span style="color: #795E26">includes</span><span style="color: #000000">(</span><span style="color: #001080">hoveredNode</span><span style="color: #000000">)) </span><span style="color: #001080">newData</span><span style="color: #000000">.</span><span style="color: #001080">hidden</span><span style="color: #000000"> = </span><span style="color: #0000FF">true</span><span style="color: #000000">;</span>
+
+<span style="color: #000000">        </span><span style="color: #AF00DB">if</span><span style="color: #000000"> (</span><span style="color: #001080">hoveredNode</span><span style="color: #000000"> &amp;&amp; !</span><span style="color: #001080">graph</span><span style="color: #000000">.</span><span style="color: #795E26">extremities</span><span style="color: #000000">(</span><span style="color: #001080">edge</span><span style="color: #000000">).</span><span style="color: #795E26">includes</span><span style="color: #000000">(</span><span style="color: #001080">hoveredNode</span><span style="color: #000000">)) {</span>
+<span style="color: #000000">          </span><span style="color: #001080">newData</span><span style="color: #000000">.</span><span style="color: #001080">hidden</span><span style="color: #000000"> = </span><span style="color: #0000FF">true</span><span style="color: #000000">;</span>
+<span style="color: #000000">        }</span>
 <span style="color: #000000">        </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #001080">newData</span><span style="color: #000000">;</span>
 <span style="color: #000000">      },</span>
 <span style="color: #000000">    });</span>
@@ -2964,7 +2971,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Controls<wbr>Container<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">React.FC</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/controlscontainerprops.html" class="tsd-signature-type" data-tsd-kind="Interface">ControlsContainerProps</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/dbbdc5e/src/controls/ControlsContainer.tsx#L33">controls/ControlsContainer.tsx:33</a></li>
+						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/3ae713e/src/controls/ControlsContainer.tsx#L33">controls/ControlsContainer.tsx:33</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -2986,7 +2993,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Force<wbr>Atlas<wbr>Control<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">React.FC</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/forceatlascontrolprops.html" class="tsd-signature-type" data-tsd-kind="Interface">ForceAtlasControlProps</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/dbbdc5e/src/controls/ForceAtlasControl.tsx#L38">controls/ForceAtlasControl.tsx:38</a></li>
+						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/3ae713e/src/controls/ForceAtlasControl.tsx#L38">controls/ForceAtlasControl.tsx:38</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -3008,7 +3015,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Full<wbr>Screen<wbr>Control<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">React.FC</span><span class="tsd-signature-symbol"> = ...</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/dbbdc5e/src/controls/FullScreenControl.tsx#L17">controls/FullScreenControl.tsx:17</a></li>
+						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/3ae713e/src/controls/FullScreenControl.tsx#L17">controls/FullScreenControl.tsx:17</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -3029,12 +3036,12 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Search<wbr>Control<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">React.FC</span><span class="tsd-signature-symbol"> = ...</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/dbbdc5e/src/controls/SearchControl.tsx#L19">controls/SearchControl.tsx:19</a></li>
+						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/3ae713e/src/controls/SearchControl.tsx#L20">controls/SearchControl.tsx:20</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>The <code>SearchControl</code> create an input text where user can  search a node in the graph by its label.<br>There is an autocomplete based on the include &amp; lower case.<br>When a node is found, the graph will focus on the highligthed node</p>
+						<p>The <code>SearchControl</code> create an input text where user can search a node in the graph by its label.<br>There is an autocomplete based on the include &amp; lower case.<br>When a node is found, the graph will focus on the highlighted node</p>
 					</div>
 					<pre><code class="language-typescript"><span style="color: #000000">&lt;</span><span style="color: #267F99">SigmaContainer</span><span style="color: #000000">&gt;</span>
 <span style="color: #000000">  &lt;</span><span style="color: #267F99">ControlsContainer</span><span style="color: #000000">&gt;</span>
@@ -3050,7 +3057,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Sigma<wbr>Container<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">React.FC</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/sigmacontainerprops.html" class="tsd-signature-type" data-tsd-kind="Interface">SigmaContainerProps</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/dbbdc5e/src/SigmaContainer.tsx#L51">SigmaContainer.tsx:51</a></li>
+						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/3ae713e/src/SigmaContainer.tsx#L51">SigmaContainer.tsx:51</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -3070,7 +3077,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Zoom<wbr>Control<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">React.FC</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/zoomcontrolprops.html" class="tsd-signature-type" data-tsd-kind="Interface">ZoomControlProps</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/dbbdc5e/src/controls/ZoomControl.tsx#L32">controls/ZoomControl.tsx:32</a></li>
+						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/3ae713e/src/controls/ZoomControl.tsx#L32">controls/ZoomControl.tsx:32</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -3104,7 +3111,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/dbbdc5e/src/hooks.ts#L31">hooks.ts:31</a></li>
+								<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/3ae713e/src/hooks.ts#L31">hooks.ts:31</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3150,7 +3157,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/dbbdc5e/src/hooks.ts#L55">hooks.ts:55</a></li>
+								<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/3ae713e/src/hooks.ts#L55">hooks.ts:55</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3196,7 +3203,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/dbbdc5e/src/hooks.ts#L100">hooks.ts:100</a></li>
+								<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/3ae713e/src/hooks.ts#L104">hooks.ts:104</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3242,7 +3249,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/dbbdc5e/src/hooks.ts#L16">hooks.ts:16</a></li>
+								<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/3ae713e/src/hooks.ts#L16">hooks.ts:16</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">

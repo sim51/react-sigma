@@ -16,4 +16,5 @@ test
 package-lock.json
 tsconfig.json
 typedoc.json
+typedoc.base.json
 webpack.config.js
