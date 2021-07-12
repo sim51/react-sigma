@@ -13,7 +13,17 @@ const EXAMPLES = {
 };
 
 const entry = {};
-const plugins = [];
+
+const plugins = [
+  new HtmlWebpackPlugin({
+    filename: "index.html",
+    title: "React Sigma.js - Examples",
+    template: "./templates/index.ejs",
+    pages: Object.keys(EXAMPLES).map(key => EXAMPLES[key]),
+    chunks: [],
+  }),
+];
+
 for (const key in EXAMPLES) {
   const example = EXAMPLES[key];
   entry[key] = `./${example.id}.tsx`;
@@ -22,7 +32,7 @@ for (const key in EXAMPLES) {
       filename: `${example.id}.html`,
       title: `Example - ${example.title}`,
       chunks: ["commons", key],
-      template: "./index.ejs",
+      template: "./templates/default.ejs",
     }),
   );
 }
