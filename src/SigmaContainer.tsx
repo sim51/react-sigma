@@ -59,7 +59,7 @@ export const SigmaContainer: React.FC<SigmaContainerProps> = ({
   // HTML element for the sigma instance
   const containerRef = useRef<HTMLDivElement>(null);
   // Common html props for the container
-  const [props] = useState({ className: `react-sigma-v2 ${className ? className : ""}`, id, style });
+  const props = { className: `react-sigma-v2 ${className ? className : ""}`, id, style };
   // Sigma instance
   const [sigma, setSigma] = useState<Sigma | null>(null);
   // Sigma settings
