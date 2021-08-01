@@ -54,6 +54,7 @@ export const MyCustomGraph: React.FC<MyCustomGraphProps> = ({ children }) => {
 
   useEffect(() => {
     setSettings({
+      labelDensity: 0.07,
       nodeReducer: (node, data) => {
         const graph = sigma.getGraph();
         const newData: Attributes = { ...data, highlighted: data.highlighted || false };

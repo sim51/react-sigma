@@ -114,7 +114,7 @@ export function useSetSettings(): (newSettings: Partial<Settings>) => void {
 
     (Object.keys(settings) as Array<keyof Settings>).forEach(key => {
       // as never because of https://stackoverflow.com/questions/58656353/how-to-avoid-dynamic-keyof-object-assign-error-in-typescript
-      prevSettings[key] = key as never;
+      prevSettings[key] = settings[key] as never;
       sigma.setSetting(key, settings[key] as never);
     });
 

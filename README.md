@@ -43,9 +43,7 @@ ReactDOM.render(
 
 ## How to install
 
-The package is not yet on npm, so you have to install it directly from the repository. Moreover, you have to install the peer dependencies that you need.
-
-So if you want to install the full package, this is the command line :
+You need to install this library and its peer dependencies :
 
 ```bash
 $> npm install sigma graphology graphology-layout-forceatlas2 react-sigma-v2
