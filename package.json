@@ -1,7 +1,7 @@
 {
   "name": "react-sigma-v2",
   "version": "0.0.7",
-  "description": "React Sigmav2 components",
+  "description": "React Sigma components",
   "author": "Benoit Simard",
   "license": "MIT",
   "homepage": "https://sim51.github.io/react-sigma-v2",
@@ -64,11 +64,11 @@
     "eslint": "^7.24.0",
     "eslint-watch": "^7.0.0",
     "faker": "^5.5.3",
-    "graphology": "^0.19.3",
+    "graphology": "^0.21.0",
     "graphology-generators": "^0.11.0",
     "graphology-layout": "^0.4.0",
-    "graphology-layout-forceatlas2": "^0.6.0",
-    "graphology-types": "^0.19.2",
+    "graphology-layout-forceatlas2": "^0.6.1",
+    "graphology-types": "^0.19.5",
     "html-webpack-plugin": "^5.3.1",
     "jsdom": "16.5.3",
     "jsdom-global": "3.0.2",
@@ -96,8 +96,8 @@
     "webpack-dev-server": "^3.11.2"
   },
   "peerDependencies": {
-    "graphology": "^0.19.3",
-    "graphology-layout-forceatlas2": "^0.6.0",
+    "graphology": "^0.21.0",
+    "graphology-layout-forceatlas2": "^0.6.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.1",
     "sigma": "latest"
