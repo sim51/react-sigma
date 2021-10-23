@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Sigma from "sigma/sigma";
 import { Settings } from "sigma/settings";
 import Graph from "graphology";
@@ -31,12 +31,15 @@ export function useSigma(): Sigma {
 export function useLoadGraph(): (graph: Graph, clear?: boolean) => void {
   const sigma = useSigma();
 
-  return (graph: Graph, clear = true) => {
-    if (sigma && graph) {
-      if (clear && sigma.getGraph().order > 0) sigma.getGraph().clear();
-      sigma.getGraph().import(graph);
-    }
-  };
+  return useCallback(
+    (graph: Graph, clear = true) => {
+      if (sigma && graph) {
+        if (clear && sigma.getGraph().order > 0) sigma.getGraph().clear();
+        sigma.getGraph().import(graph);
+      }
+    },
+    [sigma],
+  );
 }
 
 /**
@@ -112,7 +115,7 @@ export function useSetSettings(): (newSettings: Partial<Settings>) => void {
 
     const prevSettings: Partial<Settings> = {};
 
-    (Object.keys(settings) as Array<keyof Settings>).forEach(key => {
+    (Object.keys(settings) as Array<keyof Settings>).forEach((key) => {
       // as never because of https://stackoverflow.com/questions/58656353/how-to-avoid-dynamic-keyof-object-assign-error-in-typescript
       prevSettings[key] = settings[key] as never;
       sigma.setSetting(key, settings[key] as never);
@@ -120,7 +123,7 @@ export function useSetSettings(): (newSettings: Partial<Settings>) => void {
 
     // cleanup
     return () => {
-      (Object.keys(prevSettings) as Array<keyof Settings>).forEach(key => {
+      (Object.keys(prevSettings) as Array<keyof Settings>).forEach((key) => {
         // as never because of https://stackoverflow.com/questions/58656353/how-to-avoid-dynamic-keyof-object-assign-error-in-typescript
         sigma.setSetting(key, prevSettings[key] as never);
       });
