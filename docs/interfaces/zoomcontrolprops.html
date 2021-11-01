@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ZoomControlProps | react-sigma-v2 - v0.0.8</title>
-	<meta name="description" content="Documentation for react-sigma-v2 - v0.0.8">
+	<title>ZoomControlProps | react-sigma-v2 - v1.0.0</title>
+	<meta name="description" content="Documentation for react-sigma-v2 - v1.0.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">:root {
   --color-background: #fdfdfd;
@@ -2674,7 +2674,7 @@ img {
 		<div class="container">
 			<div class="table-wrap">
 				<div class="table-cell">
-					<strong><a href="../index.html">react-sigma-v2 - v0.0.8</a></strong>
+					<strong><a href="../index.html">react-sigma-v2 - v1.0.0</a></strong>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -2721,6 +2721,15 @@ img {
 			<ul>
 				<li class=" tsd-kind-property tsd-parent-kind-interface">
 					<a href="zoomcontrolprops.html#animationduration" class="tsd-kind-icon">animation<wbr>Duration</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-interface">
+					<a href="zoomcontrolprops.html#customzoomcenter" class="tsd-kind-icon">custom<wbr>Zoom<wbr>Center</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-interface">
+					<a href="zoomcontrolprops.html#customzoomin" class="tsd-kind-icon">custom<wbr>Zoom<wbr>In</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-interface">
+					<a href="zoomcontrolprops.html#customzoomout" class="tsd-kind-icon">custom<wbr>Zoom<wbr>Out</a>
 				</li>
 			</ul>
 		</li>
@@ -2781,6 +2790,9 @@ img {
 						<h3>Properties</h3>
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="zoomcontrolprops.html#animationduration" class="tsd-kind-icon">animation<wbr>Duration</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="zoomcontrolprops.html#customzoomcenter" class="tsd-kind-icon">custom<wbr>Zoom<wbr>Center</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="zoomcontrolprops.html#customzoomin" class="tsd-kind-icon">custom<wbr>Zoom<wbr>In</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="zoomcontrolprops.html#customzoomout" class="tsd-kind-icon">custom<wbr>Zoom<wbr>Out</a></li>
 						</ul>
 					</section>
 				</div>
@@ -2794,12 +2806,57 @@ img {
 				<div class="tsd-signature tsd-kind-icon">animation<wbr>Duration<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/e7c80e6/src/controls/ZoomControl.tsx#L11">controls/ZoomControl.tsx:11</a></li>
+						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/10f9d0b/src/controls/ZoomControl.tsx#L11">controls/ZoomControl.tsx:11</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
 						<p>Number of ms for the zoom animation (default is 200)</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<a name="customzoomcenter" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> custom<wbr>Zoom<wbr>Center</h3>
+				<div class="tsd-signature tsd-kind-icon">custom<wbr>Zoom<wbr>Center<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ReactNode</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/10f9d0b/src/controls/ZoomControl.tsx#L29">controls/ZoomControl.tsx:29</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>React component for display inner center button.<br>This allows you to customize the render of the button.</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<a name="customzoomin" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> custom<wbr>Zoom<wbr>In</h3>
+				<div class="tsd-signature tsd-kind-icon">custom<wbr>Zoom<wbr>In<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ReactNode</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/10f9d0b/src/controls/ZoomControl.tsx#L17">controls/ZoomControl.tsx:17</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>React component for display inner zoomIn button.<br>This allows you to customize the render of the button.</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<a name="customzoomout" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> custom<wbr>Zoom<wbr>Out</h3>
+				<div class="tsd-signature tsd-kind-icon">custom<wbr>Zoom<wbr>Out<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ReactNode</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/10f9d0b/src/controls/ZoomControl.tsx#L23">controls/ZoomControl.tsx:23</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>React component for display inner zoomOut button.<br>This allows you to customize the render of the button.</p>
 					</div>
 				</div>
 			</section>
