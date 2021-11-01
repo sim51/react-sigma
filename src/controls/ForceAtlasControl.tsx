@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { ReactNode, useEffect, useState, useRef } from "react";
 import FA2LayoutSupervisor, { FA2LayoutSupervisorParameters } from "graphology-layout-forceatlas2/worker";
 import { isEqual } from "lodash";
 import { useSigma } from "../hooks";
@@ -11,6 +11,7 @@ export interface ForceAtlasControlProps {
    * The FA2 worker settings.
    */
   settings?: FA2LayoutSupervisorParameters;
+
   /**
    * Option to tell what we do when the component is mounted
    *  - <code>-1</code> means that we do nothing (it's the same as no value)
@@ -18,6 +19,18 @@ export interface ForceAtlasControlProps {
    *  - <code>X</code> mans that we start the algo, and stop it after X milliseconds
    */
   autoRunFor?: number;
+
+  /**
+   * React component for display inner Start layout button.
+   * This allows you to customize the render of the button.
+   */
+  customStartLayout?: ReactNode;
+
+  /**
+   * React component for display inner Stop layout button.
+   * This allows you to customize the render of the button.
+   */
+  customStopLayout?: ReactNode;
 }
 
 /**
@@ -35,7 +48,12 @@ export interface ForceAtlasControlProps {
  *
  * @category Component
  */
-export const ForceAtlasControl: React.FC<ForceAtlasControlProps> = ({ settings, autoRunFor = -1 }) => {
+export const ForceAtlasControl: React.FC<ForceAtlasControlProps> = ({
+  customStopLayout,
+  customStartLayout,
+  settings,
+  autoRunFor = -1,
+}) => {
   // Get Sigma
   const sigma = useSigma();
   // FA2 Setting
@@ -93,12 +111,18 @@ export const ForceAtlasControl: React.FC<ForceAtlasControlProps> = ({ settings, 
     }
   }, [fa2, fa2IsRunning]);
 
+  const buttonClass =
+    (fa2IsRunning === true && !customStopLayout) || (fa2IsRunning === false && !customStartLayout) ? "default" : "";
+
   return (
     <div className={`react-sigma-control-forceatlas2 ${fa2IsRunning ? "running" : "stopped"}`}>
       <button
+        className={buttonClass}
         onClick={() => setFa2IsRunning(e => !e)}
         title={fa2IsRunning ? "Stop the layout animation" : "Start the layout animation"}
-      ></button>
+      >
+        {fa2IsRunning === true ? customStopLayout : customStartLayout}
+      </button>
     </div>
   );
 };

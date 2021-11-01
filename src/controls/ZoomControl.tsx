@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { useSigma } from "../hooks";
 
 /**
@@ -9,6 +9,24 @@ export interface ZoomControlProps {
    * Number of ms for the zoom animation (default is 200)
    */
   animationDuration?: number;
+
+  /**
+   * React component for display inner zoomIn button.
+   * This allows you to customize the render of the button.
+   */
+  customZoomIn?: ReactNode;
+
+  /**
+   * React component for display inner zoomOut button.
+   * This allows you to customize the render of the button.
+   */
+  customZoomOut?: ReactNode;
+
+  /**
+   * React component for display inner center button.
+   * This allows you to customize the render of the button.
+   */
+  customZoomCenter?: ReactNode;
 }
 
 /**
@@ -29,7 +47,12 @@ export interface ZoomControlProps {
  *
  * @category Component
  */
-export const ZoomControl: React.FC<ZoomControlProps> = ({ animationDuration = 200 }) => {
+export const ZoomControl: React.FC<ZoomControlProps> = ({
+  customZoomIn,
+  customZoomOut,
+  customZoomCenter,
+  animationDuration = 200,
+}) => {
   // Get sigma
   const sigma = useSigma();
 
@@ -51,13 +74,19 @@ export const ZoomControl: React.FC<ZoomControlProps> = ({ animationDuration = 20
   return (
     <>
       <div className="react-sigma-control-zoom-in">
-        <button onClick={() => zoom(1)} title="Zoom In"></button>
+        <button className={customZoomIn ? "" : "default"} onClick={() => zoom(1)} title="Zoom In">
+          {customZoomIn}
+        </button>
       </div>
       <div className="react-sigma-control-zoom-out">
-        <button onClick={() => zoom(-1)} title="Zoom Out"></button>
+        <button className={customZoomOut ? "" : "default"} onClick={() => zoom(-1)} title="Zoom Out">
+          {customZoomOut}
+        </button>
       </div>
       <div className="react-sigma-control-zoom-center">
-        <button onClick={() => zoom()} title="See whole graph"></button>
+        <button className={customZoomCenter ? "" : "default"} onClick={() => zoom()} title="See whole graph">
+          {customZoomCenter}
+        </button>
       </div>
     </>
   );

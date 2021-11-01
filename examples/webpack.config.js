@@ -10,6 +10,10 @@ const EXAMPLES = {
     id: "multiple",
     title: "Multiple graphs",
   },
+  customBtn: {
+    id: "custom-buttons",
+    title: "Customize buttons",
+  },
 };
 
 const entry = {};

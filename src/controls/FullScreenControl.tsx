@@ -1,5 +1,22 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { ReactNode, useEffect, useState, useRef } from "react";
 import { useSigma } from "../hooks";
+
+/**
+ * Properties for `FullScreenControl` component.
+ */
+export interface FullScreenControlProps {
+  /**
+   * React component for display inner enter fullscreen button.
+   * This allows you to customize the render of the button.
+   */
+  customEnterFullScreen?: ReactNode;
+
+  /**
+   * React component for display inner exit fullscreen button.
+   * This allows you to customize the render of the button.
+   */
+  customExitFullScreen?: ReactNode;
+}
 
 /**
  * The `FullScreenControl` create a UI button that allows the user to display the graph in fullscreen
@@ -14,7 +31,10 @@ import { useSigma } from "../hooks";
  *
  * @category Component
  */
-export const FullScreenControl: React.FC = () => {
+export const FullScreenControl: React.FC<FullScreenControlProps> = ({
+  customEnterFullScreen,
+  customExitFullScreen,
+}) => {
   // Get Sigma
   const sigma = useSigma();
   // Is full screen mode enabled
@@ -36,10 +56,17 @@ export const FullScreenControl: React.FC = () => {
     }
   }, [isFullScreen, useSigma]);
 
+  const buttonClass =
+    (isFullScreen === true && !customExitFullScreen) || (isFullScreen === false && !customEnterFullScreen)
+      ? "default"
+      : "";
+
   return (
     <>
       <div ref={containerRef} className={`react-sigma-control-${isFullScreen ? "normalscreen" : "fullscreen"}`}>
-        <button onClick={() => setFullScreen(!isFullScreen)} title="Toggle Fullscreen"></button>
+        <button className={buttonClass} onClick={() => setFullScreen(!isFullScreen)} title="Toggle Fullscreen">
+          {isFullScreen === true ? customExitFullScreen : customEnterFullScreen}
+        </button>
       </div>
     </>
   );

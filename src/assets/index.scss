@@ -94,32 +94,32 @@ div.react-sigma-v2 {
 
     .react-sigma-control-zoom-center {
       @extend .react-sigma-control-btn;
-      > button {
+      > button.default {
         background-image: url("./icons/dot-circle-regular.svg?encoding=base64");
       }
     }
     .react-sigma-control-zoom-in {
       @extend .react-sigma-control-btn;
-      > button {
+      > button.default {
         background-image: url("./icons/plus-solid.svg?encoding=base64");
       }
     }
     .react-sigma-control-zoom-out {
       @extend .react-sigma-control-btn;
-      > button {
+      > button.default {
         background-image: url("./icons/minus-solid.svg?encoding=base64");
       }
     }
 
     .react-sigma-control-fullscreen {
       @extend .react-sigma-control-btn;
-      > button {
+      > button.default {
         background-image: url("./icons/expand-solid.svg?encoding=base64");
       }
     }
     .react-sigma-control-normalscreen {
       @extend .react-sigma-control-btn;
-      > button {
+      > button.default {
         background-image: url("./icons/compress-solid.svg?encoding=base64");
       }
     }
@@ -128,7 +128,7 @@ div.react-sigma-v2 {
       @extend .react-sigma-control-btn;
 
       &.running {
-        > button {
+        > button.default {
           background-image: url("./icons/stop-solid.svg?encoding=base64");
           background-size: 40%;
           &:after {
@@ -146,7 +146,7 @@ div.react-sigma-v2 {
       }
 
       &.stopped {
-        > button {
+        > button.default {
           background-image: url("./icons/play-solid.svg?encoding=base64");
         }
       }

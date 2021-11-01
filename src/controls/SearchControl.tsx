@@ -4,7 +4,7 @@ import { Attributes } from "graphology-types";
 
 /**
  * The `SearchControl` create an input text where user can search a node in the graph by its label.
- * There is an autocomplete based on the include & lower case.
+ * There is an autocomplete based on includes & lower case.
  * When a node is found, the graph will focus on the highlighted node
  *
  * ```typescript

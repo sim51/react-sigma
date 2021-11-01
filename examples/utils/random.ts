@@ -18,4 +18,11 @@ if (seedParam) {
   seedrandom(seedParam, { global: true });
   faker.seed(Math.random());
 }
-export const rng = seedParam ? seedrandom(seedParam) : seedrandom();
+const rng = seedParam ? seedrandom(seedParam) : seedrandom();
+
+let faTime: number | undefined = undefined;
+const faTimeParam = urlParams.get("faTime");
+if (faTimeParam && !Number.isNaN(Number.parseInt(faTimeParam))) {
+  faTime = Number.parseInt(faTimeParam);
+}
+export { faTime, rng };

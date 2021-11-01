@@ -1,4 +1,4 @@
-import { rng } from "./random";
+import { rng, faTime } from "./utils/random";
 import React, { ReactNode, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { UndirectedGraph } from "graphology";
@@ -54,7 +54,6 @@ export const MyCustomGraph: React.FC<MyCustomGraphProps> = ({ children }) => {
 
   useEffect(() => {
     setSettings({
-      labelDensity: 0.07,
       nodeReducer: (node, data) => {
         const graph = sigma.getGraph();
         const newData: Attributes = { ...data, highlighted: data.highlighted || false };
@@ -90,7 +89,7 @@ ReactDOM.render(
       <MyCustomGraph />
       <ControlsContainer position={"bottom-right"}>
         <ZoomControl />
-        <ForceAtlasControl autoRunFor={2000} />
+        <ForceAtlasControl autoRunFor={faTime || 2000} />
       </ControlsContainer>
       <ControlsContainer position={"top-right"}>
         <SearchControl />

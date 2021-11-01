@@ -1,4 +1,4 @@
-import "./random";
+import { faTime } from "./utils/random";
 import React, { ReactNode, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { UndirectedGraph } from "graphology";
@@ -47,7 +47,7 @@ ReactDOM.render(
       <ControlsContainer position={"top-left"}>
         <ZoomControl />
         <FullScreenControl />
-        <ForceAtlasControl autoRunFor={2000} />
+        <ForceAtlasControl autoRunFor={faTime || 2000} />
       </ControlsContainer>
     </SigmaContainer>
     <SigmaContainer style={{ height: "50%", width: "50%", float: "left", backgroundColor: "#FFF" }}>
@@ -55,7 +55,7 @@ ReactDOM.render(
       <ControlsContainer position={"top-right"}>
         <ZoomControl />
         <FullScreenControl />
-        <ForceAtlasControl autoRunFor={2000} />
+        <ForceAtlasControl autoRunFor={faTime || 2000} />
       </ControlsContainer>
     </SigmaContainer>
     <SigmaContainer style={{ height: "50%", width: "50%", float: "left", backgroundColor: "#FFF" }}>
@@ -63,7 +63,7 @@ ReactDOM.render(
       <ControlsContainer position={"bottom-left"}>
         <ZoomControl />
         <FullScreenControl />
-        <ForceAtlasControl autoRunFor={2000} />
+        <ForceAtlasControl autoRunFor={faTime || 2000} />
       </ControlsContainer>
     </SigmaContainer>
     <SigmaContainer style={{ height: "50%", width: "50%", float: "left", backgroundColor: "#FFF" }}>
@@ -71,7 +71,7 @@ ReactDOM.render(
       <ControlsContainer position={"bottom-right"}>
         <ZoomControl />
         <FullScreenControl />
-        <ForceAtlasControl autoRunFor={2000} />
+        <ForceAtlasControl autoRunFor={faTime || 2000} />
       </ControlsContainer>
     </SigmaContainer>
   </React.StrictMode>,

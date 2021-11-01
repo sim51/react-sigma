@@ -9,9 +9,10 @@ export type Tests = Array<{
 }>;
 
 // wait for 2500 = wait for the stop of FA2
-// failureThreshold is due to the FA2 tahat doesn't do the exact same number of frame
+// failureThreshold is due to the FA2 that doesn't do the exact same number of frame
 // TODO: need a better way on how to handle that, 25% is an impiric guess
 export const tests: Tests = [
-  { name: "complete", url: "http://localhost:8000/complete.html?seed=foo", waitFor: 2500, failureThreshold: 0.25 },
-  { name: "multiple", url: "http://localhost:8000/multiple.html?seed=foo", waitFor: 2500, failureThreshold: 0.25 },
+  { name: "complete", url: "http://localhost:8000/complete.html?seed=foo&faTime=-1", waitFor: 1000, failureThreshold: 0 },
+  { name: "multiple", url: "http://localhost:8000/multiple.html?seed=foo&faTime=-1", waitFor: 1000, failureThreshold: 0 },
+  { name: "custom-btn", url: "http://localhost:8000/custom-buttons.html?seed=foo&faTime=-1", waitFor: 1000, failureThreshold: 0 },
 ];
