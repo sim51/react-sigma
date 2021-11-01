@@ -15,6 +15,7 @@ I recommend you to NOT UPDATE those options to avoid performance issues.
 Sigma (& graphology) comes with methods that allow the user to update the settings.
 
 Every child has access to the sigma instance (and so the graph instance) via the React context created by the `SigmaContainer`.
+
 In your components, you can use the hook `const sigma = useSigma()` that gives you the sigma instance (and so the underlying graph with `sigma.getGraph()`)
 
 This is an example of how to display a graph :
@@ -49,10 +50,6 @@ You need to install this library and its peer dependencies :
 $> npm install sigma graphology graphology-layout-forceatlas2 react-sigma-v2
 ```
 
-<div class="important">
-This package is based on the version of SigmaV2 `2.0.0-beta7` that has introduced new features. So be sure to have this version or an upper one.
-</div>
-
 ## How to use it
 
 ### Import
@@ -65,13 +62,17 @@ For the js part, everything is export in the package entrypoint, so you can do t
 import { SigmaContainer, ...} from "react-sigma-v2";
 ```
 
+For the css, you need to import the file `./lib/react-sigma-v2.css`.
+
+```javascript
+import "react-sigma-v2/lib/react-sigma-v2.css";
+```
+
 You can also import just the components you need, they are exposed under the folder `./lib/esm` :
 
 ```javascript
 import { SigmaContainer, ...} from "react-sigma-v2/lib/esm/SigmaContainer";
 ```
-
-For the css, you need to import the file `./lib/react-sigma-v2.css`.
 
 ## Npm scripts
 
