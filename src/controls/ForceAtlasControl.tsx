@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState, useRef } from "react";
+import React, { ReactNode, useEffect, useState, useRef, CSSProperties } from "react";
 import FA2LayoutSupervisor, { FA2LayoutSupervisorParameters } from "graphology-layout-forceatlas2/worker";
 import { isEqual } from "lodash";
 import { useSigma } from "../hooks";
@@ -7,6 +7,21 @@ import { useSigma } from "../hooks";
  * Properties for `ForceAtlasControl` component
  */
 export interface ForceAtlasControlProps {
+  /**
+   * HTML id
+   */
+  id?: string;
+
+  /**
+   * HTML class
+   */
+  className?: string;
+
+  /**
+   * HTML CSS style
+   */
+  style?: CSSProperties;
+
   /**
    * The FA2 worker settings.
    */
@@ -49,10 +64,13 @@ export interface ForceAtlasControlProps {
  * @category Component
  */
 export const ForceAtlasControl: React.FC<ForceAtlasControlProps> = ({
-  customStopLayout,
-  customStartLayout,
+  id,
+  className,
+  style,
   settings,
   autoRunFor = -1,
+  customStopLayout,
+  customStartLayout,
 }) => {
   // Get Sigma
   const sigma = useSigma();
@@ -64,6 +82,9 @@ export const ForceAtlasControl: React.FC<ForceAtlasControlProps> = ({
   // Is FA2 is running
   const [fa2IsRunning, setFa2IsRunning] = useState<boolean>(false);
 
+  /**
+   * Init component when Sigma or component settings change.
+   */
   useEffect(() => {
     if (!sigma) {
       return;
@@ -97,6 +118,9 @@ export const ForceAtlasControl: React.FC<ForceAtlasControlProps> = ({
     };
   }, [autoRunFor, fa2Settings, sigma]);
 
+  /**
+   * Start/Stop FA2 when the state `fa2IsRunning` change.
+   */
   useEffect(() => {
     try {
       if (fa2) {
@@ -111,11 +135,19 @@ export const ForceAtlasControl: React.FC<ForceAtlasControlProps> = ({
     }
   }, [fa2, fa2IsRunning]);
 
+  // Compute the class name for the button. `Default` means display the default SGV icon
   const buttonClass =
     (fa2IsRunning === true && !customStopLayout) || (fa2IsRunning === false && !customStartLayout) ? "default" : "";
 
+  // Common html props for the div
+  const props = {
+    className: `react-sigma-control-forceatlas2 ${fa2IsRunning ? "running" : "stopped"} ${className ? className : ""}`,
+    id,
+    style,
+  };
+
   return (
-    <div className={`react-sigma-control-forceatlas2 ${fa2IsRunning ? "running" : "stopped"}`}>
+    <div {...props}>
       <button
         className={buttonClass}
         onClick={() => setFa2IsRunning(e => !e)}

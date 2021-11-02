@@ -1,6 +1,26 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState, CSSProperties } from "react";
 import { useSigma } from "../hooks";
 import { Attributes } from "graphology-types";
+
+/**
+ * Properties for `SearchControl` component
+ */
+export interface SearchControlProps {
+  /**
+   * HTML id
+   */
+  id?: string;
+
+  /**
+   * HTML class
+   */
+  className?: string;
+
+  /**
+   * HTML CSS style
+   */
+  style?: CSSProperties;
+}
 
 /**
  * The `SearchControl` create an input text where user can search a node in the graph by its label.
@@ -17,7 +37,7 @@ import { Attributes } from "graphology-types";
  *
  * @category Component
  */
-export const SearchControl: React.FC = () => {
+export const SearchControl: React.FC<SearchControlProps> = ({ id, className, style }) => {
   // Get sigma
   const sigma = useSigma();
   // Search value
@@ -27,6 +47,9 @@ export const SearchControl: React.FC = () => {
   // Selected
   const [selected, setSelected] = useState<string | null>(null);
 
+  /**
+   * When the search input changes, recompute the autocomplete values.
+   */
   useEffect(() => {
     const newValues: Array<{ id: string; label: string }> = [];
     if (!selected && search.length > 1) {
@@ -38,6 +61,9 @@ export const SearchControl: React.FC = () => {
     setValues(newValues);
   }, [search]);
 
+  /**
+   * When the selected item changes, highlighted the node and center the camera on it.
+   */
   useEffect(() => {
     if (!selected) {
       return;
@@ -58,6 +84,9 @@ export const SearchControl: React.FC = () => {
     };
   }, [selected]);
 
+  /**
+   * On change event handler for the search input, to set the state.
+   */
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const searchString = e.target.value;
     const valueItem = values.find(value => value.label === searchString);
@@ -71,8 +100,15 @@ export const SearchControl: React.FC = () => {
     }
   };
 
+  // Common html props for the div
+  const props = {
+    className,
+    id,
+    style,
+  };
+
   return (
-    <div>
+    <div {...props}>
       <input type="text" placeholder="Search..." list="nodes" value={search} onChange={onInputChange} />
       <datalist id="nodes">
         {values.map((value: { id: string; label: string }) => (

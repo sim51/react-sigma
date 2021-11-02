@@ -1,10 +1,20 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, CSSProperties } from "react";
 import { useSigma } from "../hooks";
 
 /**
  * Properties for `ZoomControl` component
  */
 export interface ZoomControlProps {
+  /**
+   * HTML class that will be added to all div button wrapper
+   */
+  className?: string;
+
+  /**
+   * HTML CSS style that will be added to all div button wrapper
+   */
+  style?: CSSProperties;
+
   /**
    * Number of ms for the zoom animation (default is 200)
    */
@@ -48,10 +58,12 @@ export interface ZoomControlProps {
  * @category Component
  */
 export const ZoomControl: React.FC<ZoomControlProps> = ({
+  className,
+  style,
+  animationDuration = 200,
   customZoomIn,
   customZoomOut,
   customZoomCenter,
-  animationDuration = 200,
 }) => {
   // Get sigma
   const sigma = useSigma();
@@ -71,19 +83,25 @@ export const ZoomControl: React.FC<ZoomControlProps> = ({
     }
   }
 
+  // Common html props for the div wrapper
+  const props = {
+    className,
+    style,
+  };
+
   return (
     <>
-      <div className="react-sigma-control-zoom-in">
+      <div {...props} className={`react-sigma-control-zoom-in ${className ? className : ""}`}>
         <button className={customZoomIn ? "" : "default"} onClick={() => zoom(1)} title="Zoom In">
           {customZoomIn}
         </button>
       </div>
-      <div className="react-sigma-control-zoom-out">
+      <div {...props} className={`react-sigma-control-zoom-out ${className ? className : ""}`}>
         <button className={customZoomOut ? "" : "default"} onClick={() => zoom(-1)} title="Zoom Out">
           {customZoomOut}
         </button>
       </div>
-      <div className="react-sigma-control-zoom-center">
+      <div {...props} className={`react-sigma-control-zoom-center ${className ? className : ""}`}>
         <button className={customZoomCenter ? "" : "default"} onClick={() => zoom()} title="See whole graph">
           {customZoomCenter}
         </button>
