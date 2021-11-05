@@ -56,6 +56,8 @@ export const SigmaContainer: React.FC<SigmaContainerProps> = ({
   initialSettings,
   children,
 }: SigmaContainerProps) => {
+  // Root HTML element
+  const rootRef = useRef<HTMLDivElement>(null);
   // HTML element for the sigma instance
   const containerRef = useRef<HTMLDivElement>(null);
   // Common html props for the container
@@ -88,12 +90,15 @@ export const SigmaContainer: React.FC<SigmaContainerProps> = ({
     };
   }, [containerRef, graph, settings]);
 
-  const context = useMemo(() => (sigma ? { sigma } : null), [sigma]);
+  const context = useMemo(
+    () => (sigma && rootRef.current ? { sigma, container: rootRef.current as HTMLElement } : null),
+    [sigma, rootRef.current]
+  );
   const contents = context !== null ? <SigmaProvider value={context}>{children}</SigmaProvider> : null;
 
   return (
-    <div {...props}>
-      <div className={"sigma-container"} ref={containerRef}></div>
+    <div {...props} ref={rootRef}>
+      <div className="sigma-container" ref={containerRef} />
       {contents}
     </div>
   );

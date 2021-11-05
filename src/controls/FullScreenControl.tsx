@@ -1,5 +1,15 @@
-import React, { ReactNode, useEffect, useState, useRef, CSSProperties } from "react";
-import { useSigma } from "../hooks";
+import React, { ReactNode, useEffect, useState, CSSProperties } from "react";
+import { useSigmaContext } from "../context";
+
+function toggleFullScreen(dom: HTMLElement) {
+  if (document.fullscreenElement !== dom) {
+    dom.requestFullscreen();
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
+  }
+}
 
 /**
  * Properties for `FullScreenControl` component.
@@ -54,34 +64,20 @@ export const FullScreenControl: React.FC<FullScreenControlProps> = ({
   customExitFullScreen,
 }) => {
   // Get Sigma
-  const sigma = useSigma();
+  const { container } = useSigmaContext();
   // Is full screen mode enabled
   const [isFullScreen, setFullScreen] = useState<boolean>(false);
-  // HTML element for the button
-  const containerRef = useRef<HTMLDivElement>(null);
+  const toggleState = () => setFullScreen((v) => !v);
 
-  /**
-   * When sigma or state `isFullScreen`, change
-   */
   useEffect(() => {
-    if (containerRef.current) {
-      const sigmaRootElement = containerRef.current.closest("div.react-sigma-v2");
-      if (sigmaRootElement) {
-        if (isFullScreen && !sigmaRootElement.classList.contains("fullscreen")) {
-          sigmaRootElement.classList.add("fullscreen");
-          sigma.refresh();
-        }
-        if (!isFullScreen && sigmaRootElement.classList.contains("fullscreen")) {
-          sigmaRootElement.classList.remove("fullscreen");
-          sigma.refresh();
-        }
-      }
-    }
-  }, [isFullScreen, sigma]);
+    document.addEventListener("fullscreenchange", toggleState);
+
+    return () => document.removeEventListener("fullscreenchange", toggleState);
+  }, [toggleState]);
 
   // Compute the class name for the button. `Default` means display the default SGV icon
   const buttonClass =
-    (isFullScreen === true && !customExitFullScreen) || (isFullScreen === false && !customEnterFullScreen)
+    (isFullScreen && !customExitFullScreen) || (!isFullScreen && !customEnterFullScreen)
       ? "default"
       : "";
 
@@ -92,10 +88,12 @@ export const FullScreenControl: React.FC<FullScreenControlProps> = ({
     style,
   };
 
+  if (!document.fullscreenEnabled) return null;
+
   return (
-    <div ref={containerRef} {...props}>
-      <button className={buttonClass} onClick={() => setFullScreen(!isFullScreen)} title="Toggle Fullscreen">
-        {isFullScreen === true ? customExitFullScreen : customEnterFullScreen}
+    <div {...props}>
+      <button className={buttonClass} onClick={() => toggleFullScreen(container)} title="Toggle Fullscreen">
+        {isFullScreen ? customExitFullScreen : customEnterFullScreen}
       </button>
     </div>
   );

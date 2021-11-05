@@ -38,19 +38,7 @@ div.react-sigma-v2 {
   height: 100%;
   width: 100%;
   position: relative;
-
-  &.fullscreen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100% !important;
-    width: 100% !important;
-    z-index: 2000;
-
-    .react-sigma-controls {
-      z-index: 2001;
-    }
-  }
+  background: #fff;
 
   div.sigma-container {
     height: 100%;

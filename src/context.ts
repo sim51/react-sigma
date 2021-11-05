@@ -3,6 +3,7 @@ import Sigma from "sigma/sigma";
 
 export interface SigmaContextInterface {
   sigma: Sigma;
+  container: HTMLElement;
 }
 
 export const SigmaContext = createContext<SigmaContextInterface | null>(null);
