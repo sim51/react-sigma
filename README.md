@@ -34,7 +34,7 @@ const MyCustomGraph = () => {
 // Put your component as a child of `SigmaContainer`
 ReactDOM.render(
   <React.StrictMode>
-    <SigmaContainer>
+    <SigmaContainer style={{ height: "500px", width: "500px" }}>
       <MyCustomGraph />
     </SigmaContainer>
   </React.StrictMode>,
@@ -54,7 +54,7 @@ $> npm install sigma graphology graphology-layout-forceatlas2 react-sigma-v2
 
 ### Import
 
-Package is composed of a css file and a list of react components & hooks.
+Package is composed of a _css file_ and a _list of react components & hooks_.
 
 For the js part, everything is export in the package entrypoint, so you can do this
 
@@ -188,3 +188,43 @@ ReactDOM.render(
 ![Complete](https://raw.githubusercontent.com/sim51/react-sigma-v2/main/test/e2e/screenshots/complete.valid.png)
 
 ![Multiple](https://raw.githubusercontent.com/sim51/react-sigma-v2/main/test/e2e/screenshots/multiple.valid.png)
+
+## FAQ
+
+### How I can correct the error `Error: Sigma: container has no height.` ?
+
+This error comes from Sigma it self.
+To work, Sigma requires that its _div container_ has a height.
+Per default in the CSS of this project, _SigmaContainer_ is configured to take 100% (height & width) of its parent.
+
+To resolve this issue, the easiest way is to add an _height_ on the _SigmaContainer_ like that :
+
+```
+<SigmaContainer style={{ height: "500px", width: "500px" }}>
+  ...
+</SigmaContainer>
+```
+
+### Is it possible to use this project with Next.js ?
+
+This project can be used with Next.js, but only for client rendering, not for server side.
+If you encounter the error `ReferenceError: window is not defined`, it's because you try to use react-sigmav2
+for server and client side and obviously `window` is not define on service side.
+
+To fix that, you have to check that you are on client side, and then do a dynamic import :
+
+```
+...
+
+const isBrowser = () => typeof window !== "undefined"
+if(isBrowser) {
+  const SigmaContainer = dynamic(import("react-sigma-v2").then(mod => mod.SigmaContainer), {ssr: false});
+  const MyGraph = dynamic(import("../components/graph").then(mod => mod.NetworkGraph), {ssr: false});
+  return (
+    <SigmaContainer>
+      <MyGraph/>
+    </SigmaContainer>
+  )
+}
+else return (<p>NOT AVAILABLE</p>)
+```
