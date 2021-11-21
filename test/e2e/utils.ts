@@ -20,7 +20,7 @@ const webpackConfig = require("./../../examples/webpack.config");
  */
 export async function takeScreenshots(tests: Tests, folder: string, suffix = ""): Promise<void> {
   // Launch the browser
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({defaultViewport: null});
 
   // for each pages
   await Promise.all(
@@ -36,6 +36,11 @@ export async function takeScreenshots(tests: Tests, folder: string, suffix = "")
           }
           // Taking the screenshot
           setTimeout(async () => {
+            await page.setViewport({
+              width: 800,
+              height: 600,
+              deviceScaleFactor: 1,
+            });
             // Take the screenshot
             await page.screenshot({ path: path.resolve(`${folder}/${test.name}.${suffix}.png`) });
             console.log(`${test.url} saved in ${test.name}.${suffix}.png`);
