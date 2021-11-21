@@ -27,7 +27,7 @@ export const MyCustomGraph: React.FC<MyCustomGraphProps> = ({ children }) => {
 
   useEffect(() => {
     setSettings({
-      labelRenderedSizeThreshold: 0,
+      labelRenderedSizeThreshold: 20,
     });
 
     // Create the graph
