@@ -1,5 +1,4 @@
 import { CameraState, MouseCoords, TouchCoords } from "sigma/types";
-import { NodeKey } from "graphology-types";
 
 export interface MouseEvent {
   event: MouseCoords;
@@ -10,7 +9,7 @@ export interface TouchEvent {
 }
 
 export interface NodeEvent {
-  node: NodeKey;
+  node: string;
 }
 
 export type MouseNodeEVent = MouseEvent & NodeEvent;

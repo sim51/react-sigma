@@ -2,7 +2,7 @@ import { rng, faTime } from "./utils/random";
 import React, { ReactNode, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { UndirectedGraph } from "graphology";
-import { Attributes, NodeKey } from "graphology-types";
+import { Attributes } from "graphology-types";
 import erdosRenyi from "graphology-generators/random/erdos-renyi";
 import circularLayout from "graphology-layout/circular";
 import chroma from "chroma-js";
@@ -30,7 +30,7 @@ export const MyCustomGraph: React.FC<MyCustomGraphProps> = ({ children }) => {
   const registerEvents = useRegisterEvents();
   const loadGraph = useLoadGraph();
   const setSettings = useSetSettings();
-  const [hoveredNode, setHoveredNode] = useState<NodeKey | null>(null);
+  const [hoveredNode, setHoveredNode] = useState<string | null>(null);
 
   useEffect(() => {
     // Create the graph
@@ -60,7 +60,7 @@ export const MyCustomGraph: React.FC<MyCustomGraphProps> = ({ children }) => {
         const newData: Attributes = { ...data, highlighted: data.highlighted || false };
 
         if (hoveredNode) {
-          if (node === hoveredNode || (graph.neighbors(hoveredNode) as Array<NodeKey>).includes(node)) {
+          if (node === hoveredNode || graph.neighbors(hoveredNode).includes(node)) {
             newData.highlighted = true;
           } else {
             newData.color = "#E2E2E2";
@@ -73,7 +73,7 @@ export const MyCustomGraph: React.FC<MyCustomGraphProps> = ({ children }) => {
         const graph = sigma.getGraph();
         const newData = { ...data, hidden: false };
 
-        if (hoveredNode && !(graph.extremities(edge) as Array<NodeKey>).includes(hoveredNode)) {
+        if (hoveredNode && !graph.extremities(edge).includes(hoveredNode)) {
           newData.hidden = true;
         }
         return newData;
