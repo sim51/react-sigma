@@ -47,7 +47,7 @@ ReactDOM.render(
 You need to install this library and its peer dependencies :
 
 ```bash
-$> npm install sigma graphology graphology-layout-forceatlas2 react-sigma-v2
+$> npm install tslib sigma graphology graphology-layout-forceatlas2 react-sigma-v2
 ```
 
 ## How to use it
