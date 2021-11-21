@@ -92,7 +92,7 @@ ReactDOM.render(
         <ForceAtlasControl autoRunFor={faTime || 2000} />
       </ControlsContainer>
       <ControlsContainer position={"top-right"}>
-        <SearchControl />
+        <SearchControl style={{ width: "200px" }} />
       </ControlsContainer>
     </SigmaContainer>
   </React.StrictMode>,

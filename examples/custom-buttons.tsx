@@ -76,7 +76,7 @@ ReactDOM.render(
         />
       </ControlsContainer>
       <ControlsContainer position={"top-right"} style={{ border: "none" }}>
-        <SearchControl className="sigma-control" style={btnStyle} />
+        <SearchControl className="sigma-control" style={{ ...btnStyle, width: "200px" }} />
       </ControlsContainer>
     </SigmaContainer>
   </React.StrictMode>,

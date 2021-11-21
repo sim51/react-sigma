@@ -102,7 +102,7 @@ export const SearchControl: React.FC<SearchControlProps> = ({ id, className, sty
 
   // Common html props for the div
   const props = {
-    className,
+    className: `react-sigma-search ${className ? className : ""}`,
     id,
     style,
   };
