@@ -68,7 +68,7 @@ export const MyCustomGraph: FC = () => {
    */
   useEffect(() => {
     setSettings({
-      nodeReducer: (node, data) => {
+      nodeReducer: (node: string, data: { [key: string]: unknown }) => {
         const graph = sigma.getGraph();
         const newData: Attributes = { ...data, highlighted: data.highlighted || false };
 
@@ -82,7 +82,7 @@ export const MyCustomGraph: FC = () => {
         }
         return newData;
       },
-      edgeReducer: (edge, data) => {
+      edgeReducer: (edge: string, data: { [key: string]: unknown }) => {
         const graph = sigma.getGraph();
         const newData = { ...data, hidden: false };
         if (hoveredNode && !(graph.extremities(edge) as Array<string>).includes(hoveredNode)) {
