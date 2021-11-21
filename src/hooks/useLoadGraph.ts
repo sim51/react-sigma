@@ -21,6 +21,7 @@ export function useLoadGraph(): (graph: Graph, clear?: boolean) => void {
       if (sigma && graph) {
         if (clear && sigma.getGraph().order > 0) sigma.getGraph().clear();
         sigma.getGraph().import(graph);
+        sigma.refresh();
       }
     },
     [sigma],
