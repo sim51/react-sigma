@@ -1,9 +1,3 @@
 {
-  "extends": "./tsconfig.base.json",
-  "compilerOptions": {
-    "paths": {
-      "tslib": ["node_modules/tslib"],
-      "*": ["@types/*"]
-    }
-  }
+  "extends": "./tsconfig.base.json"
 }
