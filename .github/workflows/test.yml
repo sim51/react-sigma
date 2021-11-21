@@ -32,3 +32,6 @@ jobs:
         with:
           name: failure-screenshots
           path: test/e2e/screenshots/
+      - name: Exit signal
+        if: steps.test.outcome == 'failure'
+        run: exit 1
