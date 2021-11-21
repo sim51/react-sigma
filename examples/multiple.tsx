@@ -1,4 +1,4 @@
-import { faTime } from "./utils/random";
+import { faTime, renderLabels } from "./utils/random";
 import React, { ReactNode, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { UndirectedGraph } from "graphology";
@@ -27,7 +27,7 @@ export const MyCustomGraph: React.FC<MyCustomGraphProps> = ({ children }) => {
 
   useEffect(() => {
     setSettings({
-      labelRenderedSizeThreshold: 20,
+      renderLabels: renderLabels,
     });
 
     // Create the graph

@@ -25,4 +25,7 @@ const faTimeParam = urlParams.get("faTime");
 if (faTimeParam && !Number.isNaN(Number.parseInt(faTimeParam))) {
   faTime = Number.parseInt(faTimeParam);
 }
-export { faTime, rng };
+
+const renderLabels = urlParams.get("seed") ? false : true;
+
+export { faTime, rng, renderLabels };

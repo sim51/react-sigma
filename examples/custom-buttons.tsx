@@ -1,4 +1,4 @@
-import { faTime, rng } from "./utils/random";
+import { faTime, rng, renderLabels } from "./utils/random";
 import React, { ReactNode, useEffect, CSSProperties } from "react";
 import ReactDOM from "react-dom";
 import { UndirectedGraph } from "graphology";
@@ -30,7 +30,7 @@ export const MyCustomGraph: React.FC<MyCustomGraphProps> = ({ children }) => {
 
   useEffect(() => {
     setSettings({
-      labelRenderedSizeThreshold: 20,
+      renderLabels: renderLabels,
     });
     // Create the graph
     const graph = erdosRenyi(UndirectedGraph, { order: 100, probability: 0.1, rng });

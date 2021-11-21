@@ -1,4 +1,4 @@
-import { rng, faTime } from "./utils/random";
+import { rng, faTime, renderLabels } from "./utils/random";
 import React, { ReactNode, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { UndirectedGraph } from "graphology";
@@ -54,7 +54,7 @@ export const MyCustomGraph: React.FC<MyCustomGraphProps> = ({ children }) => {
 
   useEffect(() => {
     setSettings({
-      labelRenderedSizeThreshold: 20,
+      renderLabels: renderLabels,
       nodeReducer: (node, data) => {
         const graph = sigma.getGraph();
         const newData: Attributes = { ...data, highlighted: data.highlighted || false };
