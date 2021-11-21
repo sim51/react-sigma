@@ -37,6 +37,11 @@ export async function takeScreenshots(tests: Tests, folder: string, suffix = "")
           // Taking the screenshot
           setTimeout(async () => {
             await page.setViewport({
+              width: 1980,
+              height: 1080,
+              deviceScaleFactor: 1,
+            });
+            await page.setViewport({
               width: 800,
               height: 600,
               deviceScaleFactor: 1,
