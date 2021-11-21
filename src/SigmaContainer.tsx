@@ -92,7 +92,7 @@ export const SigmaContainer: React.FC<SigmaContainerProps> = ({
 
   const context = useMemo(
     () => (sigma && rootRef.current ? { sigma, container: rootRef.current as HTMLElement } : null),
-    [sigma, rootRef.current]
+    [sigma, rootRef.current],
   );
   const contents = context !== null ? <SigmaProvider value={context}>{children}</SigmaProvider> : null;
 
