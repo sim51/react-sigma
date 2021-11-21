@@ -7,6 +7,7 @@
 node_modules
 docs
 examples
+demo
 test
 .editorconfig
 .eslintignore
@@ -17,6 +18,6 @@ test
 CONTRIBUTING.md
 package-lock.json
 tsconfig.json
-tsconfig.base.json 
+tsconfig.base.json
 typedoc.json
 webpack.config.js
