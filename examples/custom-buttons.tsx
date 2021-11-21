@@ -12,6 +12,7 @@ import {
   ControlsContainer,
   ForceAtlasControl,
   useLoadGraph,
+  useSetSettings,
   SearchControl,
   SigmaContainer,
   ZoomControl,
@@ -25,8 +26,12 @@ interface MyCustomGraphProps {
 
 export const MyCustomGraph: React.FC<MyCustomGraphProps> = ({ children }) => {
   const loadGraph = useLoadGraph();
+  const setSettings = useSetSettings();
 
   useEffect(() => {
+    setSettings({
+      labelRenderedSizeThreshold: 0,
+    });
     // Create the graph
     const graph = erdosRenyi(UndirectedGraph, { order: 100, probability: 0.1, rng });
     circularLayout.assign(graph);
