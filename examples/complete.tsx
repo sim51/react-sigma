@@ -39,7 +39,7 @@ export const MyCustomGraph: React.FC<MyCustomGraphProps> = ({ children }) => {
     graph.nodes().forEach(node => {
       graph.mergeNodeAttributes(node, {
         label: faker.name.findName(),
-        size: Math.max(4, Math.random() * 10),
+        size: Math.max(4, faker.random.number() * 10),
         color: chroma.random().hex(),
       });
     });
@@ -54,7 +54,7 @@ export const MyCustomGraph: React.FC<MyCustomGraphProps> = ({ children }) => {
 
   useEffect(() => {
     setSettings({
-      labelRenderedSizeThreshold: 9,
+      labelRenderedSizeThreshold: 0,
       nodeReducer: (node, data) => {
         const graph = sigma.getGraph();
         const newData: Attributes = { ...data, highlighted: data.highlighted || false };
