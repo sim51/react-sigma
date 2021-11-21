@@ -1,7 +1,7 @@
 import React, { ReactNode, useEffect, useState, useRef, CSSProperties } from "react";
 import FA2LayoutSupervisor, { FA2LayoutSupervisorParameters } from "graphology-layout-forceatlas2/worker";
 import { isEqual } from "lodash";
-import { useSigma } from "../hooks";
+import { useSigma } from "../hooks/useSigma";
 
 /**
  * Properties for `ForceAtlasControl` component

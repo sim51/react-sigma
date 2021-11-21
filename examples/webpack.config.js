@@ -14,6 +14,10 @@ const EXAMPLES = {
     id: "custom-buttons",
     title: "Customize buttons",
   },
+  events: {
+    id: "events",
+    title: "Events",
+  },
 };
 
 const entry = {};

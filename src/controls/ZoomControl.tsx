@@ -1,5 +1,5 @@
 import React, { ReactNode, CSSProperties } from "react";
-import { useSigma } from "../hooks";
+import { useSigma } from "../hooks/useSigma";
 
 /**
  * Properties for `ZoomControl` component

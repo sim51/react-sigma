@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useEffect, useState, CSSProperties } from "react";
-import { useSigma } from "../hooks";
 import { Attributes } from "graphology-types";
+import { useSigma } from "../hooks/useSigma";
 
 /**
  * Properties for `SearchControl` component
