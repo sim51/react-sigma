@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>react-sigma-v2 - v1.1.1 | react-sigma-v2 - v1.1.1</title>
-	<meta name="description" content="Documentation for react-sigma-v2 - v1.1.1">
+	<title>react-sigma-v2 - v1.2.0 | react-sigma-v2 - v1.2.0</title>
+	<meta name="description" content="Documentation for react-sigma-v2 - v1.2.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">:root {
   --color-background: #fdfdfd;
@@ -2674,7 +2674,7 @@ img {
 		<div class="container">
 			<div class="table-wrap">
 				<div class="table-cell">
-					<strong><a href="index.html">react-sigma-v2 - v1.1.1</a></strong>
+					<strong><a href="index.html">react-sigma-v2 - v1.2.0</a></strong>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -2775,14 +2775,15 @@ img {
 			<a href="#react-sigma-v2-" id="react-sigma-v2-" style="color: inherit; text-decoration: none;">
 				<h1>React Sigma v2 <a href="https://github.com/sim51/react-sigma-v2/actions/workflows/test.yml"><img src="https://github.com/sim51/react-sigma-v2/actions/workflows/test.yml/badge.svg" alt="CI"></a></h1>
 			</a>
-			<p>A set of react components to display graphs with Sigma v2.<br>This project is in beta test.</p>
+			<p>A set of react components to display graphs with Sigma v2.</p>
 			<p>You can find some online examples here : <a href="https://sim51.github.io/react-sigma-v2/examples/">https://sim51.github.io/react-sigma-v2/examples/</a></p>
+			<p>Or test it on cocdesanbox with this link: <a href="https://githubbox.com/sim51/react-sigma-v2/tree/main/demo">https://githubbox.com/sim51/react-sigma-v2/tree/main/demo</a></p>
 			<a href="#philosophy" id="philosophy" style="color: inherit; text-decoration: none;">
 				<h2>Philosophy</h2>
 			</a>
 			<p>This library shares the same philosophy as <a href="https://react-leaflet.js.org">react-leaflet</a>, it just provides some bindings (and helpers) between React and Sigma.</p>
 			<p>The main component, ie. <code>SigmaContainer</code> create a Sigma instance with an empty graph. If its option <code>initialSettings</code> or <code>graphOptions</code> is updated, the instance is killed and re-created.</p>
-			<p>I recommend you to NOT UPDATE those options to avoid performance issues.<br>Sigma (&amp; graphology) comes with methods that allow the user to update the settings.</p>
+			<p>I recommend you to NOT UPDATE those options to avoid performance issues.<br>Sigma (&amp; graphology) comes with methods that allow users to update the settings.<br>You should treat it as an immutable component.</p>
 			<p>Every child has access to the sigma instance (and so the graph instance) via the React context created by the <code>SigmaContainer</code>.</p>
 			<p>In your components, you can use the hook <code>const sigma = useSigma()</code> that gives you the sigma instance (and so the underlying graph with <code>sigma.getGraph()</code>)</p>
 			<p>This is an example of how to display a graph :</p>
@@ -3031,7 +3032,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Mouse<wbr>NodeEVent<span class="tsd-signature-symbol">:</span> <a href="interfaces/mouseevent.html" class="tsd-signature-type" data-tsd-kind="Interface">MouseEvent</a><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/nodeevent.html" class="tsd-signature-type" data-tsd-kind="Interface">NodeEvent</a></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/8fbc622/src/types.ts#L15">types.ts:15</a></li>
+						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/d46e7c5/src/types.ts#L15">types.ts:15</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -3044,7 +3045,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Controls<wbr>Container<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">React.FC</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/controlscontainerprops.html" class="tsd-signature-type" data-tsd-kind="Interface">ControlsContainerProps</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/8fbc622/src/controls/ControlsContainer.tsx#L45">controls/ControlsContainer.tsx:45</a></li>
+						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/d46e7c5/src/controls/ControlsContainer.tsx#L45">controls/ControlsContainer.tsx:45</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -3066,7 +3067,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Force<wbr>Atlas<wbr>Control<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">React.FC</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/forceatlascontrolprops.html" class="tsd-signature-type" data-tsd-kind="Interface">ForceAtlasControlProps</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/8fbc622/src/controls/ForceAtlasControl.tsx#L66">controls/ForceAtlasControl.tsx:66</a></li>
+						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/d46e7c5/src/controls/ForceAtlasControl.tsx#L66">controls/ForceAtlasControl.tsx:66</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -3088,7 +3089,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Full<wbr>Screen<wbr>Control<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">React.FC</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/fullscreencontrolprops.html" class="tsd-signature-type" data-tsd-kind="Interface">FullScreenControlProps</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/8fbc622/src/controls/FullScreenControl.tsx#L59">controls/FullScreenControl.tsx:59</a></li>
+						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/d46e7c5/src/controls/FullScreenControl.tsx#L59">controls/FullScreenControl.tsx:59</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -3109,7 +3110,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Search<wbr>Control<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">React.FC</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/searchcontrolprops.html" class="tsd-signature-type" data-tsd-kind="Interface">SearchControlProps</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/8fbc622/src/controls/SearchControl.tsx#L40">controls/SearchControl.tsx:40</a></li>
+						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/d46e7c5/src/controls/SearchControl.tsx#L40">controls/SearchControl.tsx:40</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -3130,7 +3131,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Sigma<wbr>Container<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">React.FC</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/sigmacontainerprops.html" class="tsd-signature-type" data-tsd-kind="Interface">SigmaContainerProps</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/8fbc622/src/SigmaContainer.tsx#L51">SigmaContainer.tsx:51</a></li>
+						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/d46e7c5/src/SigmaContainer.tsx#L51">SigmaContainer.tsx:51</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -3150,7 +3151,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Zoom<wbr>Control<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">React.FC</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/zoomcontrolprops.html" class="tsd-signature-type" data-tsd-kind="Interface">ZoomControlProps</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/8fbc622/src/controls/ZoomControl.tsx#L60">controls/ZoomControl.tsx:60</a></li>
+						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/d46e7c5/src/controls/ZoomControl.tsx#L60">controls/ZoomControl.tsx:60</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -3184,7 +3185,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/8fbc622/src/hooks/useLoadGraph.ts#L16">hooks/useLoadGraph.ts:16</a></li>
+								<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/d46e7c5/src/hooks/useLoadGraph.ts#L16">hooks/useLoadGraph.ts:16</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3230,7 +3231,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/8fbc622/src/hooks/useRegisterEvents.ts#L35">hooks/useRegisterEvents.ts:35</a></li>
+								<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/d46e7c5/src/hooks/useRegisterEvents.ts#L35">hooks/useRegisterEvents.ts:35</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3276,7 +3277,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/8fbc622/src/hooks/useSetSettings.ts#L17">hooks/useSetSettings.ts:17</a></li>
+								<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/d46e7c5/src/hooks/useSetSettings.ts#L17">hooks/useSetSettings.ts:17</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3322,7 +3323,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/8fbc622/src/hooks/useSigma.ts#L12">hooks/useSigma.ts:12</a></li>
+								<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/d46e7c5/src/hooks/useSigma.ts#L12">hooks/useSigma.ts:12</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
