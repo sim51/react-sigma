@@ -1,9 +1,10 @@
 # React Sigma v2 [![CI](https://github.com/sim51/react-sigma-v2/actions/workflows/test.yml/badge.svg)](https://github.com/sim51/react-sigma-v2/actions/workflows/test.yml)
 
 A set of react components to display graphs with Sigma v2.
-This project is in beta test.
 
 You can find some online examples here : https://sim51.github.io/react-sigma-v2/examples/
+
+Or test it on cocdesanbox with this link: https://githubbox.com/sim51/react-sigma-v2/tree/main/demo
 
 ## Philosophy
 
@@ -12,7 +13,8 @@ This library shares the same philosophy as [react-leaflet](https://react-leaflet
 The main component, ie. `SigmaContainer` create a Sigma instance with an empty graph. If its option `initialSettings` or `graphOptions` is updated, the instance is killed and re-created.
 
 I recommend you to NOT UPDATE those options to avoid performance issues.
-Sigma (& graphology) comes with methods that allow the user to update the settings.
+Sigma (& graphology) comes with methods that allow users to update the settings.
+You should treat it as an immutable component.
 
 Every child has access to the sigma instance (and so the graph instance) via the React context created by the `SigmaContainer`.
 
@@ -47,7 +49,7 @@ ReactDOM.render(
 You need to install this library and its peer dependencies :
 
 ```bash
-$> npm install tslib sigma graphology graphology-layout-forceatlas2 react-sigma-v2
+$> npm install sigma graphology graphology-layout-forceatlas2 react-sigma-v2
 ```
 
 ## How to use it
