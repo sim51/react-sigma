@@ -20,7 +20,8 @@
   "module": "./lib/esm/index.js",
   "typings": "./lib/esm/",
   "exports": {
-    ".": "./lib/esm/index.js"
+    ".": "./lib/esm/index.js",
+    "./lib/react-sigma-v2.css": "./lib/react-sigma-v2.css"
   },
   "directories": {
     "example": "examples"
