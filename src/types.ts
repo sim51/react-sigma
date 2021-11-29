@@ -12,7 +12,13 @@ export interface NodeEvent {
   node: string;
 }
 
+export interface EdgeEvent {
+  edge: string;
+}
+
 export type MouseNodeEVent = MouseEvent & NodeEvent;
+
+export type MouseEdgeEVent = MouseEvent & EdgeEvent;
 
 /**
  * Sigma's events
@@ -38,6 +44,44 @@ export interface EventHandlers {
    * Trigger when the user leave a node.with the mouse
    */
   leaveNode: ({ node }: NodeEvent) => void;
+  /**
+   * Trigger when the user double click node a node.with the mouse
+   */
+  doubleClickNode: ({ node }: NodeEvent) => void;
+  /**
+   * Trigger when the user wheel node a node.with the mouse
+   */
+  wheelNode: ({ node }: NodeEvent) => void;
+
+  /**
+   * Trigger when the user click on a edge
+   */
+  clickEdge: ({ edge, event }: MouseEdgeEVent) => void;
+  /**
+   * Trigger when the user right click on a edge
+   */
+  rightClickEdge: ({ edge, event }: MouseEdgeEVent) => void;
+  /**
+   * Trigger when the user click/tap on a edge
+   */
+  downEdge: ({ edge, event }: MouseEdgeEVent) => void;
+  /**
+   * Trigger when the user enter a edge with the mouse
+   */
+  enterEdge: ({ edge }: EdgeEvent) => void;
+  /**
+   * Trigger when the user leave a edge.with the mouse
+   */
+  leaveEdge: ({ edge }: EdgeEvent) => void;
+  /**
+   * Trigger when the user double click node a node.with the mouse
+   */
+  doubleClickEdge: ({ edge }: EdgeEvent) => void;
+  /**
+   * Trigger when the user wheel node a node.with the mouse
+   */
+  wheelEdge: ({ edge }: EdgeEvent) => void;
+
   /**
    * Trigger when the user click on the background
    */
