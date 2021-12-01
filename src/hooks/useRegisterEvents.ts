@@ -24,7 +24,15 @@ const sigmaEvents: Array<EventType> = [
   "downStage",
   "kill",
 ];
-const mouseEvents: Array<EventType> = ["click", "rightClick", "mouseup", "mousedown", "mousemove"];
+const mouseEvents: Array<EventType> = [
+  "click",
+  "rightClick",
+  "mouseup",
+  "mousedown",
+  "mousemove",
+  "doubleClick",
+  "wheel",
+];
 const touchEvents: Array<EventType> = ["mouseup", "mousedown", "mousemove"];
 const cameraEvents: Array<EventType> = ["cameraUpdated"];
 

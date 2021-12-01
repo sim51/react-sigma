@@ -1,4 +1,4 @@
-import { CameraState, MouseCoords, TouchCoords } from "sigma/types";
+import { CameraState, MouseCoords, TouchCoords, WheelCoords } from "sigma/types";
 
 export interface MouseEvent {
   event: MouseCoords;
@@ -12,6 +12,10 @@ export interface NodeEvent {
   node: string;
 }
 
+export interface WheelEvent {
+  event: WheelCoords;
+}
+
 export interface EdgeEvent {
   edge: string;
 }
@@ -19,6 +23,10 @@ export interface EdgeEvent {
 export type MouseNodeEVent = MouseEvent & NodeEvent;
 
 export type MouseEdgeEVent = MouseEvent & EdgeEvent;
+
+export type WheelNodeEVent = WheelEvent & NodeEvent;
+
+export type WheelEdgeEVent = WheelEvent & EdgeEvent;
 
 /**
  * Sigma's events
@@ -51,7 +59,7 @@ export interface EventHandlers {
   /**
    * Trigger when the user wheel node a node.with the mouse
    */
-  wheelNode: ({ node }: NodeEvent) => void;
+  wheelNode: ({ node, event }: WheelNodeEVent) => void;
 
   /**
    * Trigger when the user click on a edge
@@ -74,13 +82,13 @@ export interface EventHandlers {
    */
   leaveEdge: ({ edge }: EdgeEvent) => void;
   /**
-   * Trigger when the user double click node a node.with the mouse
+   * Trigger when the user double click edge a edge.with the mouse
    */
   doubleClickEdge: ({ edge }: EdgeEvent) => void;
   /**
-   * Trigger when the user wheel node a node.with the mouse
+   * Trigger when the user wheel edge a edge.with the mouse
    */
-  wheelEdge: ({ edge }: EdgeEvent) => void;
+  wheelEdge: ({ edge, event }: WheelEdgeEVent) => void;
 
   /**
    * Trigger when the user click on the background
@@ -98,6 +106,14 @@ export interface EventHandlers {
    * Trigger on mouse click
    */
   click: ({ event }: MouseEvent) => void;
+  /**
+   * Trigger on mouse double click
+   */
+  doubleClick: ({ event }: MouseEvent) => void;
+  /**
+   * Trigger on mouse wheel
+   */
+  wheel: ({ event }: WheelEvent) => void;
   /**
    * Trigger on mouse right click
    */
