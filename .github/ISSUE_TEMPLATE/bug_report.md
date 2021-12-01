@@ -50,5 +50,5 @@ Nodes are displayed in black
 
 ## Note
 
-If the issue has an inactivity of **60 days**, it becomes stale.
+If the issue has an inactivity of **30 days**, it becomes stale.
 With an additional inactivity of **14 days**, the issue is closed
