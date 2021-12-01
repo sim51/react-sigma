@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>MouseEvent | react-sigma-v2 - v1.2.1</title>
-	<meta name="description" content="Documentation for react-sigma-v2 - v1.2.1">
+	<title>MouseEvent | react-sigma-v2 - v1.3.0</title>
+	<meta name="description" content="Documentation for react-sigma-v2 - v1.3.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">:root {
   --color-background: #fdfdfd;
@@ -2674,7 +2674,7 @@ img {
 		<div class="container">
 			<div class="table-wrap">
 				<div class="table-cell">
-					<strong><a href="../index.html">react-sigma-v2 - v1.2.1</a></strong>
+					<strong><a href="../index.html">react-sigma-v2 - v1.3.0</a></strong>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -2708,6 +2708,9 @@ img {
 			<a href="controlscontainerprops.html" class="tsd-kind-icon">Controls<wbr>Container<wbr>Props</a>
 		</li>
 		<li class=" tsd-kind-interface">
+			<a href="edgeevent.html" class="tsd-kind-icon">Edge<wbr>Event</a>
+		</li>
+		<li class=" tsd-kind-interface">
 			<a href="eventhandlers.html" class="tsd-kind-icon">Event<wbr>Handlers</a>
 		</li>
 		<li class=" tsd-kind-interface">
@@ -2721,6 +2724,9 @@ img {
 			<ul>
 				<li class=" tsd-kind-property tsd-parent-kind-interface">
 					<a href="mouseevent.html#event" class="tsd-kind-icon">event</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-interface">
+					<a href="mouseevent.html#preventsigmadefault" class="tsd-kind-icon">prevent<wbr>Sigma<wbr>Default</a>
 				</li>
 			</ul>
 		</li>
@@ -2737,10 +2743,22 @@ img {
 			<a href="touchevent.html" class="tsd-kind-icon">Touch<wbr>Event</a>
 		</li>
 		<li class=" tsd-kind-interface">
+			<a href="wheelevent.html" class="tsd-kind-icon">Wheel<wbr>Event</a>
+		</li>
+		<li class=" tsd-kind-interface">
 			<a href="zoomcontrolprops.html" class="tsd-kind-icon">Zoom<wbr>Control<wbr>Props</a>
 		</li>
 		<li class=" tsd-kind-type-alias">
-			<a href="../modules.html#mousenodeevent" class="tsd-kind-icon">Mouse<wbr>NodeEVent</a>
+			<a href="../modules.html#mouseedgeevent" class="tsd-kind-icon">Mouse<wbr>Edge<wbr>Event</a>
+		</li>
+		<li class=" tsd-kind-type-alias">
+			<a href="../modules.html#mousenodeevent" class="tsd-kind-icon">Mouse<wbr>Node<wbr>Event</a>
+		</li>
+		<li class=" tsd-kind-type-alias">
+			<a href="../modules.html#wheeledgeevent" class="tsd-kind-icon">Wheel<wbr>Edge<wbr>Event</a>
+		</li>
+		<li class=" tsd-kind-type-alias">
+			<a href="../modules.html#wheelnodeevent" class="tsd-kind-icon">Wheel<wbr>Node<wbr>Event</a>
 		</li>
 		<li class=" tsd-kind-variable">
 			<a href="../modules.html#controlscontainer" class="tsd-kind-icon">Controls<wbr>Container</a>
@@ -2792,6 +2810,7 @@ img {
 						<h3>Properties</h3>
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="mouseevent.html#event" class="tsd-kind-icon">event</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="mouseevent.html#preventsigmadefault" class="tsd-kind-icon">prevent<wbr>Sigma<wbr>Default</a></li>
 						</ul>
 					</section>
 				</div>
@@ -2805,9 +2824,34 @@ img {
 				<div class="tsd-signature tsd-kind-icon">event<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">MouseCoords</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/6a1f2b7/src/types.ts#L4">types.ts:4</a></li>
+						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/444db81/src/types.ts#L4">types.ts:4</a></li>
 					</ul>
 				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<a name="preventsigmadefault" class="tsd-anchor"></a>
+				<h3>prevent<wbr>Sigma<wbr>Default</h3>
+				<div class="tsd-signature tsd-kind-icon">prevent<wbr>Sigma<wbr>Default<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/sim51/react-sigma-v2/blob/444db81/src/types.ts#L5">types.ts:5</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-type-declaration">
+					<h4>Type declaration</h4>
+					<ul class="tsd-parameters">
+						<li class="tsd-parameter-signature">
+							<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-interface">
+								<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+							</ul>
+							<ul class="tsd-descriptions">
+								<li class="tsd-description">
+									<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
 			</section>
 		</section>
 		<footer class="with-border-bottom">
