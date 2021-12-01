@@ -2,6 +2,7 @@ import { CameraState, MouseCoords, TouchCoords, WheelCoords } from "sigma/types"
 
 export interface MouseEvent {
   event: MouseCoords;
+  preventSigmaDefault: () => void;
 }
 
 export interface TouchEvent {
@@ -14,19 +15,18 @@ export interface NodeEvent {
 
 export interface WheelEvent {
   event: WheelCoords;
+  preventSigmaDefault: () => void;
 }
 
 export interface EdgeEvent {
   edge: string;
 }
 
-export type MouseNodeEVent = MouseEvent & NodeEvent;
+export type MouseNodeEvent = MouseEvent & NodeEvent;
+export type WheelNodeEvent = WheelEvent & NodeEvent;
 
-export type MouseEdgeEVent = MouseEvent & EdgeEvent;
-
-export type WheelNodeEVent = WheelEvent & NodeEvent;
-
-export type WheelEdgeEVent = WheelEvent & EdgeEvent;
+export type MouseEdgeEvent = MouseEvent & EdgeEvent;
+export type WheelEdgeEvent = WheelEvent & EdgeEvent;
 
 /**
  * Sigma's events
@@ -35,117 +35,129 @@ export interface EventHandlers {
   /**
    * Trigger when the user click on a node
    */
-  clickNode: ({ node, event }: MouseNodeEVent) => void;
+  clickNode: (e: MouseNodeEvent) => void;
   /**
    * Trigger when the user right click on a node
    */
-  rightClickNode: ({ node, event }: MouseNodeEVent) => void;
+  rightClickNode: (e: MouseNodeEvent) => void;
   /**
    * Trigger when the user click/tap on a node
    */
-  downNode: ({ node, event }: MouseNodeEVent) => void;
-  /**
-   * Trigger when the user enter a node with the mouse
-   */
-  enterNode: ({ node }: NodeEvent) => void;
-  /**
-   * Trigger when the user leave a node.with the mouse
-   */
-  leaveNode: ({ node }: NodeEvent) => void;
+  downNode: (e: MouseNodeEvent) => void;
   /**
    * Trigger when the user double click node a node.with the mouse
    */
-  doubleClickNode: ({ node }: NodeEvent) => void;
+  doubleClickNode: (e: MouseNodeEvent) => void;
   /**
    * Trigger when the user wheel node a node.with the mouse
    */
-  wheelNode: ({ node, event }: WheelNodeEVent) => void;
+  wheelNode: (e: WheelNodeEvent) => void;
+  /**
+   * Trigger when the user enter a node with the mouse
+   */
+  enterNode: (e: NodeEvent) => void;
+  /**
+   * Trigger when the user leave a node.with the mouse
+   */
+  leaveNode: (e: NodeEvent) => void;
 
   /**
    * Trigger when the user click on a edge
    */
-  clickEdge: ({ edge, event }: MouseEdgeEVent) => void;
+  clickEdge: (e: MouseEdgeEvent) => void;
   /**
    * Trigger when the user right click on a edge
    */
-  rightClickEdge: ({ edge, event }: MouseEdgeEVent) => void;
+  rightClickEdge: (e: MouseEdgeEvent) => void;
   /**
    * Trigger when the user click/tap on a edge
    */
-  downEdge: ({ edge, event }: MouseEdgeEVent) => void;
-  /**
-   * Trigger when the user enter a edge with the mouse
-   */
-  enterEdge: ({ edge }: EdgeEvent) => void;
-  /**
-   * Trigger when the user leave a edge.with the mouse
-   */
-  leaveEdge: ({ edge }: EdgeEvent) => void;
+  downEdge: (e: MouseEdgeEvent) => void;
   /**
    * Trigger when the user double click edge a edge.with the mouse
    */
-  doubleClickEdge: ({ edge }: EdgeEvent) => void;
+  doubleClickEdge: (e: MouseEdgeEvent) => void;
   /**
    * Trigger when the user wheel edge a edge.with the mouse
    */
-  wheelEdge: ({ edge, event }: WheelEdgeEVent) => void;
+  wheelEdge: (e: WheelEdgeEvent) => void;
+  /**
+   * Trigger when the user enter a edge with the mouse
+   */
+  enterEdge: (e: EdgeEvent) => void;
+  /**
+   * Trigger when the user leave a edge.with the mouse
+   */
+  leaveEdge: (e: EdgeEvent) => void;
 
   /**
    * Trigger when the user click on the background
    */
-  clickStage: ({ event }: MouseEvent) => void;
+  clickStage: (e: MouseEvent) => void;
   /**
    * Trigger when the user right click on the background
    */
-  rightClickStage: ({ event }: MouseEvent) => void;
+  rightClickStage: (e: MouseEvent) => void;
+  /**
+   * Trigger when the user double click on the background
+   */
+  doubleClickStage: (e: MouseEvent) => void;
+  /**
+   * Trigger when the user do a mouse wheel on the background
+   */
+  wheelStage: (e: WheelEvent) => void;
   /**
    * Trigger when the user click/tap on the background
    */
-  downStage: ({ event }: MouseEvent) => void;
+  downStage: (e: MouseEvent) => void;
+
   /**
    * Trigger on mouse click
    */
-  click: ({ event }: MouseEvent) => void;
+  click: (e: MouseCoords) => void;
   /**
    * Trigger on mouse double click
    */
-  doubleClick: ({ event }: MouseEvent) => void;
+  doubleClick: (e: MouseCoords) => void;
   /**
    * Trigger on mouse wheel
    */
-  wheel: ({ event }: WheelEvent) => void;
+  wheel: (e: WheelCoords) => void;
   /**
    * Trigger on mouse right click
    */
-  rightClick: ({ event }: MouseEvent) => void;
+  rightClick: (e: MouseCoords) => void;
   /**
    * Trigger on mouse up
    */
-  mouseup: ({ event }: MouseEvent) => void;
+  mouseup: (e: MouseCoords) => void;
   /**
    * Trigger on mouse down
    */
-  mousedown: ({ event }: MouseEvent) => void;
+  mousedown: (e: MouseCoords) => void;
   /**
    * Trigger on mouse move
    */
-  mousemove: ({ event }: MouseEvent) => void;
+  mousemove: (e: MouseCoords) => void;
+
   /**
-   *Trigger on touch up
+   * Trigger on touch up
    */
-  touchup: ({ event }: TouchEvent) => void;
+  touchup: (e: TouchCoords) => void;
   /**
-   *Trigger on touch down
+   * Trigger on touch down
    */
-  touchdown: ({ event }: TouchEvent) => void;
+  touchdown: (e: TouchCoords) => void;
   /**
-   *Trigger on touch move
+   * Trigger on touch move
    */
-  touchmove: ({ event }: TouchEvent) => void;
+  touchmove: (e: TouchCoords) => void;
+
   /**
    * Trigger when sigma is killed
    */
   kill: () => void;
+
   /**
    * Trigger when the sigma's camera changes
    */

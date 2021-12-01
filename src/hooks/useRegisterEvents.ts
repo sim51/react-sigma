@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+import { Settings } from "sigma/settings";
 import { useSigma } from "./useSigma";
+import { useSetSettings } from "./useSetSettings";
 import { EventHandlers } from "../types";
 
 type EventType = keyof EventHandlers;
@@ -22,6 +24,8 @@ const sigmaEvents: Array<EventType> = [
   "clickStage",
   "rightClickStage",
   "downStage",
+  "doubleClickStage",
+  "wheelStage",
   "kill",
 ];
 const mouseEvents: Array<EventType> = [
@@ -51,16 +55,44 @@ const cameraEvents: Array<EventType> = ["cameraUpdated"];
  */
 export function useRegisterEvents(): (eventHandlers: Partial<EventHandlers>) => void {
   const sigma = useSigma();
+  const setSettings = useSetSettings();
   const [eventHandlers, setEventHandlers] = useState<Partial<EventHandlers>>({});
 
   useEffect(() => {
-    let event: EventType;
-
     if (!sigma || !eventHandlers) {
       return;
     }
 
-    for (event in eventHandlers) {
+    // list of event types to register
+    const eventTypes = Object.keys(eventHandlers) as Array<EventType>;
+
+    // Set settings for edge event if needed
+    const edgeSettings: Partial<Settings> = {};
+    const reverseEdgeSettings: Partial<Settings> = {};
+    const sigmaSettings = sigma.getSettings();
+    if (
+      eventTypes.some(event => ["clickEdge", "rightClickEdge", "doubleClickEdge", "downEdge"].includes(event)) &&
+      sigmaSettings.enableEdgeClickEvents === false
+    ) {
+      edgeSettings["enableEdgeClickEvents"] = true;
+      reverseEdgeSettings["enableEdgeClickEvents"] = false;
+    }
+    if (
+      eventTypes.some(event => ["enterEdge", "leaveEdge"].includes(event)) &&
+      sigmaSettings.enableEdgeHoverEvents === false
+    ) {
+      edgeSettings["enableEdgeHoverEvents"] = true;
+      reverseEdgeSettings["enableEdgeHoverEvents"] = false;
+    }
+    if (eventTypes.some(event => ["wheelEdge"].includes(event)) && sigmaSettings.enableEdgeWheelEvents === false) {
+      edgeSettings["enableEdgeWheelEvents"] = true;
+      reverseEdgeSettings["enableEdgeWheelEvents"] = false;
+    }
+    if (Object.keys(edgeSettings).length > 0) {
+      setSettings(edgeSettings);
+    }
+
+    eventTypes.forEach((event: EventType) => {
       const eventHandler = eventHandlers[event] as (...args: unknown[]) => void;
       if (sigmaEvents.includes(event)) {
         sigma.on(event, eventHandler);
@@ -75,11 +107,18 @@ export function useRegisterEvents(): (eventHandlers: Partial<EventHandlers>) => 
         // For now there is only one event on the camera
         sigma.getCamera().on("updated", eventHandler);
       }
-    }
+    });
 
     // cleanup
     return () => {
       let event: EventType;
+
+      // Reverse settings
+      if (Object.keys(reverseEdgeSettings).length > 0) {
+        setSettings(reverseEdgeSettings);
+      }
+
+      // remove events listener
       for (event in eventHandlers) {
         const eventHandler = eventHandlers[event] as (...args: unknown[]) => void;
         if (sigmaEvents.includes(event)) {
@@ -97,7 +136,7 @@ export function useRegisterEvents(): (eventHandlers: Partial<EventHandlers>) => 
         }
       }
     };
-  }, [sigma, eventHandlers]);
+  }, [sigma, eventHandlers, setSettings]);
 
   return setEventHandlers;
 }
