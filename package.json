@@ -43,7 +43,10 @@
     "tsc:all": "npm run tsc && npm run tsc:examples",
     "test:e2e": "mocha --require ts-node/register ./test/e2e/**/*.spec.ts --exit",
     "test:e2e:generate": "node -r ts-node/register ./test/e2e/generate.ts",
-    "test": "npm run tsc:all && npm run test:e2e"
+    "test": "npm run tsc:all && npm run test:e2e",
+    "preversion": "npm test",
+    "version": "npm run build && npm run site && git add -A docs",
+    "postversion": "git push && git push --tags && npm clean"
   },
   "devDependencies": {
     "@babel/core": "^7.13.16",
