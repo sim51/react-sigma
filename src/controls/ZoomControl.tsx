@@ -1,5 +1,5 @@
 import React, { ReactNode, CSSProperties } from "react";
-import { useSigma } from "../hooks/useSigma";
+import { useCamera } from "../hooks/useCamera";
 
 /**
  * Properties for `ZoomControl` component
@@ -65,23 +65,7 @@ export const ZoomControl: React.FC<ZoomControlProps> = ({
   customZoomOut,
   customZoomCenter,
 }) => {
-  // Get sigma
-  const sigma = useSigma();
-
-  /**
-   * Function to zoom in sigma.
-   */
-  function zoom(ratio?: number): void {
-    if (sigma) {
-      if (!ratio) {
-        sigma.getCamera().animatedReset({ duration: animationDuration });
-      } else if (ratio > 0) {
-        sigma.getCamera().animatedZoom({ duration: animationDuration, factor: 1.5 });
-      } else if (ratio < 0) {
-        sigma.getCamera().animatedUnzoom({ duration: animationDuration, factor: 1.5 });
-      }
-    }
-  }
+  const { zoomIn, zoomOut, reset } = useCamera({ duration: animationDuration, factor: 1.5 });
 
   // Common html props for the div wrapper
   const props = {
@@ -92,17 +76,17 @@ export const ZoomControl: React.FC<ZoomControlProps> = ({
   return (
     <>
       <div {...props} className={`react-sigma-control-zoom-in ${className ? className : ""}`}>
-        <button className={customZoomIn ? "" : "default"} onClick={() => zoom(1)} title="Zoom In">
+        <button className={customZoomIn ? "" : "default"} onClick={() => zoomIn()} title="Zoom In">
           {customZoomIn}
         </button>
       </div>
       <div {...props} className={`react-sigma-control-zoom-out ${className ? className : ""}`}>
-        <button className={customZoomOut ? "" : "default"} onClick={() => zoom(-1)} title="Zoom Out">
+        <button className={customZoomOut ? "" : "default"} onClick={() => zoomOut()} title="Zoom Out">
           {customZoomOut}
         </button>
       </div>
       <div {...props} className={`react-sigma-control-zoom-center ${className ? className : ""}`}>
-        <button className={customZoomCenter ? "" : "default"} onClick={() => zoom()} title="See whole graph">
+        <button className={customZoomCenter ? "" : "default"} onClick={() => reset()} title="See whole graph">
           {customZoomCenter}
         </button>
       </div>

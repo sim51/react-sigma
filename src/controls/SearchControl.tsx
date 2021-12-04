@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useEffect, useState, CSSProperties } from "react";
 import { Attributes } from "graphology-types";
 import { useSigma } from "../hooks/useSigma";
+import { useCamera } from "../hooks/useCamera";
 
 /**
  * Properties for `SearchControl` component
@@ -40,6 +41,8 @@ export interface SearchControlProps {
 export const SearchControl: React.FC<SearchControlProps> = ({ id, className, style }) => {
   // Get sigma
   const sigma = useSigma();
+  // Get camera hook
+  const { gotoNode } = useCamera();
   // Search value
   const [search, setSearch] = useState<string>("");
   // Datalist values
@@ -70,14 +73,7 @@ export const SearchControl: React.FC<SearchControlProps> = ({ id, className, sty
     }
 
     sigma.getGraph().setNodeAttribute(selected, "highlighted", true);
-    const nodeDisplayData = sigma.getNodeDisplayData(selected);
-
-    if (nodeDisplayData) {
-      sigma.getCamera().animate(nodeDisplayData, {
-        easing: "linear",
-        duration: 500,
-      });
-    }
+    gotoNode(selected);
 
     return () => {
       sigma.getGraph().setNodeAttribute(selected, "highlighted", false);
