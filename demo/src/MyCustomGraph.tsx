@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from "react";
 import Graph from "graphology";
 import { Attributes } from "graphology-types";
 import circularLayout from "graphology-layout/circular";
+import { useDebounce } from "./useDebounce";
 import { useSigma, useRegisterEvents, useLoadGraph, useSetSettings } from "react-sigma-v2";
 
 const DEFAULT_GRAPH = "/airport-network.json";
@@ -17,6 +18,9 @@ export const MyCustomGraph: FC = () => {
   const [graphUrl, setGraphUrl] = useState<string>(DEFAULT_GRAPH);
   // State for the graph hovered node
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
+  // Here we debounce the value to avoid having too much highlights refresh when
+  // moving the mouse over the graph:
+  const debouncedHoveredNode = useDebounce(hoveredNode, 50);
 
   /**
    * When component mount
