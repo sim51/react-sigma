@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Settings } from "sigma/settings";
+
 import { useSigma } from "./useSigma";
 
 /**

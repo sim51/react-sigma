@@ -1,32 +1,37 @@
-import { rng, faTime, renderLabels } from "./utils/random";
-import React, { ReactNode, useEffect, useState } from "react";
+import { rng, renderLabels } from "./utils/random";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
+import { FaProjectDiagram } from "react-icons/fa";
 import { UndirectedGraph } from "graphology";
 import { Attributes } from "graphology-types";
 import erdosRenyi from "graphology-generators/random/erdos-renyi";
-import circularLayout from "graphology-layout/circular";
 import chroma from "chroma-js";
 import faker from "faker";
-
 import {
   ControlsContainer,
-  ForceAtlasControl,
+  WorkerLayoutControl,
   useSigma,
   useRegisterEvents,
   useLoadGraph,
   useSetSettings,
+  useLayoutCircular,
+  useLayoutCirclepack,
+  useLayoutRandom,
+  useLayoutForceAtlas2,
+  useLayoutForceDirected,
+  useLayoutNoverlap,
+  useWorkerLayoutForceAtlas2,
+  useWorkerLayoutForceDirected,
+  useWorkerLayoutNoverlap,
   SearchControl,
   SigmaContainer,
   ZoomControl,
 } from "../src/index";
 import "../src/assets/index.scss";
 
-interface MyCustomGraphProps {
-  children?: ReactNode;
-}
-
-export const MyCustomGraph: React.FC<MyCustomGraphProps> = ({ children }) => {
+export const MyCustomGraph: React.FC = () => {
   const sigma = useSigma();
+  const { assign: assingCircular } = useLayoutCircular({});
   const registerEvents = useRegisterEvents();
   const loadGraph = useLoadGraph();
   const setSettings = useSetSettings();
@@ -35,7 +40,7 @@ export const MyCustomGraph: React.FC<MyCustomGraphProps> = ({ children }) => {
   useEffect(() => {
     // Create the graph
     const graph = erdosRenyi(UndirectedGraph, { order: 100, probability: 0.1, rng });
-    circularLayout.assign(graph);
+    assingCircular(graph);
     graph.nodes().forEach(node => {
       graph.mergeNodeAttributes(node, {
         label: faker.name.findName(),
@@ -81,7 +86,93 @@ export const MyCustomGraph: React.FC<MyCustomGraphProps> = ({ children }) => {
     });
   }, [hoveredNode]);
 
-  return <>{children}</>;
+  return null;
+};
+
+export const LayoutsControl: React.FC = () => {
+  const [layout, setLayout] = useState<string>("forceAtlas");
+  const [opened, setOpened] = useState<boolean>(false);
+  const layouts: { [key: string]: { layout: any; worker?: any } } = {
+    circular: {
+      layout: useLayoutCircular({}),
+    },
+    circlepack: {
+      layout: useLayoutCirclepack({}),
+    },
+    random: {
+      layout: useLayoutRandom({}),
+    },
+    noverlaps: {
+      layout: useLayoutNoverlap({}),
+      worker: useWorkerLayoutNoverlap,
+    },
+    forceDirected: {
+      layout: useLayoutForceDirected({ maxIterations: 100 }),
+      worker: useWorkerLayoutForceDirected,
+    },
+    forceAtlas: {
+      layout: useLayoutForceAtlas2({ iterations: 100 }),
+      worker: useWorkerLayoutForceAtlas2,
+    },
+  };
+
+  useEffect(() => {
+    const { animate } = layouts[layout].layout;
+    animate({ duration: 1000 });
+  }, [layout]);
+
+  useEffect(() => {
+    const close = () => setOpened(false);
+    if (opened === true) {
+      document.addEventListener("click", close);
+    }
+    return () => document.removeEventListener("click", close);
+  }, [opened]);
+
+  return (
+    <>
+      <div>
+        {layouts[layout] && layouts[layout].worker && (
+          <WorkerLayoutControl layout={layouts[layout].worker} settings={{}} />
+        )}
+      </div>
+      <div>
+        <div className="react-sigma-control-layout">
+          <button onClick={() => setOpened((e: boolean) => !e)}>
+            <FaProjectDiagram />
+          </button>
+          {opened === true && (
+            <ul
+              style={{
+                position: "absolute",
+                bottom: 0,
+                right: "35px",
+                backgroundColor: "#e7e9ed",
+                margin: 0,
+                padding: 0,
+                listStyle: "none",
+              }}
+            >
+              {Object.keys(layouts).map(name => {
+                return (
+                  <li key={name}>
+                    <button
+                      style={{ fontWeight: layout === name ? "bold" : "normal" }}
+                      onClick={() => {
+                        setLayout(name);
+                      }}
+                    >
+                      {name}
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </div>
+      </div>
+    </>
+  );
 };
 
 ReactDOM.render(
@@ -90,7 +181,7 @@ ReactDOM.render(
       <MyCustomGraph />
       <ControlsContainer position={"bottom-right"}>
         <ZoomControl />
-        <ForceAtlasControl autoRunFor={faTime || 2000} />
+        <LayoutsControl />
       </ControlsContainer>
       <ControlsContainer position={"top-right"}>
         <SearchControl style={{ width: "200px" }} />

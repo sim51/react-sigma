@@ -1,6 +1,8 @@
-import { useCallback, useState, useEffect } from "react";
+import { useCallback, useRef } from "react";
+import { isEqual } from "lodash";
 import { AnimateOptions } from "sigma/utils/animate";
 import { CameraState } from "sigma/types";
+
 import { useSigma } from "./useSigma";
 
 type CameraOptions = Partial<AnimateOptions> & { factor?: number };
@@ -23,36 +25,34 @@ export function useCamera(
   gotoNode: (nodeKey: string, options?: Partial<AnimateOptions>) => void;
 } {
   const sigma = useSigma();
-  const [defaultOptions, setDefaultOptions] = useState<CameraOptions>(options || {});
-
-  useEffect(() => {
-    setDefaultOptions(defaultOptions);
-  }, [defaultOptions]);
+  // Default camera options
+  const defaultOptions = useRef<CameraOptions>();
+  if (!isEqual(defaultOptions.current, options)) defaultOptions.current = options;
 
   const zoomIn = useCallback(
     (options?: CameraOptions) => {
-      sigma.getCamera().animatedZoom({ ...defaultOptions, ...options });
+      sigma.getCamera().animatedZoom({ ...defaultOptions.current, ...options });
     },
     [sigma, defaultOptions],
   );
 
   const zoomOut = useCallback(
     (options?: CameraOptions) => {
-      sigma.getCamera().animatedUnzoom({ ...defaultOptions, ...options });
+      sigma.getCamera().animatedUnzoom({ ...defaultOptions.current, ...options });
     },
     [sigma, defaultOptions],
   );
 
   const reset = useCallback(
     (options?: Partial<AnimateOptions>) => {
-      sigma.getCamera().animatedReset({ ...defaultOptions, ...options });
+      sigma.getCamera().animatedReset({ ...defaultOptions.current, ...options });
     },
     [sigma, defaultOptions],
   );
 
   const goto = useCallback(
     (state: Partial<CameraState>, options?: Partial<AnimateOptions>) => {
-      sigma.getCamera().animate(state, { ...defaultOptions, ...options });
+      sigma.getCamera().animate(state, { ...defaultOptions.current, ...options });
     },
     [sigma, defaultOptions],
   );
@@ -60,7 +60,7 @@ export function useCamera(
   const gotoNode = useCallback(
     (nodeKey: string, options?: Partial<AnimateOptions>) => {
       const nodeDisplayData = sigma.getNodeDisplayData(nodeKey);
-      if (nodeDisplayData) sigma.getCamera().animate(nodeDisplayData, { ...defaultOptions, ...options });
+      if (nodeDisplayData) sigma.getCamera().animate(nodeDisplayData, { ...defaultOptions.current, ...options });
       else console.log(`Node ${nodeKey} not found`);
     },
     [sigma, defaultOptions],

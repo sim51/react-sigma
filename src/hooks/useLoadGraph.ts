@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import Graph from "graphology";
+
 import { useSigma } from "./useSigma";
 
 /**

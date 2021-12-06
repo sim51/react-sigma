@@ -1,5 +1,6 @@
 import React, { ReactNode, useEffect, useState, CSSProperties } from "react";
-import { useSigmaContext } from "../context";
+
+import { useSigmaContext } from "../../hooks/context";
 
 function toggleFullScreen(dom: HTMLElement) {
   if (document.fullscreenElement !== dom) {
@@ -67,19 +68,16 @@ export const FullScreenControl: React.FC<FullScreenControlProps> = ({
   const { container } = useSigmaContext();
   // Is full screen mode enabled
   const [isFullScreen, setFullScreen] = useState<boolean>(false);
-  const toggleState = () => setFullScreen((v) => !v);
+  const toggleState = () => setFullScreen(v => !v);
 
   useEffect(() => {
     document.addEventListener("fullscreenchange", toggleState);
-
     return () => document.removeEventListener("fullscreenchange", toggleState);
   }, [toggleState]);
 
   // Compute the class name for the button. `Default` means display the default SGV icon
   const buttonClass =
-    (isFullScreen && !customExitFullScreen) || (!isFullScreen && !customEnterFullScreen)
-      ? "default"
-      : "";
+    (isFullScreen && !customExitFullScreen) || (!isFullScreen && !customEnterFullScreen) ? "default" : "";
 
   // Common html props for the div
   const props = {

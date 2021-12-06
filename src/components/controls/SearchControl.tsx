@@ -1,7 +1,8 @@
 import React, { ChangeEvent, useEffect, useState, CSSProperties } from "react";
 import { Attributes } from "graphology-types";
-import { useSigma } from "../hooks/useSigma";
-import { useCamera } from "../hooks/useCamera";
+
+import { useSigma } from "../../hooks/useSigma";
+import { useCamera } from "../../hooks/useCamera";
 
 /**
  * Properties for `SearchControl` component

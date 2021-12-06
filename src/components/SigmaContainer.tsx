@@ -1,10 +1,11 @@
 import React, { CSSProperties, ReactNode, useEffect, useMemo, useRef, useState } from "react";
-import { Sigma } from "sigma";
-import { Settings } from "sigma/settings";
+import { isEqual } from "lodash";
 import Graph from "graphology";
 import { GraphOptions } from "graphology-types";
-import { SigmaProvider } from "./context";
-import { isEqual } from "lodash";
+import { Sigma } from "sigma";
+import { Settings } from "sigma/settings";
+
+import { SigmaProvider } from "../hooks/context";
 
 /**
  * Properties for `SigmaContainer` component

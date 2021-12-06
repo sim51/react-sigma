@@ -1,5 +1,6 @@
 import React, { ReactNode, CSSProperties } from "react";
-import { useCamera } from "../hooks/useCamera";
+
+import { useCamera } from "../../hooks/useCamera";
 
 /**
  * Properties for `ZoomControl` component
