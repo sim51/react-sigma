@@ -1,16 +1,6 @@
-import React, { ReactNode, useEffect, useState, CSSProperties } from "react";
+import React, { ReactNode, CSSProperties } from "react";
 
-import { useSigmaContext } from "../../hooks/context";
-
-function toggleFullScreen(dom: HTMLElement) {
-  if (document.fullscreenElement !== dom) {
-    dom.requestFullscreen();
-  } else {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    }
-  }
-}
+import { useFullScreen } from "../../hooks/useFullScreen";
 
 /**
  * Properties for `FullScreenControl` component.
@@ -65,15 +55,7 @@ export const FullScreenControl: React.FC<FullScreenControlProps> = ({
   customExitFullScreen,
 }) => {
   // Get Sigma
-  const { container } = useSigmaContext();
-  // Is full screen mode enabled
-  const [isFullScreen, setFullScreen] = useState<boolean>(false);
-  const toggleState = () => setFullScreen(v => !v);
-
-  useEffect(() => {
-    document.addEventListener("fullscreenchange", toggleState);
-    return () => document.removeEventListener("fullscreenchange", toggleState);
-  }, [toggleState]);
+  const { isFullScreen, toggle } = useFullScreen();
 
   // Compute the class name for the button. `Default` means display the default SGV icon
   const buttonClass =
@@ -90,7 +72,7 @@ export const FullScreenControl: React.FC<FullScreenControlProps> = ({
 
   return (
     <div {...props}>
-      <button className={buttonClass} onClick={() => toggleFullScreen(container)} title="Toggle Fullscreen">
+      <button className={buttonClass} onClick={toggle} title="Toggle Fullscreen">
         {isFullScreen ? customExitFullScreen : customEnterFullScreen}
       </button>
     </div>

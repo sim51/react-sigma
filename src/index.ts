@@ -3,6 +3,7 @@ export * from "./hooks/useRegisterEvents";
 export * from "./hooks/useLoadGraph";
 export * from "./hooks/useSetSettings";
 export * from "./hooks/useCamera";
+export * from "./hooks/useFullScreen";
 export * from "./hooks/layouts/index";
 export * from "./hooks/layouts/useLayoutCircular";
 export * from "./hooks/layouts/useLayoutCirclepack";
