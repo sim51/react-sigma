@@ -7,6 +7,8 @@ import { Attributes } from "graphology-types";
 import erdosRenyi from "graphology-generators/random/erdos-renyi";
 import chroma from "chroma-js";
 import faker from "faker";
+import { animateNodes } from "sigma/utils/animate";
+
 import {
   ControlsContainer,
   WorkerLayoutControl,
@@ -44,7 +46,7 @@ export const MyCustomGraph: React.FC = () => {
     graph.nodes().forEach(node => {
       graph.mergeNodeAttributes(node, {
         label: faker.name.findName(),
-        size: faker.random.number({ min: 4, max: 20, precision: 1 }),
+        size: faker.datatype.number({ min: 4, max: 20, precision: 1 }),
         color: chroma.random().hex(),
       });
     });
@@ -90,20 +92,21 @@ export const MyCustomGraph: React.FC = () => {
 };
 
 export const LayoutsControl: React.FC = () => {
+  const sigma = useSigma();
   const [layout, setLayout] = useState<string>("forceAtlas");
   const [opened, setOpened] = useState<boolean>(false);
   const layouts: { [key: string]: { layout: any; worker?: any } } = {
     circular: {
-      layout: useLayoutCircular({}),
+      layout: useLayoutCircular(),
     },
     circlepack: {
-      layout: useLayoutCirclepack({}),
+      layout: useLayoutCirclepack(),
     },
     random: {
-      layout: useLayoutRandom({}),
+      layout: useLayoutRandom(),
     },
     noverlaps: {
-      layout: useLayoutNoverlap({}),
+      layout: useLayoutNoverlap(),
       worker: useWorkerLayoutNoverlap,
     },
     forceDirected: {
@@ -117,8 +120,8 @@ export const LayoutsControl: React.FC = () => {
   };
 
   useEffect(() => {
-    const { animate } = layouts[layout].layout;
-    animate({ duration: 1000 });
+    const { positions } = layouts[layout].layout;
+    animateNodes(sigma.getGraph(), positions(), { duration: 1000 });
   }, [layout]);
 
   useEffect(() => {

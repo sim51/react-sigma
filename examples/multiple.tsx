@@ -36,7 +36,7 @@ export const MyCustomGraph: React.FC<MyCustomGraphProps> = ({ children }) => {
     graph.nodes().forEach(node => {
       graph.mergeNodeAttributes(node, {
         label: faker.name.findName(),
-        size: faker.random.number({ min: 4, max: 20, precision: 1 }),
+        size: faker.datatype.number({ min: 4, max: 20, precision: 1 }),
         color: chroma.random().hex(),
       });
     });

@@ -10,4 +10,4 @@ import { useLayoutFactory } from "./index";
  *```
  * @category Hook
  */
-export const useLayoutRandom = useLayoutFactory<RandomLayoutOptions>(random);
+export const useLayoutRandom = useLayoutFactory<RandomLayoutOptions>(random, {});

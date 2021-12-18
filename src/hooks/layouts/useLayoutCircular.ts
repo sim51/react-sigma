@@ -1,6 +1,6 @@
 import circular, { CircularLayoutOptions } from "graphology-layout/circular";
 
-import { useLayoutFactory, LayoutHook } from "./index";
+import { useLayoutFactory } from "./index";
 
 /**
  * React hook that helps you to manage circle layout.
@@ -10,4 +10,4 @@ import { useLayoutFactory, LayoutHook } from "./index";
  *```
  * @category Hook
  */
-export const useLayoutCircular: LayoutHook<CircularLayoutOptions> = useLayoutFactory<CircularLayoutOptions>(circular);
+export const useLayoutCircular = useLayoutFactory<CircularLayoutOptions>(circular, {});

@@ -12,4 +12,5 @@ import { useLayoutFactory, LayoutHook } from "./index";
  */
 export const useLayoutNoverlap: LayoutHook<NoverlapLayoutParameters> = useLayoutFactory<NoverlapLayoutParameters>(
   noverlap,
+  {},
 );

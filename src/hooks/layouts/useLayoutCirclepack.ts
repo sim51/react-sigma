@@ -6,8 +6,8 @@ import { useLayoutFactory } from "./index";
  * React hook that helps you to manage circlepack layout.
  *
  * ```typescript
- * const {apply, animate} = useLayoutCirclepack({...});
+ * const { positions, assign } = useLayoutCirclepack({...});
  *```
  * @category Hook
  */
-export const useLayoutCirclepack = useLayoutFactory<CirclePackLayoutOptions>(circlepack);
+export const useLayoutCirclepack = useLayoutFactory<CirclePackLayoutOptions>(circlepack, {});

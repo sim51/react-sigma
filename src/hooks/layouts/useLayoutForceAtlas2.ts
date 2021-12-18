@@ -12,4 +12,5 @@ import { useLayoutFactory, LayoutHook } from "./index";
  */
 export const useLayoutForceAtlas2: LayoutHook<ForceAtlas2LayoutOptions> = useLayoutFactory<ForceAtlas2LayoutOptions>(
   forceAtlas2,
+  { iterations: 100 },
 );

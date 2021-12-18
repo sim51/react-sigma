@@ -10,4 +10,7 @@ import { useLayoutFactory, LayoutHook } from "./index";
  *```
  * @category Hook
  */
-export const useLayoutForceDirected: LayoutHook<ForceLayoutParameters> = useLayoutFactory<ForceLayoutParameters>(force);
+export const useLayoutForceDirected: LayoutHook<ForceLayoutParameters> = useLayoutFactory<ForceLayoutParameters>(
+  force,
+  { maxIterations: 100 },
+);

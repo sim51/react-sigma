@@ -1,7 +1,6 @@
 import { isEqual } from "lodash";
 import { useCallback, useRef } from "react";
 import Graph from "graphology";
-import { animateNodes, AnimateOptions } from "sigma/utils/animate";
 
 import { useSigma } from "../useSigma";
 
@@ -17,30 +16,33 @@ interface GraphologyLayout<T> {
  * Generic type for layout hooks.
  */
 export type LayoutHook<T> = (
-  settings: T,
+  settings?: T,
 ) => {
+  /**
+   * Returns a positions map by node key.
+   */
+  positions: () => { [node: string]: { [dimension: string]: number } };
   /**
    * Assign layout node's position into the specified graph if present,
    * or in the sigma graph if not present.
    */
   assign: (graph?: Graph) => void;
-  /**
-   * Create a smooth transition between the actual node's position of the sigma graph,
-   * and the one computed by the layout.
-   */
-  animate: (options?: Partial<AnimateOptions>) => void;
 };
 
 /**
  * Factory for layout hook.
  */
-export function useLayoutFactory<T>(layout: GraphologyLayout<T>): LayoutHook<T> {
-  const hook: LayoutHook<T> = (parameter: T) => {
+export function useLayoutFactory<T>(layout: GraphologyLayout<T>, defaultSettings: T): LayoutHook<T> {
+  const hook: LayoutHook<T> = (parameter: T = defaultSettings) => {
     const sigma = useSigma();
-
     // Default layout settings
     const settings = useRef<T>();
     if (!isEqual(settings.current, parameter)) settings.current = parameter;
+
+    const positions = useCallback(() => {
+      if (settings.current) return layout(sigma.getGraph(), settings.current);
+      else return {};
+    }, [sigma, settings]);
 
     const assign = useCallback(
       (graph?: Graph) => {
@@ -51,17 +53,8 @@ export function useLayoutFactory<T>(layout: GraphologyLayout<T>): LayoutHook<T> 
       [sigma, settings],
     );
 
-    const animate = useCallback(
-      (options: Partial<AnimateOptions> = {}) => {
-        if (settings.current) {
-          const positions = layout(sigma.getGraph(), settings.current);
-          animateNodes(sigma.getGraph(), positions, options);
-        }
-      },
-      [sigma, settings],
-    );
-
-    return { assign, animate };
+    return { positions, assign };
   };
+
   return hook;
 }
