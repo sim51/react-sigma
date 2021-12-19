@@ -23,8 +23,7 @@ export type LayoutHook<T> = (
    */
   positions: () => { [node: string]: { [dimension: string]: number } };
   /**
-   * Assign layout node's position into the specified graph if present,
-   * or in the sigma graph if not present.
+   * Assign layout node's position into the sigma graph.
    */
   assign: (graph?: Graph) => void;
 };
@@ -36,7 +35,7 @@ export function useLayoutFactory<T>(layout: GraphologyLayout<T>, defaultSettings
   const hook: LayoutHook<T> = (parameter: T = defaultSettings) => {
     const sigma = useSigma();
     // Default layout settings
-    const settings = useRef<T>();
+    const settings = useRef<T>(defaultSettings);
     if (!isEqual(settings.current, parameter)) settings.current = parameter;
 
     const positions = useCallback(() => {
@@ -44,14 +43,11 @@ export function useLayoutFactory<T>(layout: GraphologyLayout<T>, defaultSettings
       else return {};
     }, [sigma, settings]);
 
-    const assign = useCallback(
-      (graph?: Graph) => {
-        if (settings.current) {
-          layout.assign(graph ? graph : sigma.getGraph(), settings.current);
-        }
-      },
-      [sigma, settings],
-    );
+    const assign = useCallback(() => {
+      if (settings.current) {
+        layout.assign(sigma.getGraph(), settings.current);
+      }
+    }, [sigma, settings]);
 
     return { positions, assign };
   };
