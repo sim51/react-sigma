@@ -12,7 +12,7 @@ export type Tests = Array<{
 // failureThreshold is due to the FA2 that doesn't do the exact same number of frame
 // TODO: need a better way on how to handle that, 25% is an impiric guess
 export const tests: Tests = [
-  { name: "complete", url: "http://localhost:8000/complete.html?seed=foo&faTime=-1=", waitFor: 100, failureThreshold: 0.0001 },
+  { name: "complete", url: "http://localhost:8000/complete.html?seed=foo&faTime=-1", waitFor: 100, failureThreshold: 0.0001 },
   { name: "multiple", url: "http://localhost:8000/multiple.html?seed=foo&faTime=-1", waitFor: 100, failureThreshold: 0.0001 },
   { name: "custom-btn", url: "http://localhost:8000/custom-buttons.html?seed=foo&faTime=-1", waitFor: 100, failureThreshold: 0.0001 },
 ];

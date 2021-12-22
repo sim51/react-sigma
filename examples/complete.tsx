@@ -95,7 +95,7 @@ export const MyCustomGraph: React.FC = () => {
 
 export const LayoutsControl: React.FC = () => {
   const sigma = useSigma();
-  const [layout, setLayout] = useState<string>("forceAtlas");
+  const [layout, setLayout] = useState<string>("circular");
   const [opened, setOpened] = useState<boolean>(false);
   const layouts: { [key: string]: { layout: any; worker?: any } } = {
     circular: {
