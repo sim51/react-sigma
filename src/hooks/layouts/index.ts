@@ -25,7 +25,7 @@ export type LayoutHook<T> = (
   /**
    * Assign layout node's position into the sigma graph.
    */
-  assign: (graph?: Graph) => void;
+  assign: () => void;
 };
 
 /**

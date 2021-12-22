@@ -33,7 +33,7 @@ import "../src/assets/index.scss";
 
 export const MyCustomGraph: React.FC = () => {
   const sigma = useSigma();
-  const { assign: assingCircular } = useLayoutCircular({});
+  const { assign: assingCircular } = useLayoutCircular();
   const registerEvents = useRegisterEvents();
   const loadGraph = useLoadGraph();
   const setSettings = useSetSettings();
@@ -42,15 +42,17 @@ export const MyCustomGraph: React.FC = () => {
   useEffect(() => {
     // Create the graph
     const graph = erdosRenyi(UndirectedGraph, { order: 100, probability: 0.1, rng });
-    assingCircular(graph);
     graph.nodes().forEach(node => {
       graph.mergeNodeAttributes(node, {
         label: faker.name.findName(),
         size: faker.datatype.number({ min: 4, max: 20, precision: 1 }),
         color: chroma.random().hex(),
+        x: 0,
+        y: 0,
       });
     });
     loadGraph(graph);
+    assingCircular();
 
     // Register the events
     registerEvents({
