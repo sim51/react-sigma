@@ -1,0 +1,13 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./packages/core" },
+    { "path": "./packages/layout-core" },
+    { "path": "./packages/layout-circlepack" },
+    { "path": "./packages/layout-circular" },
+    { "path": "./packages/layout-random" },
+    { "path": "./packages/layout-force" },
+    { "path": "./packages/layout-forceatlas2" },
+    { "path": "./packages/layout-noverlap" }
+  ]
+}

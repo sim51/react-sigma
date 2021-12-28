@@ -1,0 +1,47 @@
+{
+  "name": "@react-sigma/core",
+  "version": "2.0.0",
+  "description": "React Sigma",
+  "author": "Benoit Simard",
+  "license": "MIT",
+  "homepage": "https://sim51.github.io/react-sigma-v2",
+  "bugs": "https://github.com/sim51/react-sigma-v2/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sim51/react-sigma-v2.git"
+  },
+  "keywords": [
+    "sigma",
+    "react",
+    "react-sigma",
+    "graph",
+    "graphology"
+  ],
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "scripts": {
+    "clean": "rimraf build/* tsconfig.tsbuildinfo",
+    "lint": "esw . --ext .ts",
+    "compile": "tsc",
+    "assets": "copyfiles -u 1 src/assets/** lib/",
+    "build": "npm run clean && npm run lint && npm run compile &&  npm run assets"
+  },
+  "devDependencies": {
+    "@types/lodash": "4.14.170",
+    "@types/node": "^16.11.25",
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.11",
+    "copyfiles": "^2.4.1",
+    "graphology": "^0.24.1",
+    "graphology-generators": "^0.11.2",
+    "graphology-types": "^0.24.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "sigma": "2.2.0"
+  },
+  "peerDependencies": {
+    "graphology": "^0.24.1",
+    "lodash": "^4.17.21",
+    "sigma": "^2.2.0"
+  }
+}

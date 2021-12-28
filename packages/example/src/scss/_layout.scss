@@ -1,0 +1,20 @@
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  font-family: Arial;
+
+  header {
+    height: $header-height;
+  }
+  main {
+    margin-top: $header-height;
+    height: calc(100% - #{$header-height});
+  }
+  footer {
+    height: $footer-height;
+  }
+}

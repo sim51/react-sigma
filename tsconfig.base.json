@@ -59,6 +59,5 @@
     "suppressImplicitAnyIndexErrors": false,
     "typeRoots": ["node_modules/@types"],
     "target": "es2015"
-  },
-  "files": ["./src/index.ts"]
+  }
 }

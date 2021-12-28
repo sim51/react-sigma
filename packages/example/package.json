@@ -1,0 +1,71 @@
+{
+  "name": "@react-sgima/examples",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@react-sigma/core": "2.0.0",
+    "@react-sigma/layout-circlepack": "2.0.0",
+    "@react-sigma/layout-circular": "2.0.0",
+    "@react-sigma/layout-core": "2.0.0",
+    "@react-sigma/layout-force": "2.0.0",
+    "@react-sigma/layout-forceatlas2": "2.0.0",
+    "@react-sigma/layout-noverlap": "2.0.0",
+    "@react-sigma/layout-random": "2.0.0",
+    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/react": "^12.1.3",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/chroma-js": "^2.1.3",
+    "@types/expect-puppeteer": "^4.4.7",
+    "@types/faker": "^5.5.8",
+    "@types/jest": "^27.4.0",
+    "@types/jest-environment-puppeteer": "^5.0.0",
+    "@types/pixelmatch": "^5.2.4",
+    "@types/pngjs": "^6.0.1",
+    "@types/puppeteer": "^5.4.4",
+    "@types/seedrandom": "^3.0.2",
+    "bootstrap": "^5.1.3",
+    "eslint-config-react-app": "^7.0.0",
+    "faker": "^5.5.3",
+    "jest-puppeteer": "^6.1.0",
+    "node-sass": "^7.0.1",
+    "react-error-boundary": "^3.1.4",
+    "react-icons": "^4.3.1",
+    "react-router-dom": "^6.2.1",
+    "react-scripts": "5.0.0",
+    "seedrandom": "^3.0.5",
+    "ts-jest": "^27.1.3",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "test:e2e": "jest -c ./test/e2e/jest.config.js",
+    "test:e2e:generate": "node --require ts-node/register ./test/e2e/generate.ts",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "npm run test:e2e && react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "pixelmatch": "^5.2.1",
+    "pngjs": "^6.0.0",
+    "puppeteer": "^13.3.2",
+    "ts-node": "^10.5.0"
+  }
+}

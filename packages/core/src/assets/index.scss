@@ -1,0 +1,159 @@
+$control-size: 30px;
+$container-position-margin: 5px;
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.react-sigma-control-btn {
+  width: $control-size;
+  height: $control-size;
+  line-height: $control-size;
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  > button {
+    display: block;
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: $control-size;
+    height: $control-size;
+    line-height: $control-size;
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    clip: rect(0, 0, 0, 0);
+
+    /* Hide the text. */
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+
+    &:hover {
+      background-color: #eee;
+    }
+  }
+}
+
+div.react-sigma-v2 {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background: #fff;
+
+  div.sigma-container {
+    height: 100%;
+    width: 100%;
+  }
+
+  .react-sigma-controls {
+    position: absolute;
+    z-index: 1000;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+
+    &.bottom-right {
+      bottom: $container-position-margin;
+      right: $container-position-margin;
+    }
+
+    &.bottom-left {
+      bottom: $container-position-margin;
+      left: $container-position-margin;
+    }
+
+    &.top-right {
+      top: $container-position-margin;
+      right: $container-position-margin;
+    }
+
+    &.top-left {
+      top: $container-position-margin;
+      left: $container-position-margin;
+    }
+
+    &:first-child {
+      border-top-left-radius: 2px;
+      border-top-right-radius: 2px;
+    }
+    &:last-child {
+      border-bottom-left-radius: 2px;
+      border-bottom-right-radius: 2px;
+    }
+
+    .react-sigma-control-zoom-center {
+      @extend .react-sigma-control-btn;
+      > button {
+        background-image: url("./icons/dot-circle-regular.svg?encoding=base64");
+      }
+    }
+    .react-sigma-control-zoom-in {
+      @extend .react-sigma-control-btn;
+      > button {
+        background-image: url("./icons/plus-solid.svg?encoding=base64");
+      }
+    }
+    .react-sigma-control-zoom-out {
+      @extend .react-sigma-control-btn;
+      > button {
+        background-image: url("./icons/minus-solid.svg?encoding=base64");
+      }
+    }
+
+    .react-sigma-control-fullscreen {
+      @extend .react-sigma-control-btn;
+      > button {
+        background-image: url("./icons/expand-solid.svg?encoding=base64");
+      }
+    }
+    .react-sigma-control-normalscreen {
+      @extend .react-sigma-control-btn;
+      > button {
+        background-image: url("./icons/compress-solid.svg?encoding=base64");
+      }
+    }
+
+    .react-sigma-control-layout {
+      @extend .react-sigma-control-btn;
+
+      &.running {
+        > button {
+          background-image: url("./icons/stop-solid.svg?encoding=base64");
+          background-size: 40%;
+          &:after {
+            content: "";
+            position: relative;
+            display: block;
+            width: $control-size;
+            height: $control-size;
+            top: 0;
+            left: 0;
+            background-image: url("./icons/spinner-solid.svg?encoding=base64");
+            animation: rotation 1.2s linear infinite;
+          }
+        }
+      }
+
+      &.stopped {
+        > button {
+          background-image: url("./icons/play-solid.svg?encoding=base64");
+        }
+      }
+    }
+
+    .react-sigma-search {
+      label {
+        visibility: hidden;
+        input {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
