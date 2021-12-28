@@ -72,20 +72,20 @@ export function useRegisterEvents(): (eventHandlers: Partial<EventHandlers>) => 
     const reverseEdgeSettings: Partial<Settings> = {};
     const sigmaSettings = sigma.getSettings();
     if (
-      eventTypes.some(event => ["clickEdge", "rightClickEdge", "doubleClickEdge", "downEdge"].includes(event)) &&
+      eventTypes.some((event) => ["clickEdge", "rightClickEdge", "doubleClickEdge", "downEdge"].includes(event)) &&
       sigmaSettings.enableEdgeClickEvents === false
     ) {
       edgeSettings["enableEdgeClickEvents"] = true;
       reverseEdgeSettings["enableEdgeClickEvents"] = false;
     }
     if (
-      eventTypes.some(event => ["enterEdge", "leaveEdge"].includes(event)) &&
+      eventTypes.some((event) => ["enterEdge", "leaveEdge"].includes(event)) &&
       sigmaSettings.enableEdgeHoverEvents === false
     ) {
       edgeSettings["enableEdgeHoverEvents"] = true;
       reverseEdgeSettings["enableEdgeHoverEvents"] = false;
     }
-    if (eventTypes.some(event => ["wheelEdge"].includes(event)) && sigmaSettings.enableEdgeWheelEvents === false) {
+    if (eventTypes.some((event) => ["wheelEdge"].includes(event)) && sigmaSettings.enableEdgeWheelEvents === false) {
       edgeSettings["enableEdgeWheelEvents"] = true;
       reverseEdgeSettings["enableEdgeWheelEvents"] = false;
     }
@@ -123,23 +123,22 @@ export function useRegisterEvents(): (eventHandlers: Partial<EventHandlers>) => 
       }
 
       // remove events listener
-      for (event in eventHandlers) {
-        const eventHandler = eventHandlers[event] as (...args: unknown[]) => void;
-        if (sigmaEvents.includes(event)) {
-          //eslint-disable-next-line @typescript-eslint/no-explicit-any
-          sigma.removeListener(event as any, eventHandler);
-        }
-        if (mouseEvents.includes(event)) {
-          //eslint-disable-next-line @typescript-eslint/no-explicit-any
-          sigma.getMouseCaptor().removeListener(event as any, eventHandler);
-        }
-        if (touchEvents.includes(event)) {
-          //eslint-disable-next-line @typescript-eslint/no-explicit-any
-          sigma.getTouchCaptor().removeListener(event as any, eventHandler);
-        }
-        if (cameraEvents.includes(event)) {
-          // For now there is only one event on the camera
-          sigma.getCamera().removeListener("updated", eventHandler);
+      if (sigma) {
+        for (event in eventHandlers) {
+          const eventHandler = eventHandlers[event] as (...args: unknown[]) => void;
+          if (sigmaEvents.includes(event)) {
+            sigma.removeListener(event, eventHandler);
+          }
+          if (mouseEvents.includes(event)) {
+            sigma.getMouseCaptor().removeListener(event, eventHandler);
+          }
+          if (touchEvents.includes(event)) {
+            sigma.getTouchCaptor().removeListener(event, eventHandler);
+          }
+          if (cameraEvents.includes(event)) {
+            // For now there is only one event on the camera
+            sigma.getCamera().removeListener("updated", eventHandler);
+          }
         }
       }
     };
