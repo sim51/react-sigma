@@ -37,7 +37,7 @@ export const MyGraph: React.FC = () => {
       enterNode: event => setHoveredNode(event.node),
       leaveNode: () => setHoveredNode(null),
     });
-  }, [assingCircular, loadGraph, registerEvents]);
+  }, [assingCircular, loadGraph, registerEvents, faker.datatype, faker.name, randomColor]);
 
   useEffect(() => {
     setSettings({

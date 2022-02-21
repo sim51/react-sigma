@@ -1,21 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import { UndirectedGraph } from "graphology";
-import { Attributes } from "graphology-types";
 import erdosRenyi from "graphology-generators/random/erdos-renyi";
 
 import { useSeedRandom } from "../../core/useSeedRandom";
-import { useSigma, useRegisterEvents, useLoadGraph, useSetSettings } from "@react-sigma/core";
+import { useRegisterEvents, useLoadGraph } from "@react-sigma/core";
 import { useLayoutCircular } from "@react-sigma/layout-circular";
 
 export const MyGraph: React.FC = () => {
   const {faker, randomColor} = useSeedRandom();
-  const sigma = useSigma();
   const { assign: assingCircular } = useLayoutCircular();
   const registerEvents = useRegisterEvents();
   const loadGraph = useLoadGraph();
-  const setSettings = useSetSettings();
-  const [hoveredNode, setHoveredNode] = useState<string | null>(null);
 
   useEffect(() => {
     // Create the graph
@@ -78,7 +74,7 @@ export const MyGraph: React.FC = () => {
       // sigma camera update
       cameraUpdated: event => console.log("cameraUpdated", event.x, event.y, event.angle, event.ratio),
     });
-  }, []);
+  }, [assingCircular, faker.name, loadGraph, randomColor, registerEvents]);
 
   return null;
 };

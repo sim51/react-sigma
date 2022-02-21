@@ -24,7 +24,7 @@
     "lint": "npm run lint --workspaces --if-present",
     "build": "npm run build --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",
-    "start": "npm run start --workspaces --if-present"
+    "start": "concurrently -n core,examples,layout-circlepack,layout-circular,layout-core,layout-force,layout-forceatlas2,layout-noverlap,layout-random 'npm run start --workspace=@react-sigma/core' 'npm run start --workspace=@react-sigma/examples' 'npm run start --workspace=@react-sigma/layout-circlepack' 'npm run start --workspace=@react-sigma/layout-circular' 'npm run start --workspace=@react-sigma/layout-core' 'npm run start --workspace=@react-sigma/layout-force' 'npm run start --workspace=@react-sigma/layout-forceatlas2' 'npm run start --workspace=@react-sigma/layout-noverlap' 'npm run start --workspace=@react-sigma/layout-random'"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.22.0",
@@ -34,5 +34,9 @@
     "rimraf": "^3.0.2",
     "tslib": "^2.3.1",
     "typescript": "^4.5.5"
+  },
+  "dependencies": {
+    "concurrently": "^7.0.0",
+    "tsc-watch": "^4.6.0"
   }
 }

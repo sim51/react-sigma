@@ -23,7 +23,8 @@
     "clean": "rimraf build/* tsconfig.tsbuildinfo",
     "lint": "esw . --ext .ts",
     "compile": "tsc",
-    "build": "npm run clean && npm run lint && npm run compile"
+    "build": "npm run clean && npm run lint && npm run compile",
+    "start": "tsc-watch --build --noClear --onSuccess 'npm run lint'"
   },
   "dependencies": {
     "@react-sigma/core": "^2.0.0"

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect,useMemo,  useState } from "react";
 import { FaProjectDiagram } from "react-icons/fa";
 
 import { animateNodes } from "sigma/utils/animate";
@@ -16,29 +16,43 @@ export const LayoutsControl: React.FC = () => {
   const sigma = useSigma();
   const [layout, setLayout] = useState<string>("circular");
   const [opened, setOpened] = useState<boolean>(false);
-  const layouts: { [key: string]: { layout: any; worker?: any } } = {
-    circular: {
-      layout: useLayoutCircular(),
-    },
-    circlepack: {
-      layout: useLayoutCirclepack(),
-    },
-    random: {
-      layout: useLayoutRandom(),
-    },
-    noverlaps: {
-      layout: useLayoutNoverlap(),
-      worker: useWorkerLayoutNoverlap,
-    },
-    forceDirected: {
-      layout: useLayoutForce({ maxIterations: 100 }),
-      worker: useWorkerLayoutForce,
-    },
-    forceAtlas: {
-      layout: useLayoutForceAtlas2({ iterations: 100 }),
-      worker: useWorkerLayoutForceAtlas2,
-    },
-  };
+  const layoutCircular = useLayoutCircular();
+  const layoutCirclepack = useLayoutCirclepack();
+  const layoutRandom = useLayoutRandom();
+  const layoutNoverlap = useLayoutNoverlap();
+  const layoutForce = useLayoutForce({ maxIterations: 100 })
+  const layoutForceAtlas2 = useLayoutForceAtlas2({ iterations: 100 })
+
+  const layouts: { [key: string]: { layout: any; worker?: any } } = useMemo(()=> {
+    return {
+      circular: {
+        layout: layoutCircular,
+      },
+      circlepack: {
+        layout: layoutCirclepack,
+      },
+      random: {
+        layout: layoutRandom,
+      },
+      noverlaps: {
+        layout: layoutNoverlap,
+        worker: useWorkerLayoutNoverlap,
+      },
+      forceDirected: {
+        layout: layoutForce,
+        worker: useWorkerLayoutForce,
+      },
+      forceAtlas: {
+        layout: layoutForceAtlas2,
+        worker: useWorkerLayoutForceAtlas2,
+      },
+    }
+  }, [layoutCircular,
+layoutCirclepack,
+layoutRandom,
+layoutNoverlap,
+layoutForce,
+layoutForceAtlas2,]);
 
   useEffect(() => {
     const { positions } = layouts[layout].layout;

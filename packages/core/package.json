@@ -22,9 +22,11 @@
   "scripts": {
     "clean": "rimraf build/* tsconfig.tsbuildinfo",
     "lint": "esw . --ext .ts",
-    "compile": "tsc",
     "assets": "copyfiles -u 1 src/assets/** lib/",
-    "build": "npm run clean && npm run lint && npm run compile &&  npm run assets"
+    "lintAndAssets": "npm run lint && npm run assets",
+    "compile": "tsc",
+    "build": "npm run clean && npm run lint && npm run compile &&  npm run assets",
+    "start": "tsc-watch --build --noClear --onSuccess 'npm run lintAndAssets'"
   },
   "devDependencies": {
     "@types/lodash": "4.14.170",

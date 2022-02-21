@@ -58,6 +58,6 @@
     "suppressExcessPropertyErrors": false,
     "suppressImplicitAnyIndexErrors": false,
     "typeRoots": ["node_modules/@types"],
-    "target": "es2015"
+    "target": "es6"
   }
 }
