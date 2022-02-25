@@ -148,11 +148,13 @@ div.react-sigma-v2 {
     }
 
     .react-sigma-search {
+      background-color: #fff;
       label {
         visibility: hidden;
-        input {
-          width: 100%;
-        }
+      }
+      input {
+        width: 100%;
+        border: none;
       }
     }
   }
