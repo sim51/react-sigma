@@ -74,8 +74,8 @@ export const SigmaContainer: React.FC<SigmaContainerProps> = ({
     let instance: Sigma | null = null;
 
     if (containerRef.current !== null) {
-      const sigGraph = typeof graph === "function" ? new graph() : graph;
-      instance = new Sigma(new Graph(sigGraph), containerRef.current, settings.current);
+      const sigGraph = graph ? (typeof graph === "function" ? new graph() : graph) : new Graph();
+      instance = new Sigma(sigGraph, containerRef.current, settings.current);
     }
     setSigma(instance);
 
