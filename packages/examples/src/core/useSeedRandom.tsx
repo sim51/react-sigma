@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import seedrandom from "seedrandom";
 import faker from "faker";
@@ -26,14 +26,16 @@ export const useSeedRandom = (): { faker: Faker.FakerStatic; randomColor: ()=>st
 
   }, [seed]);
 
-  function randomColor():string {
-    const digits = '0123456789abcdef';
-    let code = '#';
-    for (let i=0; i<6; i++) {
-        code += digits.charAt(Math.floor(Math.random() * 16));
+  const randomColor = useMemo(() => {
+    return ():string => {
+      const digits = '0123456789abcdef';
+      let code = '#';
+      for (let i=0; i<6; i++) {
+          code += digits.charAt(Math.floor(Math.random() * 16));
+      }
+      return code;
     }
-    return code;
-  }
+  }, []);
 
   return {faker, randomColor};
 };
