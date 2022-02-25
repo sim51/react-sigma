@@ -1,6 +1,13 @@
 $control-size: 30px;
 $container-position-margin: 5px;
 
+:root {
+  --sigma-background-color: #fff;
+  --sigma-controls-background-color: #fff;
+  --sigma-controls-border-color: rgba(0, 0, 0, 0.2);
+  --sigma-controls-color: #000;
+}
+
 @keyframes rotation {
   0% {
     transform: rotate(0deg);
@@ -14,8 +21,8 @@ $container-position-margin: 5px;
   width: $control-size;
   height: $control-size;
   line-height: $control-size;
-  background-color: #fff;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: var(--sigma-controls-background-color);
+  border-bottom: 1px solid var(--sigma-controls-border-color);
   > button {
     display: block;
     border: none;
@@ -27,7 +34,7 @@ $container-position-margin: 5px;
     background-position: center;
     background-size: 50%;
     background-repeat: no-repeat;
-    background-color: #fff;
+    background-color: var(--sigma-controls-background-color);
     clip: rect(0, 0, 0, 0);
 
     /* Hide the text. */
@@ -45,7 +52,7 @@ div.react-sigma-v2 {
   height: 100%;
   width: 100%;
   position: relative;
-  background: #fff;
+  background: var(--sigma-background-color);
 
   div.sigma-container {
     height: 100%;
@@ -55,8 +62,10 @@ div.react-sigma-v2 {
   .react-sigma-controls {
     position: absolute;
     z-index: 1000;
-    border: 2px solid rgba(0, 0, 0, 0.2);
+    border: 2px solid var(--sigma-controls-background-color);
     border-radius: 4px;
+    color: var(--sigma-controls-color);
+    background-color: var(--sigma-controls-background-color);
 
     &.bottom-right {
       bottom: $container-position-margin;
@@ -148,11 +157,14 @@ div.react-sigma-v2 {
     }
 
     .react-sigma-search {
-      background-color: #fff;
+      background-color: var(--sigma-controls-background-color);
       label {
         visibility: hidden;
       }
       input {
+        color: var(--sigma-controls-color);
+        background-color: var(--sigma-controls-background-color);
+        font-size: 1em;
         width: 100%;
         border: none;
       }
