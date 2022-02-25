@@ -1,3 +1,4 @@
+export * from "./hooks/context";
 export * from "./hooks/useSigma";
 export * from "./hooks/useRegisterEvents";
 export * from "./hooks/useLoadGraph";
