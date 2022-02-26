@@ -14,6 +14,9 @@ export type LayoutForceAtlas2ControlProps = Omit<
   settings?: FA2LayoutSupervisorParameters;
 };
 
+/**
+ * @category Component
+ */
 export const LayoutForceAtlas2Control: React.FC<LayoutForceAtlas2ControlProps> = (
   props: LayoutForceAtlas2ControlProps,
 ) => {

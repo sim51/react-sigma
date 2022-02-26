@@ -16,7 +16,7 @@ export const MyGraph: React.FC = () => {
   useEffect(() => {
     // Create the graph
     const graph = erdosRenyi(UndirectedGraph, { order: 100, probability: 0.1 });
-    graph.nodes().forEach(node => {
+    graph.nodes().forEach((node:string) => {
       graph.mergeNodeAttributes(node, {
         label: faker.name.findName(),
         size: Math.max(4, Math.random() * 10),
@@ -25,7 +25,7 @@ export const MyGraph: React.FC = () => {
         y: 0,
       });
     });
-    graph.edges().forEach(edge => {
+    graph.edges().forEach((edge:string) => {
       graph.mergeEdgeAttributes(edge, {
         size: 1,
       });

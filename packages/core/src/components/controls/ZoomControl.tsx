@@ -17,7 +17,7 @@ export interface ZoomControlProps {
   style?: CSSProperties;
 
   /**
-   * Number of ms for the zoom animation (default is 200)
+   * Number of ms for the zoom animation (default is 200ms)
    */
   animationDuration?: number;
 }
@@ -28,39 +28,42 @@ export interface ZoomControlProps {
  * - zoom out
  * - reset zoom (ie. see the whole graph)
  *
- * ```typescript
+ * ```jsx
  * <SigmaContainer>
  *   <ControlsContainer>
  *     <ZoomControl />
  *   </ControlsContainer>
  * </SigmaContainer>
  * ```
- *
  * See [[ZoomControlProps]] for more information.
  *
  * @category Component
  */
-export const ZoomControl: React.FC<ZoomControlProps> = ({ className, style, animationDuration = 200 }) => {
+export const ZoomControl: React.FC<ZoomControlProps> = ({
+  className,
+  style,
+  animationDuration = 200,
+}: ZoomControlProps) => {
   const { zoomIn, zoomOut, reset } = useCamera({ duration: animationDuration, factor: 1.5 });
 
   // Common html props for the div wrapper
-  const props = {
+  const htmlProps = {
     style,
   };
 
   return (
     <>
-      <div {...props} className={`react-sigma-control-zoom-in ${className ? className : ""}`}>
+      <div {...htmlProps} className={`react-sigma-control-zoom-in ${className ? className : ""}`}>
         <button onClick={() => zoomIn()} title="Zoom In">
           Zoom In
         </button>
       </div>
-      <div {...props} className={`react-sigma-control-zoom-out ${className ? className : ""}`}>
+      <div {...htmlProps} className={`react-sigma-control-zoom-out ${className ? className : ""}`}>
         <button onClick={() => zoomOut()} title="Zoom Out">
           Zoom Out
         </button>
       </div>
-      <div {...props} className={`react-sigma-control-zoom-center ${className ? className : ""}`}>
+      <div {...htmlProps} className={`react-sigma-control-zoom-center ${className ? className : ""}`}>
         <button onClick={() => reset()} title="See whole graph">
           See whole graph
         </button>

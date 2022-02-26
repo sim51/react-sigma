@@ -1,3 +1,9 @@
+/**
+ * Main React Sigma module.
+ * It contains all the standard components & hooks  to display a graph in react.
+ *
+ * @module
+ */
 export * from "./hooks/context";
 export * from "./hooks/useSigma";
 export * from "./hooks/useRegisterEvents";

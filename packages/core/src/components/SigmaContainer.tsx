@@ -40,7 +40,7 @@ export interface SigmaContainerProps {
 /**
  * The `SigmaContainer` component is responsible of create the Sigma instance, and provide it to its child components using a React Context that can be accessible via the hook {@link useSigma}.
  *
- * ```typescript
+ * ```jsx
  * <SigmaContainer id="sigma-graph">
  *   <MyCustomGraph />
  * </SigmaContainer>

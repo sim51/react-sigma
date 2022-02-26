@@ -14,6 +14,9 @@ export type LayoutNoverlapControlProps = Omit<
   settings?: NoverlapLayoutSupervisorParameters;
 };
 
+/**
+ * @category Component
+ */
 export const LayoutNoverlapControl: React.FC<LayoutNoverlapControlProps> = (props: LayoutNoverlapControlProps) => {
   const workerLayoutProps = {
     ...props,

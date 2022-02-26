@@ -30,17 +30,18 @@ export interface SearchControlProps {
  * There is an autocomplete based on includes & lower case.
  * When a node is found, the graph will focus on the highlighted node
  *
- * ```typescript
+ * ```jsx
  * <SigmaContainer>
  *   <ControlsContainer>
  *     <SearchControl />
  *   </ControlsContainer>
  * </SigmaContainer>
  * ```
+ * See [[SearchControlProps]] for more information.
  *
  * @category Component
  */
-export const SearchControl: React.FC<SearchControlProps> = ({ id, className, style }) => {
+export const SearchControl: React.FC<SearchControlProps> = ({ id, className, style }: SearchControlProps) => {
   // Get sigma
   const sigma = useSigma();
   // Get camera hook
@@ -108,14 +109,14 @@ export const SearchControl: React.FC<SearchControlProps> = ({ id, className, sty
   };
 
   // Common html props for the div
-  const props = {
+  const htmlProps = {
     className: `react-sigma-search ${className ? className : ""}`,
     id,
     style,
   };
 
   return (
-    <div {...props}>
+    <div {...htmlProps}>
       <label htmlFor={inputId} style={{ display: "none" }}>
         Search a node
       </label>

@@ -53,6 +53,9 @@ export interface WorkerLayoutControlProps<T> {
   customStopLayout?: ReactNode;
 }
 
+/**
+ *@internal
+ */
 export function WorkerLayoutControl<T>({
   id,
   className,

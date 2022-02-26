@@ -13,6 +13,7 @@ type CameraOptions = Partial<AnimateOptions> & { factor?: number };
  * ```typescript
  * const {zoomIn, zoomOut, reset, goto, gotoNode } = useCamera();
  *```
+ *
  * @category Hook
  */
 export function useCamera(

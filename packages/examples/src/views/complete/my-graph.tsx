@@ -20,7 +20,7 @@ export const MyGraph: React.FC = () => {
   useEffect(() => {
     // Create the graph
     const graph = erdosRenyi(UndirectedGraph, { order: 100, probability: 0.1 });
-    graph.nodes().forEach(node => {
+    graph.nodes().forEach((node:string) => {
       graph.mergeNodeAttributes(node, {
         label: faker.name.findName(),
         size: faker.datatype.number({ min: 4, max: 20, precision: 1 }),

@@ -26,6 +26,7 @@
     "bootstrap": "^5.1.3",
     "eslint-config-react-app": "^7.0.0",
     "faker": "^5.5.3",
+    "graphology-generators": "^0.11.2",
     "jest-puppeteer": "^6.1.0",
     "node-sass": "^7.0.1",
     "react-error-boundary": "^3.1.4",

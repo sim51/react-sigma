@@ -27,17 +27,22 @@ export interface FullScreenControlProps {
 /**
  * The `FullScreenControl` create a UI button that allows the user to display the graph in fullscreen
  *
- * ```typescript
+ * ```jsx
  * <SigmaContainer>
  *   <ControlsContainer>
  *     <FullScreenControl />
  *   </ControlsContainer>
  * </SigmaContainer>
  * ```
+ * See [[FullScreenControlProps]] for more information.
  *
  * @category Component
  */
-export const FullScreenControl: React.FC<FullScreenControlProps> = ({ id, className, style }) => {
+export const FullScreenControl: React.FC<FullScreenControlProps> = ({
+  id,
+  className,
+  style,
+}: FullScreenControlProps) => {
   // Get Sigma
   const { isFullScreen, toggle } = useFullScreen();
 

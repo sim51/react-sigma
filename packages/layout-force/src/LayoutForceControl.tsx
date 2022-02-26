@@ -14,6 +14,11 @@ export type LayoutForceControlProps = Omit<
   settings?: ForceLayoutSupervisorParameters;
 };
 
+/**
+ * Component that display a button to start/stop the layout.
+ *
+ * @category Component
+ */
 export const LayoutForceControl: React.FC<LayoutForceControlProps> = (props: LayoutForceControlProps) => {
   const workerLayoutProps = { ...props, settings: props.settings || {}, layout: useWorkerLayoutForce };
   return <WorkerLayoutControl {...workerLayoutProps} />;

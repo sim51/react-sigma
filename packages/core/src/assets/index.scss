@@ -6,6 +6,7 @@ $container-position-margin: 5px;
   --sigma-controls-background-color: #fff;
   --sigma-controls-border-color: rgba(0, 0, 0, 0.2);
   --sigma-controls-color: #000;
+  --sigma-controls-zindex: 100;
 }
 
 @keyframes rotation {
@@ -61,8 +62,8 @@ div.react-sigma-v2 {
 
   .react-sigma-controls {
     position: absolute;
-    z-index: 1000;
-    border: 2px solid var(--sigma-controls-background-color);
+    z-index: var(--sigma-controls-zindex);
+    border: 2px solid var(--sigma-controls-border-color);
     border-radius: 4px;
     color: var(--sigma-controls-color);
     background-color: var(--sigma-controls-background-color);
