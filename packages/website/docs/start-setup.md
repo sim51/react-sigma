@@ -2,7 +2,7 @@
 
 1. Follow all the steps from the [installation page](start-installation.md)
 1. Importe the React Sigma style file in your application.
-   Example : `import "@react-sigma/core/lib/assets/index.scss"`
+   Example : `import "@react-sigma/core/lib/assets/index.css"`
 1. Create the following components into your app and check it displays correctly:
 
 ```tsx

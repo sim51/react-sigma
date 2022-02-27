@@ -1,5 +1,6 @@
 node_modules/
 lib/
+build/
 *.current.png
 *.diff.png
 tsconfig.tsbuildinfo

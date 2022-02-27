@@ -45,7 +45,7 @@ html[data-theme="dark"] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.react-sigma-v2 {
+.react-sigma {
   box-shadow: 0 0 8px var(--ifm-color-primary-darkest);
 }
 

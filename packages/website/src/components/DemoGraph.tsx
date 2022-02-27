@@ -1,47 +1,54 @@
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
 import CodeBlock from "@theme/CodeBlock";
+import BrowserOnly from "@docusaurus/BrowserOnly";
 
-import Graph from "graphology";
-import style from "@react-sigma/core/lib/assets/index.scss";
 import getNodeProgramImage from "sigma/rendering/webgl/programs/node.image";
-import jsonGraph from "../../static/demo/dataset.json";
-
-import {
-  SigmaContainer,
-  useLoadGraph,
-  ControlsContainer,
-  ZoomControl,
-  SearchControl,
-  FullScreenControl,
-} from "@react-sigma/core";
-import { LayoutForceAtlas2Control } from "@react-sigma/layout-forceatlas2";
 
 export const DemoGraph: FC<{}> = () => {
-  console.log(style);
-  const graph = Graph.from(jsonGraph);
   return (
-    <SigmaContainer
-      graph={graph}
-      style={{ height: "500px" }}
-      initialSettings={{
-        nodeProgramClasses: { image: getNodeProgramImage() },
-        defaultNodeType: "image",
-        defaultEdgeType: "arrow",
-        labelDensity: 0.07,
-        labelGridCellSize: 60,
-        labelRenderedSizeThreshold: 15,
-        labelFont: "Lato, sans-serif",
-        zIndex: true,
+    <BrowserOnly>
+      {() => {
+        //imports
+        const Graph = require("graphology");
+        const getNodeProgramImage = require("sigma/rendering/webgl/programs/node.image").default;
+        const ReactSigma = require("@react-sigma/core");
+        console.log(ReactSigma);
+        const { LayoutForceAtlas2Control } = require("@react-sigma/layout-forceatlas2");
+        const jsonGraph = require("../../static/demo/dataset.json");
+
+        const graph = Graph.from(jsonGraph);
+        return (
+          <ReactSigma.SigmaContainer
+            graph={graph}
+            style={{ height: "500px" }}
+            initialSettings={{
+              nodeProgramClasses: { image: getNodeProgramImage() },
+              defaultNodeType: "image",
+              defaultEdgeType: "arrow",
+              labelDensity: 0.07,
+              labelGridCellSize: 60,
+              labelRenderedSizeThreshold: 15,
+              labelFont: "Lato, sans-serif",
+              zIndex: true,
+            }}
+          >
+            <ReactSigma.ControlsContainer position={"bottom-right"}>
+              <ReactSigma.ZoomControl>
+                <>+</>
+                <>-</>
+                <>R</>
+              </ReactSigma.ZoomControl>
+              <ReactSigma.FullScreenControl>
+                <>FS</>
+                <>Exit</>
+              </ReactSigma.FullScreenControl>
+            </ReactSigma.ControlsContainer>
+            <ReactSigma.ControlsContainer position={"top-right"}>
+              <ReactSigma.SearchControl style={{ width: "200px" }} />
+            </ReactSigma.ControlsContainer>
+          </ReactSigma.SigmaContainer>
+        );
       }}
-    >
-      <ControlsContainer position={"bottom-right"}>
-        <ZoomControl />
-        <FullScreenControl />
-        <LayoutForceAtlas2Control />
-      </ControlsContainer>
-      <ControlsContainer position={"top-right"}>
-        <SearchControl style={{ width: "200px" }} />
-      </ControlsContainer>
-    </SigmaContainer>
+    </BrowserOnly>
   );
 };

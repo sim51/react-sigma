@@ -19,9 +19,12 @@
     "layout"
   ],
   "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
+  "typings": "./lib/",
+  "exports": {
+    ".": "./lib/index.js"
+  },
   "scripts": {
-    "clean": "rimraf lib/* tsconfig.tsbuildinfo",
+    "clean": "rimraf lib/*  tsconfig.tsbuildinfo",
     "lint": "esw . --ext .ts",
     "compile": "tsc",
     "build": "npm run clean && npm run lint && npm run compile",

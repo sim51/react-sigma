@@ -4,6 +4,7 @@
 
 ### Features
 
+- Rename of the project to `@react-sigma`
 - **Project structure :** mono-repo with multiple projects
 - Possibility to initialize the `SigmaContainer` with a graph
 - Adding all layouts that are available in graphology

@@ -22,9 +22,9 @@
   "scripts": {
     "clean": "npm run clean --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
-    "build": "npm run build --workspaces --if-present",
+    "build": "npm run build --workspace='@react-sigma/core' && npm run build --workspace='@react-sigma/layout-core' && npm run build --workspace='@react-sigma/layout-circlepack' && npm run build --workspace='@react-sigma/layout-circular' && npm run build --workspace='@react-sigma/layout-force' && npm run build --workspace='@react-sigma/layout-forceatlas2' && npm run build --workspace='@react-sigma/layout-noverlap' && npm run build --workspace='@react-sigma/layout-random' && npm run build --workspace='@react-sigma/examples' && npm run build --workspace='@react-sigma/website'",
     "test": "npm run test --workspaces --if-present",
-    "start": "concurrently -n core,examples,layout-circlepack,layout-circular,layout-core,layout-force,layout-forceatlas2,layout-noverlap,layout-random,website 'npm run start --workspace=@react-sigma/core' 'npm run start --workspace=@react-sigma/examples' 'npm run start --workspace=@react-sigma/layout-circlepack' 'npm run start --workspace=@react-sigma/layout-circular' 'npm run start --workspace=@react-sigma/layout-core' 'npm run start --workspace=@react-sigma/layout-force' 'npm run start --workspace=@react-sigma/layout-forceatlas2' 'npm run start --workspace=@react-sigma/layout-noverlap' 'npm run start --workspace=@react-sigma/layout-random' 'npm run start --workspace=@react-sigma/website'"
+    "start": "concurrently -n core,layout-core,layout-circlepack,layout-circular,layout-force,layout-forceatlas2,layout-noverlap,layout-random,examples,website 'npm run start --workspace=@react-sigma/core' 'npm run start --workspace=@react-sigma/layout-core' 'npm run start --workspace=@react-sigma/layout-circlepack' 'npm run start --workspace=@react-sigma/layout-circular' 'npm run start --workspace=@react-sigma/layout-force' 'npm run start --workspace=@react-sigma/layout-forceatlas2' 'npm run start --workspace=@react-sigma/layout-noverlap' 'npm run start --workspace=@react-sigma/layout-random' 'npm run start --workspace=@react-sigma/examples' 'npm run start --workspace=@react-sigma/website'"
   },
   "devDependencies": {
     "@types/lodash": "4.14.170",
@@ -38,8 +38,8 @@
   },
   "dependencies": {
     "concurrently": "^7.0.0",
-    "graphology-types": "^0.24.3",
     "graphology": "^0.24.1",
+    "graphology-types": "^0.24.3",
     "sigma": "^2.2.0",
     "tsc-watch": "^4.6.0"
   }

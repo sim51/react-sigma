@@ -18,15 +18,18 @@
     "graphology"
   ],
   "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
+  "typings": "./lib",
+  "exports": {
+    ".": "./lib"
+  },
   "scripts": {
-    "clean": "rimraf lib/* tsconfig.tsbuildinfo",
-    "assets": "copyfiles -u 1 ./src/assets/icons/** lib/",
+    "clean": "rimraf lib/*  tsconfig.tsbuildinfo",
+    "assets": "copyfiles -u 1 ./src/assets/* ./lib && copyfiles -u 1 ./src/assets/**/* ./lib",
     "lint": "esw . --ext .ts",
     "lintAndAssets": "npm run lint && npm run assets",
     "compile": "tsc",
     "build": "npm run clean && npm run lintAndAssets && npm run compile",
-    "start": "tsc-watch --build --noClear --onSuccess 'npm run lintAndAssets'"
+    "start": "tsc-watch --build --noClear --onSuccess 'npm run lintAndAssets"
   },
   "devDependencies": {
     "copyfiles": "^2.4.1"

@@ -3,10 +3,12 @@ import clsx from "clsx";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import BrowserOnly from "@docusaurus/BrowserOnly";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./index.module.css";
 import HomepageFeatures from "../components/HomepageFeatures";
 import { DemoGraph } from "../components/DemoGraph";
+import "@react-sigma/core/lib/assets/index.css";
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();

@@ -9,7 +9,7 @@
     "baseUrl": ".",
     "charset": "utf8",
     "declaration": true,
-    "declarationDir": "./lib/esm",
+    "declarationDir": "./lib",
     "diagnostics": false,
     "emitBOM": false,
     "emitDecoratorMetadata": false,
@@ -37,7 +37,7 @@
     "noImplicitUseStrict": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "outDir": "./lib/esm",
+    "outDir": "./lib",
     "paths": {
       "*": ["@types/*"]
     },

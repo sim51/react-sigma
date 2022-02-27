@@ -1,4 +1,4 @@
-import isEqual from "lodash/isEqual";
+import { isEqual } from "lodash";
 import { useCallback, useRef } from "react";
 import Graph from "graphology";
 
@@ -30,7 +30,6 @@ export type LayoutHook<T> = (
 
 /**
  * Factory for layout hook.
- *@internal
  */
 export function useLayoutFactory<T>(layout: GraphologyLayout<T>, defaultSettings: T): LayoutHook<T> {
   const hook: LayoutHook<T> = (parameter: T = defaultSettings) => {

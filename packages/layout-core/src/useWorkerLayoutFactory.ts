@@ -23,9 +23,6 @@ interface GraphologyWorkerLayoutConstructor<T> {
   new (graph: Graph, settings: T): GraphologyWorkerLayout;
 }
 
-/**
- *@internal
- */
 export function useWorkerLayoutFactory<T>(worker: GraphologyWorkerLayoutConstructor<T>): LayoutWorkerHook<T> {
   const hook: LayoutWorkerHook<T> = (parameter: T) => {
     const sigma = useSigma();
