@@ -17,9 +17,14 @@ export type LayoutForceAtlas2ControlProps = Omit<
 /**
  * @category Component
  */
-export const LayoutForceAtlas2Control: React.FC<LayoutForceAtlas2ControlProps> = (
-  props: LayoutForceAtlas2ControlProps,
-) => {
-  const workerLayoutProps = { ...props, settings: props.settings || {}, layout: useWorkerLayoutForceAtlas2 };
-  return <WorkerLayoutControl {...workerLayoutProps} />;
+export const LayoutForceAtlas2Control: React.FC<LayoutForceAtlas2ControlProps> = ({
+  id,
+  className,
+  style,
+  settings = {},
+  autoRunFor,
+  children,
+}) => {
+  const workerLayoutProps = { id, className, style, settings, autoRunFor, layout: useWorkerLayoutForceAtlas2 };
+  return <WorkerLayoutControl {...workerLayoutProps}>{children}</WorkerLayoutControl>;
 };

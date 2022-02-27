@@ -12,7 +12,7 @@ body,
   }
   main {
     margin-top: $header-height;
-    height: calc(100% - #{$header-height});
+    height: calc(100% - #{$header-height} - #{$footer-height});
   }
   footer {
     height: $footer-height;

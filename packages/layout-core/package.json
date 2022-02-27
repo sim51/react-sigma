@@ -20,11 +20,16 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "clean": "rimraf build/* tsconfig.tsbuildinfo",
+    "clean": "rimraf lib/* tsconfig.tsbuildinfo",
+    "assets": "copyfiles -u 1 ./src/assets/icons/** lib/",
     "lint": "esw . --ext .ts",
+    "lintAndAssets": "npm run lint && npm run assets",
     "compile": "tsc",
-    "build": "npm run clean && npm run lint && npm run compile",
-    "start": "tsc-watch --build --noClear --onSuccess 'npm run lint'"
+    "build": "npm run clean && npm run lintAndAssets && npm run compile",
+    "start": "tsc-watch --build --noClear --onSuccess 'npm run lintAndAssets'"
+  },
+  "devDependencies": {
+    "copyfiles": "^2.4.1"
   },
   "dependencies": {
     "@react-sigma/core": "^2.0.0"

@@ -17,11 +17,14 @@ export type LayoutNoverlapControlProps = Omit<
 /**
  * @category Component
  */
-export const LayoutNoverlapControl: React.FC<LayoutNoverlapControlProps> = (props: LayoutNoverlapControlProps) => {
-  const workerLayoutProps = {
-    ...props,
-    settings: props.settings || {},
-    layout: useWorkerLayoutNoverlap,
-  };
-  return <WorkerLayoutControl {...workerLayoutProps} />;
+export const LayoutNoverlapControl: React.FC<LayoutNoverlapControlProps> = ({
+  id,
+  className,
+  style,
+  settings = {},
+  autoRunFor,
+  children,
+}) => {
+  const workerLayoutProps = { id, className, style, settings, autoRunFor, layout: useWorkerLayoutNoverlap };
+  return <WorkerLayoutControl {...workerLayoutProps}>{children}</WorkerLayoutControl>;
 };

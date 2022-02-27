@@ -75,7 +75,7 @@ layoutForceAtlas2,]);
         )}
       </div>
       <div>
-        <div className="react-sigma-control-layout">
+        <div className="react-sigma-control">
           <button onClick={() => setOpened((e: boolean) => !e)}>
             <FaProjectDiagram />
           </button>
@@ -95,7 +95,8 @@ layoutForceAtlas2,]);
                 return (
                   <li key={name}>
                     <button
-                      style={{ fontWeight: layout === name ? "bold" : "normal" }}
+                      className="btn btn-link"
+                      style={{ fontWeight: layout === name ? "bold" : "normal", width:"100%" }}
                       onClick={() => {
                         setLayout(name);
                       }}

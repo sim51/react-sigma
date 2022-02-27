@@ -1,6 +1,8 @@
-import React, { ReactNode, useEffect, CSSProperties } from "react";
+import React, { useEffect, CSSProperties } from "react";
 
 import { useSigma } from "@react-sigma/core";
+import { ReactComponent as StartLayoutIcon } from "./assets/icons/play-solid.svg";
+import { ReactComponent as StopLayoutIcon } from "./assets/icons/stop-solid.svg";
 import { LayoutWorkerHook } from "./useWorkerLayoutFactory";
 
 /**
@@ -41,21 +43,21 @@ export interface WorkerLayoutControlProps<T> {
   autoRunFor?: number;
 
   /**
-   * React component for display inner Start layout button.
-   * This allows you to customize the render of the button.
+   * It's possible to customize the button, by passing to JSX Element.
+   * First one is for the "start layout", and the second to "stop layout".
+   * Example :
+   * ```jsx
+   * <FullScreenControl>
+   *   <>
+   *     <BiFullscreen />
+   *     <BiExitFullscreen />
+   *   </>
+   * </FullScreenControl>
+   * ```
    */
-  customStartLayout?: ReactNode;
-
-  /**
-   * React component for display inner Stop layout button.
-   * This allows you to customize the render of the button.
-   */
-  customStopLayout?: ReactNode;
+  children?: [JSX.Element, JSX.Element];
 }
 
-/**
- *@internal
- */
 export function WorkerLayoutControl<T>({
   id,
   className,
@@ -63,19 +65,15 @@ export function WorkerLayoutControl<T>({
   layout,
   settings,
   autoRunFor,
-  customStartLayout,
-  customStopLayout,
+  children,
 }: WorkerLayoutControlProps<T>) {
   // Get Sigma
   const sigma = useSigma();
   // Get layout
   const { stop, start, isRunning } = layout(settings);
-  // Compute the class name for the button. `Default` means display the default SGV icon
-  const buttonClass =
-    (isRunning === true && !customStopLayout) || (isRunning === false && !customStartLayout) ? "default" : "";
   // Common html props for the div
   const props = {
-    className: `react-sigma-control-layout ${isRunning === true ? "running" : "stopped"} ${className ? className : ""}`,
+    className: `react-sigma-control ${className || ""}`,
     id,
     style,
   };
@@ -112,11 +110,13 @@ export function WorkerLayoutControl<T>({
   return (
     <div {...props}>
       <button
-        className={buttonClass}
         onClick={() => (isRunning ? stop() : start())}
         title={isRunning ? "Stop the layout animation" : "Start the layout animation"}
       >
-        {isRunning === true ? customStopLayout : customStartLayout}
+        {children && !isRunning && children[0]}
+        {children && isRunning && children[1]}
+        {!children && !isRunning && <StartLayoutIcon style={{ width: "1em" }} />}
+        {!children && isRunning && <StopLayoutIcon style={{ width: "1em" }} />}
       </button>
     </div>
   );

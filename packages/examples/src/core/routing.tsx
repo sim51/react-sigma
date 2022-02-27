@@ -5,6 +5,7 @@ import { HomeView } from "../views/home";
 import { CompleteView } from "../views/complete";
 import { EventsView } from "../views/events";
 import { MultipleView } from "../views/multiple";
+import { CustomButtonsView } from "../views/custom-buttons";
 
 export const Routing: FC = () => {
   return (
@@ -13,6 +14,7 @@ export const Routing: FC = () => {
       <Route path="/complete" element={<CompleteView />} />
       <Route path="/events" element={<EventsView />} />
       <Route path="/multiple" element={<MultipleView />} />
+      <Route path="/custom-buttons" element={<CustomButtonsView />} />
     </Routes>
   );
 };

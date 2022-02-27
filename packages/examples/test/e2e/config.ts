@@ -14,4 +14,5 @@ export type Tests = Array<{
 export const tests: Tests = [
   { name: "complete", url: "http://localhost:3000/complete?seed=foo&faTime=-1", waitFor: 100, failureThreshold: 0.0001 },
   { name: "multiple", url: "http://localhost:3000/multiple?seed=foo&faTime=-1", waitFor: 100, failureThreshold: 0.0001 },
+  { name: "custom-buttons", url: "http://localhost:3000/custom-buttons?seed=foo&faTime=-1", waitFor: 100, failureThreshold: 0.0001 },
 ];

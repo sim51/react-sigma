@@ -1,5 +1,8 @@
 import React, { CSSProperties } from "react";
 
+import { ReactComponent as ZoomInIcon } from "../../assets/icons/plus-solid.svg";
+import { ReactComponent as ZoomOutIcon } from "../../assets/icons/minus-solid.svg";
+import { ReactComponent as ZoomResetIcon } from "../../assets/icons/dot-circle-regular.svg";
 import { useCamera } from "../../hooks/useCamera";
 
 /**
@@ -20,6 +23,21 @@ export interface ZoomControlProps {
    * Number of ms for the zoom animation (default is 200ms)
    */
   animationDuration?: number;
+  /**
+   * It's possible to customize the button, by passing to JSX Element.
+   * First one is for the "zoom in", second for "zoom out" and third for "view whole graph".
+   * Example :
+   * ```jsx
+   * <ZoomControl>
+   *   <>
+   *     <BsZoomIn />
+   *     <BsZoomOut />
+   *     <BiReset />
+   *   </>
+   * </FullScreenControl>
+   * ```
+   */
+  children?: [JSX.Element, JSX.Element, JSX.Element];
 }
 
 /**
@@ -43,29 +61,31 @@ export const ZoomControl: React.FC<ZoomControlProps> = ({
   className,
   style,
   animationDuration = 200,
+  children,
 }: ZoomControlProps) => {
   const { zoomIn, zoomOut, reset } = useCamera({ duration: animationDuration, factor: 1.5 });
 
   // Common html props for the div wrapper
   const htmlProps = {
     style,
+    className: `react-sigma-control ${className || ""}`,
   };
 
   return (
     <>
-      <div {...htmlProps} className={`react-sigma-control-zoom-in ${className ? className : ""}`}>
+      <div {...htmlProps}>
         <button onClick={() => zoomIn()} title="Zoom In">
-          Zoom In
+          {children ? children[0] : <ZoomInIcon style={{ width: "1em" }} />}
         </button>
       </div>
-      <div {...htmlProps} className={`react-sigma-control-zoom-out ${className ? className : ""}`}>
+      <div {...htmlProps}>
         <button onClick={() => zoomOut()} title="Zoom Out">
-          Zoom Out
+          {children ? children[1] : <ZoomOutIcon style={{ width: "1em" }} />}
         </button>
       </div>
-      <div {...htmlProps} className={`react-sigma-control-zoom-center ${className ? className : ""}`}>
+      <div {...htmlProps}>
         <button onClick={() => reset()} title="See whole graph">
-          See whole graph
+          {children ? children[2] : <ZoomResetIcon style={{ width: "1em" }} />}
         </button>
       </div>
     </>

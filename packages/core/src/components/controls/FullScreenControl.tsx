@@ -1,7 +1,7 @@
 import React, { CSSProperties } from "react";
 
-import FsEnterIcon from "../../assets/icons/expand-solid.svg";
-// import { ReactComponent as FsExitIcon } from "../../assets/icons/plus-solid.svg";
+import { ReactComponent as EnterIcon } from "../../assets/icons/expand-solid.svg";
+import { ReactComponent as ExitIcon} from "../../assets/icons/compress-solid.svg";
 import { useFullScreen } from "../../hooks/useFullScreen";
 
 /**
@@ -22,6 +22,21 @@ export interface FullScreenControlProps {
    * HTML CSS style
    */
   style?: CSSProperties;
+
+  /**
+   * It's possible to customize the button, by passing to JSX Element.
+   * First one is for the "enter fullscreen", and the second to "exit fullscreen".
+   * Example :
+   * ```jsx
+   * <FullScreenControl>
+   *   <>
+   *     <BiFullscreen />
+   *     <BiExitFullscreen />
+   *   </>
+   * </FullScreenControl>
+   * ```
+   */
+  children?: [JSX.Element, JSX.Element];
 }
 
 /**
@@ -42,13 +57,14 @@ export const FullScreenControl: React.FC<FullScreenControlProps> = ({
   id,
   className,
   style,
+  children,
 }: FullScreenControlProps) => {
   // Get Sigma
   const { isFullScreen, toggle } = useFullScreen();
 
   // Common html props for the div
-  const props = {
-    className: `react-sigma-control-${isFullScreen ? "normalscreen" : "fullscreen"} ${className ? className : ""}`,
+  const htmlProps = {
+    className: `react-sigma-control ${className || ""}`,
     id,
     style,
   };
@@ -56,9 +72,12 @@ export const FullScreenControl: React.FC<FullScreenControlProps> = ({
   if (!document.fullscreenEnabled) return null;
 
   return (
-    <div {...props}>
-      <button onClick={toggle} title={isFullScreen ? "Exit fullscreen" : "Fullscreen"}>
-        <img src={FsEnterIcon} alt="icon" />
+    <div {...htmlProps}>
+      <button onClick={toggle} title={isFullScreen ? "Exit fullscreen" : "Enter fullscreen"}>
+        {children && !isFullScreen && children[0]}
+        {children && isFullScreen && children[1]}
+        {!children && !isFullScreen && <EnterIcon style={{width:"1em"}}/>}
+        {!children && isFullScreen && <ExitIcon style={{width:"1em"}}/>}
       </button>
     </div>
   );

@@ -19,7 +19,14 @@ export type LayoutForceControlProps = Omit<
  *
  * @category Component
  */
-export const LayoutForceControl: React.FC<LayoutForceControlProps> = (props: LayoutForceControlProps) => {
-  const workerLayoutProps = { ...props, settings: props.settings || {}, layout: useWorkerLayoutForce };
-  return <WorkerLayoutControl {...workerLayoutProps} />;
+export const LayoutForceControl: React.FC<LayoutForceControlProps> = ({
+  id,
+  className,
+  style,
+  settings = {},
+  autoRunFor,
+  children,
+}) => {
+  const workerLayoutProps = { id, className, style, settings, autoRunFor, layout: useWorkerLayoutForce };
+  return <WorkerLayoutControl {...workerLayoutProps}>{children}</WorkerLayoutControl>;
 };

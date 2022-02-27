@@ -20,7 +20,7 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "clean": "rimraf build/* tsconfig.tsbuildinfo",
+    "clean": "rimraf lib/* tsconfig.tsbuildinfo",
     "lint": "esw . --ext .ts",
     "assets": "copyfiles -u 1 ./src/assets/** lib/",
     "lintAndAssets": "npm run lint && npm run assets",

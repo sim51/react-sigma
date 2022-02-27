@@ -21,6 +21,11 @@ export const HomeView: FC = () => {
             Multiples
           </Link>
         </li>
+        <li>
+          <Link to="/custom-buttons" title="Custom Buttons">
+            Custom Buttons
+          </Link>
+        </li>
       </ul>
     </div>
   );

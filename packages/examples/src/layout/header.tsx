@@ -6,7 +6,7 @@ export const Header: FC = () => {
     <header className="header fixed-top ">
       <nav className="navbar container-fluid pt-0 pb-0">
         <Link to="/" title="Home" className="navbar-brand p-0">
-          @react-sigma
+          <img style={{maxHeight:"30px"}} src="./logo.svg" alt="React Sigma logo" />
         </Link>
       </nav>
     </header>
