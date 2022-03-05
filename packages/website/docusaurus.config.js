@@ -53,10 +53,10 @@ const config = {
             label: "Getting Started",
             to: "docs/start-introduction",
           },
-          {
-            label: "Example",
-            to: "docs/example",
-          },
+          // {
+          //   label: "Example",
+          //   to: "docs/example",
+          // },
           {
             label: "Docs",
             to: "docs/api/core",
@@ -85,10 +85,10 @@ const config = {
                 label: "Getting Started",
                 to: "docs/start-introduction",
               },
-              {
-                label: "Example",
-                to: "docs/example",
-              },
+              // {
+              //   label: "Example",
+              //   to: "docs/example",
+              // },
               {
                 label: "Docs",
                 to: "docs/api",
