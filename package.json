@@ -21,26 +21,29 @@
   ],
   "scripts": {
     "clean": "npm run clean --workspaces --if-present",
-    "lint": "npm run lint --workspaces --if-present",
     "build": "npm run build --workspace='@react-sigma/core' && npm run build --workspace='@react-sigma/layout-core' && npm run build --workspace='@react-sigma/layout-circlepack' && npm run build --workspace='@react-sigma/layout-circular' && npm run build --workspace='@react-sigma/layout-force' && npm run build --workspace='@react-sigma/layout-forceatlas2' && npm run build --workspace='@react-sigma/layout-noverlap' && npm run build --workspace='@react-sigma/layout-random' && npm run build --workspace='@react-sigma/examples' && npm run build --workspace='@react-sigma/website'",
     "test": "npm run test --workspaces --if-present",
     "start": "concurrently -n core,layout-core,layout-circlepack,layout-circular,layout-force,layout-forceatlas2,layout-noverlap,layout-random,examples,website 'npm run start --workspace=@react-sigma/core' 'npm run start --workspace=@react-sigma/layout-core' 'npm run start --workspace=@react-sigma/layout-circlepack' 'npm run start --workspace=@react-sigma/layout-circular' 'npm run start --workspace=@react-sigma/layout-force' 'npm run start --workspace=@react-sigma/layout-forceatlas2' 'npm run start --workspace=@react-sigma/layout-noverlap' 'npm run start --workspace=@react-sigma/layout-random' 'npm run start --workspace=@react-sigma/examples' 'npm run start --workspace=@react-sigma/website'"
   },
   "devDependencies": {
+    "@rbnlffl/rollup-plugin-eslint": "^3.0.0",
+    "@rollup/plugin-typescript": "^8.3.1",
+    "@rollup/plugin-url": "^6.1.0",
+    "@svgr/rollup": "^6.2.1",
     "@types/lodash": "4.14.170",
-    "@typescript-eslint/eslint-plugin": "^4.22.0",
-    "@typescript-eslint/parser": "^4.22.0",
-    "eslint": "^7.24.0",
-    "eslint-watch": "^7.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.12.1",
+    "@typescript-eslint/parser": "^5.12.1",
+    "concurrently": "^7.0.0",
     "rimraf": "^3.0.2",
+    "rollup": "^2.68.0",
+    "rollup-plugin-import-css": "^3.0.2",
+    "rollup-plugin-terser": "^7.0.2",
     "tslib": "^2.3.1",
     "typescript": "^4.5.5"
   },
   "dependencies": {
-    "concurrently": "^7.0.0",
     "graphology": "^0.24.1",
     "graphology-types": "^0.24.3",
-    "sigma": "^2.2.0",
-    "tsc-watch": "^4.6.0"
+    "sigma": "^2.2.0"
   }
 }

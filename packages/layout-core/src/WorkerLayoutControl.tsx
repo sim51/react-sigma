@@ -87,7 +87,7 @@ export function WorkerLayoutControl<T>({
     }
 
     // we run the algo
-    let timeout: number | any = null;
+    let timeout: number | null = null;
     if (autoRunFor && autoRunFor > -1 && sigma.getGraph().order > 0) {
       start();
       // set a timeout to stop it

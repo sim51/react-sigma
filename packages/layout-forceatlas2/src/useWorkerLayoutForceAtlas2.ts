@@ -6,9 +6,7 @@ import { useWorkerLayoutFactory } from "@react-sigma/layout-core";
  * React hook that helps you to manage circle layout.
  *
  * ```typescript
- * const {stop, start} = useLayoutCircular(...);
- * // import forceAtlas2 from "graphology-layout-forceatlas2";
- * //       settings.current ? settings.current : { settings: forceAtlas2.inferSettings(sigma.getGraph()) },
+ * const {stop, start} = useWorkerLayoutForceAtlas2(...);
  *```
  * @category Hook
  */

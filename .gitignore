@@ -6,3 +6,4 @@ build/
 tsconfig.tsbuildinfo
 packages/website/docs/api
 .docusaurus
+.rollup.cache

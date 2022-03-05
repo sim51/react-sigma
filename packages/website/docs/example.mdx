@@ -1,0 +1,65 @@
+---
+hide_table_of_contents: true
+---
+
+# Example
+
+You can test the library on this page, by modifying the code below.
+
+```jsx live
+function MySigmaGraph(props) {
+  const RED = "#FA4F40";
+  const BLUE = "#727EE0";
+  const GREEN = "#5DB346";
+
+  // Create a sample graph
+  const graph = new Graph();
+  graph.addNode("John", { size: 15, label: "John", color: RED, x: Math.random(), y: Math.random() });
+  graph.addNode("Mary", { size: 15, label: "Mary", color: RED, x: Math.random(), y: Math.random() });
+  graph.addNode("Suzan", { size: 15, label: "Suzan", color: RED, x: Math.random(), y: Math.random() });
+  graph.addNode("Nantes", { size: 15, label: "Nantes", color: BLUE, x: Math.random(), y: Math.random() });
+  graph.addNode("New-York", { size: 15, label: "New-York", color: BLUE, x: Math.random(), y: Math.random() });
+  graph.addNode("Sushis", { size: 7, label: "Sushis", color: GREEN, x: Math.random(), y: Math.random() });
+  graph.addNode("Falafels", { size: 7, label: "Falafels", color: GREEN, x: Math.random(), y: Math.random() });
+  graph.addNode("Kouign Amann", { size: 7, label: "Kouign Amann", color: GREEN, x: Math.random(), y: Math.random() });
+
+  graph.addEdge("John", "Mary", { label: "works with", size: 5 });
+  graph.addEdge("Mary", "Suzan", { label: "works with", size: 5 });
+  graph.addEdge("Mary", "Nantes", { label: "lives in", size: 5 });
+  graph.addEdge("John", "New-York", { label: "lives in", size: 5 });
+  graph.addEdge("Suzan", "New-York", { label: "lives in", size: 5 });
+  graph.addEdge("John", "Falafels", { label: "eats", size: 5 });
+  graph.addEdge("Mary", "Sushis", { label: "eats", size: 5 });
+  graph.addEdge("Suzan", "Kouign Amann", { label: "eats", size: 5 });
+
+  return (
+    <SigmaContainer graph={graph} style={{ height: "500px" }}>
+      <ControlsContainer position={"bottom-right"}>
+        <ZoomControl />
+        <FullScreenControl />
+        <LayoutForceAtlas2Control />
+      </ControlsContainer>
+      <ControlsContainer position={"top-right"}>
+        <SearchControl style={{ width: "200px" }} />
+      </ControlsContainer>
+    </SigmaContainer>
+  );
+}
+```
+
+All those **components** & **hooks** are available inside the scope of this example :
+
+```typescript
+import Graph from "graphology";
+import { SigmaContainer, ControlsContainer, ZoomControl, SearchControl, FullScreenControl } from "@react-sigma/core";
+import { useLayoutCircular } from "@react-sigma/layout-circular";
+import { useLayoutCirclepack } from "@react-sigma/layout-circlepack";
+import { useLayoutRandom } from "@react-sigma/layout-random";
+import { useLayoutNoverlap, useWorkerLayoutNoverlap, LayoutNoverlapControl } from "@react-sigma/layout-noverlap";
+import { useLayoutForce, useWorkerLayoutForce, LayoutForceControl } from "@react-sigma/layout-force";
+import {
+  useLayoutForceAtlas2,
+  useWorkerLayoutForceAtlas2,
+  LayoutForceAtlas2Control,
+} from "@react-sigma/layout-forceatlas2";
+```
