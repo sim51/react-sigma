@@ -64,9 +64,11 @@
     ]
   },
   "devDependencies": {
+    "@types/wait-on": "^5.3.1",
     "pixelmatch": "^5.2.1",
     "pngjs": "^6.0.0",
     "puppeteer": "^13.3.2",
-    "ts-node": "^10.5.0"
+    "ts-node": "^10.5.0",
+    "wait-on": "^6.0.1"
   }
 }

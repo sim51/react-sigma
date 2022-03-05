@@ -1,11 +1,16 @@
 import assert from "assert";
 import * as path from "path";
+import waitOn from "wait-on";
 import { imageDiff, takeScreenshots } from "./utils";
 import { tests } from "./config";
 
-jest.setTimeout(5 * 60 * 1000);
 describe("Compare screenshots", () => {
   beforeAll(async () => {
+    await waitOn({
+      resources: [`http://localhost:3000`],
+      interval: 1000,
+      timeout: 120000,
+    });
     // taking screenshots
     await takeScreenshots(tests, path.resolve(`./test/e2e/screenshots`), "current");
   });
