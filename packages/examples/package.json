@@ -42,7 +42,7 @@
     "test:e2e:generate": "node --require ts-node/register ./test/e2e/generate.ts",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "npm run test:e2e && react-scripts test",
+    "test": "npm run test:e2e",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

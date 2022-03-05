@@ -3,16 +3,15 @@ import * as path from "path";
 import { imageDiff, takeScreenshots } from "./utils";
 import { tests } from "./config";
 
-
-describe("Compare screenshots",  () => {
-
+jest.setTimeout(5 * 60 * 1000);
+describe("Compare screenshots", () => {
   beforeAll(async () => {
     // taking screenshots
     await takeScreenshots(tests, path.resolve(`./test/e2e/screenshots`), "current");
   });
 
   // Compare screenshots with reference
-  tests.forEach(test => {
+  tests.forEach((test) => {
     it(`Screenshots for "${test.name}" should be the same`, () => {
       const result = imageDiff(
         path.resolve(`./test/e2e/screenshots/${test.name}.valid.png`),
@@ -27,5 +26,4 @@ describe("Compare screenshots",  () => {
       );
     });
   });
-  
 });
