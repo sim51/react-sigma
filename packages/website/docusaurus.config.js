@@ -46,12 +46,12 @@ const config = {
             to: "docs/start-introduction",
           },
           {
-            label: "Example",
-            to: "docs/example",
+            label: "API",
+            to: "docs/api/core",
           },
           {
-            label: "Docs",
-            to: "docs/api/core",
+            label: "Example",
+            to: "docs/example",
           },
           {
             type: "doc",
@@ -78,12 +78,12 @@ const config = {
                 to: "docs/start-introduction",
               },
               {
-                label: "Example",
-                to: "docs/example",
+                label: "API",
+                to: "docs/api",
               },
               {
-                label: "Docs",
-                to: "docs/api",
+                label: "Example",
+                to: "docs/example",
               },
             ],
           },
