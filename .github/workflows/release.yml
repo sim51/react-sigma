@@ -21,8 +21,8 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: NPM Publish
-        run: npm publish
+      - name: Publish 🚀
+        run: npm run lerna:publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
