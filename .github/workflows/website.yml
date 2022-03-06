@@ -13,7 +13,6 @@ jobs:
       - name: Install and Build
         run: |
           npm install
-          cd packages/website
           npm run build
 
       - name: Deploy 🚀
