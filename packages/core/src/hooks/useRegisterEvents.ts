@@ -127,13 +127,13 @@ export function useRegisterEvents(): (eventHandlers: Partial<EventHandlers>) => 
         for (event in eventHandlers) {
           const eventHandler = eventHandlers[event] as (...args: unknown[]) => void;
           if (sigmaEvents.includes(event)) {
-            sigma.removeListener(event, eventHandler);
+            sigma.removeListener(event as any, eventHandler);
           }
           if (mouseEvents.includes(event)) {
-            sigma.getMouseCaptor().removeListener(event, eventHandler);
+            sigma.getMouseCaptor().removeListener(event as any, eventHandler);
           }
           if (touchEvents.includes(event)) {
-            sigma.getTouchCaptor().removeListener(event, eventHandler);
+            sigma.getTouchCaptor().removeListener(event as any, eventHandler);
           }
           if (cameraEvents.includes(event)) {
             // For now there is only one event on the camera
