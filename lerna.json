@@ -1,7 +1,5 @@
 {
   "version": "2.0.0",
   "private": true,
-  "packages": [
-    "packages/*"
-  ]
+  "packages": ["packages/*"]
 }

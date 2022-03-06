@@ -28,7 +28,7 @@
     "lerna:changed": "lerna changed",
     "lerna:diff": "lerna diff",
     "lerna:ls": "lerna ls",
-    "lerna:publish": "lerna publish"
+    "lerna:publish": "lerna publish --no-private"
   },
   "devDependencies": {
     "@rbnlffl/rollup-plugin-eslint": "^3.0.0",
