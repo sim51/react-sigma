@@ -1,7 +1,6 @@
 {
   "name": "@react-sigma/root",
   "version": "2.0.0",
-  "private": true,
   "description": "React Sigma",
   "author": "Benoit Simard",
   "license": "MIT",
