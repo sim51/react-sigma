@@ -99,6 +99,6 @@ import { LayoutForceAtlas2Control } from "@react-sigma/layout-forceatlas2";
 
 #### Available layouts
 
-- [layout-forceatlas2](/docs/api/layout-forceatlas2) :
-- [layout-force](/docs/api/layout-force) :
-- [layout-noverlap](/docs/api/layout-noverlap) :
+- [layout-forceatlas2](/docs/api/layout-forceatlas2)
+- [layout-force](/docs/api/layout-force)
+- [layout-noverlap](/docs/api/layout-noverlap)

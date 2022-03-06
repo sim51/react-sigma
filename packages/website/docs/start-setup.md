@@ -2,13 +2,13 @@
 
 1. Follow all the steps from the [installation page](start-installation.md)
 1. Importe the React Sigma style file in your application.
-   Example : `import "@react-sigma/core/lib/assets/index.css"`
+   Example : `import "@react-sigma/core/lib/react-sigma.min.css"`
 1. Create the following components into your app and check it displays correctly:
 
 ```tsx
 import Graph from "graphology";
 import { SigmaContainer, useLoadGraph } from "@react-sigma/core";
-import "@react-sigma/core/lib/assets/index.scss";
+import "@react-sigma/core/lib/react-sigma.min.css";
 
 export const LoadGraph = () => {
   const graph = new Graph();
@@ -42,7 +42,7 @@ In this scenario you must control the react lifecycle of its parent component, t
 ```tsx
 import Graph from "graphology";
 import { SigmaContainer, useLoadGraph } from "@react-sigma/core";
-import "@react-sigma/core/lib/assets/index.scss";
+import "@react-sigma/core/lib/react-sigma.min.css";
 
 export const DisplayGraph = () => {
   const graph = new Graph();
