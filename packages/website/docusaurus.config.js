@@ -9,12 +9,12 @@ const config = {
   title: "React Sigma",
   tagline: "A list of react components to display graph with sigma.js",
   url: "https://sim51.github.io",
-  baseUrl: "/react-sigma-v2/",
+  baseUrl: "/react-sigma/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/logo.svg",
   organizationName: "sim51", // Usually your GitHub org/user name.
-  projectName: "react-sigma-v2", // Usually your repo name.
+  projectName: "react-sigma", // Usually your repo name.
   presets: [
     [
       "classic",
@@ -23,7 +23,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
-          editUrl: "https://github.com/sim51/react-sigma-v1/main/packages/website/",
+          editUrl: "https://github.com/sim51/react-sigma/main/packages/website/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -31,7 +31,6 @@ const config = {
       }),
     ],
   ],
-  themes: ["@docusaurus/theme-live-codeblock"],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -62,7 +61,7 @@ const config = {
             position: "right",
           },
           {
-            href: "https://github.com/sim51/react-sigma-v2",
+            href: "https://github.com/sim51/react-sigma",
             label: "GitHub",
             position: "right",
           },
@@ -110,7 +109,7 @@ const config = {
               },
               {
                 label: "GitHub",
-                href: "https://github.com/sim51/react-sigma-v2",
+                href: "https://github.com/sim51/react-sigma",
               },
               {
                 label: "Sigma.js",
