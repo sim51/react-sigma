@@ -1,5 +1,6 @@
 {
   "name": "@react-sigma/layout-circlepack",
+  "private": false,
   "version": "2.0.0",
   "description": "React Sigma - Layout circlepack",
   "author": "Benoit Simard",
@@ -29,6 +30,10 @@
     "compile": "rollup -c",
     "build": "npm run clean && npm run compile",
     "start": "rollup -c -w"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
     "@react-sigma/layout-core": "^2.0.0"

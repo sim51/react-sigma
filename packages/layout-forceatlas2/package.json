@@ -1,6 +1,7 @@
 {
   "name": "@react-sigma/layout-forceatlas2",
   "version": "2.0.0",
+  "private": false,
   "description": "React Sigma - Layout Force Atlas 2",
   "author": "Benoit Simard",
   "license": "MIT",
@@ -28,6 +29,10 @@
     "compile": "rollup -c",
     "build": "npm run clean && npm run compile",
     "start": "rollup -c -w"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
     "@react-sigma/layout-core": "^2.0.0"

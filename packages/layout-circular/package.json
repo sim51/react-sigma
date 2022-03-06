@@ -1,6 +1,7 @@
 {
   "name": "@react-sigma/layout-circular",
   "version": "2.0.0",
+  "private": false,
   "description": "React Sigma - Layout circular",
   "author": "Benoit Simard",
   "license": "MIT",
@@ -22,6 +23,10 @@
   "typings": "./lib/types",
   "exports": {
     ".": "./lib/react-sigma_layout-circular.esm.min.js"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "clean": "rimraf lib/* tsconfig.tsbuildinfo .rollup.cache",

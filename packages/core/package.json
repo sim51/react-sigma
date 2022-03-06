@@ -1,6 +1,7 @@
 {
   "name": "@react-sigma/core",
   "version": "2.0.0",
+  "private": false,
   "description": "React Sigma",
   "author": "Benoit Simard",
   "license": "MIT",
@@ -29,6 +30,10 @@
     "compile": "rollup -c",
     "build": "npm run clean && npm run compile",
     "start": "rollup -c -w"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
     "@types/node": "^16.11.25",
