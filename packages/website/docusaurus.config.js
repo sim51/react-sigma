@@ -35,13 +35,6 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      liveCodeBlock: {
-        /**
-         * The position of the live playground, above or under the editor
-         * Possible values: "top" | "bottom"
-         */
-        playgroundPosition: "bottom",
-      },
       navbar: {
         title: "React Sigma",
         logo: {
@@ -53,10 +46,10 @@ const config = {
             label: "Getting Started",
             to: "docs/start-introduction",
           },
-          // {
-          //   label: "Example",
-          //   to: "docs/example",
-          // },
+          {
+            label: "Example",
+            to: "docs/example",
+          },
           {
             label: "Docs",
             to: "docs/api/core",
@@ -85,10 +78,10 @@ const config = {
                 label: "Getting Started",
                 to: "docs/start-introduction",
               },
-              // {
-              //   label: "Example",
-              //   to: "docs/example",
-              // },
+              {
+                label: "Example",
+                to: "docs/example",
+              },
               {
                 label: "Docs",
                 to: "docs/api",
@@ -270,6 +263,25 @@ const config = {
         },
       },
     ],
+    function (context, options) {
+      return {
+        name: "esm-docusaurus-plugin",
+        configureWebpack(config, isServer, utils) {
+          return {
+            module: {
+              rules: [
+                {
+                  test: /\.m?js$/,
+                  resolve: {
+                    fullySpecified: false,
+                  },
+                },
+              ],
+            },
+          };
+        },
+      };
+    },
   ],
 };
 

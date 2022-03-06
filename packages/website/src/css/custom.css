@@ -52,3 +52,18 @@ html[data-theme="dark"] .docusaurus-highlight-code-line {
 footer {
   margin-top: 50px;
 }
+
+.react-live {
+  box-shadow: 0 0 8px var(--ifm-color-primary-darkest);
+  margin: 5px;
+}
+.react-live.row .col {
+  padding: 0;
+}
+.react-live .react-sigma {
+  box-shadow: none;
+}
+
+.react-live pre.prism-code {
+  background-color: var(--ifm-color-gray-900);
+}

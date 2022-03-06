@@ -8,6 +8,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./index.module.css";
 import HomepageFeatures from "../components/HomepageFeatures";
 import { DemoGraph } from "../components/DemoGraph";
+import { LiveExample } from "../components/LiveExample";
 import "@react-sigma/core/lib/react-sigma.min.css";
 
 function HomepageHeader() {
