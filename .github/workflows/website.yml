@@ -1,7 +1,8 @@
 name: deploy-website
 on:
   push:
-    branches: -main
+    branches:
+      - main
 jobs:
   deploy-website:
     runs-on: ubuntu-latest
