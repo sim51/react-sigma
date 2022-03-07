@@ -34,7 +34,7 @@ npm install @react-sigma/core sigma graphology
 Yarn automatically installs peer depdencies, so you can install React Sigma with :
 
 ```bash
-yarn install @react-sigma/core
+yarn add @react-sigma/core
 ```
 
 ## Typescript
