@@ -5,11 +5,11 @@
   "description": "React Sigma - Layout core",
   "author": "Benoit Simard",
   "license": "MIT",
-  "homepage": "https://sim51.github.io/react-sigma-v2",
-  "bugs": "https://github.com/sim51/react-sigma-v2/issues",
+  "homepage": "https://sim51.github.io/react-sigma",
+  "bugs": "https://github.com/sim51/react-sigma/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sim51/react-sigma-v2.git"
+    "url": "https://github.com/sim51/react-sigma.git"
   },
   "keywords": [
     "sigma",

@@ -1,5 +1,15 @@
 # Changelog
 
+## Version 2.0.2
+
+### Fixes
+
+- Fix repository link in `packages.json`
+
+## Version 2.0.1
+
+- Adding README.md on modules
+
 ## Version 2.0.0
 
 ### Features

@@ -24,11 +24,11 @@ To fix that, you have to check that you are on client side, and then do a dynami
 const isBrowser = () => typeof window !== "undefined";
 if (isBrowser) {
   const SigmaContainer = dynamic(
-    import("react-sigma-v2").then(mod => mod.SigmaContainer),
+    import("@react-sigma/core").then((mod) => mod.SigmaContainer),
     { ssr: false },
   );
   const MyGraph = dynamic(
-    import("../components/graph").then(mod => mod.NetworkGraph),
+    import("../components/graph").then((mod) => mod.NetworkGraph),
     { ssr: false },
   );
   return (
