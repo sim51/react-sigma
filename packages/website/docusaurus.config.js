@@ -23,7 +23,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
-          editUrl: "https://github.com/sim51/react-sigma/main/packages/website/",
+          editUrl: "https://github.com/sim51/react-sigma/tree/main/packages/website/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
