@@ -3,9 +3,7 @@
 1. Follow all the steps from the [installation page](start-installation.md)
 2. Import the React Sigma style file in your application.
    Depending on your React app setup, the way to import a CSS file might differ.
-   Here is an example with "create react app" setup :
-
-`import "@react-sigma/core/lib/react-sigma.min.css"`
+   Here is an example with "create react app" setup : `import "@react-sigma/core/lib/react-sigma.min.css"`
 
 3. Create the following components into your app and check it displays correctly:
 
