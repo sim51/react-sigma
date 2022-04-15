@@ -18,8 +18,8 @@ export const LoadGraph = () => {
 
   useEffect(() => {
     const graph = new Graph();
-    graph.addNode("first", { size: 15, label: "My first node", color: "#FA4F40" });
-    useLoadGraph(graph);
+    graph.addNode("first", { x: 0, y: 0, size: 15, label: "My first node", color: "#FA4F40" });
+    loadGraph(graph);
   }, [loadGraph]);
 
   return null;
@@ -57,7 +57,7 @@ import "@react-sigma/core/lib/react-sigma.min.css";
 
 export const DisplayGraph = () => {
   const graph = new Graph();
-  graph.addNode("first", { size: 15, label: "My first node", color: "#FA4F40" });
+  graph.addNode("first", { x: 0, y: 0, size: 15, label: "My first node", color: "#FA4F40" });
   return <SigmaContainer style={{ height: "500px", width: "500px" }} graph={graph}></SigmaContainer>;
 };
 ```
