@@ -33,7 +33,7 @@ For those layouts, in the corresponding module we export a **hook** that you can
 1. Install the module
 
 ```bash
-npm install @react-sigma/layout-circular
+npm install @react-sigma/layout-circular graphology-layout
 ```
 
 2. Initialize the hook in your component (that must be a child of `SigmaContainer`)
@@ -81,7 +81,7 @@ For those layouts, in the corresponding module we export :
 1. Install the module
 
 ```bash
-npm install @react-sigma/layout-forceatlas2
+npm install @react-sigma/layout-forceatlas2 graphology-layout-forceatlas2
 ```
 
 2. Inside the `SigmaContainer` just add the component :

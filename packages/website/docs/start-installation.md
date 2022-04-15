@@ -13,25 +13,20 @@ It **is not a replacement** for [Sigma's documentation](https://www.sigmajs.org/
 
 ## Peer dependencies
 
-`Sigma` and `graphology` are required peer dependencies.
+`Sigma`, `graphology` and `lodash` are required peer dependencies.
+If you are using typescript, `graphology-types` is also required.
 
 ## With NPM
 
-With npm v7 and higher, peer dependencies are automatically installed, so you can install React Sigma with :
+With npm, you can install React Sigma with its peer dependencies by executing :
 
 ```bash
-npm install @react-sigma/core
-```
-
-If you have a NPM version prior to v7, you must install peer dependencies by yourself :
-
-```bash
-npm install @react-sigma/core sigma graphology
+npm install @react-sigma/core sigma graphology graphology-types lodash
 ```
 
 ## With yarn
 
-Yarn automatically installs peer depdencies, so you can install React Sigma with :
+Yarn automatically installs peer dependencies, so you can install React Sigma with :
 
 ```bash
 yarn add @react-sigma/core

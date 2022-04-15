@@ -1,19 +1,30 @@
 # Setup
 
 1. Follow all the steps from the [installation page](start-installation.md)
-1. Import the React Sigma style file in your application.
-   Example : `import "@react-sigma/core/lib/react-sigma.min.css"`
-1. Create the following components into your app and check it displays correctly:
+2. Import the React Sigma style file in your application.
+   Depending on your React app setup, the way to import a CSS file might differ.
+   Here is an example with "create react app" setup :
+
+`import "@react-sigma/core/lib/react-sigma.min.css"`
+
+3. Create the following components into your app and check it displays correctly:
 
 ```tsx
+import { useEffect } from "react";
 import Graph from "graphology";
 import { SigmaContainer, useLoadGraph } from "@react-sigma/core";
 import "@react-sigma/core/lib/react-sigma.min.css";
 
 export const LoadGraph = () => {
-  const graph = new Graph();
-  graph.addNode("first", { size: 15, label: "My first node", color: "#FA4F40" });
-  useLoadGraph(graph);
+  const loadGraph = useLoadGraph();
+
+  useEffect(() => {
+    const graph = new Graph();
+    graph.addNode("first", { size: 15, label: "My first node", color: "#FA4F40" });
+    useLoadGraph(graph);
+  }, [loadGraph]);
+
+  return null;
 };
 
 export const DisplayGraph = () => {
@@ -24,6 +35,8 @@ export const DisplayGraph = () => {
   );
 };
 ```
+
+You can take a look at this [code sandbox](https://githubbox.com/sim51/react-sigma/tree/main/packages/examples) to see a working example.
 
 If the graph is not displayed properly, it is most likely because you haven't followed all the prerequisites.
 
