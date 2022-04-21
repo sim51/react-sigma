@@ -63,7 +63,7 @@ the good [graphology constructor](https://graphology.github.io/instantiation.htm
 
 Example :
 
-```ts
+```tsx
 import { FC, useEffect } from "react";
 import { MultiDirectedGraph } from "graphology";
 
@@ -103,7 +103,7 @@ In this scenario you must control the react lifecycle of its parent component, t
 
 Examples :
 
-```ts
+```tsx
 import Graph from "graphology";
 import { SigmaContainer, useLoadGraph } from "@react-sigma/core";
 import "@react-sigma/core/lib/react-sigma.min.css";
