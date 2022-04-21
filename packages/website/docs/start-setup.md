@@ -44,13 +44,66 @@ If the graph is not displayed properly, it is most likely because you haven't fo
 
 If you're still having trouble, you can use the [Stack Overflow](https://stackoverflow.com/questions/tagged/sigma.js).
 
-## Note
+# The `graph` property on `SigmaContainer`
 
-You can also give directly the graph to the `SigmaContainer`.
-But in this case at each render of the `SigmaContainer`, Sigma will be killed, recreated and the graph loaded.
+`SigmaContainer` takes an optional property `graph`.
+This property can be either a **graphology instance**, or a **graph constructor**
+
+## Graph Constructor
+
+The library creates for you a default graph instance for graphology.
+Per default on graphology, a graph is :
+
+- **mixed** (ie undirected & directed)
+- with self-loop
+- **without** multi-edges
+
+If you need a different graph definition, you have to pass to the `SigmaContainer` component,
+the good [graphology constructor](https://graphology.github.io/instantiation.html#typed-constructors)
+
+Example :
+
+```ts
+import { FC, useEffect } from "react";
+import { MultiDirectedGraph } from "graphology";
+
+import { SigmaContainer, useLoadGraph } from "@react-sigma/core";
+
+const MyGraph: FC = () => {
+  const loadGraph = useLoadGraph();
+
+  useEffect(() => {
+    // Create the graph
+    const graph = new MultiDirectedGraph();
+    graph.addNode("A", { x: 0, y: 0, label: "Node A", size: 10 });
+    graph.addNode("B", { x: 1, y: 1, label: "Node B", size: 10 });
+    graph.addEdgeWithKey("rel1", "A", "B", { label: "REL_1" });
+    graph.addEdgeWithKey("rel2", "A", "B", { label: "REL_2" });
+
+    loadGraph(graph);
+  }, [loadGraph]);
+
+  return null;
+};
+
+export const MultiDirectedGraphView: FC = () => {
+  return (
+    <SigmaContainer graph={MultiDirectedGraph}>
+      <MyGraph />
+    </SigmaContainer>
+  );
+};
+```
+
+## Graph instance
+
+You can directly pass a graph instance to the `SigmaContainer`, but in this case at each render of the component, Sigma will be killed, recreated and the graph loaded.
+
 In this scenario you must control the react lifecycle of its parent component, to avoid poor performances, specially with heavy graphs.
 
-```tsx
+Examples :
+
+```ts
 import Graph from "graphology";
 import { SigmaContainer, useLoadGraph } from "@react-sigma/core";
 import "@react-sigma/core/lib/react-sigma.min.css";

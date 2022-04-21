@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import { MultiDirectedGraph } from "graphology";
 
-import { useSigma, useLoadGraph } from "@react-sigma/core";
+import { useLoadGraph } from "@react-sigma/core";
 
 export const MyGraph: React.FC = () => {
-  const sigma = useSigma();
   const loadGraph = useLoadGraph();
 
   useEffect(() => {

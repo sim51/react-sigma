@@ -7,7 +7,7 @@ React Sigma is strongly inspired by [react-leaflet](https://react-leaflet.js.org
 It just provides some bindings (and helpers) between [React](https://reactjs.org/) and [Sigma](https://www.sigmajs.org/).
 
 The main component, ie. `SigmaContainer`, creates a Sigma instance with the provided settings and graph.
-If its option `initialSettings` or `graphOptions` is updated, the instance is killed and re-created.
+If its properties `initialSettings` or `graph` are updated, the instance is killed and re-created.
 
 I recommend you to **NOT UPDATE** those options to avoid performance issues.
 [Sigma](https://www.sigmajs.org/) Sigma (and [graphology](https://graphology.github.io/)) comes with methods that allow you to update graph but also the settings.
