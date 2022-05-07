@@ -38,7 +38,7 @@ const mouseEvents: Array<EventType> = [
   "doubleClick",
   "wheel",
 ];
-const touchEvents: Array<EventType> = ["mouseup", "mousedown", "mousemove"];
+const touchEvents: Array<EventType> = ["touchup", "touchdown", "touchmove"];
 const cameraEvents: Array<EventType> = ["cameraUpdated"];
 
 /**
