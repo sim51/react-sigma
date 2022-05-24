@@ -10,10 +10,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Install and Build
-        run: |
-          npm install
-          npm run build
+      - name: Install
+        run: npm install
+
+      - name: Build
+        run: CI=false npm run build
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.5
