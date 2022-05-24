@@ -1,4 +1,5 @@
-import FA2Layout, { FA2LayoutSupervisorParameters } from "graphology-layout-forceatlas2/worker";
+import FA2Layout from "graphology-layout-forceatlas2/worker";
+import { ForceAtlas2LayoutParameters } from "graphology-layout-forceatlas2";
 
 import { useWorkerLayoutFactory } from "@react-sigma/layout-core";
 
@@ -10,4 +11,4 @@ import { useWorkerLayoutFactory } from "@react-sigma/layout-core";
  *```
  * @category Hook
  */
-export const useWorkerLayoutForceAtlas2 = useWorkerLayoutFactory<FA2LayoutSupervisorParameters>(FA2Layout);
+export const useWorkerLayoutForceAtlas2 = useWorkerLayoutFactory<ForceAtlas2LayoutParameters>(FA2Layout);

@@ -1,6 +1,6 @@
 {
   "name": "@react-sigma/layout-force",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "private": false,
   "description": "React Sigma - Layout force directed",
   "author": "Benoit Simard",
@@ -35,7 +35,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "@react-sigma/layout-core": "^2.0.2"
+    "@react-sigma/layout-core": "^2.0.3"
   },
   "peerDependencies": {
     "graphology-layout-force": "^0.2.4"

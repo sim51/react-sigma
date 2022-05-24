@@ -1,6 +1,6 @@
 {
   "name": "@react-sigma/layout-forceatlas2",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "private": false,
   "description": "React Sigma - Layout Force Atlas 2",
   "author": "Benoit Simard",
@@ -35,9 +35,9 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "@react-sigma/layout-core": "^2.0.2"
+    "@react-sigma/layout-core": "^2.0.3"
   },
   "peerDependencies": {
-    "graphology-layout-forceatlas2": "^0.8.2"
+    "graphology-layout-forceatlas2": "^0.9.1"
   }
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { FA2LayoutSupervisorParameters } from "graphology-layout-forceatlas2/worker";
+import { ForceAtlas2LayoutParameters } from "graphology-layout-forceatlas2";
 
 import { WorkerLayoutControlProps, WorkerLayoutControl } from "@react-sigma/layout-core";
 import { useWorkerLayoutForceAtlas2 } from "./useWorkerLayoutForceAtlas2";
@@ -8,10 +8,10 @@ import { useWorkerLayoutForceAtlas2 } from "./useWorkerLayoutForceAtlas2";
  * Properties for `LayoutForceAtlas2Control` component
  */
 export type LayoutForceAtlas2ControlProps = Omit<
-  WorkerLayoutControlProps<FA2LayoutSupervisorParameters>,
+  WorkerLayoutControlProps<ForceAtlas2LayoutParameters>,
   "layout" | "settings"
 > & {
-  settings?: FA2LayoutSupervisorParameters;
+  settings?: ForceAtlas2LayoutParameters;
 };
 
 /**

@@ -1,4 +1,4 @@
-import React, { useEffect,useMemo,  useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { FaProjectDiagram } from "react-icons/fa";
 
 import { animateNodes } from "sigma/utils/animate";
@@ -20,10 +20,10 @@ export const LayoutsControl: React.FC = () => {
   const layoutCirclepack = useLayoutCirclepack();
   const layoutRandom = useLayoutRandom();
   const layoutNoverlap = useLayoutNoverlap();
-  const layoutForce = useLayoutForce({ maxIterations: 100 })
-  const layoutForceAtlas2 = useLayoutForceAtlas2({ iterations: 100 })
+  const layoutForce = useLayoutForce({ maxIterations: 100 });
+  const layoutForceAtlas2 = useLayoutForceAtlas2({ iterations: 100 });
 
-  const layouts: { [key: string]: { layout: any; worker?: any } } = useMemo(()=> {
+  const layouts: { [key: string]: { layout: any; worker?: any } } = useMemo(() => {
     return {
       circular: {
         layout: layoutCircular,
@@ -46,13 +46,9 @@ export const LayoutsControl: React.FC = () => {
         layout: layoutForceAtlas2,
         worker: useWorkerLayoutForceAtlas2,
       },
-    }
-  }, [layoutCircular,
-layoutCirclepack,
-layoutRandom,
-layoutNoverlap,
-layoutForce,
-layoutForceAtlas2,]);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const { positions } = layouts[layout].layout;
@@ -91,12 +87,12 @@ layoutForceAtlas2,]);
                 listStyle: "none",
               }}
             >
-              {Object.keys(layouts).map(name => {
+              {Object.keys(layouts).map((name) => {
                 return (
                   <li key={name}>
                     <button
                       className="btn btn-link"
-                      style={{ fontWeight: layout === name ? "bold" : "normal", width:"100%" }}
+                      style={{ fontWeight: layout === name ? "bold" : "normal", width: "100%" }}
                       onClick={() => {
                         setLayout(name);
                       }}

@@ -1,6 +1,6 @@
 {
   "name": "@react-sigma/layout-circular",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "private": false,
   "description": "React Sigma - Layout circular",
   "author": "Benoit Simard",
@@ -35,9 +35,9 @@
     "start": "rollup -c -w"
   },
   "dependencies": {
-    "@react-sigma/layout-core": "^2.0.2"
+    "@react-sigma/layout-core": "^2.0.3"
   },
   "peerDependencies": {
-    "graphology-layout": "0.5.0"
+    "graphology-layout": "0.6.0"
   }
 }

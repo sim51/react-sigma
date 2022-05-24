@@ -1,5 +1,20 @@
 # Changelog
 
+## Version 2.0.3
+
+### Features
+
+- adding peer dependencies to react, and allow version 17 & 18
+- upgrade general dependencies included sigma & graphology
+
+### Breaking changes
+
+- Settings of forceAtlas2 has changed
+
+### Fixes
+
+- Fix touch events - [#28](https://github.com/sim51/react-sigma/pull/28) (thanks to [@grothendeick](https://github.com/grothendeick))
+
 ## Version 2.0.2
 
 ### Fixes
