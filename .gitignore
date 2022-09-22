@@ -4,6 +4,6 @@ build/
 *.current.png
 *.diff.png
 tsconfig.tsbuildinfo
-packages/website/docs/api
+website/docs/api
 .docusaurus
 .rollup.cache

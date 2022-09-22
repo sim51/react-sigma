@@ -14,6 +14,7 @@
 ### Fixes
 
 - Fix touch events - [#28](https://github.com/sim51/react-sigma/pull/28) (thanks to [@grothendeick](https://github.com/grothendeick))
+- Fix `autoRunFor` on layout worker when value is set to `0` (ie. no timer)
 
 ## Version 2.0.2
 
