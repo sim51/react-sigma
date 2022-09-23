@@ -10,9 +10,4 @@ module.exports = {
   core: {
     builder: "@storybook/builder-webpack5",
   },
-  babel: async (options) => {
-    return {
-      ...options,
-    };
-  },
 };
