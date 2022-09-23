@@ -66,6 +66,10 @@ div.sigma-container {
   background-color: var(--sigma-controls-background-color);
   border-bottom: 1px solid var(--sigma-controls-border-color);
 }
+.react-sigma-control:last-child {
+  border-bottom: none;
+}
+
 .react-sigma-control > button {
   display: block;
   border: none;
@@ -97,6 +101,7 @@ div.sigma-container {
   color: var(--sigma-controls-color);
   background-color: var(--sigma-controls-background-color);
   font-size: 1em;
-  width: 100%;
+  width: calc(100% - (var(--sigma-controls-margin) * 2));
   border: none;
+  padding: var(--sigma-controls-margin);
 }
