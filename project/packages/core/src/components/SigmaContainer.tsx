@@ -66,8 +66,8 @@ export const SigmaContainer: React.FC<SigmaContainerProps> = ({
   // Sigma instance
   const [sigma, setSigma] = useState<Sigma | null>(null);
   // Sigma settings
-  const settings = useRef<Partial<Settings>>();
-  if (!isEqual(settings.current, initialSettings)) settings.current = initialSettings;
+  const settings = useRef<Partial<Settings>>({});
+  if (!isEqual(settings.current, initialSettings)) settings.current = initialSettings || {};
 
   // When graphOptions or settings changed
   useEffect(() => {
@@ -75,7 +75,7 @@ export const SigmaContainer: React.FC<SigmaContainerProps> = ({
 
     if (containerRef.current !== null) {
       const sigGraph = graph ? (typeof graph === "function" ? new graph() : graph) : new Graph();
-      instance = new Sigma(sigGraph, containerRef.current, settings.current);
+      instance = new Sigma(sigGraph, containerRef.current, { allowInvalidContainer: true, ...settings.current });
     }
     setSigma(instance);
 
