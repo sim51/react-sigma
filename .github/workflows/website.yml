@@ -10,14 +10,28 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Install
+      - name: Project - Install
+        working-directory: project
         run: npm install
 
-      - name: Build
+      - name: Project - Build
+        working-directory: project
         run: CI=false npm run build
+
+      - name: Website - Install
+        working-directory: website
+        run: npm install
+
+      - name: Website - Build
+        working-directory: website
+        run: CI=false npm run build
+
+      - name: Copy storybook into website
+        working-directory: website
+        run: mv project/packages/storybook/storybook-static website/build/storybook
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           branch: gh-pages # The branch the action should deploy to.
-          folder: packages/website/build # The folder the action should deploy.
+          folder: website/build # The folder the action should deploy.

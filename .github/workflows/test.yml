@@ -5,26 +5,36 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./project
+
     steps:
       - uses: actions/checkout@v2
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
           node-version: 16
+
       - name: Install
         run: npm install
+
       - name: Build
         run: CI=false npm run build
+
       - name: Test
         id: test
         continue-on-error: true
         run: npm test
+
       - name: Uploading screenshots on failure
         if: steps.test.outcome == 'failure'
         uses: actions/upload-artifact@v2
         with:
           name: failure-screenshots
-          path: packages/examples/test/e2e/screenshots/
+          path: project/packages/storybook/test/e2e/screenshots/
+
       - name: Exit signal
         if: steps.test.outcome == 'failure'
         run: exit 1

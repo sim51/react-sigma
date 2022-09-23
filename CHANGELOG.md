@@ -6,6 +6,7 @@
 
 - adding peer dependencies to react, and allow version 17 & 18
 - upgrade general dependencies included sigma & graphology
+- Set per default the sigma settings `allowInvalidContainer` to `true`
 
 ### Breaking changes
 
@@ -15,6 +16,7 @@
 
 - Fix touch events - [#28](https://github.com/sim51/react-sigma/pull/28) (thanks to [@grothendeick](https://github.com/grothendeick))
 - Fix `autoRunFor` on layout worker when value is set to `0` (ie. no timer)
+- Fix CSS for borders issues
 
 ## Version 2.0.2
 

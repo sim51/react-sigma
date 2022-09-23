@@ -7,3 +7,4 @@ tsconfig.tsbuildinfo
 website/docs/api
 .docusaurus
 .rollup.cache
+storybook-static
