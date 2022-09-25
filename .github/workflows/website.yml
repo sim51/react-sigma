@@ -3,15 +3,12 @@ on:
   push:
     branches:
       - main
-    paths:
-      - "website/**"
 
 jobs:
   deploy-website:
     runs-on: ubuntu-latest
     defaults:
-      run:
-        working-directory: ./website
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -19,16 +16,27 @@ jobs:
       - name: Cache node_modules
         uses: actions/cache@v3
         with:
-          path: "website/node_modules"
-          key: ${{ runner.os }}-modules-${{ hashFiles('website/package-lock.json') }}
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Project - Install
+        working-directory: project
+        run: npm install
+
+      - name: Project - Compile
+        working-directory: project
+        run: npm run compile
 
       - name: Website - Install
+        working-directory: website
         run: npm install
 
       - name: Website - Build
+        working-directory: website
         run: npm run build
 
       - name: Deploy 🚀
+        working-directory: website
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           branch: gh-pages # The branch the action should deploy to.
