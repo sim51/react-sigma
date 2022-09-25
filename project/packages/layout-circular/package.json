@@ -1,6 +1,6 @@
 {
   "name": "@react-sigma/layout-circular",
-  "version": "2.0.3",
+  "version": "3.0.0",
   "private": false,
   "description": "React Sigma - Layout circular",
   "author": "Benoit Simard",
@@ -36,7 +36,7 @@
     "start": "nodemon --watch src -e ts,tsx --exec npm run build"
   },
   "dependencies": {
-    "@react-sigma/layout-core": "^2.0.3"
+    "@react-sigma/layout-core": "^3.0.0"
   },
   "peerDependencies": {
     "graphology-layout": "0.6.1"
