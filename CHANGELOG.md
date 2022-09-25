@@ -1,6 +1,6 @@
 # Changelog
 
-## Version 3.0.1
+## Version 3.0.2
 
 ### Features
 
@@ -22,6 +22,10 @@
 - Fix touch events - [#28](https://github.com/sim51/react-sigma/pull/28) (thanks to [@grothendeick](https://github.com/grothendeick))
 - Fix `autoRunFor` on layout worker when value is set to `0` (ie. no timer)
 - Fix CSS for borders issues
+
+## Version 3.0.1
+
+Version 3.0.1 has missing files in npm binaries.
 
 ## Version 3.0.0
 
