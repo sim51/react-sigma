@@ -26,10 +26,12 @@
     "./lib/react-sigma.min.css": "./lib/react-sigma.min.css"
   },
   "scripts": {
-    "clean": "rimraf lib/* tsconfig.tsbuildinfo .rollup.cache",
-    "compile": "rollup -c",
-    "build": "npm run compile",
-    "start": "rollup -c -w"
+    "clean": "rimraf lib tsconfig.tsbuildinfo .rollup.cache",
+    "lint": "esw --ext .ts ./src",
+    "compile": "tsc -b",
+    "assets": "copyfiles -u 1 src/assets/** src/assets/**/* lib/",
+    "build": "npm run lint && npm run compile && npm run assets && rollup -c",
+    "start": "nodemon --watch src -e ts,tsx,css --exec npm run build"
   },
   "publishConfig": {
     "access": "public",
@@ -47,6 +49,6 @@
     "graphology": "^0.25.0",
     "lodash": "^4.17.21",
     "react": "^17.0.0 || ^18.0.0",
-    "sigma": "^2.3.0"
+    "sigma": "^2.3.1"
   }
 }

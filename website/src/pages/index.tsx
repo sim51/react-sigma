@@ -7,8 +7,9 @@ import BrowserOnly from "@docusaurus/BrowserOnly";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./index.module.css";
 import HomepageFeatures from "../components/HomepageFeatures";
-import { DemoGraph } from "../components/DemoGraph";
-import { LiveExample } from "../components/LiveExample";
+import CodePreview from "@site/src/components/CodePreview";
+import DemoGraph from "../components/DemoGraph";
+import DemoGraphSource from "!!raw-loader!../components/DemoGraph";
 import "@react-sigma/core/lib/react-sigma.min.css";
 
 function HomepageHeader() {
@@ -39,8 +40,13 @@ export default function Home(): JSX.Element {
         <div className="container">
           <div className="row">
             <div className="col col--12">
-              <h2>Demo</h2>
-              <DemoGraph />
+              <CodePreview
+                mode="preview"
+                code={DemoGraphSource}
+                title="Example of what you can with react, sigma & graphology"
+              >
+                <DemoGraph />
+              </CodePreview>
             </div>
           </div>
         </div>

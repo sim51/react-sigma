@@ -26,7 +26,7 @@ const config = {
           editUrl: "https://github.com/sim51/react-sigma/tree/main/packages/website/",
         },
         theme: {
-          customCss: require.resolve("./src/css/custom.css"),
+          customCss: require.resolve("./src/css/custom.scss"),
         },
       }),
     ],
@@ -51,7 +51,7 @@ const config = {
           },
           {
             label: "Example",
-            to: "docs/example",
+            to: "docs/example/load-graph",
           },
           {
             type: "doc",
@@ -83,7 +83,7 @@ const config = {
               },
               {
                 label: "Example",
-                to: "docs/example",
+                to: "docs/example/load-graph",
               },
             ],
           },
@@ -126,6 +126,7 @@ const config = {
       },
     }),
   plugins: [
+    "docusaurus-plugin-sass",
     [
       "docusaurus-plugin-typedoc",
       {

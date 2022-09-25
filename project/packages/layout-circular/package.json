@@ -29,10 +29,11 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "clean": "rimraf lib/* tsconfig.tsbuildinfo .rollup.cache",
-    "compile": "rollup -c",
-    "build": "npm run compile",
-    "start": "rollup -c -w"
+    "clean": "rimraf lib tsconfig.tsbuildinfo .rollup.cache",
+    "lint": "esw --ext .ts ./src",
+    "compile": "tsc -b",
+    "build": "npm run lint && npm run compile && rollup -c",
+    "start": "nodemon --watch src -e ts,tsx --exec npm run build"
   },
   "dependencies": {
     "@react-sigma/layout-core": "^2.0.3"

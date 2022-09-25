@@ -70,6 +70,10 @@ div.sigma-container {
   border-bottom: none;
 }
 
+.react-sigma-control > * {
+  box-sizing: border-box;
+}
+
 .react-sigma-control > button {
   display: block;
   border: none;
@@ -101,7 +105,9 @@ div.sigma-container {
   color: var(--sigma-controls-color);
   background-color: var(--sigma-controls-background-color);
   font-size: 1em;
-  width: calc(100% - (var(--sigma-controls-margin) * 2));
+  width: 100%;
+  margin: 0;
   border: none;
   padding: var(--sigma-controls-margin);
+  box-sizing: border-box;
 }

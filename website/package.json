@@ -17,6 +17,7 @@
   "dependencies": {
     "@docusaurus/core": "^2.1.0",
     "@docusaurus/preset-classic": "^2.1.0",
+    "@faker-js/faker": "^7.5.0",
     "@react-sigma/core": "^2.0.2",
     "@react-sigma/layout-circlepack": "^2.0.2",
     "@react-sigma/layout-circular": "^2.0.2",
@@ -26,11 +27,16 @@
     "@react-sigma/layout-noverlap": "^2.0.2",
     "@react-sigma/layout-random": "^2.0.2",
     "clsx": "^1.1.1",
+    "docusaurus-plugin-sass": "^0.2.2",
+    "jsx-to-string": "^1.4.0",
     "node-sass": "^7.0.1",
     "prism-react-renderer": "^1.2.1",
+    "raw-loader": "^4.0.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-live": "^3.1.1"
+    "react-live": "^3.1.1",
+    "sass": "^1.55.0",
+    "seedrandom": "^3.0.5"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^2.1.0",

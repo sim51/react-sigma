@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "website/**"
+      - "project/packages/storybook/**"
+
 jobs:
   deploy-website:
     runs-on: ubuntu-latest
@@ -22,7 +26,11 @@ jobs:
 
       - name: Project - Build
         working-directory: project
-        run: CI=false npm run build
+        run: npm run build
+
+      - name: Project - Storybook
+        working-directory: project
+        run: npm run generate --workspace="@react-sigma/storybook"
 
       - name: Website - Install
         working-directory: website
@@ -30,7 +38,7 @@ jobs:
 
       - name: Website - Build
         working-directory: website
-        run: CI=false npm run build
+        run: npm run build
 
       - name: Copy storybook into website
         working-directory: website

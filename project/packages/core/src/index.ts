@@ -3,7 +3,9 @@
  *
  * @module
  */
+
 import "./assets/index.css";
+
 export * from "./hooks/context";
 export * from "./hooks/useSigma";
 export * from "./hooks/useRegisterEvents";

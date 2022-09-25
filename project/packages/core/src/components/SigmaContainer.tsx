@@ -16,9 +16,9 @@ export interface SigmaContainerProps {
    */
   graph?: Graph | GraphConstructor;
   /**
-   * Sigma initial settings
+   * Sigma settings
    */
-  initialSettings?: Partial<Settings>;
+  settings?: Partial<Settings>;
   /**
    * HTML id
    */
@@ -54,7 +54,7 @@ export const SigmaContainer: React.FC<SigmaContainerProps> = ({
   id,
   className,
   style,
-  initialSettings,
+  settings,
   children,
 }: SigmaContainerProps) => {
   // Root HTML element
@@ -66,8 +66,8 @@ export const SigmaContainer: React.FC<SigmaContainerProps> = ({
   // Sigma instance
   const [sigma, setSigma] = useState<Sigma | null>(null);
   // Sigma settings
-  const settings = useRef<Partial<Settings>>({});
-  if (!isEqual(settings.current, initialSettings)) settings.current = initialSettings || {};
+  const sigmaSettings = useRef<Partial<Settings>>({});
+  if (!isEqual(sigmaSettings.current, settings)) sigmaSettings.current = settings || {};
 
   // When graphOptions or settings changed
   useEffect(() => {
@@ -75,7 +75,7 @@ export const SigmaContainer: React.FC<SigmaContainerProps> = ({
 
     if (containerRef.current !== null) {
       const sigGraph = graph ? (typeof graph === "function" ? new graph() : graph) : new Graph();
-      instance = new Sigma(sigGraph, containerRef.current, { allowInvalidContainer: true, ...settings.current });
+      instance = new Sigma(sigGraph, containerRef.current, { allowInvalidContainer: true, ...sigmaSettings.current });
     }
     setSigma(instance);
 
@@ -85,7 +85,7 @@ export const SigmaContainer: React.FC<SigmaContainerProps> = ({
       }
       setSigma(null);
     };
-  }, [containerRef, graph, settings]);
+  }, [containerRef, graph, sigmaSettings]);
 
   const context = useMemo(
     () => (sigma && rootRef.current ? { sigma, container: rootRef.current as HTMLElement } : null),

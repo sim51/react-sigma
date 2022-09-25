@@ -1,16 +1,21 @@
 # Changelog
 
-## Version 2.0.3
+## Version 3.0.0 (WIP)
 
 ### Features
 
-- adding peer dependencies to react, and allow version 17 & 18
-- upgrade general dependencies included sigma & graphology
+- Adding peer dependencies to react, and allow version 17 & 18
+- Upgrade general dependencies included sigma & graphology
 - Set per default the sigma settings `allowInvalidContainer` to `true`
+- Better type management for events ( thanks to [#1142](https://github.com/jacomyal/sigma.js/issues/1142) )
+- Website with examples with code & preview
+- Reset SearchControl when user click on the stage
 
 ### Breaking changes
 
-- Settings of forceAtlas2 has changed
+- Settings of forceAtlas2 has changed in the latest version of graphology
+- Event `cameraUpdated` has been renamed `updated`
+- Property `initialSettings` on component `SigmaContainer` has been renamed `settings`
 
 ### Fixes
 

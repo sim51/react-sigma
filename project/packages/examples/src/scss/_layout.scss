@@ -1,0 +1,24 @@
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  font-family: Arial;
+
+  header {
+    // padding: $spacer $spacer/2;
+    height: $header-height;
+  }
+  main {
+    height: calc(100% - #{$header-height} - #{$footer-height});
+  }
+  footer {
+    height: $footer-height;
+    p {
+      margin: 0;
+      text-align: center;
+    }
+  }
+}

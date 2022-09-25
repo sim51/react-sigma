@@ -4,6 +4,7 @@ import { Attributes } from "graphology-types";
 import { getUniqueKey } from "../../utils";
 import { useSigma } from "../../hooks/useSigma";
 import { useCamera } from "../../hooks/useCamera";
+import { useRegisterEvents } from "../../hooks/useRegisterEvents";
 
 /**
  * Properties for `SearchControl` component
@@ -44,6 +45,8 @@ export interface SearchControlProps {
 export const SearchControl: React.FC<SearchControlProps> = ({ id, className, style }: SearchControlProps) => {
   // Get sigma
   const sigma = useSigma();
+  // Get event hook
+  const registerEvents = useRegisterEvents();
   // Get camera hook
   const { gotoNode } = useCamera();
   // Search value
@@ -77,6 +80,19 @@ export const SearchControl: React.FC<SearchControlProps> = ({ id, className, sty
   }, [search]);
 
   /**
+   * When use clik on the stage
+   *  => reset the selection
+   */
+  useEffect(() => {
+    registerEvents({
+      clickStage: () => {
+        setSelected(null);
+        setSearch("");
+      },
+    });
+  }, [registerEvents]);
+
+  /**
    * When the selected item changes, highlighted the node and center the camera on it.
    */
   useEffect(() => {
@@ -97,7 +113,7 @@ export const SearchControl: React.FC<SearchControlProps> = ({ id, className, sty
    */
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const searchString = e.target.value;
-    const valueItem = values.find(value => value.label === searchString);
+    const valueItem = values.find((value) => value.label === searchString);
     if (valueItem) {
       setSearch(valueItem.label);
       setValues([]);

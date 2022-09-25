@@ -1,6 +1,12 @@
 name: Test
 
-on: [push, pull_request]
+on:
+  push:
+    paths:
+      - "project/**"
+  pull_request:
+    paths:
+      - "project/**"
 
 jobs:
   test:
@@ -27,7 +33,7 @@ jobs:
         run: npm install
 
       - name: Build
-        run: CI=false npm run build
+        run: npm run build
 
       - name: Test
         id: test

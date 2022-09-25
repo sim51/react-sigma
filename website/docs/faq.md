@@ -45,10 +45,10 @@ See the question above.
 ## Is it possible to use this project with Next.js ?
 
 This project can be used with Next.js, but only for client rendering, not for server side.
-If you encounter the error `ReferenceError: window is not defined`, it's because you try to use react-sigmav2
-for server and client side and obviously `window` is not define on service side.
 
-To fix that, you have to check that you are on client side, and then do a dynamic import :
+If you encounter the error `ReferenceError: window is not defined`, it's because you try to use react-sigma for server and client side and obviously `window` is not define on service side.
+
+To fix it, you have to check that you are on client side, and then do a dynamic import :
 
 ```jsx
 const isBrowser = () => typeof window !== "undefined";

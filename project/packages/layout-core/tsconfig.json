@@ -1,11 +1,10 @@
 {
-  "extends": "./../../tsconfig.json",
-  "include": ["./src/"],
-  "exclude": ["**/*.svg"],
+  "extends": "../../tsconfig.json",
+  "compileOnSave": true,
+  "include": ["./src/**/*.ts"],
   "compilerOptions": {
-    "composite": true,
-    "declarationDir": "./types",
+    "rootDir": "./src",
     "outDir": "./lib",
-    "rootDir": "./src"
+    "declarationDir": "./lib"
   }
 }

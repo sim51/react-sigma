@@ -1,0 +1,23 @@
+import { CodePreview } from "@site/src/components/CodePreview";
+
+# Events
+
+Sigma dispatch various events that you can listen :
+
+- mouse events
+- touch events
+- camera events
+- graph events
+- ...
+
+With **react-sigma** you can listen to all those events with the help of the hook `useRegisterEvents`.
+
+This hook helps you to register your listeners (and also do the remove for you).
+Check the code below to see how to do it, and don't forget to open your browser console in preview mode.
+
+import Events from "../../src/components/example/Events";
+import EventsSource from "!!raw-loader!../../src/components/example/Events";
+
+<CodePreview code={EventsSource} title="Display in the console all sigma events">
+  <Events />
+</CodePreview>

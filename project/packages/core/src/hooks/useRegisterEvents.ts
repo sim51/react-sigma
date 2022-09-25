@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
 import { Settings } from "sigma/settings";
+import { SigmaEvents } from "sigma/sigma";
+import { TouchCaptorEvents } from "sigma/core/captors/touch";
+import { MouseCaptorEvents } from "sigma/core/captors/mouse";
+import { CameraEvents } from "sigma/core/camera";
 
 import { useSigma } from "./useSigma";
 import { useSetSettings } from "./useSetSettings";
@@ -7,7 +11,7 @@ import { EventHandlers } from "../types";
 
 type EventType = keyof EventHandlers;
 
-const sigmaEvents: Array<EventType> = [
+const sigmaEvents: Array<keyof SigmaEvents> = [
   "clickNode",
   "rightClickNode",
   "downNode",
@@ -29,7 +33,7 @@ const sigmaEvents: Array<EventType> = [
   "wheelStage",
   "kill",
 ];
-const mouseEvents: Array<EventType> = [
+const mouseEvents: Array<keyof MouseCaptorEvents> = [
   "click",
   "rightClick",
   "mouseup",
@@ -38,8 +42,8 @@ const mouseEvents: Array<EventType> = [
   "doubleClick",
   "wheel",
 ];
-const touchEvents: Array<EventType> = ["touchup", "touchdown", "touchmove"];
-const cameraEvents: Array<EventType> = ["cameraUpdated"];
+const touchEvents: Array<keyof TouchCaptorEvents> = ["touchup", "touchdown", "touchmove"];
+const cameraEvents: Array<keyof CameraEvents> = ["updated"];
 
 /**
  * React hook that helps you to listen Sigma’s events.
@@ -95,21 +99,19 @@ export function useRegisterEvents(): (eventHandlers: Partial<EventHandlers>) => 
 
     eventTypes.forEach((event: EventType) => {
       const eventHandler = eventHandlers[event] as (...args: unknown[]) => void;
-      if (sigmaEvents.includes(event)) {
-        //eslint-disable-next-line @typescript-eslint/no-explicit-any
-        sigma.on(event as any, eventHandler);
+      if (sigmaEvents.find((e) => e === event)) {
+        sigma.on(event as keyof SigmaEvents, eventHandler);
       }
-      if (mouseEvents.includes(event)) {
+      if (mouseEvents.find((e) => e === event)) {
         //eslint-disable-next-line @typescript-eslint/no-explicit-any
-        sigma.getMouseCaptor().on(event as any, eventHandler);
+        sigma.getMouseCaptor().on(event as keyof MouseCaptorEvents, eventHandler);
       }
-      if (touchEvents.includes(event)) {
+      if (touchEvents.find((e) => e === event)) {
         //eslint-disable-next-line @typescript-eslint/no-explicit-any
-        sigma.getTouchCaptor().on(event as any, eventHandler);
+        sigma.getTouchCaptor().on(event as keyof TouchCaptorEvents, eventHandler);
       }
-      if (cameraEvents.includes(event)) {
-        // For now there is only one event on the camera
-        sigma.getCamera().on("updated", eventHandler);
+      if (cameraEvents.find((e) => e === event)) {
+        sigma.getCamera().on(event as keyof CameraEvents, eventHandler);
       }
     });
 
@@ -126,18 +128,17 @@ export function useRegisterEvents(): (eventHandlers: Partial<EventHandlers>) => 
       if (sigma) {
         for (event in eventHandlers) {
           const eventHandler = eventHandlers[event] as (...args: unknown[]) => void;
-          if (sigmaEvents.includes(event)) {
-            sigma.removeListener(event as any, eventHandler);
+          if (event in sigmaEvents) {
+            sigma.removeListener(event as keyof SigmaEvents, eventHandler);
           }
-          if (mouseEvents.includes(event)) {
-            sigma.getMouseCaptor().removeListener(event as any, eventHandler);
+          if (event in mouseEvents) {
+            sigma.getMouseCaptor().removeListener(event as keyof MouseCaptorEvents, eventHandler);
           }
-          if (touchEvents.includes(event)) {
-            sigma.getTouchCaptor().removeListener(event as any, eventHandler);
+          if (event in touchEvents) {
+            sigma.getTouchCaptor().removeListener(event as keyof TouchCaptorEvents, eventHandler);
           }
-          if (cameraEvents.includes(event)) {
-            // For now there is only one event on the camera
-            sigma.getCamera().removeListener("updated", eventHandler);
+          if (event in cameraEvents) {
+            sigma.getCamera().removeListener(event as keyof CameraEvents, eventHandler);
           }
         }
       }

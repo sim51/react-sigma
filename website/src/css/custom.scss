@@ -1,0 +1,85 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #e22653;
+  --ifm-color-primary-dark: #ce123f;
+  --ifm-color-primary-darker: #ba002b;
+  --ifm-color-primary-darkest: #a60017;
+  --ifm-color-primary-light: #f63a67;
+  --ifm-color-primary-lighter: #ff4e7b;
+  --ifm-color-primary-lightest: #ff628f;
+  --ifm-code-font-size: 95%;
+  --ifm-table-head-background: var(--ifm-color-primary-dark);
+  --ifm-table-head-color: #fff;
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+html[data-theme="dark"] {
+  --ifm-color-primary: #e22653;
+  --ifm-color-primary-dark: #ce123f;
+  --ifm-color-primary-darker: #ba002b;
+  --ifm-color-primary-darkest: #a60017;
+  --ifm-color-primary-light: #f63a67;
+  --ifm-color-primary-lighter: #ff4e7b;
+  --ifm-color-primary-lightest: #ff628f;
+  --ifm-table-head-background: var(--ifm-color-primary-darkest);
+  --sigma-background-color: var(--ifm-background-color);
+  --sigma-controls-background-color: var(--ifm-color-secondary-contrast-background);
+  --sigma-controls-border-color: var(--ifm-color-info-dark);
+  --sigma-controls-color: var(--ifm-color-content-secondary);
+}
+
+.docusaurus-highlight-code-line {
+  background-color: rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+}
+
+html[data-theme="dark"] .docusaurus-highlight-code-line {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+footer {
+  margin-top: 50px;
+}
+
+div.code-preview {
+  box-shadow: 0 0 8px var(--ifm-color-primary-darkest);
+  border-radius: 1em;
+  margin-bottom: 20px;
+
+  .header {
+    border-radius: 1em 1em 0 0;
+    padding: 0.25em 0.5em;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--ifm-color-primary);
+
+    p {
+      margin: 0;
+      font-style: italic;
+      color: var(--ifm-button-color);
+    }
+    ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+      li {
+        margin: 0;
+      }
+    }
+  }
+  .content {
+    border-radius: 0 0 1em 1em;
+    > * {
+      margin: 0 !important;
+    }
+  }
+}

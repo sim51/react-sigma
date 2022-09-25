@@ -2,13 +2,17 @@
 hide_table_of_contents: true
 ---
 
-import { LiveExample } from "@site/src/components/LiveExample";
+import { CodePreview } from "@site/src/components/CodePreview";
+import DemoGraph from "@site/src/components/DemoGraph";
+import DemoGraphSource from "!!raw-loader!../src/components/DemoGraph";
 
 # Example
 
 You can test the library on this page, by modifying the code below.
 
-<LiveExample />
+<CodePreview code={DemoGraphSource}>
+  <DemoGraph />
+</CodePreview>
 
 ## Note
 

@@ -25,10 +25,11 @@
     ".": "./lib/react-sigma_layout-forceatlas2.esm.min.js"
   },
   "scripts": {
-    "clean": "rimraf lib/* tsconfig.tsbuildinfo .rollup.cache",
-    "compile": "rollup -c",
-    "build": "npm run compile",
-    "start": "rollup -c -w"
+    "clean": "rimraf lib tsconfig.tsbuildinfo .rollup.cache",
+    "lint": "esw --ext .ts ./src",
+    "compile": "tsc -b",
+    "build": "npm run lint && npm run compile && rollup -c",
+    "start": "nodemon --watch src -e ts,tsx --exec npm run build"
   },
   "publishConfig": {
     "access": "public",
