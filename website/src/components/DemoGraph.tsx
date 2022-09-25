@@ -12,7 +12,7 @@ const DemoGraph: React.FC<{}> = () => {
     <SigmaContainer
       graph={graph}
       style={{ height: "500px" }}
-      initialSettings={{
+      settings={{
         nodeProgramClasses: { image: getNodeProgramImage() },
         defaultNodeType: "image",
         defaultEdgeType: "arrow",

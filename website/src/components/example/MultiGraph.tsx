@@ -22,7 +22,11 @@ export const MultiGraph: FC = () => {
   };
 
   return (
-    <SigmaContainer graph={MultiDirectedGraph} style={{ height: "500px" }} settings={{ renderEdgeLabels: true }}>
+    <SigmaContainer
+      graph={MultiDirectedGraph}
+      style={{ height: "500px" }}
+      settings={{ renderEdgeLabels: true, defaultEdgeType: "arrow" }}
+    >
       <MyGraph />
     </SigmaContainer>
   );
