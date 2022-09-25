@@ -20,6 +20,7 @@ npm install @react-sigma/core
 
 2. Import the React Sigma style file in your application.
    Example : `import "@react-sigma/core/lib/react-sigma.min.css"`
+
 3. Create the following components into your app and check it displays correctly:
 
 ```tsx
