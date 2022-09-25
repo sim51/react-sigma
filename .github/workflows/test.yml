@@ -45,7 +45,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: failure-screenshots
-          path: project/packages/storybook/test/e2e/screenshots/
+          path: project/packages/examples/test/e2e/screenshots/
 
       - name: Exit signal
         if: steps.test.outcome == 'failure'
