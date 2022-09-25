@@ -35,7 +35,6 @@ jobs:
         run: npm run build
 
       - name: Deploy 🚀
-        working-directory: website
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           branch: gh-pages # The branch the action should deploy to.
