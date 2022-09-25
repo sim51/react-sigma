@@ -7,7 +7,6 @@ on:
 jobs:
   deploy-website:
     runs-on: ubuntu-latest
-    defaults:
 
     steps:
       - name: Checkout
