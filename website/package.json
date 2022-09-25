@@ -1,5 +1,5 @@
 {
-  "name": "@react-sigma/website",
+  "name": "website",
   "version": "2.0.3",
   "private": true,
   "scripts": {
