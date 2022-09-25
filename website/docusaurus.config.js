@@ -34,6 +34,12 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      matomo: {
+        matomoUrl: "https://matomo.ouestware.com/",
+        siteId: "31",
+        phpLoader: "matomo.php",
+        jsLoader: "matomo.js",
+      },
       navbar: {
         title: "React Sigma",
         logo: {
@@ -126,6 +132,7 @@ const config = {
       },
     }),
   plugins: [
+    "docusaurus-plugin-matomo",
     "docusaurus-plugin-sass",
     [
       "docusaurus-plugin-typedoc",

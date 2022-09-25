@@ -27,6 +27,7 @@
     "@react-sigma/layout-noverlap": "^3.0.2",
     "@react-sigma/layout-random": "^3.0.2",
     "clsx": "^1.1.1",
+    "docusaurus-plugin-matomo": "^0.0.6",
     "docusaurus-plugin-sass": "^0.2.2",
     "jsx-to-string": "^1.4.0",
     "node-sass": "^7.0.1",
