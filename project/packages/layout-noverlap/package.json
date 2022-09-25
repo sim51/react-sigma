@@ -1,6 +1,6 @@
 {
   "name": "@react-sigma/layout-noverlap",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "private": false,
   "description": "React Sigma - Layout noverlap",
   "author": "Benoit Simard",
@@ -36,7 +36,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "@react-sigma/layout-core": "^3.0.0"
+    "@react-sigma/layout-core": "^3.0.1"
   },
   "peerDependencies": {
     "graphology-layout-noverlap": "^0.4.2"
