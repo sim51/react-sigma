@@ -68,8 +68,10 @@ export function useRegisterEvents(): (eventHandlers: Partial<EventHandlers>) => 
       return;
     }
 
+    const userEvents = eventHandlers;
+
     // list of event types to register
-    const eventTypes = Object.keys(eventHandlers) as Array<EventType>;
+    const eventTypes = Object.keys(userEvents) as Array<EventType>;
 
     // Set settings for edge event if needed
     const edgeSettings: Partial<Settings> = {};
@@ -98,7 +100,7 @@ export function useRegisterEvents(): (eventHandlers: Partial<EventHandlers>) => 
     }
 
     eventTypes.forEach((event: EventType) => {
-      const eventHandler = eventHandlers[event] as (...args: unknown[]) => void;
+      const eventHandler = userEvents[event] as (...args: unknown[]) => void;
       if (sigmaEvents.find((e) => e === event)) {
         sigma.on(event as keyof SigmaEvents, eventHandler);
       }
@@ -117,8 +119,6 @@ export function useRegisterEvents(): (eventHandlers: Partial<EventHandlers>) => 
 
     // cleanup
     return () => {
-      let event: EventType;
-
       // Reverse settings
       if (Object.keys(reverseEdgeSettings).length > 0) {
         setSettings(reverseEdgeSettings);
@@ -126,21 +126,21 @@ export function useRegisterEvents(): (eventHandlers: Partial<EventHandlers>) => 
 
       // remove events listener
       if (sigma) {
-        for (event in eventHandlers) {
-          const eventHandler = eventHandlers[event] as (...args: unknown[]) => void;
-          if (event in sigmaEvents) {
-            sigma.removeListener(event as keyof SigmaEvents, eventHandler);
+        eventTypes.forEach((event: EventType) => {
+          const eventHandler = userEvents[event] as (...args: unknown[]) => void;
+          if (sigmaEvents.find((e) => e === event)) {
+            sigma.off(event as keyof SigmaEvents, eventHandler);
           }
-          if (event in mouseEvents) {
-            sigma.getMouseCaptor().removeListener(event as keyof MouseCaptorEvents, eventHandler);
+          if (mouseEvents.find((e) => e === event)) {
+            sigma.getMouseCaptor().off(event as keyof MouseCaptorEvents, eventHandler);
           }
-          if (event in touchEvents) {
-            sigma.getTouchCaptor().removeListener(event as keyof TouchCaptorEvents, eventHandler);
+          if (touchEvents.find((e) => e === event)) {
+            sigma.getTouchCaptor().off(event as keyof TouchCaptorEvents, eventHandler);
           }
-          if (event in cameraEvents) {
-            sigma.getCamera().removeListener(event as keyof CameraEvents, eventHandler);
+          if (cameraEvents.find((e) => e === event)) {
+            sigma.getCamera().off(event as keyof CameraEvents, eventHandler);
           }
-        }
+        });
       }
     };
   }, [sigma, eventHandlers, setSettings]);
