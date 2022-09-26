@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 3.0.3
+
+### Fixes
+
+- Fix remove listeners on `useRegisterEvents` hook.
+
 ## Version 3.0.2
 
 ### Features
