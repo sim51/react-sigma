@@ -18,7 +18,7 @@
     "@docusaurus/core": "^2.1.0",
     "@docusaurus/preset-classic": "^2.1.0",
     "@faker-js/faker": "^7.5.0",
-    "@react-sigma/core": "^3.0.2",
+    "@react-sigma/core": "^3.0.3",
     "@react-sigma/layout-circlepack": "^3.0.3",
     "@react-sigma/layout-circular": "^3.0.3",
     "@react-sigma/layout-core": "^3.0.3",

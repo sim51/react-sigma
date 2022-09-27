@@ -36,6 +36,12 @@ export const HomeView: FC = () => {
           </Link>{" "}
           Instantiate a MultiDirectedGraph on SigmaContainer
         </li>
+        <li>
+          <Link to="/external" title="External">
+            External control
+          </Link>{" "}
+          Use sigma ref to control it outside the SigmaContainer
+        </li>
       </ul>
     </div>
   );

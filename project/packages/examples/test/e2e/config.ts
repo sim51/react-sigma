@@ -17,12 +17,18 @@ export const tests: Tests = [
   {
     name: "custom-buttons",
     url: "http://localhost:3000/custom-buttons?seed=foo&faTime=-1",
-    waitFor: 100,
+    waitFor: 200,
     failureThreshold: 0.001,
   },
   {
     name: "multidirectedgraph",
     url: "http://localhost:3000/multidirectedgraph?seed=foo&faTime=-1",
+    waitFor: 100,
+    failureThreshold: 0.001,
+  },
+  {
+    name: "external",
+    url: "http://localhost:3000/external?seed=foo&faTime=-1",
     waitFor: 100,
     failureThreshold: 0.001,
   },

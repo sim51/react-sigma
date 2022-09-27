@@ -1,4 +1,14 @@
-import React, { CSSProperties, ReactNode, useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  CSSProperties,
+  Ref,
+  PropsWithChildren,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  forwardRef,
+  useImperativeHandle,
+} from "react";
 import { isEqual } from "lodash";
 import Graph from "graphology";
 import { GraphConstructor } from "graphology-types";
@@ -31,10 +41,6 @@ export interface SigmaContainerProps {
    * HTML CSS style
    */
   style?: CSSProperties;
-  /**
-   * @hidden
-   */
-  children?: ReactNode;
 }
 
 /**
@@ -49,14 +55,11 @@ export interface SigmaContainerProps {
  *
  * @category Component
  */
-export const SigmaContainer: React.FC<SigmaContainerProps> = ({
-  graph,
-  id,
-  className,
-  style,
-  settings,
-  children,
-}: SigmaContainerProps) => {
+// eslint-disable-next-line react/display-name
+const SigmaContainerComponent = (
+  { graph, id, className, style, settings, children }: PropsWithChildren<SigmaContainerProps>,
+  ref: Ref<Sigma | null>,
+) => {
   // Root HTML element
   const rootRef = useRef<HTMLDivElement>(null);
   // HTML element for the sigma instance
@@ -69,7 +72,10 @@ export const SigmaContainer: React.FC<SigmaContainerProps> = ({
   const sigmaSettings = useRef<Partial<Settings>>({});
   if (!isEqual(sigmaSettings.current, settings)) sigmaSettings.current = settings || {};
 
-  // When graphOptions or settings changed
+  /**
+   * When graph or settings changed
+   * => create sigma
+   */
   useEffect(() => {
     let instance: Sigma | null = null;
 
@@ -87,10 +93,20 @@ export const SigmaContainer: React.FC<SigmaContainerProps> = ({
     };
   }, [containerRef, graph, sigmaSettings]);
 
+  /**
+   * Forward the sigma ref
+   */
+  useImperativeHandle(ref, () => sigma, [sigma]);
+
+  /**
+   * Memoify the context
+   */
   const context = useMemo(
     () => (sigma && rootRef.current ? { sigma, container: rootRef.current as HTMLElement } : null),
     [sigma, rootRef.current],
   );
+
+  // When context is created we provide it to children
   const contents = context !== null ? <SigmaProvider value={context}>{children}</SigmaProvider> : null;
 
   return (
@@ -100,3 +116,5 @@ export const SigmaContainer: React.FC<SigmaContainerProps> = ({
     </div>
   );
 };
+
+export const SigmaContainer = forwardRef(SigmaContainerComponent);
