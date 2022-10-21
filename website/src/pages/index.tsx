@@ -43,7 +43,7 @@ export default function Home(): JSX.Element {
               <CodePreview
                 mode="preview"
                 code={DemoGraphSource}
-                title="Example of what you can with react, sigma & graphology"
+                title="Example of what you can do with react, sigma & graphology"
               >
                 <DemoGraph />
               </CodePreview>

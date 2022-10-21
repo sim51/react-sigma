@@ -11,19 +11,15 @@ export const CodePreview: FC<PropsWithChildren<{ code: string; title?: string; m
   return (
     <div className="code-preview">
       <div className="header">
-        <div>{title && <p>{title}</p>}</div>
-        <ul>
-          <li>
-            <button className="button" onClick={() => setMode("code")} disabled={currentMode === "code"}>
-              Code
-            </button>
-          </li>
-          <li>
-            <button className="button" onClick={() => setMode("preview")} disabled={currentMode === "preview"}>
-              Preview
-            </button>
-          </li>
-        </ul>
+        <div>{title && <h5>{title}</h5>}</div>
+        <div className="switch">
+          <button className="button" onClick={() => setMode("code")} disabled={currentMode === "code"}>
+            Code
+          </button>
+          <button className="button" onClick={() => setMode("preview")} disabled={currentMode === "preview"}>
+            Preview
+          </button>
+        </div>
       </div>
       <div className="content">
         {currentMode === "preview" && children}
