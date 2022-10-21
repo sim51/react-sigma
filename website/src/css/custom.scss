@@ -77,12 +77,12 @@ div.code-preview {
 }
 
 div.switch {
-  background-color: #fff;
+  background-color: var(--ifm-button-color);
   border-radius: 2em;
   button:disabled {
     opacity: 1;
     border-radius: 2em;
-    border: 0.25em solid #fff;
+    border: 0.25em solid var(--ifm-button-color);
     background-color: var(--ifm-color-primary);
     color: #fff;
   }
