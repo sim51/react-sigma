@@ -3,10 +3,10 @@ import forceAtlas2, { ForceAtlas2SynchronousLayoutParameters } from "graphology-
 import { useLayoutFactory } from "@react-sigma/layout-core";
 
 /**
- * React hook that helps you to manage circle layout.
+ * React hook that helps you to manage [force atlas2 layout](https://graphology.github.io/standard-library/layout-forceatlas2.html).
  *
  * ```typescript
- * const {apply, assign} = useLayoutForceAtlas2(...);
+ * const { positions, assign } = useLayoutForceAtlas2(...);
  *```
  * @category Hook
  */

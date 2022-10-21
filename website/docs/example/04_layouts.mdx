@@ -1,0 +1,83 @@
+import { CodePreview } from "@site/src/components/CodePreview";
+import LayoutCircular from "../../src/components/example/LayoutCircular";
+import LayoutCircularSource from "!!raw-loader!../../src/components/example/LayoutCircular";
+import LayoutFA2 from "../../src/components/example/LayoutFA2";
+import LayoutFA2Source from "!!raw-loader!../../src/components/example/LayoutFA2";
+import LayoutFA2Control from "../../src/components/example/LayoutFA2Control";
+import LayoutFA2ControlSource from "!!raw-loader!../../src/components/example/LayoutFA2Control";
+
+# Layouts
+
+The `react-sigma` includes some sub-libraries for managing layouts on graphs.
+They provide hooks that helps you to apply/run a layout on your sigma instance.
+
+## List of available layouts
+
+We provide all the layouts that are part of graphology :
+
+- [circular](https://graphology.github.io/standard-library/layout.html#circular) in [@react-sigma/layout-circular](https://www.npmjs.com/package/@react-sigma/layout-circular)
+- [circlepack](https://graphology.github.io/standard-library/layout.html#circlepack) in [@react-sigma/layout-circlepack](https://www.npmjs.com/package/@react-sigma/layout-circlepack)
+- [force](https://graphology.github.io/standard-library/layout-force.html) in [@react-sigma/layout-force](https://www.npmjs.com/package/@react-sigma/layout-force)
+- [force atlas 2](https://graphology.github.io/standard-library/layout-forceatlas2.html) in [@react-sigma/layout-forceatlas2](https://www.npmjs.com/package/@react-sigma/layout-forceatlas2)
+- [noverlap](https://graphology.github.io/standard-library/layout-noverlap.html) in [@react-sigma/layout-noverlap](https://www.npmjs.com/package/@react-sigma/layout-noverlap)
+- [random](https://graphology.github.io/standard-library/layout.html#random) in [@react-sigma/layout-random](https://www.npmjs.com/package/@react-sigma/layout-random)
+
+## Two types of layouts
+
+There are two types of layout, the one that you call just once (ex: `random` or `circular`) and the worker one.
+
+## Regular layout
+
+For regular layout, we provide a hook that returns two functions :
+
+- positions : a function that execute the layout on the sigma's graph (but doesn't modify it) and returns you a map of position where the key is the node key.
+- assign : a function that execute the layout on the sigma's graph and save the position of nodes in it
+
+```typescript
+const { positions, assign } = useLayoutCircular(...);
+```
+
+To use one of those hooks you firstly need to install the `layout-core` package and then the layout package you want to use.
+As an example
+
+```bash
+npm install @react-sigma/layout-core @react-sigma/layout-circular
+```
+
+Then you can follow this example to see how to use it :
+
+<CodePreview code={LayoutCircularSource} title="Apply a circular layout on the graph">
+  <LayoutCircular />
+</CodePreview>
+
+## Worker layout
+
+For worker layout, we provide a hook that returns :
+
+- function to start the layout
+- function to stop the layout
+- function to kill the layout
+- a boolean to know if the layout is running or not
+
+```typescript
+const { stop, start, kill, isRunning } = useWorkerLayoutForceAtlas2(...);
+```
+
+With this hook, you can implement your own component to manage the worker.
+
+```bash
+npm install @react-sigma/layout-core @react-sigma/layout-forceatlas2
+```
+
+Then you can follow this example to see how to use it :
+
+<CodePreview code={LayoutFA2Source} title="FA2 layout on the graph">
+  <LayoutFA2 />
+</CodePreview>
+
+If you want to display start/stop button, you can use the control component we provide for each worker component,
+that display a start/stop button on the graph.
+
+<CodePreview code={LayoutFA2ControlSource} title="Click on the FA2 controller">
+  <LayoutFA2Control />
+</CodePreview>

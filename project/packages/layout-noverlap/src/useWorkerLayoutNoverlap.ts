@@ -3,10 +3,10 @@ import NoverlapLayout, { NoverlapLayoutSupervisorParameters } from "graphology-l
 import { useWorkerLayoutFactory } from "@react-sigma/layout-core";
 
 /**
- * React hook that helps you to manage circle layout.
+ * React hook that helps you to manage worker for [noverlap layout](https://graphology.github.io/standard-library/layout-noverlap.html).
  *
  * ```typescript
- * const {stop, start} = useLayoutCircular({layoutOptions});
+ * const { stop, start } = useWorkerLayoutNoverlap({layoutOptions});
  *```
  * @category Hook
  */

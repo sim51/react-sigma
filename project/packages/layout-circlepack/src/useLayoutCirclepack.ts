@@ -3,7 +3,7 @@ import circlepack, { CirclePackLayoutOptions } from "graphology-layout/circlepac
 import { useLayoutFactory } from "@react-sigma/layout-core";
 
 /**
- * React hook that helps you to manage circlepack layout.
+ * React hook that helps you to manage [circlepack layout](https://graphology.github.io/standard-library/layout.html#circlepack).
  *
  * ```typescript
  * const { positions, assign } = useLayoutCirclepack({...});

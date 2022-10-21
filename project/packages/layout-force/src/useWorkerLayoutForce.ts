@@ -3,10 +3,10 @@ import ForceSupervisor, { ForceLayoutSupervisorParameters } from "graphology-lay
 import { useWorkerLayoutFactory } from "@react-sigma/layout-core";
 
 /**
- * React hook that helps you to manage circle layout.
+ * React hook that helps you to manage worker of [force layout](https://graphology.github.io/standard-library/layout-force.html).
  *
  * ```typescript
- * const {stop, start} = useLayoutCircular(...);
+ * const { stop, start } = useWorkerLayoutForce(...);
  *```
  * @category Hook
  */
