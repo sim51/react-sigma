@@ -39,6 +39,7 @@ const mouseEvents: Array<keyof MouseCaptorEvents> = [
   "mouseup",
   "mousedown",
   "mousemove",
+  "mousemovebody",
   "doubleClick",
   "wheel",
 ];
