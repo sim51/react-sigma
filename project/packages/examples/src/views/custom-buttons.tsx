@@ -18,7 +18,7 @@ export const CustomButtonsView: FC = () => {
   const [searchParams] = useSearchParams();
   const faTime = Number.parseInt(searchParams.get("faTime") || "2000");
   return (
-    <SigmaContainer>
+    <SigmaContainer settings={{ renderLabels: false }}>
       <SampleGraph />
       <ControlsContainer position={"bottom-right"}>
         <ZoomControl>

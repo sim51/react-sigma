@@ -15,5 +15,5 @@ export const ExternalView: FC = () => {
     }
   }, [sigma]);
 
-  return <SigmaContainer ref={setSigma} />;
+  return <SigmaContainer ref={setSigma} settings={{ renderLabels: false }} />;
 };
