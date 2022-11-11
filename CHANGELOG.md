@@ -1,5 +1,17 @@
 # Changelog
 
+## Version 3.1.0
+
+### Fixes
+
+- [#38](https://github.com/sim51/react-sigma/pull/38) Adding `mousemovebody` to `useRegisterEvents` (thanks [jakobhansen-blai](https://github.com/jakobhansen-blai) !)
+
+### Features
+
+- Upgrade to `sigma@2.4.0`
+- Upgrade to `graphology-layout-forceatlas2@0.10.1`
+- [#30](https://github.com/sim51/react-sigma/issues/30) : Forward the sigma ref on the `SigmaContainer`
+
 ## Version 3.0.3
 
 ### Fixes

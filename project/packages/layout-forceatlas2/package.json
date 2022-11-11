@@ -39,7 +39,7 @@
     "@react-sigma/layout-core": "^3.0.3"
   },
   "peerDependencies": {
-    "graphology-layout-forceatlas2": "^0.9.1"
+    "graphology-layout-forceatlas2": "^0.10.1"
   },
   "gitHead": "5b4c6d2ab9c4d5dbf70b5108f678ee3f6f22ed17"
 }

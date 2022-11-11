@@ -55,8 +55,8 @@
     "typescript": "^4.6.4"
   },
   "dependencies": {
-    "graphology": "^0.25.0",
-    "graphology-types": "^0.24.4",
-    "sigma": "^2.3.1"
+    "graphology": "^0.25.1",
+    "graphology-types": "^0.24.5",
+    "sigma": "^2.4.0"
   }
 }
