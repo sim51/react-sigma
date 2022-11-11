@@ -1,4 +1,4 @@
-# React Sigma [![CI](https://github.com/sim51/react-sigma/actions/workflows/test.yml/badge.svg)](https://github.com/sim51/react-sigma/actions/workflows/test.yml) [![npm version](https://img.shields.io/npm/v/@react-sigma/core.svg)](https://www.npmjs.com/package/@react-sigma/core)
+# React Sigma
 
 A set of react components to display graphs with Sigma v2.
 
