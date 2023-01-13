@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import { useSearchParams } from "react-router-dom";
 import {
   AiOutlineZoomIn,
   AiOutlineZoomOut,
