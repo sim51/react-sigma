@@ -1,7 +1,7 @@
 import React, { CSSProperties } from "react";
 
 import { ReactComponent as EnterIcon } from "../../assets/icons/expand-solid.svg";
-import { ReactComponent as ExitIcon} from "../../assets/icons/compress-solid.svg";
+import { ReactComponent as ExitIcon } from "../../assets/icons/compress-solid.svg";
 import { useFullScreen } from "../../hooks/useFullScreen";
 
 /**
@@ -29,10 +29,8 @@ export interface FullScreenControlProps {
    * Example :
    * ```jsx
    * <FullScreenControl>
-   *   <>
-   *     <BiFullscreen />
-   *     <BiExitFullscreen />
-   *   </>
+   *   <BiFullscreen />
+   *   <BiExitFullscreen />
    * </FullScreenControl>
    * ```
    */
@@ -76,8 +74,8 @@ export const FullScreenControl: React.FC<FullScreenControlProps> = ({
       <button onClick={toggle} title={isFullScreen ? "Exit fullscreen" : "Enter fullscreen"}>
         {children && !isFullScreen && children[0]}
         {children && isFullScreen && children[1]}
-        {!children && !isFullScreen && <EnterIcon style={{width:"1em"}}/>}
-        {!children && isFullScreen && <ExitIcon style={{width:"1em"}}/>}
+        {!children && !isFullScreen && <EnterIcon style={{ width: "1em" }} />}
+        {!children && isFullScreen && <ExitIcon style={{ width: "1em" }} />}
       </button>
     </div>
   );

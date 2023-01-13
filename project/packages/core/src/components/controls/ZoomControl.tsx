@@ -29,11 +29,9 @@ export interface ZoomControlProps {
    * Example :
    * ```jsx
    * <ZoomControl>
-   *   <>
-   *     <BsZoomIn />
-   *     <BsZoomOut />
-   *     <BiReset />
-   *   </>
+   *   <BsZoomIn />
+   *   <BsZoomOut />
+   *   <BiReset />
    * </FullScreenControl>
    * ```
    */
