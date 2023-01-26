@@ -24,7 +24,8 @@ export const LayoutNoverlapControl: React.FC<LayoutNoverlapControlProps> = ({
   settings = {},
   autoRunFor,
   children,
+  labels,
 }) => {
-  const workerLayoutProps = { id, className, style, settings, autoRunFor, layout: useWorkerLayoutNoverlap };
+  const workerLayoutProps = { id, className, style, settings, autoRunFor, labels, layout: useWorkerLayoutNoverlap };
   return <WorkerLayoutControl {...workerLayoutProps}>{children}</WorkerLayoutControl>;
 };

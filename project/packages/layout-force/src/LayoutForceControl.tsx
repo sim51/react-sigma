@@ -26,7 +26,8 @@ export const LayoutForceControl: React.FC<LayoutForceControlProps> = ({
   settings = {},
   autoRunFor,
   children,
+  labels,
 }) => {
-  const workerLayoutProps = { id, className, style, settings, autoRunFor, layout: useWorkerLayoutForce };
+  const workerLayoutProps = { id, className, style, settings, autoRunFor, labels, layout: useWorkerLayoutForce };
   return <WorkerLayoutControl {...workerLayoutProps}>{children}</WorkerLayoutControl>;
 };

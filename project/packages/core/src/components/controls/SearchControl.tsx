@@ -6,6 +6,8 @@ import { useSigma } from "../../hooks/useSigma";
 import { useCamera } from "../../hooks/useCamera";
 import { useRegisterEvents } from "../../hooks/useRegisterEvents";
 
+type SearchLabelKeys = "text" | "placeholder";
+
 /**
  * Properties for `SearchControl` component
  */
@@ -24,6 +26,12 @@ export interface SearchControlProps {
    * HTML CSS style
    */
   style?: CSSProperties;
+
+  /**
+   * Map of the labels we use in the component.
+   * This is usefull for I18N
+   */
+  labels?: { [Key in SearchLabelKeys]?: string };
 }
 
 /**
@@ -42,7 +50,12 @@ export interface SearchControlProps {
  *
  * @category Component
  */
-export const SearchControl: React.FC<SearchControlProps> = ({ id, className, style }: SearchControlProps) => {
+export const SearchControl: React.FC<SearchControlProps> = ({
+  id,
+  className,
+  style,
+  labels = {},
+}: SearchControlProps) => {
   // Get sigma
   const sigma = useSigma();
   // Get event hook
@@ -134,12 +147,12 @@ export const SearchControl: React.FC<SearchControlProps> = ({ id, className, sty
   return (
     <div {...htmlProps}>
       <label htmlFor={inputId} style={{ display: "none" }}>
-        Search a node
+        {labels["text"] || "Search a node"}
       </label>
       <input
         id={inputId}
         type="text"
-        placeholder="Search..."
+        placeholder={labels["placeholder"] || "Search..."}
         list={`${inputId}-datalist`}
         value={search}
         onChange={onInputChange}

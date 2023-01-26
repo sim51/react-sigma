@@ -4,6 +4,8 @@ import { ReactComponent as EnterIcon } from "../../assets/icons/expand-solid.svg
 import { ReactComponent as ExitIcon } from "../../assets/icons/compress-solid.svg";
 import { useFullScreen } from "../../hooks/useFullScreen";
 
+type FullScreenLabelKeys = "enter" | "exit";
+
 /**
  * Properties for `FullScreenControl` component.
  */
@@ -35,6 +37,12 @@ export interface FullScreenControlProps {
    * ```
    */
   children?: [JSX.Element, JSX.Element];
+
+  /**
+   * Map of the labels we use in the component.
+   * This is usefull for I18N
+   */
+  labels?: { [Key in FullScreenLabelKeys]?: string };
 }
 
 /**
@@ -56,6 +64,7 @@ export const FullScreenControl: React.FC<FullScreenControlProps> = ({
   className,
   style,
   children,
+  labels = {},
 }: FullScreenControlProps) => {
   // Get Sigma
   const { isFullScreen, toggle } = useFullScreen();
@@ -71,7 +80,10 @@ export const FullScreenControl: React.FC<FullScreenControlProps> = ({
 
   return (
     <div {...htmlProps}>
-      <button onClick={toggle} title={isFullScreen ? "Exit fullscreen" : "Enter fullscreen"}>
+      <button
+        onClick={toggle}
+        title={isFullScreen ? labels["exit"] || "Exit fullscreen" : labels["enter"] || "Enter fullscreen"}
+      >
         {children && !isFullScreen && children[0]}
         {children && isFullScreen && children[1]}
         {!children && !isFullScreen && <EnterIcon style={{ width: "1em" }} />}

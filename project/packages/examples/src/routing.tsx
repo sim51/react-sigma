@@ -5,7 +5,7 @@ import { HomeView } from "./views/home";
 import { CompleteView } from "./views/complete";
 import { EventsView } from "./views/events";
 import { MultipleView } from "./views/multiple";
-import { CustomButtonsView } from "./views/custom-buttons";
+import { CustomRenderView } from "./views/custom-render";
 import { MultiDirectedGraphView } from "./views/multidirectedgraph";
 import { ExternalView } from "./views/external";
 
@@ -16,7 +16,7 @@ export const Routing: FC = () => {
       <Route path="/complete" element={<CompleteView />} />
       <Route path="/events" element={<EventsView />} />
       <Route path="/multiple" element={<MultipleView />} />
-      <Route path="/custom-buttons" element={<CustomButtonsView />} />
+      <Route path="/custom-render" element={<CustomRenderView />} />
       <Route path="/multidirectedgraph" element={<MultiDirectedGraphView />} />
       <Route path="/external" element={<ExternalView />} />
     </Routes>

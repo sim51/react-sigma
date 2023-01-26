@@ -25,10 +25,10 @@ export const HomeView: FC = () => {
           Display multiple independant graph on the same page
         </li>
         <li>
-          <Link to="/custom-buttons" title="Custom Buttons">
-            Custom Buttons
+          <Link to="/custom-render" title="Custom render">
+            Custom Render
           </Link>{" "}
-          Make your own style by overring the native display of controllers
+          Make your own style by overring the native display and labels of controllers
         </li>
         <li>
           <Link to="/multidirectedgraph" title="MultiDirectedGraph">

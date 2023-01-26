@@ -49,3 +49,14 @@ On the Worker layout you must defined two children :
 <CodePreview code={ControlCustomSource} title="Custom render for control">
   <ControlCustom />
 </CodePreview>
+
+## Custom labels for I18N
+
+Every component that display a label in a way accepts a property called `labels`,
+which is a map of key/value.
+
+For example, you can change the labels of the zoom control like that :
+
+```
+<ZoomControl labels={{ zoomIn: "PLUS", zoomOut: "MINUS", reset: "RESET" }} />
+```

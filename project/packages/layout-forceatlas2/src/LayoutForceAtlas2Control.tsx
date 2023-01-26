@@ -24,7 +24,8 @@ export const LayoutForceAtlas2Control: React.FC<LayoutForceAtlas2ControlProps> =
   settings = {},
   autoRunFor,
   children,
+  labels,
 }) => {
-  const workerLayoutProps = { id, className, style, settings, autoRunFor, layout: useWorkerLayoutForceAtlas2 };
+  const workerLayoutProps = { id, className, style, settings, autoRunFor, labels, layout: useWorkerLayoutForceAtlas2 };
   return <WorkerLayoutControl {...workerLayoutProps}>{children}</WorkerLayoutControl>;
 };

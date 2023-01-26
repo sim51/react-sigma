@@ -5,6 +5,8 @@ import { ReactComponent as ZoomOutIcon } from "../../assets/icons/minus-solid.sv
 import { ReactComponent as ZoomResetIcon } from "../../assets/icons/dot-circle-regular.svg";
 import { useCamera } from "../../hooks/useCamera";
 
+type ZoomLabelKeys = "zoomIn" | "zoomOut" | "reset";
+
 /**
  * Properties for `ZoomControl` component
  */
@@ -23,6 +25,7 @@ export interface ZoomControlProps {
    * Number of ms for the zoom animation (default is 200ms)
    */
   animationDuration?: number;
+
   /**
    * It's possible to customize the button, by passing to JSX Element.
    * First one is for the "zoom in", second for "zoom out" and third for "view whole graph".
@@ -36,6 +39,12 @@ export interface ZoomControlProps {
    * ```
    */
   children?: [JSX.Element, JSX.Element, JSX.Element];
+
+  /**
+   * Map of the labels we use in the component.
+   * This is usefull for I18N
+   */
+  labels?: { [Key in ZoomLabelKeys]?: string };
 }
 
 /**
@@ -60,6 +69,7 @@ export const ZoomControl: React.FC<ZoomControlProps> = ({
   style,
   animationDuration = 200,
   children,
+  labels = {},
 }: ZoomControlProps) => {
   const { zoomIn, zoomOut, reset } = useCamera({ duration: animationDuration, factor: 1.5 });
 
@@ -72,17 +82,17 @@ export const ZoomControl: React.FC<ZoomControlProps> = ({
   return (
     <>
       <div {...htmlProps}>
-        <button onClick={() => zoomIn()} title="Zoom In">
+        <button onClick={() => zoomIn()} title={labels["zoomIn"] || "Zoom In"}>
           {children ? children[0] : <ZoomInIcon style={{ width: "1em" }} />}
         </button>
       </div>
       <div {...htmlProps}>
-        <button onClick={() => zoomOut()} title="Zoom Out">
+        <button onClick={() => zoomOut()} title={labels["zoomOut"] || "Zoom Out"}>
           {children ? children[1] : <ZoomOutIcon style={{ width: "1em" }} />}
         </button>
       </div>
       <div {...htmlProps}>
-        <button onClick={() => reset()} title="See whole graph">
+        <button onClick={() => reset()} title={labels["reset"] || "See whole graph"}>
           {children ? children[2] : <ZoomResetIcon style={{ width: "1em" }} />}
         </button>
       </div>

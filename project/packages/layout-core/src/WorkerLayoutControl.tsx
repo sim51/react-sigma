@@ -5,6 +5,8 @@ import { ReactComponent as StartLayoutIcon } from "./assets/icons/play-solid.svg
 import { ReactComponent as StopLayoutIcon } from "./assets/icons/stop-solid.svg";
 import { LayoutWorkerHook } from "./useWorkerLayoutFactory";
 
+type WorkerLayoutLabelKeys = "start" | "stop";
+
 /**
  * Properties for `WorkerLayoutControl` component
  */
@@ -47,15 +49,21 @@ export interface WorkerLayoutControlProps<T> {
    * First one is for the "start layout", and the second to "stop layout".
    * Example :
    * ```jsx
-   * <FullScreenControl>
+   * <WorkerLayoutControl>
    *   <>
-   *     <BiFullscreen />
-   *     <BiExitFullscreen />
+   *     <span>Start</span>
+   *     <span>Stop</span>
    *   </>
-   * </FullScreenControl>
+   * </WorkerLayoutControl>
    * ```
    */
   children?: [JSX.Element, JSX.Element];
+
+  /**
+   * Map of the labels we use in the component.
+   * This is usefull for I18N
+   */
+  labels?: { [Key in WorkerLayoutLabelKeys]?: string };
 }
 
 export function WorkerLayoutControl<T>({
@@ -66,6 +74,7 @@ export function WorkerLayoutControl<T>({
   settings,
   autoRunFor,
   children,
+  labels = {},
 }: WorkerLayoutControlProps<T>) {
   // Get Sigma
   const sigma = useSigma();
@@ -111,7 +120,9 @@ export function WorkerLayoutControl<T>({
     <div {...props}>
       <button
         onClick={() => (isRunning ? stop() : start())}
-        title={isRunning ? "Stop the layout animation" : "Start the layout animation"}
+        title={
+          isRunning ? labels["stop"] || "Stop the layout animation" : labels["start"] || "Start the layout animation"
+        }
       >
         {children && !isRunning && children[0]}
         {children && isRunning && children[1]}

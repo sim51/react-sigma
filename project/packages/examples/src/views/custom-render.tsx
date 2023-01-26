@@ -14,23 +14,23 @@ import { SigmaContainer, ControlsContainer, ZoomControl, FullScreenControl } fro
 import { LayoutForceAtlas2Control } from "@react-sigma/layout-forceatlas2";
 import { SampleGraph } from "../common/SampleGraph";
 
-export const CustomButtonsView: FC = () => {
+export const CustomRenderView: FC = () => {
   const [searchParams] = useSearchParams();
   const faTime = Number.parseInt(searchParams.get("faTime") || "2000");
   return (
     <SigmaContainer settings={{ renderLabels: false }}>
       <SampleGraph />
       <ControlsContainer position={"bottom-right"}>
-        <ZoomControl>
+        <ZoomControl labels={{ zoomIn: "PLUS", zoomOut: "MINUS", reset: "RESET" }}>
           <AiOutlineZoomIn />
           <AiOutlineZoomOut />
           <MdFilterCenterFocus />
         </ZoomControl>
-        <FullScreenControl>
+        <FullScreenControl labels={{ enter: "ENTER", exit: "EXIT" }}>
           <AiOutlineFullscreen />
           <AiOutlineFullscreenExit />
         </FullScreenControl>
-        <LayoutForceAtlas2Control autoRunFor={faTime}>
+        <LayoutForceAtlas2Control labels={{ stop: "STOP", start: "START" }} autoRunFor={faTime}>
           <AiFillPlayCircle />
           <AiFillPauseCircle />
         </LayoutForceAtlas2Control>

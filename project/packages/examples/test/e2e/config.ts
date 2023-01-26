@@ -15,8 +15,8 @@ export const tests: Tests = [
   { name: "complete", url: "http://localhost:3000/complete?seed=foo&faTime=-1", waitFor: 200, failureThreshold: 0.001 },
   { name: "multiple", url: "http://localhost:3000/multiple?seed=foo&faTime=-1", waitFor: 200, failureThreshold: 0.001 },
   {
-    name: "custom-buttons",
-    url: "http://localhost:3000/custom-buttons?seed=foo&faTime=-1",
+    name: "custom-render",
+    url: "http://localhost:3000/custom-render?seed=foo&faTime=-1",
     waitFor: 200,
     failureThreshold: 0.001,
   },
