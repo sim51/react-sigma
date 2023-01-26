@@ -1,5 +1,15 @@
 # Changelog
 
+## Version 3.2.0
+
+### Features
+
+- [#42](https://github.com/sim51/react-sigma/issues/42) Be able to customize labels on controls. Example :
+
+```
+<ZoomControl labels={{ zoomIn: "PLUS", zoomOut: "MINUS", reset: "RESET" }} />
+```
+
 ## Version 3.1.0
 
 ### Fixes
