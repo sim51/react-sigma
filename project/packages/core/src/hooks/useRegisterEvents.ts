@@ -31,6 +31,8 @@ const sigmaEvents: Array<keyof SigmaEvents> = [
   "downStage",
   "doubleClickStage",
   "wheelStage",
+  "beforeRender",
+  "afterRender",
   "kill",
 ];
 const mouseEvents: Array<keyof MouseCaptorEvents> = [

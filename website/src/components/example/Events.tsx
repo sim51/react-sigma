@@ -48,6 +48,9 @@ const Events: FC = () => {
         touchmove: (event) => console.log("touchmove", event.touches),
         // sigma kill
         kill: () => console.log("kill"),
+        resize: () => console.log("resize"),
+        beforeRender: () => console.log("beforeRender"),
+        afterRender: () => console.log("afterRender"),
         // sigma camera update
         updated: (event) => console.log("updated", event.x, event.y, event.angle, event.ratio),
       });
