@@ -1,5 +1,12 @@
 # Changelog
 
+## Version 3.3.0
+
+### Feature
+
+- [#43](https://github.com/sim51/react-sigma/issues/43) Allow giving a different container for fullscreen control
+- [#46](https://github.com/sim51/react-sigma/issues/46) Adding `resize`, `beforeRender` & `afterRender` to `useRegisterEvents`
+
 ## Version 3.2.0
 
 ### Features
