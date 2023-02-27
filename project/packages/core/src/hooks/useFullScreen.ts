@@ -19,19 +19,29 @@ function toggleFullScreen(dom: HTMLElement) {
  *```
  * @category Hook
  */
-export function useFullScreen(): { toggle: () => void; isFullScreen: boolean } {
-  const { container } = useSigmaContext();
+export function useFullScreen(
+  container?: HTMLElement | null,
+): {
+  toggle: () => void;
+  isFullScreen: boolean;
+} {
+  const context = useSigmaContext();
   const [isFullScreen, setFullScreen] = useState<boolean>(false);
-  const toggleState = () => setFullScreen(v => !v);
+  const [element, setElement] = useState<HTMLElement>(container ? container : context.container);
+  const toggleState = () => setFullScreen((v) => !v);
 
   useEffect(() => {
     document.addEventListener("fullscreenchange", toggleState);
     return () => document.removeEventListener("fullscreenchange", toggleState);
   }, [toggleState]);
 
+  useEffect(() => {
+    setElement(container || context.container);
+  }, [container, context.container]);
+
   const toggle = useCallback(() => {
-    toggleFullScreen(container);
-  }, [container]);
+    toggleFullScreen(element);
+  }, [element]);
 
   return {
     toggle,

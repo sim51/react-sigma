@@ -1,4 +1,4 @@
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, RefObject } from "react";
 
 import { ReactComponent as EnterIcon } from "../../assets/icons/expand-solid.svg";
 import { ReactComponent as ExitIcon } from "../../assets/icons/compress-solid.svg";
@@ -24,6 +24,11 @@ export interface FullScreenControlProps {
    * HTML CSS style
    */
   style?: CSSProperties;
+
+  /**
+   * If defined, this container will be taken for the fullscreen instead of the sigma one.
+   */
+  container?: RefObject<HTMLElement>;
 
   /**
    * It's possible to customize the button, by passing to JSX Element.
@@ -63,11 +68,12 @@ export const FullScreenControl: React.FC<FullScreenControlProps> = ({
   id,
   className,
   style,
+  container,
   children,
   labels = {},
 }: FullScreenControlProps) => {
   // Get Sigma
-  const { isFullScreen, toggle } = useFullScreen();
+  const { isFullScreen, toggle } = useFullScreen(container?.current);
 
   // Common html props for the div
   const htmlProps = {

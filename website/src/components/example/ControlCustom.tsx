@@ -15,8 +15,15 @@ import { LayoutForceAtlas2Control } from "@react-sigma/layout-forceatlas2";
 import { GraphDefault } from "../GraphDefault";
 
 const ControlCustom: FC = () => {
+  // const containerRef = useRef<HTMLDivElement>(null);
   return (
     <SigmaContainer style={{ height: "500px" }}>
+      {/*
+          // For fullscreen on a specific dom element
+          <div ref={containerRef}>
+            ...
+            <FullScreenControl container={containerRef} />
+      */}
       <GraphDefault order={100} probability={0.01} />
       <ControlsContainer position={"bottom-right"}>
         <ZoomControl>
