@@ -34,7 +34,7 @@ export const DisplayGraph = () => {
 };
 ```
 
-You can take a look at this [code sandbox](https://githubbox.com/sim51/react-sigma/tree/main/packages/examples) to see a working example.
+You can take a look at this [code sandbox](https://codesandbox.io/s/react-sigma-example-qlkqg8) to see a working example.
 
 If the graph is not displayed properly, it is most likely because you haven't followed all the prerequisites.
 
