@@ -1,6 +1,6 @@
 {
   "name": "@react-sigma/layout-random",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "private": false,
   "description": "React Sigma - Layout random",
   "author": "Benoit Simard",
@@ -36,7 +36,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "@react-sigma/layout-core": "^3.2.0"
+    "@react-sigma/layout-core": "^3.3.0"
   },
   "peerDependencies": {
     "graphology-layout": "^0.6.1"
