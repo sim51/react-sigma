@@ -37,6 +37,12 @@ export const HomeView: FC = () => {
           Instantiate a MultiDirectedGraph on SigmaContainer
         </li>
         <li>
+          <Link to="/updatedgraphreference" title="Updated graph reference">
+            Updated graph reference
+          </Link>{" "}
+          Update graph instance during lifecycle of react-sigma
+        </li>
+        <li>
           <Link to="/external" title="External">
             External control
           </Link>{" "}

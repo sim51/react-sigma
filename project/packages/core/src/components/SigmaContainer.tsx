@@ -82,6 +82,7 @@ const SigmaContainerComponent = (
     if (containerRef.current !== null) {
       const sigGraph = graph ? (typeof graph === "function" ? new graph() : graph) : new Graph();
       instance = new Sigma(sigGraph, containerRef.current, { allowInvalidContainer: true, ...sigmaSettings.current });
+      if (sigma) instance.getCamera().setState(sigma.getCamera().getState());
     }
     setSigma(instance);
 
