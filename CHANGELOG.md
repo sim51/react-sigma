@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 3.4.0
+
+### Feature
+
+- [#48](https://github.com/sim51/react-sigma/issues/48) Camera state is restored when Sigma.js is recreated
+
 ## Version 3.3.0
 
 ### Feature

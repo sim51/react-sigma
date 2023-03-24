@@ -7,7 +7,8 @@ React Sigma is strongly inspired by [react-leaflet](https://react-leaflet.js.org
 It just provides some bindings (and helpers) between [React](https://reactjs.org/) and [Sigma](https://www.sigmajs.org/).
 
 The main component, ie. `SigmaContainer`, creates a Sigma instance with the provided settings and graph.
-If its properties `initialSettings` or `graph` are updated, the instance is killed and re-created.
+
+If its properties `settings` or `graph` are updated, the instance is killed and re-created (but its camera state is restored).
 
 I recommend you to **NOT UPDATE** those options to avoid performance issues.
 [Sigma](https://www.sigmajs.org/) Sigma (and [graphology](https://graphology.github.io/)) comes with methods that allow you to update graph but also the settings.
@@ -28,7 +29,7 @@ In your components, you can use the hook `useSigma()` that gives you the sigma i
 1. The `SigmaContainer` renders its children components.
 1. Each child has access to the sigma instance via the shared context, so they can manipulate it (and its underlying graph)
 
-**IMPORTANT:** If you change properties on the `SigmaContainer`, the component will be rendered again as well as all its children. So the sigma instance will be killed and recreated.
+**IMPORTANT:** If you change properties on the `SigmaContainer`, the component will be rendered again as well as all its children. So the sigma instance will be killed and recreated (but its camera state is restored).
 
 ## Modules
 
