@@ -1,7 +1,7 @@
 {
   "name": "@react-sigma/layout-circlepack",
   "private": false,
-  "version": "3.4.0",
+  "version": "3.4.1",
   "description": "React Sigma - Layout circlepack",
   "author": "Benoit Simard",
   "license": "MIT",
@@ -23,8 +23,8 @@
   "module": "./lib/react-sigma_layout-circlepack.esm.min.js",
   "typings": "./lib/index.d.ts",
   "exports": {
-    ".":  { 
-      "default": "./lib/react-sigma_layout-circlepack.esm.min.js", 
+    ".": {
+      "default": "./lib/react-sigma_layout-circlepack.esm.min.js",
       "types": "./lib/index.d.ts"
     }
   },
@@ -40,7 +40,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "@react-sigma/layout-core": "^3.4.0"
+    "@react-sigma/layout-core": "^3.4.1"
   },
   "peerDependencies": {
     "graphology-layout": "^0.6.1"

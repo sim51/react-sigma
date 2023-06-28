@@ -1,6 +1,6 @@
 {
   "name": "@react-sigma/layout-circular",
-  "version": "3.4.0",
+  "version": "3.4.1",
   "private": false,
   "description": "React Sigma - Layout circular",
   "author": "Benoit Simard",
@@ -22,8 +22,8 @@
   "module": "./lib/react-sigma_layout-circular.esm.min.js",
   "typings": "./lib/index.d.ts",
   "exports": {
-    ".":  { 
-      "default": "./lib/react-sigma_layout-circular.esm.min.js", 
+    ".": {
+      "default": "./lib/react-sigma_layout-circular.esm.min.js",
       "types": "./lib/index.d.ts"
     }
   },
@@ -39,7 +39,7 @@
     "start": "nodemon --watch src -e ts,tsx --exec npm run build"
   },
   "dependencies": {
-    "@react-sigma/layout-core": "^3.4.0"
+    "@react-sigma/layout-core": "^3.4.1"
   },
   "peerDependencies": {
     "graphology-layout": "0.6.1"

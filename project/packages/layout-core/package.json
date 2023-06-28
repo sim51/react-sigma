@@ -1,6 +1,6 @@
 {
   "name": "@react-sigma/layout-core",
-  "version": "3.4.0",
+  "version": "3.4.1",
   "private": false,
   "description": "React Sigma - Layout core",
   "author": "Benoit Simard",
@@ -22,8 +22,8 @@
   "module": "./lib/react-sigma_layout-core.esm.min.js",
   "typings": "./lib/index.d.ts",
   "exports": {
-    ".":  { 
-      "default": "./lib/react-sigma_layout-core.esm.min.js", 
+    ".": {
+      "default": "./lib/react-sigma_layout-core.esm.min.js",
       "types": "./lib/index.d.ts"
     }
   },
@@ -42,7 +42,7 @@
     "copyfiles": "^2.4.1"
   },
   "dependencies": {
-    "@react-sigma/core": "^3.4.0"
+    "@react-sigma/core": "^3.4.1"
   },
   "gitHead": "5b4c6d2ab9c4d5dbf70b5108f678ee3f6f22ed17"
 }
