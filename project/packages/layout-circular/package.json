@@ -22,7 +22,10 @@
   "module": "./lib/react-sigma_layout-circular.esm.min.js",
   "typings": "./lib/index.d.ts",
   "exports": {
-    ".": "./lib/react-sigma_layout-circular.esm.min.js"
+    ".":  { 
+      "default": "./lib/react-sigma_layout-circular.esm.min.js", 
+      "types": "./lib/index.d.ts"
+    }
   },
   "publishConfig": {
     "access": "public",

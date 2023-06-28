@@ -22,7 +22,10 @@
   "module": "./lib/react-sigma_core.esm.min.js",
   "typings": "./lib/index.d.ts",
   "exports": {
-    ".": "./lib/react-sigma_core.esm.min.js",
+    ".":  { 
+      "default": "./lib/react-sigma_core.esm.min.js", 
+      "types": "./lib/index.d.ts"
+    },
     "./lib/react-sigma.min.css": "./lib/react-sigma.min.css"
   },
   "scripts": {

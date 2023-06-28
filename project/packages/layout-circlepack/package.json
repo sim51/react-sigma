@@ -23,7 +23,10 @@
   "module": "./lib/react-sigma_layout-circlepack.esm.min.js",
   "typings": "./lib/index.d.ts",
   "exports": {
-    ".": "./lib/react-sigma_layout-circlepack.esm.min.js"
+    ".":  { 
+      "default": "./lib/react-sigma_layout-circlepack.esm.min.js", 
+      "types": "./lib/index.d.ts"
+    }
   },
   "scripts": {
     "clean": "rimraf lib tsconfig.tsbuildinfo .rollup.cache",

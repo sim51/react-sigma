@@ -22,7 +22,10 @@
   "module": "./lib/react-sigma_layout-noverlap.esm.min.js",
   "typings": "./lib/index.d.ts",
   "exports": {
-    ".": "./lib/react-sigma_layout-noverlap.esm.min.js"
+    ".":  { 
+      "default": "./lib/react-sigma_layout-noverlap.esm.min.js", 
+      "types": "./lib/index.d.ts"
+    }
   },
   "scripts": {
     "clean": "rimraf lib tsconfig.tsbuildinfo .rollup.cache",
