@@ -23,8 +23,8 @@
   "typings": "./lib/index.d.ts",
   "exports": {
     ".": {
-      "default": "./lib/react-sigma_layout-random.esm.min.js",
-      "types": "./lib/index.d.ts"
+      "types": "./lib/index.d.ts",
+      "default": "./lib/react-sigma_layout-random.esm.min.js"
     }
   },
   "scripts": {

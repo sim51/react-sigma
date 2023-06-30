@@ -22,11 +22,11 @@
   "module": "./lib/react-sigma_core.esm.min.js",
   "typings": "./lib/index.d.ts",
   "exports": {
+    "./lib/react-sigma.min.css": "./lib/react-sigma.min.css",
     ".": {
-      "default": "./lib/react-sigma_core.esm.min.js",
-      "types": "./lib/index.d.ts"
-    },
-    "./lib/react-sigma.min.css": "./lib/react-sigma.min.css"
+      "types": "./lib/index.d.ts",
+      "default": "./lib/react-sigma_core.esm.min.js"
+    }
   },
   "scripts": {
     "clean": "rimraf lib tsconfig.tsbuildinfo .rollup.cache",
