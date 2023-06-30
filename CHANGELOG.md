@@ -12,12 +12,6 @@
 
 - [#54](https://github.com/sim51/react-sigma/issues/54) Compatibility with the TS moduleResolution `bundler`
 
-## Version 3.4.1
-
-### Feature
-
-- [#54](https://github.com/sim51/react-sigma/issues/54) Compatibility with the TS moduleResolution `bundler`
-
 ## Version 3.4.0
 
 ### Feature
