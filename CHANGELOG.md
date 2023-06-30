@@ -1,5 +1,23 @@
 # Changelog
 
+## Version 3.4.2
+
+### Fixes
+
+- [#55](https://github.com/sim51/react-sigma/issues/55) Fix the order in export in package.json (default entry should be the last)
+
+## Version 3.4.1
+
+### Fixes
+
+- [#54](https://github.com/sim51/react-sigma/issues/54) Compatibility with the TS moduleResolution `bundler`
+
+## Version 3.4.1
+
+### Feature
+
+- [#54](https://github.com/sim51/react-sigma/issues/54) Compatibility with the TS moduleResolution `bundler`
+
 ## Version 3.4.0
 
 ### Feature
