@@ -1,6 +1,6 @@
 {
   "name": "@react-sigma/layout-core",
-  "version": "3.4.1",
+  "version": "3.4.2",
   "private": false,
   "description": "React Sigma - Layout core",
   "author": "Benoit Simard",
@@ -42,7 +42,7 @@
     "copyfiles": "^2.4.1"
   },
   "dependencies": {
-    "@react-sigma/core": "^3.4.1"
+    "@react-sigma/core": "^3.4.2"
   },
   "gitHead": "5b4c6d2ab9c4d5dbf70b5108f678ee3f6f22ed17"
 }
