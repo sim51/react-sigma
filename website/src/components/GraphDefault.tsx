@@ -21,7 +21,7 @@ export interface GraphDefaultProps {
 export const GraphDefault: React.FC<GraphDefaultProps> = ({ order, probability }) => {
   const { faker, randomColor } = useSeedRandom();
   const sigma = useSigma();
-  const { assign: assingCircular } = useLayoutCircular();
+  const { assign: assignCircular } = useLayoutCircular();
   const registerEvents = useRegisterEvents();
   const loadGraph = useLoadGraph();
   const setSettings = useSetSettings();
@@ -47,14 +47,14 @@ export const GraphDefault: React.FC<GraphDefaultProps> = ({ order, probability }
     }
 
     loadGraph(graph);
-    assingCircular();
+    assignCircular();
 
     // Register the events
     registerEvents({
       enterNode: (event) => setHoveredNode(event.node),
       leaveNode: () => setHoveredNode(null),
     });
-  }, [assingCircular, loadGraph, registerEvents, faker.datatype, faker.name, randomColor, order, probability]);
+  }, [assignCircular, loadGraph, registerEvents, faker.datatype, faker.name, randomColor, order, probability]);
 
   useEffect(() => {
     setSettings({

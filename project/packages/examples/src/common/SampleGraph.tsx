@@ -14,7 +14,7 @@ export const SampleGraph: FC = () => {
   const registerEvents = useRegisterEvents();
   const setSettings = useSetSettings();
   const loadGraph = useLoadGraph();
-  const { assign: assingCircular } = useLayoutCircular();
+  const { assign: assignCircular } = useLayoutCircular();
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
 
   /**
@@ -34,14 +34,14 @@ export const SampleGraph: FC = () => {
       });
     });
     loadGraph(graph);
-    assingCircular();
+    assignCircular();
 
     // Register the events
     registerEvents({
       enterNode: (event) => setHoveredNode(event.node),
       leaveNode: () => setHoveredNode(null),
     });
-  }, [assingCircular, loadGraph, registerEvents, faker.datatype, faker.name, randomColor]);
+  }, [assignCircular, loadGraph, registerEvents, faker.datatype, faker.name, randomColor]);
 
   /**
    * When component mount or hovered node change
