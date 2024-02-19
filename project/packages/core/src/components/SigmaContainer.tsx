@@ -8,23 +8,27 @@ import React, {
   useState,
   forwardRef,
   useImperativeHandle,
+  ReactElement,
 } from "react";
 import { isEqual } from "lodash";
 import Graph from "graphology";
-import { GraphConstructor } from "graphology-types";
+import { GraphOptions } from "graphology-types";
 import { Sigma } from "sigma";
 import { Settings } from "sigma/settings";
 
 import { SigmaProvider } from "../hooks/context";
 
+type GraphConstructor<G extends Graph> = new (options?: GraphOptions) => G;
+export type GraphType<G extends Graph> = G | GraphConstructor<G>;
+
 /**
  * Properties for `SigmaContainer` component
  */
-export interface SigmaContainerProps {
+export interface SigmaContainerProps<G extends Graph> {
   /**
    * Graphology instance or constructor
    */
-  graph?: Graph | GraphConstructor;
+  graph?: GraphType<G>;
   /**
    * Sigma settings
    */
@@ -56,9 +60,9 @@ export interface SigmaContainerProps {
  * @category Component
  */
 // eslint-disable-next-line react/display-name
-const SigmaContainerComponent = (
-  { graph, id, className, style, settings, children }: PropsWithChildren<SigmaContainerProps>,
-  ref: Ref<Sigma | null>,
+const SigmaContainerComponent = <G extends Graph>(
+  { graph, id, className, style, settings, children }: PropsWithChildren<SigmaContainerProps<G>>,
+  ref: Ref<Sigma<G> | null>,
 ) => {
   // Root HTML element
   const rootRef = useRef<HTMLDivElement>(null);
@@ -67,7 +71,7 @@ const SigmaContainerComponent = (
   // Common html props for the container
   const props = { className: `react-sigma ${className ? className : ""}`, id, style };
   // Sigma instance
-  const [sigma, setSigma] = useState<Sigma | null>(null);
+  const [sigma, setSigma] = useState<Sigma<G> | null>(null);
   // Sigma settings
   const sigmaSettings = useRef<Partial<Settings>>({});
   if (!isEqual(sigmaSettings.current, settings)) sigmaSettings.current = settings || {};
@@ -77,11 +81,17 @@ const SigmaContainerComponent = (
    * => create sigma
    */
   useEffect(() => {
-    let instance: Sigma | null = null;
+    let instance: Sigma<G> | null = null;
 
     if (containerRef.current !== null) {
-      const sigGraph = graph ? (typeof graph === "function" ? new graph() : graph) : new Graph();
-      instance = new Sigma(sigGraph, containerRef.current, { allowInvalidContainer: true, ...sigmaSettings.current });
+      let sigGraph: G = new Graph() as G;
+      if (graph) {
+        sigGraph = typeof graph === "function" ? new graph() : graph;
+      }
+      instance = new Sigma(sigGraph, containerRef.current, {
+        allowInvalidContainer: true,
+        ...sigmaSettings.current,
+      });
       if (sigma) instance.getCamera().setState(sigma.getCamera().getState());
     }
     setSigma(instance);
@@ -118,4 +128,14 @@ const SigmaContainerComponent = (
   );
 };
 
-export const SigmaContainer = forwardRef(SigmaContainerComponent);
+/**
+ * Redefine forwardRef for generics
+ */
+function fixedForwardRef<T, P = unknown>(
+  render: (props: P, ref: React.Ref<T>) => ReactElement,
+): (props: P & React.RefAttributes<T>) => ReactElement {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return forwardRef(render) as (props: P & React.RefAttributes<T>) => ReactElement;
+}
+
+export const SigmaContainer = fixedForwardRef(SigmaContainerComponent);

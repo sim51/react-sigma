@@ -1,8 +1,9 @@
+import Graph from "graphology";
 import { createContext, useContext } from "react";
 import Sigma from "sigma/sigma";
 
-export interface SigmaContextInterface {
-  sigma: Sigma;
+export interface SigmaContextInterface<G extends Graph = Graph> {
+  sigma: Sigma<G>;
   container: HTMLElement;
 }
 
@@ -26,10 +27,10 @@ export const SigmaProvider = SigmaContext.Provider;
  *
  * @category Hook
  */
-export function useSigmaContext(): SigmaContextInterface {
+export function useSigmaContext<G extends Graph = Graph>(): SigmaContextInterface<G> {
   const context = useContext(SigmaContext);
   if (context == null) {
     throw new Error("No context provided: useSigmaContext() can only be used in a descendant of <SigmaContainer>");
   }
-  return context;
+  return context as SigmaContextInterface<G>;
 }

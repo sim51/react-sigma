@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useMemo, useState } from "react";
 import { MultiDirectedGraph } from "graphology";
 
 import { SigmaContainer } from "@react-sigma/core";
@@ -15,6 +15,7 @@ function getGraph() {
 
 export const UpdatedGraphReferenceView: FC = () => {
   const [graph, setGraph] = useState<MultiDirectedGraph>(getGraph());
+  const settings = useMemo(() => ({ renderLabels: false }), []);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -23,10 +24,8 @@ export const UpdatedGraphReferenceView: FC = () => {
 
     return () => {
       clearInterval(intervalId);
-    }
-  }, [])
+    };
+  }, []);
 
-  return (
-    <SigmaContainer graph={graph} settings={{ renderEdgeLabels: true }} />
-  );
+  return <SigmaContainer graph={graph} settings={settings} />;
 };

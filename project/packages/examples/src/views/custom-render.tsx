@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import {
   AiOutlineZoomIn,
@@ -17,8 +17,10 @@ import { SampleGraph } from "../common/SampleGraph";
 export const CustomRenderView: FC = () => {
   const [searchParams] = useSearchParams();
   const faTime = Number.parseInt(searchParams.get("faTime") || "2000");
+  const settings = useMemo(() => ({ renderLabels: false }), []);
+
   return (
-    <SigmaContainer settings={{ renderLabels: false }}>
+    <SigmaContainer settings={settings}>
       <SampleGraph />
       <ControlsContainer position={"bottom-right"}>
         <ZoomControl labels={{ zoomIn: "PLUS", zoomOut: "MINUS", reset: "RESET" }}>

@@ -1,3 +1,4 @@
+import Graph from "graphology";
 import Sigma from "sigma/sigma";
 
 import { useSigmaContext } from "./context";
@@ -10,6 +11,6 @@ import { useSigmaContext } from "./context";
  *```
  * @category Hook
  */
-export function useSigma(): Sigma {
-  return useSigmaContext().sigma;
+export function useSigma<G extends Graph = Graph>(): Sigma<G> {
+  return useSigmaContext<G>().sigma;
 }

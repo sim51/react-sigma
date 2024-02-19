@@ -4,9 +4,7 @@ import Graph from "graphology";
 
 import { useSigma } from "@react-sigma/core";
 
-export type LayoutWorkerHook<T> = (
-  settings: T,
-) => {
+export type LayoutWorkerHook<T> = (settings: T) => {
   stop: () => void;
   start: () => void;
   kill: () => void;

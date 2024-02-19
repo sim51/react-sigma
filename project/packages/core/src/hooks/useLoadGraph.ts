@@ -14,11 +14,11 @@ import { useSigma } from "./useSigma";
  *```
  * @category Hook
  */
-export function useLoadGraph(): (graph: Graph, clear?: boolean) => void {
-  const sigma = useSigma();
+export function useLoadGraph<G extends Graph = Graph>(): (graph: G, clear?: boolean) => void {
+  const sigma = useSigma<G>();
 
   return useCallback(
-    (graph: Graph, clear = true) => {
+    (graph: G, clear = true) => {
       if (sigma && graph) {
         if (clear && sigma.getGraph().order > 0) sigma.getGraph().clear();
         sigma.getGraph().import(graph);

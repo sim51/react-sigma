@@ -15,9 +15,7 @@ interface GraphologyLayout<T> {
 /**
  * Generic type for layout hooks.
  */
-export type LayoutHook<T> = (
-  settings?: T,
-) => {
+export type LayoutHook<T> = (settings?: T) => {
   /**
    * Returns a positions map by node key.
    */

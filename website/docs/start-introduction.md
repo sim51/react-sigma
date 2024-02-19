@@ -10,8 +10,8 @@ The main component, ie. `SigmaContainer`, creates a Sigma instance with the prov
 
 If its properties `settings` or `graph` are updated, the instance is killed and re-created (but its camera state is restored).
 
-I recommend you to **NOT UPDATE** those options to avoid performance issues.
-[Sigma](https://www.sigmajs.org/) Sigma (and [graphology](https://graphology.github.io/)) comes with methods that allow you to update graph but also the settings.
+I recommend you to **NOT UPDATE** those options to avoid performance issues, and to use a `useMemo` for the settings.
+[Sigma](https://www.sigmajs.org/) Sigma (and [graphology](https://graphology.github.io/)) comes with methods that allow you to update graph but also settings.
 So you should treat it as an **immutable component**.
 
 ## React context

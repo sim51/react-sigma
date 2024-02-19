@@ -1,10 +1,24 @@
-import { FC, useEffect, useState } from "react";
-
+import { FC, useEffect, useMemo, useState } from "react";
+import Graph from "graphology";
 import Sigma from "sigma";
+
 import { SigmaContainer } from "@react-sigma/core";
 
+type MyGraphType = Graph<
+  {
+    x: number;
+    y: number;
+    label: string;
+    size: number;
+  },
+  {
+    label: string;
+  }
+>;
+
 export const ExternalView: FC = () => {
-  const [sigma, setSigma] = useState<Sigma | null>(null);
+  const [sigma, setSigma] = useState<Sigma<MyGraphType> | null>(null);
+  const settings = useMemo(() => ({ renderLabels: false }), []);
 
   useEffect(() => {
     if (sigma) {
@@ -15,5 +29,5 @@ export const ExternalView: FC = () => {
     }
   }, [sigma]);
 
-  return <SigmaContainer ref={setSigma} settings={{ renderLabels: false }} />;
+  return <SigmaContainer ref={setSigma} settings={settings} />;
 };
