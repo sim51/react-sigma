@@ -48,6 +48,12 @@ export const HomeView: FC = () => {
           </Link>{" "}
           Use sigma ref to control it outside the SigmaContainer
         </li>
+        <li>
+          <Link to="/custom-graph-external" title="Custom external">
+            Custom graph with external control
+          </Link>{" "}
+          Use sigma ref to control a custom typed grpah outside the SigmaContainer
+        </li>
       </ul>
     </div>
   );

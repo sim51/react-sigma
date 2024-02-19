@@ -17,14 +17,17 @@ import { Settings } from "sigma/settings";
 
 import { SigmaProvider } from "../hooks/context";
 
+export type GraphType<G extends Graph | GraphConstructor> = G extends GraphConstructor ? InstanceType<G> : G;
+type GraphTypeOrDefault<G extends Graph | GraphConstructor> = GraphType<G> | Graph;
+
 /**
  * Properties for `SigmaContainer` component
  */
-export interface SigmaContainerProps {
+export interface SigmaContainerProps<G extends Graph | GraphConstructor> {
   /**
    * Graphology instance or constructor
    */
-  graph?: Graph | GraphConstructor;
+  graph?: G;
   /**
    * Sigma settings
    */
@@ -56,9 +59,9 @@ export interface SigmaContainerProps {
  * @category Component
  */
 // eslint-disable-next-line react/display-name
-const SigmaContainerComponent = (
-  { graph, id, className, style, settings, children }: PropsWithChildren<SigmaContainerProps>,
-  ref: Ref<Sigma | null>,
+const SigmaContainerComponent = <G extends Graph | GraphConstructor = Graph>(
+  { graph, id, className, style, settings, children }: PropsWithChildren<SigmaContainerProps<G>>,
+  ref: Ref<Sigma<GraphTypeOrDefault<G>> | null>,
 ) => {
   // Root HTML element
   const rootRef = useRef<HTMLDivElement>(null);
@@ -67,7 +70,7 @@ const SigmaContainerComponent = (
   // Common html props for the container
   const props = { className: `react-sigma ${className ? className : ""}`, id, style };
   // Sigma instance
-  const [sigma, setSigma] = useState<Sigma | null>(null);
+  const [sigma, setSigma] = useState<Sigma<GraphTypeOrDefault<G>> | null>(null);
   // Sigma settings
   const sigmaSettings = useRef<Partial<Settings>>({});
   if (!isEqual(sigmaSettings.current, settings)) sigmaSettings.current = settings || {};
@@ -77,11 +80,18 @@ const SigmaContainerComponent = (
    * => create sigma
    */
   useEffect(() => {
-    let instance: Sigma | null = null;
+    let instance: Sigma<GraphTypeOrDefault<G>> | null = null;
 
     if (containerRef.current !== null) {
-      const sigGraph = graph ? (typeof graph === "function" ? new graph() : graph) : new Graph();
-      instance = new Sigma(sigGraph, containerRef.current, { allowInvalidContainer: true, ...sigmaSettings.current });
+      const sigGraph = graph
+        ? typeof graph === "function"
+          ? new (graph as GraphConstructor)()
+          : (graph as GraphType<G>)
+        : new Graph();
+      instance = new Sigma(sigGraph, containerRef.current, {
+        allowInvalidContainer: true,
+        ...sigmaSettings.current,
+      });
       if (sigma) instance.getCamera().setState(sigma.getCamera().getState());
     }
     setSigma(instance);
@@ -118,4 +128,10 @@ const SigmaContainerComponent = (
   );
 };
 
-export const SigmaContainer = forwardRef(SigmaContainerComponent);
+interface SigmaContainerComponentRef extends React.FC<SigmaContainerProps<Graph | GraphConstructor>> {
+  <G extends Graph | GraphConstructor>(
+    props: PropsWithChildren<SigmaContainerProps<G>> & { ref?: Ref<Sigma<GraphType<G>>> },
+  ): ReturnType<React.FC<SigmaContainerProps<G>>>;
+}
+
+export const SigmaContainer: SigmaContainerComponentRef = forwardRef(SigmaContainerComponent);

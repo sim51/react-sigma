@@ -32,4 +32,10 @@ export const tests: Tests = [
     waitFor: 200,
     failureThreshold: 0.001,
   },
+  {
+    name: "custom-graph-external",
+    url: "http://localhost:3000/custom-graph-external?seed=foo&faTime=-1",
+    waitFor: 200,
+    failureThreshold: 0.001,
+  },
 ];

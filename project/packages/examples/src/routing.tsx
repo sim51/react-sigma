@@ -9,6 +9,7 @@ import { CustomRenderView } from "./views/custom-render";
 import { MultiDirectedGraphView } from "./views/multidirectedgraph";
 import { UpdatedGraphReferenceView } from "./views/updatedgraphreference";
 import { ExternalView } from "./views/external";
+import { CustomGraphExternalView } from "./views/custom-graph-external";
 
 export const Routing: FC = () => {
   return (
@@ -21,6 +22,7 @@ export const Routing: FC = () => {
       <Route path="/multidirectedgraph" element={<MultiDirectedGraphView />} />
       <Route path="/updatedgraphreference" element={<UpdatedGraphReferenceView />} />
       <Route path="/external" element={<ExternalView />} />
+      <Route path="/custom-graph-external" element={<CustomGraphExternalView />} />
     </Routes>
   );
 };
