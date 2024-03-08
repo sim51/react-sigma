@@ -7,7 +7,7 @@ import { tests } from "./config";
 describe("Compare screenshots", () => {
   beforeAll(async () => {
     await waitOn({
-      resources: [`http://localhost:3000`],
+      resources: [`http://localhost:5173`],
       interval: 1000,
       timeout: 120000,
     });

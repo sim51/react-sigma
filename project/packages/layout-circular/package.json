@@ -1,7 +1,6 @@
 {
   "name": "@react-sigma/layout-circular",
-  "version": "3.4.2",
-  "private": false,
+  "version": "4.0.0",
   "description": "React Sigma - Layout circular",
   "author": "Benoit Simard",
   "license": "MIT",
@@ -18,6 +17,7 @@
     "graph",
     "graphology"
   ],
+  "type": "module",
   "main": "./lib/react-sigma_layout-circular.umd.min.js",
   "module": "./lib/react-sigma_layout-circular.esm.min.js",
   "typings": "./lib/index.d.ts",
@@ -27,10 +27,6 @@
       "default": "./lib/react-sigma_layout-circular.esm.min.js"
     }
   },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
-  },
   "scripts": {
     "clean": "rimraf lib tsconfig.tsbuildinfo .rollup.cache",
     "lint": "esw --ext .ts ./src",
@@ -39,10 +35,9 @@
     "start": "nodemon --watch src -e ts,tsx --exec npm run build"
   },
   "dependencies": {
-    "@react-sigma/layout-core": "^3.4.2"
+    "@react-sigma/layout-core": "4.0.0"
   },
   "peerDependencies": {
     "graphology-layout": "0.6.1"
-  },
-  "gitHead": "5b4c6d2ab9c4d5dbf70b5108f678ee3f6f22ed17"
+  }
 }

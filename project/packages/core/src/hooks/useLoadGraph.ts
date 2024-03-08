@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import Graph from "graphology";
+import { Attributes } from "graphology-types";
 
 import { useSigma } from "./useSigma";
 
@@ -14,11 +15,15 @@ import { useSigma } from "./useSigma";
  *```
  * @category Hook
  */
-export function useLoadGraph<G extends Graph = Graph>(): (graph: G, clear?: boolean) => void {
-  const sigma = useSigma<G>();
+export function useLoadGraph<
+  N extends Attributes = Attributes,
+  E extends Attributes = Attributes,
+  G extends Attributes = Attributes,
+>(): (graph: Graph<N, E, G>, clear?: boolean) => void {
+  const sigma = useSigma<N, E, G>();
 
   return useCallback(
-    (graph: G, clear = true) => {
+    (graph: Graph<N, E, G>, clear = true) => {
       if (sigma && graph) {
         if (clear && sigma.getGraph().order > 0) sigma.getGraph().clear();
         sigma.getGraph().import(graph);

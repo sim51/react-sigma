@@ -1,9 +1,10 @@
-import { terser } from "rollup-plugin-terser";
 import svgr from "@svgr/rollup";
+import terser from "@rollup/plugin-terser";
 import url from "@rollup/plugin-url";
+import eslint from "@rollup/plugin-eslint";
 import typescript from "@rollup/plugin-typescript";
-import eslint from "@rbnlffl/rollup-plugin-eslint";
 
+/** @type {import("rollup").RollupOptions} */
 export default {
   input: "src/index.ts",
   output: [
@@ -24,7 +25,7 @@ export default {
   plugins: [
     url(),
     svgr({ icon: true }),
-    eslint({ filterExclude: "./src/assets/**" }),
+    eslint({ exclude: "./src/assets/**" }),
     typescript({ tsconfig: "./tsconfig.json", outputToFilesystem: true }),
     terser(),
   ],

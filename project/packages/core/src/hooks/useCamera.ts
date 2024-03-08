@@ -1,6 +1,6 @@
 import { useCallback, useRef } from "react";
 import { isEqual } from "lodash";
-import { AnimateOptions } from "sigma/utils/animate";
+import { AnimateOptions } from "sigma/utils";
 import { CameraState } from "sigma/types";
 
 import { useSigma } from "./useSigma";
@@ -16,9 +16,7 @@ type CameraOptions = Partial<AnimateOptions> & { factor?: number };
  *
  * @category Hook
  */
-export function useCamera(
-  options?: CameraOptions,
-): {
+export function useCamera(options?: CameraOptions): {
   zoomIn: (options?: CameraOptions) => void;
   zoomOut: (options?: CameraOptions) => void;
   reset: (options?: Partial<AnimateOptions>) => void;

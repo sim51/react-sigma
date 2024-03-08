@@ -1,32 +1,21 @@
 import { FC, useEffect, useState } from "react";
 
 import Graph, { UndirectedGraph } from "graphology";
-import { Attributes } from "graphology-types";
 import erdosRenyi from "graphology-generators/random/erdos-renyi";
 
 import { useSigma, useRegisterEvents, useLoadGraph, useSetSettings } from "@react-sigma/core";
 import { useLayoutCircular } from "@react-sigma/layout-circular";
 import { useSeedRandom } from "./useSeedRandom";
 
-type MyGraphType = Graph<
-  {
-    x: number;
-    y: number;
-    label: string;
-    size: number;
-    color: string;
-  },
-  {
-    label: string;
-  }
->;
+type NodeType = { x: number; y: number; label: string; size: number; color: string; highlighted?: boolean };
+type EdgeType = { label: string };
 
 export const SampleGraph: FC = () => {
   const { faker, randomColor } = useSeedRandom();
-  const sigma = useSigma<MyGraphType>();
-  const registerEvents = useRegisterEvents();
-  const setSettings = useSetSettings();
-  const loadGraph = useLoadGraph<MyGraphType>();
+  const sigma = useSigma<NodeType, EdgeType>();
+  const registerEvents = useRegisterEvents<NodeType, EdgeType>();
+  const setSettings = useSetSettings<NodeType, EdgeType>();
+  const loadGraph = useLoadGraph<NodeType, EdgeType>();
   const { assign: assignCircular } = useLayoutCircular();
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
 
@@ -36,7 +25,7 @@ export const SampleGraph: FC = () => {
    */
   useEffect(() => {
     // Create the graph
-    const graph = erdosRenyi(UndirectedGraph, { order: 100, probability: 0.1 }) as MyGraphType;
+    const graph = erdosRenyi(UndirectedGraph, { order: 100, probability: 0.1 }) as Graph<NodeType, EdgeType>;
     graph.nodes().forEach((node: string) => {
       graph.mergeNodeAttributes(node, {
         label: faker.name.fullName(),
@@ -64,7 +53,7 @@ export const SampleGraph: FC = () => {
     setSettings({
       nodeReducer: (node, data) => {
         const graph = sigma.getGraph();
-        const newData: Attributes = { ...data, highlighted: data.highlighted || false };
+        const newData = { ...data, highlighted: data.highlighted || false };
 
         if (hoveredNode) {
           if (node === hoveredNode || graph.neighbors(hoveredNode).includes(node)) {

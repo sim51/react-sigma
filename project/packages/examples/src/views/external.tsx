@@ -1,23 +1,13 @@
 import { FC, useEffect, useMemo, useState } from "react";
-import Graph from "graphology";
 import Sigma from "sigma";
 
 import { SigmaContainer } from "@react-sigma/core";
 
-type MyGraphType = Graph<
-  {
-    x: number;
-    y: number;
-    label: string;
-    size: number;
-  },
-  {
-    label: string;
-  }
->;
+type NodeType = { x: number; y: number; label: string; size: number };
+type EdgeType = { label: string };
 
 export const ExternalView: FC = () => {
-  const [sigma, setSigma] = useState<Sigma<MyGraphType> | null>(null);
+  const [sigma, setSigma] = useState<Sigma<NodeType, EdgeType> | null>(null);
   const settings = useMemo(() => ({ renderLabels: false }), []);
 
   useEffect(() => {

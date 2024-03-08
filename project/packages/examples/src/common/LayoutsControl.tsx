@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { FaProjectDiagram } from "react-icons/fa";
 
-import { animateNodes } from "sigma/utils/animate";
+import { animateNodes } from "sigma/utils";
 
 import { useSigma } from "@react-sigma/core";
 import { WorkerLayoutControl } from "@react-sigma/layout-core";
@@ -23,6 +23,7 @@ export const LayoutsControl: React.FC = () => {
   const layoutForce = useLayoutForce({ maxIterations: 100 });
   const layoutForceAtlas2 = useLayoutForceAtlas2({ iterations: 100 });
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const layouts: { [key: string]: { layout: any; worker?: any } } = useMemo(() => {
     return {
       circular: {
@@ -47,7 +48,6 @@ export const LayoutsControl: React.FC = () => {
         worker: useWorkerLayoutForceAtlas2,
       },
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

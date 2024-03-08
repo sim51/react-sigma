@@ -1,7 +1,7 @@
-import Graph from "graphology";
-import Sigma from "sigma/sigma";
+import Sigma from "sigma";
 
 import { useSigmaContext } from "./context";
+import { Attributes } from "graphology-types";
 
 /**
  * React hook to retrieve the sigma instance (from the context).
@@ -11,6 +11,10 @@ import { useSigmaContext } from "./context";
  *```
  * @category Hook
  */
-export function useSigma<G extends Graph = Graph>(): Sigma<G> {
-  return useSigmaContext<G>().sigma;
+export function useSigma<
+  N extends Attributes = Attributes,
+  E extends Attributes = Attributes,
+  G extends Attributes = Attributes,
+>(): Sigma<N, E, G> {
+  return useSigmaContext<N, E, G>().sigma;
 }

@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
-import { Settings } from "sigma/settings";
-import { SigmaEvents } from "sigma/sigma";
-import { TouchCaptorEvents } from "sigma/core/captors/touch";
-import { MouseCaptorEvents } from "sigma/core/captors/mouse";
-import { CameraEvents } from "sigma/core/camera";
+import { SigmaEvents, TouchCaptorEvents, MouseCaptorEvents, CameraEvents } from "sigma/types";
 
 import { useSigma } from "./useSigma";
 import { useSetSettings } from "./useSetSettings";
 import { EventHandlers } from "../types";
+import { Attributes } from "graphology-types";
 
 type EventType = keyof EventHandlers;
 
@@ -61,9 +58,13 @@ const cameraEvents: Array<keyof CameraEvents> = ["updated"];
  *```
  * @category Hook
  */
-export function useRegisterEvents(): (eventHandlers: Partial<EventHandlers>) => void {
-  const sigma = useSigma();
-  const setSettings = useSetSettings();
+export function useRegisterEvents<
+  N extends Attributes = Attributes,
+  E extends Attributes = Attributes,
+  G extends Attributes = Attributes,
+>(): (eventHandlers: Partial<EventHandlers>) => void {
+  const sigma = useSigma<N, E, G>();
+  const setSettings = useSetSettings<N, E, G>();
   const [eventHandlers, setEventHandlers] = useState<Partial<EventHandlers>>({});
 
   useEffect(() => {
@@ -76,43 +77,16 @@ export function useRegisterEvents(): (eventHandlers: Partial<EventHandlers>) => 
     // list of event types to register
     const eventTypes = Object.keys(userEvents) as Array<EventType>;
 
-    // Set settings for edge event if needed
-    const edgeSettings: Partial<Settings> = {};
-    const reverseEdgeSettings: Partial<Settings> = {};
-    const sigmaSettings = sigma.getSettings();
-    if (
-      eventTypes.some((event) => ["clickEdge", "rightClickEdge", "doubleClickEdge", "downEdge"].includes(event)) &&
-      sigmaSettings.enableEdgeClickEvents === false
-    ) {
-      edgeSettings["enableEdgeClickEvents"] = true;
-      reverseEdgeSettings["enableEdgeClickEvents"] = false;
-    }
-    if (
-      eventTypes.some((event) => ["enterEdge", "leaveEdge"].includes(event)) &&
-      sigmaSettings.enableEdgeHoverEvents === false
-    ) {
-      edgeSettings["enableEdgeHoverEvents"] = true;
-      reverseEdgeSettings["enableEdgeHoverEvents"] = false;
-    }
-    if (eventTypes.some((event) => ["wheelEdge"].includes(event)) && sigmaSettings.enableEdgeWheelEvents === false) {
-      edgeSettings["enableEdgeWheelEvents"] = true;
-      reverseEdgeSettings["enableEdgeWheelEvents"] = false;
-    }
-    if (Object.keys(edgeSettings).length > 0) {
-      setSettings(edgeSettings);
-    }
-
+    // register events
     eventTypes.forEach((event: EventType) => {
       const eventHandler = userEvents[event] as (...args: unknown[]) => void;
       if (sigmaEvents.find((e) => e === event)) {
         sigma.on(event as keyof SigmaEvents, eventHandler);
       }
       if (mouseEvents.find((e) => e === event)) {
-        //eslint-disable-next-line @typescript-eslint/no-explicit-any
         sigma.getMouseCaptor().on(event as keyof MouseCaptorEvents, eventHandler);
       }
       if (touchEvents.find((e) => e === event)) {
-        //eslint-disable-next-line @typescript-eslint/no-explicit-any
         sigma.getTouchCaptor().on(event as keyof TouchCaptorEvents, eventHandler);
       }
       if (cameraEvents.find((e) => e === event)) {
@@ -122,11 +96,6 @@ export function useRegisterEvents(): (eventHandlers: Partial<EventHandlers>) => 
 
     // cleanup
     return () => {
-      // Reverse settings
-      if (Object.keys(reverseEdgeSettings).length > 0) {
-        setSettings(reverseEdgeSettings);
-      }
-
       // remove events listener
       if (sigma) {
         eventTypes.forEach((event: EventType) => {

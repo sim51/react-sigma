@@ -1,7 +1,8 @@
-import { terser } from "rollup-plugin-terser";
+import terser from "@rollup/plugin-terser";
 import typescript from "@rollup/plugin-typescript";
-import eslint from "@rbnlffl/rollup-plugin-eslint";
+import eslint from "@rollup/plugin-eslint";
 
+/** @type {import("rollup").RollupOptions} */
 export default {
   input: "src/index.ts",
   output: [
@@ -20,7 +21,7 @@ export default {
     },
   ],
   plugins: [
-    eslint({ filterExclude: "./src/assets/**" }),
+    eslint({ exclude: "./src/assets/**" }),
     typescript({ tsconfig: "./tsconfig.json", outputToFilesystem: true }),
     terser(),
   ],
@@ -35,3 +36,4 @@ export default {
     "graphology-layout-force/worker",
   ],
 };
+

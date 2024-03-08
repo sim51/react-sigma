@@ -1,7 +1,6 @@
 {
   "name": "@react-sigma/layout-random",
-  "version": "3.4.2",
-  "private": false,
+  "version": "4.0.0",
   "description": "React Sigma - Layout random",
   "author": "Benoit Simard",
   "license": "MIT",
@@ -18,6 +17,7 @@
     "graph",
     "graphology"
   ],
+  "type": "module",
   "main": "./lib/react-sigma_layout-random.umd.min.js",
   "module": "./lib/react-sigma_layout-random.esm.min.js",
   "typings": "./lib/index.d.ts",
@@ -34,15 +34,10 @@
     "build": "npm run lint && npm run compile && rollup -c",
     "start": "nodemon --watch src -e ts,tsx --exec npm run build"
   },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
-  },
   "dependencies": {
-    "@react-sigma/layout-core": "^3.4.2"
+    "@react-sigma/layout-core": "4.0.0"
   },
   "peerDependencies": {
     "graphology-layout": "^0.6.1"
-  },
-  "gitHead": "5b4c6d2ab9c4d5dbf70b5108f678ee3f6f22ed17"
+  }
 }

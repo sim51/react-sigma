@@ -1,7 +1,6 @@
 {
   "name": "@react-sigma/core",
-  "version": "3.4.2",
-  "private": false,
+  "version": "4.0.0",
   "description": "React Sigma",
   "author": "Benoit Simard",
   "license": "MIT",
@@ -18,6 +17,7 @@
     "graph",
     "graphology"
   ],
+  "type": "module",
   "main": "./lib/react-sigma_core.umd.min.js",
   "module": "./lib/react-sigma_core.esm.min.js",
   "typings": "./lib/index.d.ts",
@@ -36,14 +36,10 @@
     "build": "npm run lint && npm run compile && npm run assets && rollup -c",
     "start": "nodemon --watch src -e ts,tsx,css --exec npm run build"
   },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
-  },
   "devDependencies": {
-    "@types/node": "^18.7.18",
-    "@types/react": "^18.0.9",
-    "@types/react-dom": "^18.0.5",
+    "@types/node": "^20.11.20",
+    "@types/react": "^18.2.58",
+    "@types/react-dom": "^18.2.19",
     "copyfiles": "^2.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
@@ -51,8 +47,7 @@
   "peerDependencies": {
     "graphology": "^0.25.1",
     "lodash": "^4.17.21",
-    "react": "^17.0.0 || ^18.0.0",
-    "sigma": "^2.4.0"
-  },
-  "gitHead": "5b4c6d2ab9c4d5dbf70b5108f678ee3f6f22ed17"
+    "react": "^18.0.0",
+    "sigma": "3.0.0-beta.14"
+  }
 }

@@ -12,27 +12,25 @@ import React, {
 } from "react";
 import { isEqual } from "lodash";
 import Graph from "graphology";
-import { GraphOptions } from "graphology-types";
 import { Sigma } from "sigma";
 import { Settings } from "sigma/settings";
 
 import { SigmaProvider } from "../hooks/context";
-
-type GraphConstructor<G extends Graph> = new (options?: GraphOptions) => G;
-export type GraphType<G extends Graph> = G | GraphConstructor<G>;
+import { GraphType } from "../types";
+import { Attributes } from "graphology-types";
 
 /**
  * Properties for `SigmaContainer` component
  */
-export interface SigmaContainerProps<G extends Graph> {
+export interface SigmaContainerProps<N extends Attributes, E extends Attributes, G extends Attributes> {
   /**
    * Graphology instance or constructor
    */
-  graph?: GraphType<G>;
+  graph?: GraphType<N, E, G>;
   /**
    * Sigma settings
    */
-  settings?: Partial<Settings>;
+  settings?: Partial<Settings<N, E, G>>;
   /**
    * HTML id
    */
@@ -59,10 +57,13 @@ export interface SigmaContainerProps<G extends Graph> {
  *
  * @category Component
  */
-// eslint-disable-next-line react/display-name
-const SigmaContainerComponent = <G extends Graph>(
-  { graph, id, className, style, settings, children }: PropsWithChildren<SigmaContainerProps<G>>,
-  ref: Ref<Sigma<G> | null>,
+const SigmaContainerComponent = <
+  N extends Attributes = Attributes,
+  E extends Attributes = Attributes,
+  G extends Attributes = Attributes,
+>(
+  { graph, id, className, style, settings, children }: PropsWithChildren<SigmaContainerProps<N, E, G>>,
+  ref: Ref<Sigma<N, E, G> | null>,
 ) => {
   // Root HTML element
   const rootRef = useRef<HTMLDivElement>(null);
@@ -71,9 +72,9 @@ const SigmaContainerComponent = <G extends Graph>(
   // Common html props for the container
   const props = { className: `react-sigma ${className ? className : ""}`, id, style };
   // Sigma instance
-  const [sigma, setSigma] = useState<Sigma<G> | null>(null);
+  const [sigma, setSigma] = useState<Sigma<N, E, G> | null>(null);
   // Sigma settings
-  const sigmaSettings = useRef<Partial<Settings>>({});
+  const sigmaSettings = useRef<Partial<Settings<N, E, G>>>({});
   if (!isEqual(sigmaSettings.current, settings)) sigmaSettings.current = settings || {};
 
   /**
@@ -81,17 +82,15 @@ const SigmaContainerComponent = <G extends Graph>(
    * => create sigma
    */
   useEffect(() => {
-    let instance: Sigma<G> | null = null;
+    let instance: Sigma<N, E, G> | null = null;
 
     if (containerRef.current !== null) {
-      let sigGraph: G = new Graph() as G;
+      let sigGraph = new Graph<N, E, G>();
       if (graph) {
         sigGraph = typeof graph === "function" ? new graph() : graph;
       }
-      instance = new Sigma(sigGraph, containerRef.current, {
-        allowInvalidContainer: true,
-        ...sigmaSettings.current,
-      });
+
+      instance = new Sigma(sigGraph, containerRef.current, sigmaSettings.current);
       if (sigma) instance.getCamera().setState(sigma.getCamera().getState());
     }
     setSigma(instance);
