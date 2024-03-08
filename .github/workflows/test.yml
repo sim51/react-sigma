@@ -3,36 +3,47 @@ name: Test
 on:
   push:
     paths:
-      - "project/**"
+      - "packages/**"
       - ".github/workflows/test.yml"
   pull_request:
     paths:
-      - "project/**"
+      - "packages/**"
       - ".github/workflows/test.yml"
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./project
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
       - name: Cache node_modules
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
-          path: "project/node_modules"
-          key: ${{ runner.os }}-modules-${{ hashFiles('project/package-lock.json') }}
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: 16
+          path: "node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('package-lock.json') }}
 
       - name: Install
         run: npm install
+
+      - name: Playwright version
+        id: playwright-version
+        run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package-lock.json').packages['node_modules/playwright'].version)")" >> $GITHUB_ENV
+
+      - name: Cache Playwright binaries
+        uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: "~/.cache/ms-playwright"
+          key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
 
       - name: Build
         run: npm run build
@@ -44,10 +55,10 @@ jobs:
 
       - name: Uploading screenshots on failure
         if: steps.test.outcome == 'failure'
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: failure-screenshots
-          path: project/packages/examples/test/e2e/screenshots/
+          path: packages/storybook/test-results
 
       - name: Exit signal
         if: steps.test.outcome == 'failure'

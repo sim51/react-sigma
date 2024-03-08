@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": ["types.d.ts", ".storybook/*.tsx", "./stories/**/*"],
+  "composite":true,
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "rootDir": ".",
+    "outDir": "dist",
+    "declarationDir": null,
+    "declaration": false
+  }
+}
+

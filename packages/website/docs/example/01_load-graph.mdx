@@ -1,0 +1,53 @@
+import BrowserOnly from "@docusaurus/BrowserOnly";
+import { CodePreview } from "@site/src/components/CodePreview";
+
+import LoadGraphWithHookSource from "!!raw-loader!../../../storybook/stories/LoadGraphWithHook";
+import LoadGraphWithPropSource from "!!raw-loader!../../../storybook/stories/LoadGraphWithProp";
+import MultiGraphSource from "!!raw-loader!../../../storybook/stories/MultiDirectedGraph";
+
+# Load a graph
+
+## Graph property on **SigmaContainer**
+
+Component `SigmaContainer` can take a `graph` property which is either a graph instance or a graph constructor.
+
+So you can use it to load your graph.
+
+<CodePreview
+  code={LoadGraphWithPropSource}
+  title="Loading a graph via the graph property"
+  component={() => {
+    const { LoadGraphWithProp } = require("../../../storybook/stories/LoadGraphWithProp");
+    return <LoadGraphWithProp style={{ height: "400px" }} />;
+  }}
+/>
+
+## By using **useLoadGraph**
+
+In a children component of `SigmaContainer`, you can use the hook `useLoadGraph`.
+
+This hook is just returns a function that takes a graphology instance, and load it in Sigma.
+
+<CodePreview
+  title="Loading a graph with useLoadGraph hook"
+  code={LoadGraphWithHookSource}
+  component={() => {
+    const { LoadGraphWithHook } = require("../../../storybook/stories/LoadGraphWithHook");
+    return <LoadGraphWithHook style={{ height: "400px" }} />;
+  }}
+/>
+
+Per default, when the `SigmaContainer` is mounted, the library create a default graphology graph (see https://graphology.github.io/instantiation.html).
+But you can define the type of graph that react-sigma will create by passing the constructor you want to use.
+
+This step is mandatory if you want to use a multi graph (ie. parallel edges).
+
+<CodePreview
+  code={MultiGraphSource}
+  title="Defining the graph constructor"
+  component={() => {
+    const { MultiDirectedGraph } = require("../../../storybook/stories/MultiDirectedGraph");
+    return <MultiDirectedGraph style={{ height: "400px" }} />
+  }}
+
+/>

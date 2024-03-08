@@ -1,0 +1,43 @@
+{
+  "name": "@react-sigma/layout-core",
+  "version": "4.0.0",
+  "description": "React Sigma - Layout core",
+  "author": "Benoit Simard",
+  "license": "MIT",
+  "homepage": "https://sim51.github.io/react-sigma",
+  "bugs": "https://github.com/sim51/react-sigma/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sim51/react-sigma.git"
+  },
+  "keywords": [
+    "sigma",
+    "react",
+    "react-sigma",
+    "graph",
+    "graphology"
+  ],
+  "type": "module",
+  "main": "./lib/react-sigma_layout-core.umd.min.js",
+  "module": "./lib/react-sigma_layout-core.esm.min.js",
+  "typings": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/react-sigma_layout-core.esm.min.js"
+    }
+  },
+  "scripts": {
+    "clean": "rimraf lib tsconfig.tsbuildinfo .rollup.cache",
+    "lint": "esw --ext .ts ./src",
+    "compile": "tsc -b",
+    "build": "npm run lint && npm run compile && rollup -c",
+    "start": "nodemon --watch src -e ts,tsx --exec npm run build"
+  },
+  "devDependencies": {
+    "copyfiles": "^2.4.1"
+  },
+  "dependencies": {
+    "@react-sigma/core": "4.0.0"
+  }
+}

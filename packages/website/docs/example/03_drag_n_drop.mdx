@@ -1,0 +1,18 @@
+import { CodePreview } from "@site/src/components/CodePreview";
+
+import DragNdropSource from "!!raw-loader!../../../storybook/stories/DragNdrop";
+
+# Drag'n'Drop
+
+By register some events on sigma, you can easely create a drag'ndrop feature.
+
+Take a look at this demo
+
+<CodePreview
+  title="Drag'n'drop nodes on the graph"
+  code={DragNdropSource}
+  component={() => {
+    const { DragNdrop } = require("../../../storybook/stories/DragNdrop");
+    return <DragNdrop style={{ height: "400px" }} />;
+  }}
+/>

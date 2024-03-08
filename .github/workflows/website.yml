@@ -10,32 +10,25 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Cache node_modules
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: "**/node_modules"
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
 
-      - name: Project - Install
-        working-directory: project
+      - name: Install
         run: npm install
 
-      - name: Project - Compile
-        working-directory: project
-        run: npm run compile
-
-      - name: Website - Install
-        working-directory: website
-        run: npm install
-
-      - name: Website - Build
-        working-directory: website
+      - name: Build
         run: npm run build
+
+      - name: Website
+        run: npm run website
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           branch: gh-pages # The branch the action should deploy to.
-          folder: website/build # The folder the action should deploy.
+          folder: packages/website/build # The folder the action should deploy.

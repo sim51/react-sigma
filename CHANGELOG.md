@@ -1,5 +1,44 @@
 # Changelog
 
+## Version 4.0.0
+
+### Features
+
+- Upgrade to sigma v3
+- Upgrade all project dependencies
+- Refacto project structure
+- Replace `example` project by a storybook
+- Replace E2E framework by playwright, and run it on the storybook
+- Using stories in website example 
+- Fully graph typed API (see [#58](https://github.com/sim51/react-sigma/issues/58)). Component & hooks take generic types for node, edge & graph attributs. Exemple for the load graph hook :
+```tsx
+const loadGraph = useLoadGraph<{label:string, x:number, y:number}, {label:string, size:number}>();
+```
+
+### Breaking changes
+
+- React-sigma doesn't depends anymore to lodash. It was use to make a deep equal on the settings provided to the `SigmaContainer`. Now you have to handle that :
+
+```tsx
+// Sigma settings are outside the react lifecycle to avoid the change of its ref at every render
+// which triggers a full render of sigma. An other way is to use the `useMemo` hook inside the component.
+const sigmaSettings = {
+  allowInvalidContainer: true,
+};
+
+export const Example: FC = () => {
+  return (
+    <SigmaContainer settings={sigmaSettings}>
+      <SampleGraph />
+    </SigmaContainer>
+  );
+};
+```
+
+- The sigma setting `allowInvalidContainer` is no more set per default. You have to pass it to the container (check above). 
+
+- When you register events on edges, we don't set the correspondig settings anymore, like `enableEdgeClickEvents` (see [#49](https://github.com/sim51/react-sigma/issues/49)).
+
 ## Version 3.4.2
 
 ### Fixes
