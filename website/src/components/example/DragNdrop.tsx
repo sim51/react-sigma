@@ -61,7 +61,7 @@ const DragNdrop: FC = () => {
         touchmove: (e) => {
           if (draggedNode) {
             // Get new position of node
-            const pos = sigma.viewportToGraph(e);
+            const pos = sigma.viewportToGraph(e.touches[0]);
             sigma.getGraph().setNodeAttribute(draggedNode, "x", pos.x);
             sigma.getGraph().setNodeAttribute(draggedNode, "y", pos.y);
 
