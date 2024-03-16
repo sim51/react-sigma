@@ -22,11 +22,15 @@ const DragNdrop: FC = () => {
           if (draggedNode) {
             setDraggedNode(null);
             sigma.getGraph().removeNodeAttribute(draggedNode, "highlighted");
+            
+            // Reset the bounding box around the whole graph
+            // so that a "See whole graph" Zoom control button
+            // would include dragged nodes if pressed.
+            sigma.setCustomBBox(sigma.getBBox());
           }
         },
         mousedown: (e) => {
-          // Disable the autoscale at the first down interaction
-          if (!sigma.getCustomBBox()) sigma.setCustomBBox(sigma.getBBox());
+          
         },
         mousemove: (e) => {
           if (draggedNode) {
@@ -45,21 +49,23 @@ const DragNdrop: FC = () => {
           if (draggedNode) {
             setDraggedNode(null);
             sigma.getGraph().removeNodeAttribute(draggedNode, "highlighted");
+            // Reset the bounding box around the whole graph
+            // so that a "See whole graph" Zoom control button
+            // would include dragged nodes if pressed.
+            sigma.setCustomBBox(sigma.getBBox());
           }
         },
         touchdown: (e) => {
-          // Disable the autoscale at the first down interaction
-          if (!sigma.getCustomBBox()) sigma.setCustomBBox(sigma.getBBox());
+          
         },
         touchmove: (e) => {
           if (draggedNode) {
             // Get new position of node
-            const pos = sigma.viewportToGraph(e);
+            const pos = sigma.viewportToGraph(e.touches[0]);
             sigma.getGraph().setNodeAttribute(draggedNode, "x", pos.x);
             sigma.getGraph().setNodeAttribute(draggedNode, "y", pos.y);
 
             // Prevent sigma to move camera:
-            e.preventSigmaDefault();
             e.original.preventDefault();
             e.original.stopPropagation();
           }
