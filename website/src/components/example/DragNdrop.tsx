@@ -66,7 +66,6 @@ const DragNdrop: FC = () => {
             sigma.getGraph().setNodeAttribute(draggedNode, "y", pos.y);
 
             // Prevent sigma to move camera:
-            e.preventSigmaDefault();
             e.original.preventDefault();
             e.original.stopPropagation();
           }
