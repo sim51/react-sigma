@@ -35,7 +35,7 @@
     "start": "nodemon --watch src -e ts,tsx --exec npm run build"
   },
   "dependencies": {
-    "@react-sigma/layout-core": "4.0.0"
+    "@react-sigma/layout-core": "^4.0.0"
   },
   "peerDependencies": {
     "graphology-layout": "^0.6.1"
