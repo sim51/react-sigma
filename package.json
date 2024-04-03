@@ -31,7 +31,7 @@
     "start": "concurrently -n lint,compile,core,layout-core,layout-circlepack,layout-circular,layout-force,layout-forceatlas2,layout-noverlap,layout-random,storybook,website 'npm run lint -- --watch' 'npm run tsc -- --watch' 'npm run start --workspace=@react-sigma/core' 'npm run start --workspace=@react-sigma/layout-core' 'npm run start --workspace=@react-sigma/layout-circlepack' 'npm run start --workspace=@react-sigma/layout-circular' 'npm run start --workspace=@react-sigma/layout-force' 'npm run start --workspace=@react-sigma/layout-forceatlas2' 'npm run start --workspace=@react-sigma/layout-noverlap' 'npm run start --workspace=@react-sigma/layout-random' 'npm run start --workspace=@react-sigma/storybook' 'npm run start --workspace=@react-sigma/website'",
     "test": "npm run test --workspaces --if-present",
     "tsc": "tsc -b --preserveWatchOutput",
-    "website": "npm run build -w @react-sigma/storybook && npm run build -w @react-sigma/website && copyfiles -u 3 packages/storybook/storybook-static/** packages/storybook/storybook-static/**/* packages/website/build/storybook/"
+    "website": "npm run build -w @react-sigma/storybook && npm run build -w @react-sigma/website"
   },
   "dependencies": {
     "graphology": "^0.25.4",

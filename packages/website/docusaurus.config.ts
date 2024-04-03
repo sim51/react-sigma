@@ -12,8 +12,8 @@ const config: Config = {
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/logo.svg",
-  organizationName: "sim51", // Usually your GitHub org/user name.
-  projectName: "react-sigma", // Usually your repo name.
+  organizationName: "sim51",
+  projectName: "react-sigma",
   presets: [
     [
       "classic",
@@ -62,7 +62,7 @@ const config: Config = {
           position: "right",
         },
         {
-          href: "https://github.com/sim51/react-sigma/storybook",
+          href: "https://sim51.github.io/react-sigma/storybook",
           label: "Storybook",
           position: "right",
         },
@@ -93,7 +93,7 @@ const config: Config = {
             },
             {
               label: "Storybook",
-              href: "https://github.com/sim51/react-sigma/storybook",
+              href: "https://sim51.github.io/react-sigma/storybook",
             },
           ],
         },
