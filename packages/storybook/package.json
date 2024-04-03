@@ -8,13 +8,13 @@
     "start": "storybook dev -p 6006"
   },
   "dependencies": {
-    "@react-sigma/core": "^4.0.0",
-    "@react-sigma/layout-circlepack": "^4.0.0",
-    "@react-sigma/layout-circular": "^4.0.0",
-    "@react-sigma/layout-core": "^4.0.0",
-    "@react-sigma/layout-force": "^4.0.0",
-    "@react-sigma/layout-forceatlas2": "^4.0.0",
-    "@react-sigma/layout-noverlap": "^4.0.0",
-    "@react-sigma/layout-random": "^4.0.0"
+    "@react-sigma/core": "^4.0.1",
+    "@react-sigma/layout-circlepack": "^4.0.1",
+    "@react-sigma/layout-circular": "^4.0.1",
+    "@react-sigma/layout-core": "^4.0.1",
+    "@react-sigma/layout-force": "^4.0.1",
+    "@react-sigma/layout-forceatlas2": "^4.0.1",
+    "@react-sigma/layout-noverlap": "^4.0.1",
+    "@react-sigma/layout-random": "^4.0.1"
   }
 }
