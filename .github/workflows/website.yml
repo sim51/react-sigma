@@ -30,8 +30,11 @@ jobs:
       - name: Copy storybook in website
         run: mv -f packages/storybook/storybook-static/ packages/website/build/storybook/
 
+      - name: No jekyll
+        run: touch packages/website/build/.nojekyll
+
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4.2.5
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: packages/website/build # The folder the action should deploy.
