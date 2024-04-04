@@ -1,6 +1,13 @@
 import { FC, useEffect, useState, CSSProperties } from "react";
 
-import { SigmaContainer, useRegisterEvents, useSigma } from "@react-sigma/core";
+import {
+  ControlsContainer,
+  FullScreenControl,
+  SigmaContainer,
+  ZoomControl,
+  useRegisterEvents,
+  useSigma,
+} from "@react-sigma/core";
 import "@react-sigma/core/lib/react-sigma.min.css";
 
 import { SampleGraph } from "./common/SampleGraph";
