@@ -22,7 +22,7 @@ const config: StorybookConfig = {
   async viteFinal(config) {
     return mergeConfig(config, {
       resolve: {
-        preserveSymlinks: true,
+        preserveSymlinks: false,
       },
     });
   },

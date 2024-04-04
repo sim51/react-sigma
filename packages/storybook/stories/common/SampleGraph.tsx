@@ -5,7 +5,7 @@ import { useLayoutCircular } from "@react-sigma/layout-circular";
 import { useRandom, NodeType, EdgeType } from "./useRandom";
 
 export const SampleGraph: FC<{ disableHoverEffect?: boolean }> = ({ disableHoverEffect }) => {
-  const { faker, randomColor, randomGraph } = useRandom();
+  const { randomGraph } = useRandom();
   const sigma = useSigma<NodeType, EdgeType>();
   const registerEvents = useRegisterEvents<NodeType, EdgeType>();
   const setSettings = useSetSettings<NodeType, EdgeType>();
@@ -29,7 +29,7 @@ export const SampleGraph: FC<{ disableHoverEffect?: boolean }> = ({ disableHover
       enterNode: (event) => setHoveredNode(event.node),
       leaveNode: () => setHoveredNode(null),
     });
-  }, [assignCircular, loadGraph, registerEvents, faker.datatype, faker.name, randomColor]);
+  }, [assignCircular, loadGraph, registerEvents, randomGraph]);
 
   /**
    * When component mount or hovered node change

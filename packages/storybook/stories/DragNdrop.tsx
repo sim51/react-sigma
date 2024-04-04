@@ -56,6 +56,10 @@ export const DragNdrop: FC<{ style: CSSProperties }> = ({ style }) => {
     <SigmaContainer style={style} settings={sigmaSettings}>
       <SampleGraph disableHoverEffect />
       <GraphEvents />
+      <ControlsContainer position={"bottom-right"}>
+        <ZoomControl />
+        <FullScreenControl />
+      </ControlsContainer>
     </SigmaContainer>
   );
 };

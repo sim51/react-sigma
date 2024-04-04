@@ -21,8 +21,8 @@ const RandomCircleGraph: FC = () => {
     const graph = new Graph();
     for (let i = 0; i < order; i++) {
       graph.addNode(i, {
-        label: faker.name.fullName(),
-        size: faker.datatype.number({ min: 4, max: 20, precision: 1 }),
+        label: faker.person.fullName(),
+        size: faker.number.int({ min: 4, max: 20 }),
         color: randomColor(),
         x: 0,
         y: 0,
@@ -41,7 +41,7 @@ const RandomCircleGraph: FC = () => {
     assign();
     // Display in the console the node's position for the layout
     console.log(positions());
-  }, [assign, loadGraph, faker.datatype, faker.name, randomColor]);
+  }, [assign, loadGraph, faker.datatype, faker, randomColor]);
 
   return null;
 };

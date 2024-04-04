@@ -53,7 +53,7 @@ export const useRandom = () => {
         y: Math.random(),
         // for node-border
         borderColor: randomColor(),
-        borderSize: faker.number.float({ min: 0, max: 1, precision: 0.1 }),
+        borderSize: faker.number.float({ min: 0, max: 1, multipleOf: 0.1 }),
         // for node-image
         pictoColor: randomColor(),
         image: faker.image.urlLoremFlickr(),
