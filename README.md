@@ -1,11 +1,12 @@
 # React Sigma
 
-A set of react components to display graphs with Sigma v2.
+A set of react components to display graphs with Sigma v3.
 
 ## Documentation
 
 - [Getting started](https://sim51.github.io/react-sigma/docs/start-introduction)
 - [API reference](https://sim51.github.io/react-sigma/docs/api)
+- [Storybook](https://sim51.github.io/react-sigma/storybook)
 
 ## Changes
 
