@@ -38,6 +38,6 @@
     "copyfiles": "^2.4.1"
   },
   "dependencies": {
-    "@react-sigma/core": "^4.0.0"
+    "@react-sigma/core": "^4.0.1"
   }
 }
