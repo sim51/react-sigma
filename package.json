@@ -1,6 +1,6 @@
 {
   "name": "@react-sigma/root",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "React Sigma",
   "keywords": [
     "sigma",
@@ -27,6 +27,7 @@
     "lerna:diff": "lerna diff",
     "lerna:ls": "lerna ls",
     "lerna:publish": "lerna publish --no-private",
+    "lerna:version": "lerna version --no-private",
     "lint": "esw . --ext .ts --ext .tsx",
     "start": "concurrently -n lint,compile,core,layout-core,layout-circlepack,layout-circular,layout-force,layout-forceatlas2,layout-noverlap,layout-random,storybook,website 'npm run lint -- --watch' 'npm run tsc -- --watch' 'npm run start --workspace=@react-sigma/core' 'npm run start --workspace=@react-sigma/layout-core' 'npm run start --workspace=@react-sigma/layout-circlepack' 'npm run start --workspace=@react-sigma/layout-circular' 'npm run start --workspace=@react-sigma/layout-force' 'npm run start --workspace=@react-sigma/layout-forceatlas2' 'npm run start --workspace=@react-sigma/layout-noverlap' 'npm run start --workspace=@react-sigma/layout-random' 'npm run start --workspace=@react-sigma/storybook' 'npm run start --workspace=@react-sigma/website'",
     "test": "npm run test --workspaces --if-present",
