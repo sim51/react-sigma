@@ -54,13 +54,9 @@ const GraphEvents: React.FC = () => {
   return null;
 };
 
-const sigmaSettings = {
-  allowInvalidContainer: true,
-};
-
 export const DragNdrop: FC<{ style: CSSProperties }> = ({ style }) => {
   return (
-    <SigmaContainer style={style} settings={sigmaSettings}>
+    <SigmaContainer style={style} settings={{ allowInvalidContainer: true }}>
       <SampleGraph disableHoverEffect />
       <GraphEvents />
       <ControlsContainer position={"bottom-right"}>

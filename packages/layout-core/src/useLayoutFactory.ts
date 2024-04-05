@@ -1,8 +1,7 @@
-import { isEqual } from "lodash";
 import { useCallback, useRef } from "react";
 import Graph from "graphology";
 
-import { useSigma } from "@react-sigma/core";
+import { useSigma, isEqual } from "@react-sigma/core";
 
 /**
  * Generic type for Graphology layout.
@@ -32,6 +31,7 @@ export type LayoutHook<T> = (settings?: T) => {
 export function useLayoutFactory<T>(layout: GraphologyLayout<T>, defaultSettings: T): LayoutHook<T> {
   const hook: LayoutHook<T> = (parameter: T = defaultSettings) => {
     const sigma = useSigma();
+
     // Default layout settings
     const settings = useRef<T>(defaultSettings);
     if (!isEqual(settings.current, parameter)) settings.current = parameter;

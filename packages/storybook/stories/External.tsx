@@ -1,4 +1,4 @@
-import { FC, useEffect, useMemo, useState, CSSProperties } from "react";
+import { FC, useEffect, useState, CSSProperties } from "react";
 import Sigma from "sigma";
 
 import { SigmaContainer } from "@react-sigma/core";
@@ -11,8 +11,6 @@ type EdgeType = { label: string };
 export const External: FC<{ style?: CSSProperties }> = ({ style }) => {
   // Storing the sigma ref provided by react-sigma
   const [sigma, setSigma] = useState<Sigma<NodeType, EdgeType> | null>(null);
-  // Memo sigma settings to avoid re-render sigma at each component render
-  const settings = useMemo(() => ({ allowInvalidContainer: true, renderLabels: false }), []);
 
   // When the sigma ref is populated
   // => load a graph
@@ -25,5 +23,7 @@ export const External: FC<{ style?: CSSProperties }> = ({ style }) => {
     }
   }, [sigma]);
 
-  return <SigmaContainer ref={setSigma} settings={settings} style={style} />;
+  return (
+    <SigmaContainer ref={setSigma} settings={{ allowInvalidContainer: true, renderLabels: false }} style={style} />
+  );
 };

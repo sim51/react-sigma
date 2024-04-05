@@ -1,6 +1,12 @@
 # Changelog
 
-## Version 4.0.0
+## Version 4.0.1
+
+### Fixes
+
+- [#64](https://github.com/sim51/react-sigma/issues/64): fail to import in vite project because of lodash
+
+## Version 4.0.0 (not be used !)
 
 ### Features
 
@@ -17,23 +23,7 @@ const loadGraph = useLoadGraph<{label:string, x:number, y:number}, {label:string
 
 ### Breaking changes
 
-- React-sigma doesn't depends anymore to lodash. It was use to make a deep equal on the settings provided to the `SigmaContainer`. Now you have to handle that :
-
-```tsx
-// Sigma settings are outside the react lifecycle to avoid the change of its ref at every render
-// which triggers a full render of sigma. An other way is to use the `useMemo` hook inside the component.
-const sigmaSettings = {
-  allowInvalidContainer: true,
-};
-
-export const Example: FC = () => {
-  return (
-    <SigmaContainer settings={sigmaSettings}>
-      <SampleGraph />
-    </SigmaContainer>
-  );
-};
-```
+- React-sigma doesn't depends anymore to lodash.
 
 - The sigma setting `allowInvalidContainer` is no more set per default. You have to pass it to the container (check above). 
 

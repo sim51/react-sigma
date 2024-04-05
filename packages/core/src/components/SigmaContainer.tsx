@@ -14,7 +14,8 @@ import Graph from "graphology";
 import { Sigma } from "sigma";
 import { Settings } from "sigma/settings";
 
-import { SigmaProvider } from "../hooks/context";
+import { SigmaContextInterface, SigmaProvider } from "../hooks/context";
+import { isEqual } from "../utils";
 import { GraphType } from "../types";
 import { Attributes } from "graphology-types";
 
@@ -72,6 +73,11 @@ const SigmaContainerComponent = <
   const props = { className: `react-sigma ${className ? className : ""}`, id, style };
   // Sigma instance
   const [sigma, setSigma] = useState<Sigma<N, E, G> | null>(null);
+  // Sigma settings
+  const [sigmaSettings, setSigmaSettings] = useState<Partial<Settings<N, E, G>>>(settings || {});
+  useEffect(() => {
+    if (!isEqual(sigmaSettings, settings)) setSigmaSettings(settings || {});
+  }, [settings]);
 
   /**
    * When graph or settings changed
@@ -86,7 +92,7 @@ const SigmaContainerComponent = <
         sigGraph = typeof graph === "function" ? new graph() : graph;
       }
 
-      instance = new Sigma(sigGraph, containerRef.current, settings);
+      instance = new Sigma(sigGraph, containerRef.current, sigmaSettings);
       if (sigma) instance.getCamera().setState(sigma.getCamera().getState());
     }
     setSigma(instance);
@@ -97,7 +103,7 @@ const SigmaContainerComponent = <
       }
       setSigma(null);
     };
-  }, [containerRef, graph, settings]);
+  }, [containerRef, graph, sigmaSettings]);
 
   /**
    * Forward the sigma ref
@@ -110,7 +116,7 @@ const SigmaContainerComponent = <
   const context = useMemo(
     () => (sigma && rootRef.current ? { sigma, container: rootRef.current as HTMLElement } : null),
     [sigma, rootRef.current],
-  );
+  ) as SigmaContextInterface | null;
 
   // When context is created we provide it to children
   const contents = context !== null ? <SigmaProvider value={context}>{children}</SigmaProvider> : null;
@@ -129,7 +135,6 @@ const SigmaContainerComponent = <
 function fixedForwardRef<T, P = unknown>(
   render: (props: P, ref: React.Ref<T>) => ReactElement,
 ): (props: P & React.RefAttributes<T>) => ReactElement {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return forwardRef(render) as (props: P & React.RefAttributes<T>) => ReactElement;
 }
 

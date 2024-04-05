@@ -10,4 +10,5 @@ import { useLayoutFactory } from "@react-sigma/layout-core";
  *```
  * @category Hook
  */
-export const useLayoutRandom = useLayoutFactory<RandomLayoutOptions>(random, {});
+const defaultRandomLayoutOptions: RandomLayoutOptions = {};
+export const useLayoutRandom = useLayoutFactory<RandomLayoutOptions>(random, defaultRandomLayoutOptions);

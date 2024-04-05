@@ -7,13 +7,9 @@ import "@react-sigma/core/lib/react-sigma.min.css";
 
 import { SampleGraph } from "./common/SampleGraph";
 
-const sigmaSettings = {
-  allowInvalidContainer: true,
-};
-
 export const LayoutFA2Control: FC<{ style: CSSProperties }> = ({ style }) => {
   return (
-    <SigmaContainer style={style} settings={sigmaSettings}>
+    <SigmaContainer style={style} settings={{ allowInvalidContainer: true }}>
       <SampleGraph />
       <ControlsContainer position={"bottom-right"}>
         <LayoutForceAtlas2Control settings={{ settings: { slowDown: 10 } }} />

@@ -15,11 +15,6 @@ import { SampleGraph } from "./common/SampleGraph";
 
 import "@react-sigma/core/lib/react-sigma.min.css";
 
-// Sigma settings are outside the react lifecycle to avoid the change of its ref at every render
-// which triggers a full render of sigma.
-// An other way is to use the `useMemo` hook inside the component
-const sigmaSettings = { allowInvalidContainer: true };
-
 export const CustomRender: FC<{ style?: CSSProperties }> = ({ style }) => {
   const [faTime, setFaTime] = useState<number>(2000);
 
@@ -31,7 +26,7 @@ export const CustomRender: FC<{ style?: CSSProperties }> = ({ style }) => {
   }, [window.location]);
 
   return (
-    <SigmaContainer style={style} settings={sigmaSettings}>
+    <SigmaContainer style={style} settings={{ allowInvalidContainer: true }}>
       <SampleGraph />
       <ControlsContainer position={"bottom-right"}>
         <ZoomControl labels={{ zoomIn: "PLUS", zoomOut: "MINUS", reset: "RESET" }}>

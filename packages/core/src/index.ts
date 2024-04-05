@@ -19,3 +19,4 @@ export * from "./components/controls/ZoomControl";
 export * from "./components/controls/FullScreenControl";
 export * from "./components/controls/SearchControl";
 export * from "./types";
+export * from "./utils";

@@ -57,7 +57,6 @@
     "@storybook/react": "^8.0.5",
     "@storybook/react-vite": "^8.0.5",
     "@svgr/rollup": "^8.1.0",
-    "@types/lodash": "4.17.0",
     "@types/node": "^20.11.20",
     "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.23",

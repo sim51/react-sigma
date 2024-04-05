@@ -29,5 +29,5 @@ export default {
     typescript({ tsconfig: "./tsconfig.json", outputToFilesystem: true }),
     terser(),
   ],
-  external: ["sigma", "graphology", "lodash", "react", "react-dom", "@react-sigma/core"],
+  external: ["sigma", "graphology", "react", "react-dom", "@react-sigma/core"],
 };

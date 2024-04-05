@@ -22,13 +22,9 @@ const Fa2: FC = () => {
   return null;
 };
 
-const sigmaSettings = {
-  allowInvalidContainer: true,
-};
-
 export const LayoutFA2: FC<{ style: CSSProperties }> = ({ style }) => {
   return (
-    <SigmaContainer style={style} settings={sigmaSettings}>
+    <SigmaContainer style={style} settings={{ allowInvalidContainer: true }}>
       <SampleGraph />
       <Fa2 />
     </SigmaContainer>

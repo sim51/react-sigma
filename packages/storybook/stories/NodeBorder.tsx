@@ -12,9 +12,6 @@ import "@react-sigma/core/lib/react-sigma.min.css";
 // Check this link to know how to use this program :  https://www.sigmajs.org/storybook/?path=/story/node-border--node-border
 //
 // NB: the graph used in this example is printed in the console.
-//
-// NB: Sigma settings are outside the react lifecycle to avoid the change of its ref at every render
-// which triggers a full render of sigma. An other way is to use the `useMemo` hook inside the component.
 const sigmaSettings = {
   allowInvalidContainer: true,
   defaultNodeType: "bordered",

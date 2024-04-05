@@ -46,13 +46,9 @@ const RandomCircleGraph: FC = () => {
   return null;
 };
 
-const sigmaSettings = {
-  allowInvalidContainer: true,
-};
-
 export const LayoutCircular: FC<{ style: CSSProperties }> = ({ style }) => {
   return (
-    <SigmaContainer style={style} settings={sigmaSettings}>
+    <SigmaContainer style={style} settings={{ allowInvalidContainer: true }}>
       <RandomCircleGraph />
     </SigmaContainer>
   );

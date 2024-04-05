@@ -9,6 +9,7 @@ import "@react-sigma/core/lib/react-sigma.min.css";
 
 import jsonGraph from "../public/react-sigma/demo/dataset.json";
 
+// Sigma settings
 const sigmaSettings = {
   allowInvalidContainer: true,
   nodeProgramClasses: { image: NodeImageProgram },

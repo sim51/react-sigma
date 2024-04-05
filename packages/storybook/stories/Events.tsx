@@ -5,9 +5,7 @@ import { SampleGraph } from "./common/SampleGraph";
 
 import "@react-sigma/core/lib/react-sigma.min.css";
 
-// Sigma settings are outside the react lifecycle to avoid the change of its ref at every render
-// which triggers a full render of sigma.
-// An other way is to use the `useMemo` hook inside the component
+// Sigma settings
 const sigmaSettings = { allowInvalidContainer: true };
 
 // Create the Component that listen to all events

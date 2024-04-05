@@ -28,7 +28,6 @@ export default {
   external: [
     "sigma",
     "graphology",
-    "lodash",
     "react",
     "react-dom",
     "@react-sigma/layout-core",

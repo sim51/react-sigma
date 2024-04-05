@@ -113,7 +113,7 @@ const MyGraph: React.FC = () => {
 };
 
 export const MultiDirectedGraph: FC<{ style?: CSSProperties }> = ({ style }) => {
-  // Memo sigma settings to avoid re-render sigma at each component render
+  // Sigma settings
   const settings = useMemo(
     () => ({
       allowInvalidContainer: true,
