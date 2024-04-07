@@ -1,5 +1,6 @@
 {
   "name": "@react-sigma/storybook",
+  "version": "4.0.3",
   "private": true,
   "scripts": {
     "clean": "rimraf storybook-static playwright-report test-results",
@@ -8,13 +9,13 @@
     "start": "storybook dev -p 6006"
   },
   "dependencies": {
-    "@react-sigma/core": "^4.0.2",
-    "@react-sigma/layout-circlepack": "^4.0.2",
-    "@react-sigma/layout-circular": "^4.0.2",
-    "@react-sigma/layout-core": "^4.0.2",
-    "@react-sigma/layout-force": "^4.0.2",
-    "@react-sigma/layout-forceatlas2": "^4.0.2",
-    "@react-sigma/layout-noverlap": "^4.0.2",
-    "@react-sigma/layout-random": "^4.0.2"
+    "@react-sigma/core": "^4.0.3",
+    "@react-sigma/layout-circlepack": "^4.0.3",
+    "@react-sigma/layout-circular": "^4.0.3",
+    "@react-sigma/layout-core": "^4.0.3",
+    "@react-sigma/layout-force": "^4.0.3",
+    "@react-sigma/layout-forceatlas2": "^4.0.3",
+    "@react-sigma/layout-noverlap": "^4.0.3",
+    "@react-sigma/layout-random": "^4.0.3"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@react-sigma/layout-random",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "description": "React Sigma - Layout random",
   "author": "Benoit Simard",
   "license": "MIT",
@@ -35,7 +35,7 @@
     "start": "nodemon --watch src -e ts,tsx --exec npm run build"
   },
   "dependencies": {
-    "@react-sigma/layout-core": "^4.0.2"
+    "@react-sigma/layout-core": "^4.0.3"
   },
   "peerDependencies": {
     "graphology-layout": "^0.6.1"
