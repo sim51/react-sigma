@@ -21,7 +21,7 @@ const MyGraph: FC = () => {
 
 export const LoadGraphWithHook: FC<{ style?: CSSProperties }> = ({ style }) => {
   return (
-    <SigmaContainer style={style} settings={{ allowInvalidContainer: true }}>
+    <SigmaContainer style={style}>
       <MyGraph />
     </SigmaContainer>
   );

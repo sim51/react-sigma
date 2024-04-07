@@ -62,7 +62,7 @@ const SigmaContainerComponent = <
   E extends Attributes = Attributes,
   G extends Attributes = Attributes,
 >(
-  { graph, id, className, style, settings, children }: PropsWithChildren<SigmaContainerProps<N, E, G>>,
+  { graph, id, className, style, settings = {}, children }: PropsWithChildren<SigmaContainerProps<N, E, G>>,
   ref: Ref<Sigma<N, E, G> | null>,
 ) => {
   // Root HTML element
@@ -74,9 +74,9 @@ const SigmaContainerComponent = <
   // Sigma instance
   const [sigma, setSigma] = useState<Sigma<N, E, G> | null>(null);
   // Sigma settings
-  const [sigmaSettings, setSigmaSettings] = useState<Partial<Settings<N, E, G>>>(settings || {});
+  const [sigmaSettings, setSigmaSettings] = useState<Partial<Settings<N, E, G>>>(settings);
   useEffect(() => {
-    if (!isEqual(sigmaSettings, settings)) setSigmaSettings(settings || {});
+    if (!isEqual(sigmaSettings, settings)) setSigmaSettings(settings);
   }, [settings]);
 
   /**

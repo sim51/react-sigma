@@ -1,5 +1,13 @@
 # Changelog
 
+
+## Version 4.0.2
+
+### Fixes
+
+- [65](https://github.com/sim51/react-sigma/issues/65): Sigma: could not find a suitable program for node type "circle"!
+
+
 ## Version 4.0.1
 
 ### Fixes
