@@ -38,7 +38,7 @@ Modification of the node default color in the settings has no effect
 
 ### Steps to reproduce
 
-Check the live example https://codesandbox.io/s/XXXX
+Check the live example https://codesandbox.io/p/sandbox/empty-fog-qlkqg8
 
 ### Expected behavior
 
