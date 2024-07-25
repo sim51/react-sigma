@@ -35,7 +35,7 @@
   "dependencies": {
     "graphology": "^0.25.4",
     "graphology-types": "^0.24.7",
-    "sigma": "^3.0.0-beta.16"
+    "sigma": "^3.0.0-beta.24"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",

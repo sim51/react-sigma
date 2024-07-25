@@ -41,6 +41,10 @@ const sigmaEvents = keySet<SigmaEvents>({
   enterStage: true,
   leaveStage: true,
   resize: true,
+  afterClear: true,
+  afterProcess: true,
+  beforeClear: true,
+  beforeProcess: true,
 });
 
 const mouseEvents = keySet<MouseCaptorEvents>({
