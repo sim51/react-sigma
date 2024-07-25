@@ -8,42 +8,60 @@ import { Attributes } from "graphology-types";
 
 type EventType = keyof EventHandlers;
 
-const sigmaEvents: Array<keyof SigmaEvents> = [
-  "clickNode",
-  "rightClickNode",
-  "downNode",
-  "enterNode",
-  "leaveNode",
-  "doubleClickNode",
-  "wheelNode",
-  "clickEdge",
-  "rightClickEdge",
-  "downEdge",
-  "enterEdge",
-  "leaveEdge",
-  "doubleClickEdge",
-  "wheelEdge",
-  "clickStage",
-  "rightClickStage",
-  "downStage",
-  "doubleClickStage",
-  "wheelStage",
-  "beforeRender",
-  "afterRender",
-  "kill",
-];
-const mouseEvents: Array<keyof MouseCaptorEvents> = [
-  "click",
-  "rightClick",
-  "mouseup",
-  "mousedown",
-  "mousemove",
-  "mousemovebody",
-  "doubleClick",
-  "wheel",
-];
-const touchEvents: Array<keyof TouchCaptorEvents> = ["touchup", "touchdown", "touchmove"];
-const cameraEvents: Array<keyof CameraEvents> = ["updated"];
+function keySet<T>(record: Record<keyof T, unknown>): Set<string> {
+  return new Set<string>(Object.keys(record));
+}
+
+const sigmaEvents = keySet<SigmaEvents>({
+  clickNode: true,
+  rightClickNode: true,
+  downNode: true,
+  enterNode: true,
+  leaveNode: true,
+  doubleClickNode: true,
+  wheelNode: true,
+  clickEdge: true,
+  rightClickEdge: true,
+  downEdge: true,
+  enterEdge: true,
+  leaveEdge: true,
+  doubleClickEdge: true,
+  wheelEdge: true,
+  clickStage: true,
+  rightClickStage: true,
+  downStage: true,
+  doubleClickStage: true,
+  wheelStage: true,
+  beforeRender: true,
+  afterRender: true,
+  kill: true,
+  upStage: true,
+  upEdge: true,
+  upNode: true,
+  enterStage: true,
+  leaveStage: true,
+  resize: true,
+});
+
+const mouseEvents = keySet<MouseCaptorEvents>({
+  click: true,
+  rightClick: true,
+  doubleClick: true,
+  mouseup: true,
+  mousedown: true,
+  mousemove: true,
+  mousemovebody: true,
+  mouseleave: true,
+  mouseenter: true,
+  wheel: true,
+});
+
+const touchEvents = keySet<TouchCaptorEvents>({
+  touchup: true,
+  touchdown: true,
+  touchmove: true,
+});
+const cameraEvents = keySet<CameraEvents>({ updated: true });
 
 /**
  * React hook that helps you to listen Sigma’s events.
@@ -84,16 +102,16 @@ export function useRegisterEvents<
     // register events
     eventTypes.forEach((event: EventType) => {
       const eventHandler = userEvents[event] as (...args: unknown[]) => void;
-      if (sigmaEvents.find((e) => e === event)) {
+      if (sigmaEvents.has(event)) {
         sigma.on(event as keyof SigmaEvents, eventHandler);
       }
-      if (mouseEvents.find((e) => e === event)) {
+      if (mouseEvents.has(event)) {
         sigma.getMouseCaptor().on(event as keyof MouseCaptorEvents, eventHandler);
       }
-      if (touchEvents.find((e) => e === event)) {
+      if (touchEvents.has(event)) {
         sigma.getTouchCaptor().on(event as keyof TouchCaptorEvents, eventHandler);
       }
-      if (cameraEvents.find((e) => e === event)) {
+      if (cameraEvents.has(event)) {
         sigma.getCamera().on(event as keyof CameraEvents, eventHandler);
       }
     });
@@ -104,16 +122,16 @@ export function useRegisterEvents<
       if (sigma) {
         eventTypes.forEach((event: EventType) => {
           const eventHandler = userEvents[event] as (...args: unknown[]) => void;
-          if (sigmaEvents.find((e) => e === event)) {
+          if (sigmaEvents.has(event)) {
             sigma.off(event as keyof SigmaEvents, eventHandler);
           }
-          if (mouseEvents.find((e) => e === event)) {
+          if (mouseEvents.has(event)) {
             sigma.getMouseCaptor().off(event as keyof MouseCaptorEvents, eventHandler);
           }
-          if (touchEvents.find((e) => e === event)) {
+          if (touchEvents.has(event)) {
             sigma.getTouchCaptor().off(event as keyof TouchCaptorEvents, eventHandler);
           }
-          if (cameraEvents.find((e) => e === event)) {
+          if (cameraEvents.has(event)) {
             sigma.getCamera().off(event as keyof CameraEvents, eventHandler);
           }
         });
