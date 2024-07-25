@@ -145,7 +145,7 @@ const config: Config = {
         entryPoints: ["../core/src/index.ts"],
         tsconfig: "../core/tsconfig.json",
         watch: process.env.TYPEDOC_WATCH,
-        out: "api/core",
+        out: "docs/api/core",
         readme: "none",
         sidebar: {
           categoryLabel: "core",
@@ -162,7 +162,7 @@ const config: Config = {
         entryPoints: ["../layout-core/src/index.ts"],
         tsconfig: "../layout-core/tsconfig.json",
         watch: process.env.TYPEDOC_WATCH,
-        out: "api/layout-core",
+        out: "docs/api/layout-core",
         readme: "none",
         sidebar: {
           categoryLabel: "layout-core",
@@ -179,7 +179,7 @@ const config: Config = {
         entryPoints: ["../layout-random/src/index.ts"],
         tsconfig: "../layout-random/tsconfig.json",
         watch: process.env.TYPEDOC_WATCH,
-        out: "api/layout-random",
+        out: "docs/api/layout-random",
         readme: "none",
         sidebar: {
           categoryLabel: "layout-random",
@@ -196,7 +196,7 @@ const config: Config = {
         entryPoints: ["../layout-circular/src/index.ts"],
         tsconfig: "../layout-circular/tsconfig.json",
         watch: process.env.TYPEDOC_WATCH,
-        out: "api/layout-circular",
+        out: "docs/api/layout-circular",
         readme: "none",
         sidebar: {
           categoryLabel: "layout-circular",
@@ -213,7 +213,7 @@ const config: Config = {
         entryPoints: ["../layout-circlepack/src/index.ts"],
         tsconfig: "../layout-circlepack/tsconfig.json",
         watch: process.env.TYPEDOC_WATCH,
-        out: "api/layout-circlepack",
+        out: "docs/api/layout-circlepack",
         readme: "none",
         sidebar: {
           categoryLabel: "layout-circlepack",
@@ -230,7 +230,7 @@ const config: Config = {
         entryPoints: ["../layout-forceatlas2/src/index.ts"],
         tsconfig: "../layout-forceatlas2/tsconfig.json",
         watch: process.env.TYPEDOC_WATCH,
-        out: "api/layout-forceatlas2",
+        out: "docs/api/layout-forceatlas2",
         readme: "none",
         sidebar: {
           categoryLabel: "layout-forceatlas2",
@@ -247,7 +247,7 @@ const config: Config = {
         entryPoints: ["../layout-force/src/index.ts"],
         tsconfig: "../layout-force/tsconfig.json",
         watch: process.env.TYPEDOC_WATCH,
-        out: "api/layout-force",
+        out: "docs/api/layout-force",
         readme: "none",
         sidebar: {
           categoryLabel: "layout-force",
@@ -264,7 +264,7 @@ const config: Config = {
         entryPoints: ["../layout-noverlap/src/index.ts"],
         tsconfig: "../layout-noverlap/tsconfig.json",
         watch: process.env.TYPEDOC_WATCH,
-        out: "api/layout-noverlap",
+        out: "docs/api/layout-noverlap",
         readme: "none",
         sidebar: {
           categoryLabel: "layout-noverlap",
