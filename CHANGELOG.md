@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 4.0.3
+
+- Upgrade to lastest beta of Sigma 3
+- Review events definition in `core`, and adding missing Sigma events (like the `resize` one)
+
 ## Version 4.0.2
 
 ### Fixes
