@@ -8,7 +8,7 @@ Visit our website for docs and examples : https://sim51.github.io/react-sigma/
 
 - [Getting started](https://sim51.github.io/react-sigma/docs/start-introduction)
 - [API reference](https://sim51.github.io/react-sigma/docs/api)
-- [Live example](https://sim51.github.io/react-sigma/docs/example)
+- [Live examples](https://sim51.github.io/react-sigma/storybook)
 
 ## How to use it
 
