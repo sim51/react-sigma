@@ -36,13 +36,19 @@ For those layouts, in the corresponding module we export a **hook** that you can
 npm install @react-sigma/layout-circular graphology-layout
 ```
 
-2. Initialize the hook in your component (that must be a child of `SigmaContainer`)
+2. Import the `useLayoutCircular` hook
+
+```typescript
+import { useLayoutCircular } from "@react-sigma/layout-circular";
+```
+
+3. Initialize the hook in your component (that must be a child of `SigmaContainer`)
 
 ```typescript
 const {positions, assign} = useLayoutCircular(...);
 ```
 
-3.  Use the `positions` function
+4.  Use the `positions` function
 
 ```typescript
 import { animateNodes } from "sigma/utils/animate";
@@ -52,7 +58,7 @@ useEffect(() => {
 }, [positions, sigma]);
 ```
 
-4. Or use the `assign` function
+5. Or use the `assign` function
 
 ```typescript
 useEffect(() => {
