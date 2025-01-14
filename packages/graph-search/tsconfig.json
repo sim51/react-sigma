@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.json",
+  "compileOnSave": true,
+  "include": ["./src/**/*.ts", "src/context.tsx", "src/utils.tsx"],
+  "composite":true,
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./lib",
+    "declarationDir": "./lib",
+    "sourceMap": true,
+  }
+}

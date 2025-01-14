@@ -23,3 +23,20 @@ export function isEqual(x: unknown, y: unknown): boolean {
 
   return false;
 }
+
+export function debounce<A = unknown, R = void>(fn: (args: A) => R, ms: number): (args: A) => Promise<Awaited<R>> {
+  let timer: NodeJS.Timeout;
+
+  const debouncedFunc = (args: A): Promise<Awaited<R>> =>
+    new Promise((resolve) => {
+      if (timer) {
+        clearTimeout(timer);
+      }
+
+      timer = setTimeout(() => {
+        resolve(fn(args) as Awaited<R>);
+      }, ms);
+    });
+
+  return debouncedFunc;
+}

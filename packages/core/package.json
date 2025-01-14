@@ -39,6 +39,6 @@
   "peerDependencies": {
     "graphology": "^0.25.4",
     "react": "^18.0.0",
-    "sigma": "^3.0.0-beta.24"
+    "sigma": "^3.0.0"
   }
 }
