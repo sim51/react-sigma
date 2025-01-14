@@ -71,7 +71,7 @@ export const GraphSearchDemo: FC<{ style?: CSSProperties }> = ({ style }) => {
     else if (value.type === 'nodes') setSelectedNode(value.id);
   }, []);
 
-  const postSearchResult = useCallback((options: GraphSearchOption[]) => {
+  const postSearchResult = useCallback((options: GraphSearchOption[]): GraphSearchOption[] => {
     return options.length <= 10
       ? options
       : [

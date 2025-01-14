@@ -45,6 +45,7 @@ const sigmaEvents = keySet<SigmaEvents>({
   afterProcess: true,
   beforeClear: true,
   beforeProcess: true,
+  moveBody: true,
 });
 
 const mouseEvents = keySet<MouseCaptorEvents>({
@@ -64,6 +65,9 @@ const touchEvents = keySet<TouchCaptorEvents>({
   touchup: true,
   touchdown: true,
   touchmove: true,
+  touchmovebody: true,
+  tap: true,
+  doubletap: true,
 });
 const cameraEvents = keySet<CameraEvents>({ updated: true });
 

@@ -4,3 +4,4 @@ export * from './context';
 export * from './useGraphSearch';
 export * from './GraphSearchInput';
 export * from './GraphSearch';
+export * from './types';
