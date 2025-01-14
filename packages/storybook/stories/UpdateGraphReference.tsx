@@ -1,9 +1,8 @@
-import { FC, useEffect, useState, CSSProperties } from "react";
+import { SigmaContainer } from '@react-sigma/core';
+import '@react-sigma/core/lib/react-sigma.min.css';
+import { CSSProperties, FC, useEffect, useState } from 'react';
 
-import { SigmaContainer } from "@react-sigma/core";
-import "@react-sigma/core/lib/react-sigma.min.css";
-
-import { useRandom } from "./common/useRandom";
+import { useRandom } from './common/useRandom';
 
 export const UpdatedGraphReference: FC<{ style?: CSSProperties }> = ({ style }) => {
   const { randomGraph } = useRandom();

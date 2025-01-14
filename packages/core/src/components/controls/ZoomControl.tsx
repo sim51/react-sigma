@@ -1,11 +1,11 @@
-import React, { CSSProperties } from "react";
+import React, { CSSProperties } from 'react';
 
-import { ReactComponent as ZoomInIcon } from "../../assets/icons/plus-solid.svg";
-import { ReactComponent as ZoomOutIcon } from "../../assets/icons/minus-solid.svg";
-import { ReactComponent as ZoomResetIcon } from "../../assets/icons/dot-circle-regular.svg";
-import { useCamera } from "../../hooks/useCamera";
+import { ReactComponent as ZoomResetIcon } from '../../assets/icons/dot-circle-regular.svg';
+import { ReactComponent as ZoomOutIcon } from '../../assets/icons/minus-solid.svg';
+import { ReactComponent as ZoomInIcon } from '../../assets/icons/plus-solid.svg';
+import { useCamera } from '../../hooks/useCamera';
 
-type ZoomLabelKeys = "zoomIn" | "zoomOut" | "reset";
+type ZoomLabelKeys = 'zoomIn' | 'zoomOut' | 'reset';
 
 /**
  * Properties for `ZoomControl` component
@@ -76,24 +76,24 @@ export const ZoomControl: React.FC<ZoomControlProps> = ({
   // Common html props for the div wrapper
   const htmlProps = {
     style,
-    className: `react-sigma-control ${className || ""}`,
+    className: `react-sigma-control ${className || ''}`,
   };
 
   return (
     <>
       <div {...htmlProps}>
-        <button onClick={() => zoomIn()} title={labels["zoomIn"] || "Zoom In"}>
-          {children ? children[0] : <ZoomInIcon style={{ width: "1em" }} />}
+        <button onClick={() => zoomIn()} title={labels['zoomIn'] || 'Zoom In'}>
+          {children ? children[0] : <ZoomInIcon style={{ width: '1em' }} />}
         </button>
       </div>
       <div {...htmlProps}>
-        <button onClick={() => zoomOut()} title={labels["zoomOut"] || "Zoom Out"}>
-          {children ? children[1] : <ZoomOutIcon style={{ width: "1em" }} />}
+        <button onClick={() => zoomOut()} title={labels['zoomOut'] || 'Zoom Out'}>
+          {children ? children[1] : <ZoomOutIcon style={{ width: '1em' }} />}
         </button>
       </div>
       <div {...htmlProps}>
-        <button onClick={() => reset()} title={labels["reset"] || "See whole graph"}>
-          {children ? children[2] : <ZoomResetIcon style={{ width: "1em" }} />}
+        <button onClick={() => reset()} title={labels['reset'] || 'See whole graph'}>
+          {children ? children[2] : <ZoomResetIcon style={{ width: '1em' }} />}
         </button>
       </div>
     </>

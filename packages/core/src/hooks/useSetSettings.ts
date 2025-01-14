@@ -1,8 +1,8 @@
-import { useCallback } from "react";
-import { Settings } from "sigma/settings";
+import { Attributes } from 'graphology-types';
+import { useCallback } from 'react';
+import { Settings } from 'sigma/settings';
 
-import { useSigmaContext } from "./context";
-import { Attributes } from "graphology-types";
+import { useSigmaContext } from './context';
 
 /**
  * React hook that helps you to update Sigma’s settings.

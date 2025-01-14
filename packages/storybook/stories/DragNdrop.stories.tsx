@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
-import { DragNdrop } from "./DragNdrop";
-import source from "./DragNdrop?raw";
+import { DragNdrop } from './DragNdrop';
+import source from './DragNdrop?raw';
 
 const meta: Meta<typeof DragNdrop> = {
   component: DragNdrop,
-  id: "drag-n-drop",
-  title: "Examples",
+  id: 'drag-n-drop',
+  title: 'Examples',
 };
 
 export default meta;

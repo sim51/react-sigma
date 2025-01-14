@@ -1,7 +1,6 @@
-import { useCallback, useRef } from "react";
-import Graph from "graphology";
-
-import { useSigma, isEqual } from "@react-sigma/core";
+import { isEqual, useSigma } from '@react-sigma/core';
+import Graph from 'graphology';
+import { useCallback, useRef } from 'react';
 
 /**
  * Generic type for Graphology layout.

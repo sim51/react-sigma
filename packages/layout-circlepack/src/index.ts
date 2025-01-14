@@ -3,4 +3,4 @@
  *
  * @module
  */
-export * from "./useLayoutCirclepack";
+export * from './useLayoutCirclepack';

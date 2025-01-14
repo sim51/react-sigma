@@ -1,8 +1,8 @@
-import { FC, useEffect, useState } from "react";
+import { useLoadGraph, useRegisterEvents, useSetSettings, useSigma } from '@react-sigma/core';
+import { useLayoutCircular } from '@react-sigma/layout-circular';
+import { FC, useEffect, useState } from 'react';
 
-import { useSigma, useRegisterEvents, useLoadGraph, useSetSettings } from "@react-sigma/core";
-import { useLayoutCircular } from "@react-sigma/layout-circular";
-import { useRandom, NodeType, EdgeType } from "./useRandom";
+import { EdgeType, NodeType, useRandom } from './useRandom';
 
 export const SampleGraph: FC<{ disableHoverEffect?: boolean }> = ({ disableHoverEffect }) => {
   const { randomGraph } = useRandom();
@@ -20,7 +20,6 @@ export const SampleGraph: FC<{ disableHoverEffect?: boolean }> = ({ disableHover
   useEffect(() => {
     // Create & load the graph
     const graph = randomGraph();
-    console.log("Graph is ", graph.toJSON());
     loadGraph(graph);
     assignCircular();
 
@@ -45,7 +44,7 @@ export const SampleGraph: FC<{ disableHoverEffect?: boolean }> = ({ disableHover
           if (node === hoveredNode || graph.neighbors(hoveredNode).includes(node)) {
             newData.highlighted = true;
           } else {
-            newData.color = "#E2E2E2";
+            newData.color = '#E2E2E2';
             newData.highlighted = false;
           }
         }

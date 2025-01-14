@@ -5,6 +5,6 @@
  * @module
  */
 
-export * from "./useLayoutFactory";
-export * from "./useWorkerLayoutFactory";
-export * from "./WorkerLayoutControl";
+export * from './useLayoutFactory';
+export * from './useWorkerLayoutFactory';
+export * from './WorkerLayoutControl';

@@ -1,23 +1,23 @@
+import Graph from 'graphology';
+import { Attributes } from 'graphology-types';
 import React, {
   CSSProperties,
-  Ref,
   PropsWithChildren,
+  ReactElement,
+  Ref,
+  forwardRef,
   useEffect,
+  useImperativeHandle,
   useMemo,
   useRef,
   useState,
-  forwardRef,
-  useImperativeHandle,
-  ReactElement,
-} from "react";
-import Graph from "graphology";
-import { Sigma } from "sigma";
-import { Settings } from "sigma/settings";
+} from 'react';
+import { Sigma } from 'sigma';
+import { Settings } from 'sigma/settings';
 
-import { SigmaContextInterface, SigmaProvider } from "../hooks/context";
-import { isEqual } from "../utils";
-import { GraphType } from "../types";
-import { Attributes } from "graphology-types";
+import { SigmaContextInterface, SigmaProvider } from '../hooks/context';
+import { GraphType } from '../types';
+import { isEqual } from '../utils';
 
 /**
  * Properties for `SigmaContainer` component
@@ -70,7 +70,7 @@ const SigmaContainerComponent = <
   // HTML element for the sigma instance
   const containerRef = useRef<HTMLDivElement>(null);
   // Common html props for the container
-  const props = { className: `react-sigma ${className ? className : ""}`, id, style };
+  const props = { className: `react-sigma ${className ? className : ''}`, id, style };
   // Sigma instance
   const [sigma, setSigma] = useState<Sigma<N, E, G> | null>(null);
   // Sigma settings
@@ -89,7 +89,7 @@ const SigmaContainerComponent = <
     if (containerRef.current !== null) {
       let sigGraph = new Graph<N, E, G>();
       if (graph) {
-        sigGraph = typeof graph === "function" ? new graph() : graph;
+        sigGraph = typeof graph === 'function' ? new graph() : graph;
       }
 
       instance = new Sigma(sigGraph, containerRef.current, sigmaSettings);

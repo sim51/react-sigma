@@ -1,11 +1,11 @@
-import React, { useEffect, CSSProperties } from "react";
+import { useSigma } from '@react-sigma/core';
+import React, { CSSProperties, useEffect } from 'react';
 
-import { useSigma } from "@react-sigma/core";
-import { ReactComponent as StartLayoutIcon } from "./assets/icons/play-solid.svg";
-import { ReactComponent as StopLayoutIcon } from "./assets/icons/stop-solid.svg";
-import { LayoutWorkerHook } from "./useWorkerLayoutFactory";
+import { ReactComponent as StartLayoutIcon } from './assets/icons/play-solid.svg';
+import { ReactComponent as StopLayoutIcon } from './assets/icons/stop-solid.svg';
+import { LayoutWorkerHook } from './useWorkerLayoutFactory';
 
-type WorkerLayoutLabelKeys = "start" | "stop";
+type WorkerLayoutLabelKeys = 'start' | 'stop';
 
 /**
  * Properties for `WorkerLayoutControl` component
@@ -82,7 +82,7 @@ export function WorkerLayoutControl<T>({
   const { stop, start, isRunning } = layout(settings);
   // Common html props for the div
   const props = {
-    className: `react-sigma-control ${className || ""}`,
+    className: `react-sigma-control ${className || ''}`,
     id,
     style,
   };
@@ -121,13 +121,13 @@ export function WorkerLayoutControl<T>({
       <button
         onClick={() => (isRunning ? stop() : start())}
         title={
-          isRunning ? labels["stop"] || "Stop the layout animation" : labels["start"] || "Start the layout animation"
+          isRunning ? labels['stop'] || 'Stop the layout animation' : labels['start'] || 'Start the layout animation'
         }
       >
         {children && !isRunning && children[0]}
         {children && isRunning && children[1]}
-        {!children && !isRunning && <StartLayoutIcon style={{ width: "1em" }} />}
-        {!children && isRunning && <StopLayoutIcon style={{ width: "1em" }} />}
+        {!children && !isRunning && <StartLayoutIcon style={{ width: '1em' }} />}
+        {!children && isRunning && <StopLayoutIcon style={{ width: '1em' }} />}
       </button>
     </div>
   );

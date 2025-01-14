@@ -1,11 +1,10 @@
-import { FC, useEffect, CSSProperties } from "react";
-import Graph from "graphology";
+import { SigmaContainer, useLoadGraph } from '@react-sigma/core';
+import '@react-sigma/core/lib/react-sigma.min.css';
+import { useLayoutCircular } from '@react-sigma/layout-circular';
+import Graph from 'graphology';
+import { CSSProperties, FC, useEffect } from 'react';
 
-import { SigmaContainer, useLoadGraph } from "@react-sigma/core";
-import { useLayoutCircular } from "@react-sigma/layout-circular";
-import "@react-sigma/core/lib/react-sigma.min.css";
-
-import { useRandom } from "./common/useRandom";
+import { useRandom } from './common/useRandom';
 
 const RandomCircleGraph: FC = () => {
   const { faker, randomColor } = useRandom();

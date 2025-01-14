@@ -1,15 +1,15 @@
-import React from "react";
-import { ForceLayoutSupervisorParameters } from "graphology-layout-force/worker";
+import { WorkerLayoutControl, WorkerLayoutControlProps } from '@react-sigma/layout-core';
+import { ForceLayoutSupervisorParameters } from 'graphology-layout-force/worker';
+import React from 'react';
 
-import { WorkerLayoutControlProps, WorkerLayoutControl } from "@react-sigma/layout-core";
-import { useWorkerLayoutForce } from "./useWorkerLayoutForce";
+import { useWorkerLayoutForce } from './useWorkerLayoutForce';
 
 /**
  * Properties for `ForceDirectedControl` component
  */
 export type LayoutForceControlProps = Omit<
   WorkerLayoutControlProps<ForceLayoutSupervisorParameters>,
-  "layout" | "settings"
+  'layout' | 'settings'
 > & {
   settings?: ForceLayoutSupervisorParameters;
 };

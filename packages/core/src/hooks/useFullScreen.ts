@@ -1,5 +1,6 @@
-import { useEffect, useState, useCallback } from "react";
-import { useSigmaContext } from "./context";
+import { useCallback, useEffect, useState } from 'react';
+
+import { useSigmaContext } from './context';
 
 function toggleFullScreen(dom: HTMLElement) {
   if (document.fullscreenElement !== dom) {
@@ -19,9 +20,7 @@ function toggleFullScreen(dom: HTMLElement) {
  *```
  * @category Hook
  */
-export function useFullScreen(
-  container?: HTMLElement | null,
-): {
+export function useFullScreen(container?: HTMLElement | null): {
   toggle: () => void;
   isFullScreen: boolean;
 } {
@@ -31,8 +30,8 @@ export function useFullScreen(
   const toggleState = () => setFullScreen((v) => !v);
 
   useEffect(() => {
-    document.addEventListener("fullscreenchange", toggleState);
-    return () => document.removeEventListener("fullscreenchange", toggleState);
+    document.addEventListener('fullscreenchange', toggleState);
+    return () => document.removeEventListener('fullscreenchange', toggleState);
   }, [toggleState]);
 
   useEffect(() => {

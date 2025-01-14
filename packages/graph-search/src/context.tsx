@@ -1,9 +1,10 @@
-import React from "react";
-import MiniSearch from "minisearch";
-import { useSigma } from "@react-sigma/core";
-import { createContext, FC, PropsWithChildren, useEffect, useState } from "react";
-import { edgeToDocument, nodeToDocument } from "./utils";
-import { Attributes } from "graphology-types";
+import { useSigma } from '@react-sigma/core';
+import { Attributes } from 'graphology-types';
+import MiniSearch from 'minisearch';
+import React from 'react';
+import { FC, PropsWithChildren, createContext, useEffect, useState } from 'react';
+
+import { edgeToDocument, nodeToDocument } from './utils';
 
 export interface GraphSearchContextType {
   index: MiniSearch;
@@ -22,13 +23,13 @@ export const GraphSearchContextProvider: FC<PropsWithChildren> = ({ children }) 
 
   useEffect(() => {
     const index = new MiniSearch({
-      idField: "itemId",
-      fields: ["label"],
-      storeFields: ["itemId", "id", "type"],
+      idField: 'itemId',
+      fields: ['label'],
+      storeFields: ['itemId', 'id', 'type'],
       processTerm: (term, _fieldName) =>
         term
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
           .toLowerCase(),
     });
 
@@ -62,22 +63,22 @@ export const GraphSearchContextProvider: FC<PropsWithChildren> = ({ children }) 
         index.discard(`edges-${payload.key}`);
       }
     }
-    graph.on("nodeAdded", indexNode);
-    graph.on("nodeAttributesUpdated", indexNode);
-    graph.on("nodeDropped", deleteNode);
-    graph.on("edgeAdded", indexEdge);
-    graph.on("edgeAttributesUpdated", indexEdge);
-    graph.on("edgeDropped", deleteEdge);
+    graph.on('nodeAdded', indexNode);
+    graph.on('nodeAttributesUpdated', indexNode);
+    graph.on('nodeDropped', deleteNode);
+    graph.on('edgeAdded', indexEdge);
+    graph.on('edgeAttributesUpdated', indexEdge);
+    graph.on('edgeDropped', deleteEdge);
 
     setContext({ index });
 
     return () => {
-      graph.off("nodeAdded", indexNode);
-      graph.off("nodeAttributesUpdated", indexNode);
-      graph.off("nodeDropped", deleteNode);
-      graph.off("edgeAdded", indexEdge);
-      graph.off("edgeAttributesUpdated", indexEdge);
-      graph.off("edgeDropped", deleteEdge);
+      graph.off('nodeAdded', indexNode);
+      graph.off('nodeAttributesUpdated', indexNode);
+      graph.off('nodeDropped', deleteNode);
+      graph.off('edgeAdded', indexEdge);
+      graph.off('edgeAttributesUpdated', indexEdge);
+      graph.off('edgeDropped', deleteEdge);
     };
   }, [sigma]);
 

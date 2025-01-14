@@ -1,20 +1,18 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { FaProjectDiagram } from "react-icons/fa";
-
-import { animateNodes } from "sigma/utils";
-
-import { useSigma } from "@react-sigma/core";
-import { WorkerLayoutControl } from "@react-sigma/layout-core";
-import { useLayoutCircular } from "@react-sigma/layout-circular";
-import { useLayoutCirclepack } from "@react-sigma/layout-circlepack";
-import { useLayoutRandom } from "@react-sigma/layout-random";
-import { useLayoutNoverlap, useWorkerLayoutNoverlap } from "@react-sigma/layout-noverlap";
-import { useLayoutForce, useWorkerLayoutForce } from "@react-sigma/layout-force";
-import { useLayoutForceAtlas2, useWorkerLayoutForceAtlas2 } from "@react-sigma/layout-forceatlas2";
+import { useSigma } from '@react-sigma/core';
+import { useLayoutCirclepack } from '@react-sigma/layout-circlepack';
+import { useLayoutCircular } from '@react-sigma/layout-circular';
+import { WorkerLayoutControl } from '@react-sigma/layout-core';
+import { useLayoutForce, useWorkerLayoutForce } from '@react-sigma/layout-force';
+import { useLayoutForceAtlas2, useWorkerLayoutForceAtlas2 } from '@react-sigma/layout-forceatlas2';
+import { useLayoutNoverlap, useWorkerLayoutNoverlap } from '@react-sigma/layout-noverlap';
+import { useLayoutRandom } from '@react-sigma/layout-random';
+import React, { useEffect, useMemo, useState } from 'react';
+import { FaProjectDiagram } from 'react-icons/fa';
+import { animateNodes } from 'sigma/utils';
 
 export const LayoutsControl: React.FC = () => {
   const sigma = useSigma();
-  const [layout, setLayout] = useState<string>("circular");
+  const [layout, setLayout] = useState<string>('circular');
   const [opened, setOpened] = useState<boolean>(false);
   const layoutCircular = useLayoutCircular();
   const layoutCirclepack = useLayoutCirclepack();
@@ -60,9 +58,9 @@ export const LayoutsControl: React.FC = () => {
       setOpened(false);
     };
     if (opened === true) {
-      setTimeout(() => document.addEventListener("click", close), 0);
+      setTimeout(() => document.addEventListener('click', close), 0);
     }
-    return () => document.removeEventListener("click", close);
+    return () => document.removeEventListener('click', close);
   }, [opened]);
 
   return (
@@ -80,13 +78,13 @@ export const LayoutsControl: React.FC = () => {
           {opened === true && (
             <ul
               style={{
-                position: "absolute",
+                position: 'absolute',
                 bottom: 0,
-                right: "35px",
-                backgroundColor: "#e7e9ed",
+                right: '35px',
+                backgroundColor: '#e7e9ed',
                 margin: 0,
                 padding: 0,
-                listStyle: "none",
+                listStyle: 'none',
               }}
             >
               {Object.keys(layouts).map((name) => {
@@ -94,7 +92,7 @@ export const LayoutsControl: React.FC = () => {
                   <li key={name}>
                     <button
                       className="btn btn-link"
-                      style={{ fontWeight: layout === name ? "bold" : "normal", width: "100%" }}
+                      style={{ fontWeight: layout === name ? 'bold' : 'normal', width: '100%' }}
                       onClick={() => {
                         setLayout(name);
                       }}

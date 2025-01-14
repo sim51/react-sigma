@@ -1,5 +1,5 @@
-import AbstractGraph, { Attributes, GraphOptions } from "graphology-types";
-import { SigmaEvents, MouseCaptorEvents, TouchCaptorEvents, CameraEvents } from "sigma/types";
+import AbstractGraph, { Attributes, GraphOptions } from 'graphology-types';
+import { CameraEvents, MouseCaptorEvents, SigmaEvents, TouchCaptorEvents } from 'sigma/types';
 
 /**
  * Sigma's events

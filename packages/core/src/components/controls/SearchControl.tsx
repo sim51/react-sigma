@@ -1,12 +1,12 @@
-import React, { ChangeEvent, useEffect, useState, CSSProperties } from "react";
-import { Attributes } from "graphology-types";
+import { Attributes } from 'graphology-types';
+import React, { CSSProperties, ChangeEvent, useEffect, useState } from 'react';
 
-import { getUniqueKey } from "../../utils";
-import { useSigma } from "../../hooks/useSigma";
-import { useCamera } from "../../hooks/useCamera";
-import { useRegisterEvents } from "../../hooks/useRegisterEvents";
+import { useCamera } from '../../hooks/useCamera';
+import { useRegisterEvents } from '../../hooks/useRegisterEvents';
+import { useSigma } from '../../hooks/useSigma';
+import { getUniqueKey } from '../../utils';
 
-type SearchLabelKeys = "text" | "placeholder";
+type SearchLabelKeys = 'text' | 'placeholder';
 
 /**
  * Properties for `SearchControl` component
@@ -63,13 +63,13 @@ export const SearchControl: React.FC<SearchControlProps> = ({
   // Get camera hook
   const { gotoNode } = useCamera();
   // Search value
-  const [search, setSearch] = useState<string>("");
+  const [search, setSearch] = useState<string>('');
   // Datalist values
   const [values, setValues] = useState<Array<{ id: string; label: string }>>([]);
   // Selected
   const [selected, setSelected] = useState<string | null>(null);
   // random id for the input
-  const [inputId, setInputId] = useState<string>("");
+  const [inputId, setInputId] = useState<string>('');
 
   /**
    * When component mount, we set a random input id.
@@ -100,7 +100,7 @@ export const SearchControl: React.FC<SearchControlProps> = ({
     registerEvents({
       clickStage: () => {
         setSelected(null);
-        setSearch("");
+        setSearch('');
       },
     });
   }, [registerEvents]);
@@ -113,11 +113,11 @@ export const SearchControl: React.FC<SearchControlProps> = ({
       return;
     }
 
-    sigma.getGraph().setNodeAttribute(selected, "highlighted", true);
+    sigma.getGraph().setNodeAttribute(selected, 'highlighted', true);
     gotoNode(selected);
 
     return () => {
-      sigma.getGraph().setNodeAttribute(selected, "highlighted", false);
+      sigma.getGraph().setNodeAttribute(selected, 'highlighted', false);
     };
   }, [selected]);
 
@@ -139,20 +139,20 @@ export const SearchControl: React.FC<SearchControlProps> = ({
 
   // Common html props for the div
   const htmlProps = {
-    className: `react-sigma-search ${className ? className : ""}`,
+    className: `react-sigma-search ${className ? className : ''}`,
     id,
     style,
   };
 
   return (
     <div {...htmlProps}>
-      <label htmlFor={inputId} style={{ display: "none" }}>
-        {labels["text"] || "Search a node"}
+      <label htmlFor={inputId} style={{ display: 'none' }}>
+        {labels['text'] || 'Search a node'}
       </label>
       <input
         id={inputId}
         type="text"
-        placeholder={labels["placeholder"] || "Search..."}
+        placeholder={labels['placeholder'] || 'Search...'}
         list={`${inputId}-datalist`}
         value={search}
         onChange={onInputChange}

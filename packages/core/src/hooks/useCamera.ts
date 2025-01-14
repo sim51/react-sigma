@@ -1,9 +1,9 @@
-import { useCallback, useEffect, useState } from "react";
-import { AnimateOptions } from "sigma/utils";
-import { CameraState } from "sigma/types";
+import { useCallback, useEffect, useState } from 'react';
+import { CameraState } from 'sigma/types';
+import { AnimateOptions } from 'sigma/utils';
 
-import { isEqual } from "../utils";
-import { useSigma } from "./useSigma";
+import { isEqual } from '../utils';
+import { useSigma } from './useSigma';
 
 type CameraOptions = Partial<AnimateOptions> & { factor?: number };
 

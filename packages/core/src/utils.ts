@@ -6,7 +6,7 @@ export function isEqual(x: unknown, y: unknown): boolean {
   // check the ref
   if (x === y) return true;
   // if both are object
-  if (typeof x == "object" && x != null && typeof y == "object" && y != null) {
+  if (typeof x == 'object' && x != null && typeof y == 'object' && y != null) {
     // Check the number of properties
     if (Object.keys(x).length != Object.keys(y).length) return false;
 

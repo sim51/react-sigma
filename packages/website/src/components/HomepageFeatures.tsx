@@ -1,7 +1,8 @@
-import useBaseUrl from "@docusaurus/useBaseUrl";
-import React from "react";
-import clsx from "clsx";
-import styles from "./HomepageFeatures.module.css";
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import clsx from 'clsx';
+import React from 'react';
+
+import styles from './HomepageFeatures.module.css';
 
 type FeatureItem = {
   title: string;
@@ -11,25 +12,25 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: "Graphology",
-    image: "/img/graphology-logo.svg",
+    title: 'Graphology',
+    image: '/img/graphology-logo.svg',
     description: <>handles graph data model & algorithms</>,
   },
   {
-    title: "Sigma.js",
-    image: "/img/sigmajs-logo.svg",
+    title: 'Sigma.js',
+    image: '/img/sigmajs-logo.svg',
     description: <>handles graph rendering & interactions</>,
   },
   {
-    title: "React",
-    image: "/img/react-logo.svg",
+    title: 'React',
+    image: '/img/react-logo.svg',
     description: <>your ♥ web app</>,
   },
 ];
 
 function Feature({ title, image, description }: FeatureItem) {
   return (
-    <div className={clsx("col col--4")}>
+    <div className={clsx('col col--4')}>
       <div className="text--center">
         <img className={styles.featureSvg} alt={title} src={useBaseUrl(image)} />
       </div>

@@ -1,8 +1,8 @@
-import { useCallback } from "react";
-import Graph from "graphology";
-import { Attributes } from "graphology-types";
+import Graph from 'graphology';
+import { Attributes } from 'graphology-types';
+import { useCallback } from 'react';
 
-import { useSigma } from "./useSigma";
+import { useSigma } from './useSigma';
 
 /**
  * React hook that helps you to load a graph.

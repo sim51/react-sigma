@@ -1,7 +1,6 @@
-import { useCallback, useRef, useState, useEffect } from "react";
-import Graph from "graphology";
-
-import { useSigma, isEqual } from "@react-sigma/core";
+import { isEqual, useSigma } from '@react-sigma/core';
+import Graph from 'graphology';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 export type LayoutWorkerHook<T> = (settings: T) => {
   stop: () => void;

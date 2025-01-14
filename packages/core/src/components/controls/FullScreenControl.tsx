@@ -1,10 +1,10 @@
-import React, { CSSProperties, RefObject } from "react";
+import React, { CSSProperties, RefObject } from 'react';
 
-import { ReactComponent as EnterIcon } from "../../assets/icons/expand-solid.svg";
-import { ReactComponent as ExitIcon } from "../../assets/icons/compress-solid.svg";
-import { useFullScreen } from "../../hooks/useFullScreen";
+import { ReactComponent as ExitIcon } from '../../assets/icons/compress-solid.svg';
+import { ReactComponent as EnterIcon } from '../../assets/icons/expand-solid.svg';
+import { useFullScreen } from '../../hooks/useFullScreen';
 
-type FullScreenLabelKeys = "enter" | "exit";
+type FullScreenLabelKeys = 'enter' | 'exit';
 
 /**
  * Properties for `FullScreenControl` component.
@@ -77,7 +77,7 @@ export const FullScreenControl: React.FC<FullScreenControlProps> = ({
 
   // Common html props for the div
   const htmlProps = {
-    className: `react-sigma-control ${className || ""}`,
+    className: `react-sigma-control ${className || ''}`,
     id,
     style,
   };
@@ -88,12 +88,12 @@ export const FullScreenControl: React.FC<FullScreenControlProps> = ({
     <div {...htmlProps}>
       <button
         onClick={toggle}
-        title={isFullScreen ? labels["exit"] || "Exit fullscreen" : labels["enter"] || "Enter fullscreen"}
+        title={isFullScreen ? labels['exit'] || 'Exit fullscreen' : labels['enter'] || 'Enter fullscreen'}
       >
         {children && !isFullScreen && children[0]}
         {children && isFullScreen && children[1]}
-        {!children && !isFullScreen && <EnterIcon style={{ width: "1em" }} />}
-        {!children && isFullScreen && <ExitIcon style={{ width: "1em" }} />}
+        {!children && !isFullScreen && <EnterIcon style={{ width: '1em' }} />}
+        {!children && isFullScreen && <ExitIcon style={{ width: '1em' }} />}
       </button>
     </div>
   );

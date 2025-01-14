@@ -3,6 +3,7 @@
   "files": [],
   "references": [
     { "path": "./packages/core" },
+    { "path": "./packages/graph-search" },
     { "path": "./packages/layout-core" },
     { "path": "./packages/layout-circlepack" },
     { "path": "./packages/layout-circular" },
@@ -10,6 +11,7 @@
     { "path": "./packages/layout-forceatlas2" },
     { "path": "./packages/layout-noverlap" },
     { "path": "./packages/layout-random" },
+    { "path": "./packages/minimap" },
     { "path": "./packages/storybook" }
   ],
   "watchOptions": {

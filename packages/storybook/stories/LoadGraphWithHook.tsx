@@ -1,8 +1,7 @@
-import { FC, useEffect, CSSProperties } from "react";
-import { MultiDirectedGraph } from "graphology";
-
-import { SigmaContainer, useLoadGraph } from "@react-sigma/core";
-import "@react-sigma/core/lib/react-sigma.min.css";
+import { SigmaContainer, useLoadGraph } from '@react-sigma/core';
+import '@react-sigma/core/lib/react-sigma.min.css';
+import { MultiDirectedGraph } from 'graphology';
+import { CSSProperties, FC, useEffect } from 'react';
 
 const MyGraph: FC = () => {
   const loadGraph = useLoadGraph();
@@ -10,9 +9,9 @@ const MyGraph: FC = () => {
   useEffect(() => {
     // Create the graph
     const graph = new MultiDirectedGraph();
-    graph.addNode("A", { x: 0, y: 0, label: "Node A", size: 10 });
-    graph.addNode("B", { x: 1, y: 1, label: "Node B", size: 10 });
-    graph.addEdgeWithKey("rel1", "A", "B", { label: "REL_1" });
+    graph.addNode('A', { x: 0, y: 0, label: 'Node A', size: 10 });
+    graph.addNode('B', { x: 1, y: 1, label: 'Node B', size: 10 });
+    graph.addEdgeWithKey('rel1', 'A', 'B', { label: 'REL_1' });
     loadGraph(graph);
   }, [loadGraph]);
 

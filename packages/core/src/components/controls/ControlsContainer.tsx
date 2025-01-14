@@ -1,4 +1,4 @@
-import React, { CSSProperties, ReactNode } from "react";
+import React, { CSSProperties, ReactNode } from 'react';
 
 /**
  * Properties for `ControlsContainer` component.
@@ -19,7 +19,7 @@ export interface ControlsContainerProps {
   /**
    * Position of the container
    */
-  position?: "top-right" | "top-left" | "bottom-right" | "bottom-left";
+  position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
   /*
    * @hidden
    */
@@ -46,10 +46,10 @@ export const ControlsContainer: React.FC<ControlsContainerProps> = ({
   className,
   style,
   children,
-  position = "bottom-left",
+  position = 'bottom-left',
 }: ControlsContainerProps) => {
   // Common html props for the container
-  const props = { className: `react-sigma-controls ${className ? className : ""} ${position}`, id, style };
+  const props = { className: `react-sigma-controls ${className ? className : ''} ${position}`, id, style };
 
   return <div {...props}>{children}</div>;
 };

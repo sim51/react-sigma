@@ -1,11 +1,10 @@
-import { FC, CSSProperties } from "react";
+import { ControlsContainer, SigmaContainer } from '@react-sigma/core';
+import '@react-sigma/core/lib/react-sigma.min.css';
+import { createNodeBorderProgram } from '@sigma/node-border';
+import { CSSProperties, FC } from 'react';
 
-import { createNodeBorderProgram } from "@sigma/node-border";
-import { SigmaContainer, ControlsContainer } from "@react-sigma/core";
-import { SampleGraph } from "./common/SampleGraph";
-import { LayoutsControl } from "./common/LayoutsControl";
-
-import "@react-sigma/core/lib/react-sigma.min.css";
+import { LayoutsControl } from './common/LayoutsControl';
+import { SampleGraph } from './common/SampleGraph';
 
 // We add the node boder program to the sigma settings, and we set it as the default one.
 // Now a node with a `borderSize` and/ord `borderColor` attributs will be displayed with a border.
@@ -14,12 +13,12 @@ import "@react-sigma/core/lib/react-sigma.min.css";
 // NB: the graph used in this example is printed in the console.
 const sigmaSettings = {
   allowInvalidContainer: true,
-  defaultNodeType: "bordered",
+  defaultNodeType: 'bordered',
   nodeProgramClasses: {
     bordered: createNodeBorderProgram({
       borders: [
-        { size: { attribute: "borderSize", defaultValue: 0 }, color: { attribute: "borderColor" } },
-        { size: { fill: true }, color: { attribute: "color" } },
+        { size: { attribute: 'borderSize', defaultValue: 0 }, color: { attribute: 'borderColor' } },
+        { size: { fill: true }, color: { attribute: 'color' } },
       ],
     }),
   },
@@ -29,7 +28,7 @@ export const NodeBorder: FC<{ style?: CSSProperties }> = ({ style }) => {
   return (
     <SigmaContainer style={style} settings={sigmaSettings}>
       <SampleGraph />
-      <ControlsContainer position={"bottom-right"}>
+      <ControlsContainer position={'bottom-right'}>
         <LayoutsControl />
       </ControlsContainer>
     </SigmaContainer>

@@ -1,6 +1,5 @@
-import NoverlapLayout, { NoverlapLayoutSupervisorParameters } from "graphology-layout-noverlap/worker";
-
-import { useWorkerLayoutFactory } from "@react-sigma/layout-core";
+import { useWorkerLayoutFactory } from '@react-sigma/layout-core';
+import NoverlapLayout, { NoverlapLayoutSupervisorParameters } from 'graphology-layout-noverlap/worker';
 
 /**
  * React hook that helps you to manage worker for [noverlap layout](https://graphology.github.io/standard-library/layout-noverlap.html).

@@ -1,15 +1,15 @@
-import React from "react";
-import { NoverlapLayoutSupervisorParameters } from "graphology-layout-noverlap/worker";
+import { WorkerLayoutControl, WorkerLayoutControlProps } from '@react-sigma/layout-core';
+import { NoverlapLayoutSupervisorParameters } from 'graphology-layout-noverlap/worker';
+import React from 'react';
 
-import { WorkerLayoutControlProps, WorkerLayoutControl } from "@react-sigma/layout-core";
-import { useWorkerLayoutNoverlap } from "./useWorkerLayoutNoverlap";
+import { useWorkerLayoutNoverlap } from './useWorkerLayoutNoverlap';
 
 /**
  * Properties for `NoverlapControl` component
  */
 export type LayoutNoverlapControlProps = Omit<
   WorkerLayoutControlProps<NoverlapLayoutSupervisorParameters>,
-  "layout" | "settings"
+  'layout' | 'settings'
 > & {
   settings?: NoverlapLayoutSupervisorParameters;
 };

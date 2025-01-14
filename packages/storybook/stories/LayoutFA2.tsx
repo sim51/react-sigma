@@ -1,10 +1,9 @@
-import { FC, useEffect, CSSProperties } from "react";
+import { SigmaContainer } from '@react-sigma/core';
+import '@react-sigma/core/lib/react-sigma.min.css';
+import { useWorkerLayoutForceAtlas2 } from '@react-sigma/layout-forceatlas2';
+import { CSSProperties, FC, useEffect } from 'react';
 
-import { SigmaContainer } from "@react-sigma/core";
-import { useWorkerLayoutForceAtlas2 } from "@react-sigma/layout-forceatlas2";
-import "@react-sigma/core/lib/react-sigma.min.css";
-
-import { SampleGraph } from "./common/SampleGraph";
+import { SampleGraph } from './common/SampleGraph';
 
 const Fa2: FC = () => {
   const { start, kill } = useWorkerLayoutForceAtlas2({ settings: { slowDown: 10 } });

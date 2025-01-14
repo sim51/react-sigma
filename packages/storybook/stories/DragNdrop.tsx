@@ -1,5 +1,3 @@
-import { FC, useEffect, useState, CSSProperties } from "react";
-
 import {
   ControlsContainer,
   FullScreenControl,
@@ -7,10 +5,11 @@ import {
   ZoomControl,
   useRegisterEvents,
   useSigma,
-} from "@react-sigma/core";
-import "@react-sigma/core/lib/react-sigma.min.css";
+} from '@react-sigma/core';
+import '@react-sigma/core/lib/react-sigma.min.css';
+import { CSSProperties, FC, useEffect, useState } from 'react';
 
-import { SampleGraph } from "./common/SampleGraph";
+import { SampleGraph } from './common/SampleGraph';
 
 const GraphEvents: React.FC = () => {
   const registerEvents = useRegisterEvents();
@@ -22,15 +21,15 @@ const GraphEvents: React.FC = () => {
     registerEvents({
       downNode: (e) => {
         setDraggedNode(e.node);
-        sigma.getGraph().setNodeAttribute(e.node, "highlighted", true);
+        sigma.getGraph().setNodeAttribute(e.node, 'highlighted', true);
       },
       // On mouse move, if the drag mode is enabled, we change the position of the draggedNode
       mousemovebody: (e) => {
         if (!draggedNode) return;
         // Get new position of node
         const pos = sigma.viewportToGraph(e);
-        sigma.getGraph().setNodeAttribute(draggedNode, "x", pos.x);
-        sigma.getGraph().setNodeAttribute(draggedNode, "y", pos.y);
+        sigma.getGraph().setNodeAttribute(draggedNode, 'x', pos.x);
+        sigma.getGraph().setNodeAttribute(draggedNode, 'y', pos.y);
 
         // Prevent sigma to move camera:
         e.preventSigmaDefault();
@@ -41,7 +40,7 @@ const GraphEvents: React.FC = () => {
       mouseup: () => {
         if (draggedNode) {
           setDraggedNode(null);
-          sigma.getGraph().removeNodeAttribute(draggedNode, "highlighted");
+          sigma.getGraph().removeNodeAttribute(draggedNode, 'highlighted');
         }
       },
       // Disable the autoscale at the first down interaction
@@ -59,7 +58,7 @@ export const DragNdrop: FC<{ style: CSSProperties }> = ({ style }) => {
     <SigmaContainer style={style} settings={{ allowInvalidContainer: true }}>
       <SampleGraph disableHoverEffect />
       <GraphEvents />
-      <ControlsContainer position={"bottom-right"}>
+      <ControlsContainer position={'bottom-right'}>
         <ZoomControl />
         <FullScreenControl />
       </ControlsContainer>

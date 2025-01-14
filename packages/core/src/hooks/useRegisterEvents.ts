@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { SigmaEvents, TouchCaptorEvents, MouseCaptorEvents, CameraEvents } from "sigma/types";
+import { Attributes } from 'graphology-types';
+import { useEffect, useState } from 'react';
+import { CameraEvents, MouseCaptorEvents, SigmaEvents, TouchCaptorEvents } from 'sigma/types';
 
-import { useSigma } from "./useSigma";
-import { useSetSettings } from "./useSetSettings";
-import { EventHandlers } from "../types";
-import { Attributes } from "graphology-types";
+import { EventHandlers } from '../types';
+import { useSetSettings } from './useSetSettings';
+import { useSigma } from './useSigma';
 
 type EventType = keyof EventHandlers;
 

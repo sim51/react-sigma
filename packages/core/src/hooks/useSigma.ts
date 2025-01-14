@@ -1,7 +1,7 @@
-import Sigma from "sigma";
+import { Attributes } from 'graphology-types';
+import Sigma from 'sigma';
 
-import { useSigmaContext } from "./context";
-import { Attributes } from "graphology-types";
+import { useSigmaContext } from './context';
 
 /**
  * React hook to retrieve the sigma instance (from the context).

@@ -1,8 +1,8 @@
-import { useState, useEffect, useCallback } from "react";
-import seedrandom from "seedrandom";
-import { faker as fak, Faker, en } from "@faker-js/faker";
-import Graph, { UndirectedGraph } from "graphology";
-import erdosRenyi from "graphology-generators/random/erdos-renyi";
+import { Faker, en, faker as fak } from '@faker-js/faker';
+import Graph, { UndirectedGraph } from 'graphology';
+import erdosRenyi from 'graphology-generators/random/erdos-renyi';
+import { useCallback, useEffect, useState } from 'react';
+import seedrandom from 'seedrandom';
 
 export type NodeType = { x: number; y: number; label: string; size: number; color: string; highlighted?: boolean };
 export type EdgeType = { label: string };
@@ -22,7 +22,7 @@ export const useRandom = () => {
   useEffect(() => {
     // Globally seed the Math.random
     const params = new URLSearchParams(document.location.search);
-    const seed = params.get("seed"); // is the string "Jonathan"
+    const seed = params.get('seed'); // is the string "Jonathan"
     if (seed) {
       seedrandom(seed, { global: true });
       // seed faker with the random function
@@ -33,8 +33,8 @@ export const useRandom = () => {
   }, [document.location]);
 
   const randomColor = useCallback(() => {
-    const digits = "0123456789abcdef";
-    let code = "#";
+    const digits = '0123456789abcdef';
+    let code = '#';
     for (let i = 0; i < 6; i++) {
       code += digits.charAt(Math.floor(Math.random() * 16));
     }
