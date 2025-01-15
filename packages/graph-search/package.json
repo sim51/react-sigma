@@ -18,6 +18,9 @@
     "graphology",
     "search"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "main": "./lib/react-sigma_graph-search.umd.min.js",
   "module": "./lib/react-sigma_graph-search.esm.min.js",
@@ -46,5 +49,6 @@
   "devDependencies": {
     "minisearch": "^6.3.0",
     "react-select": "^5.9.0"
-  }
+  },
+  "gitHead": "a64711826b2ee03f4ddd702a87b693ac94e9ae70"
 }

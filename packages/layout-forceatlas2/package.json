@@ -17,6 +17,9 @@
     "graph",
     "graphology"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "main": "./lib/react-sigma_layout-forceatlas2.umd.min.js",
   "module": "./lib/react-sigma_layout-forceatlas2.esm.min.js",
@@ -39,5 +42,6 @@
   },
   "peerDependencies": {
     "graphology-layout-forceatlas2": "^0.10.1"
-  }
+  },
+  "gitHead": "a64711826b2ee03f4ddd702a87b693ac94e9ae70"
 }

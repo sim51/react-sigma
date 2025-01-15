@@ -27,6 +27,9 @@
       "default": "./lib/react-sigma_layout-force.esm.min.js"
     }
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "clean": "rimraf lib tsconfig.tsbuildinfo .rollup.cache",
     "lint": "eslint",
@@ -39,5 +42,6 @@
   },
   "peerDependencies": {
     "graphology-layout-force": "^0.2.4"
-  }
+  },
+  "gitHead": "a64711826b2ee03f4ddd702a87b693ac94e9ae70"
 }

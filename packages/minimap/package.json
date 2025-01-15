@@ -18,6 +18,9 @@
     "graphology",
     "layout"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "main": "./lib/react-sigma_minimap.umd.min.js",
   "module": "./lib/react-sigma_minimap.esm.min.js",
@@ -38,5 +41,6 @@
   },
   "dependencies": {
     "@react-sigma/core": "^5.0.0"
-  }
+  },
+  "gitHead": "a64711826b2ee03f4ddd702a87b693ac94e9ae70"
 }

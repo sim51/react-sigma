@@ -17,6 +17,9 @@
     "graph",
     "graphology"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "main": "./lib/react-sigma_layout-noverlap.umd.min.js",
   "module": "./lib/react-sigma_layout-noverlap.esm.min.js",
@@ -39,5 +42,6 @@
   },
   "peerDependencies": {
     "graphology-layout-noverlap": "^0.4.2"
-  }
+  },
+  "gitHead": "a64711826b2ee03f4ddd702a87b693ac94e9ae70"
 }

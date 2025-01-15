@@ -18,6 +18,9 @@
     "graphology",
     "layout"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "main": "./lib/react-sigma_layout-circlepack.umd.min.js",
   "module": "./lib/react-sigma_layout-circlepack.esm.min.js",
@@ -40,5 +43,6 @@
   },
   "peerDependencies": {
     "graphology-layout": "^0.6.1"
-  }
+  },
+  "gitHead": "a64711826b2ee03f4ddd702a87b693ac94e9ae70"
 }
