@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 import { GraphSearchInput, GraphSearchInputProps } from './GraphSearchInput';
-import { GraphSearchContextProvider } from './context';
+import { GraphSearchContextProvider, GraphSearchContextProviderProps } from './context';
 
 /**
  * Component that display the search.
@@ -9,8 +9,11 @@ import { GraphSearchContextProvider } from './context';
  *
  * @category Component
  */
-export const GraphSearch: FC<GraphSearchInputProps> = (props) => (
-  <GraphSearchContextProvider>
+export const GraphSearch: FC<GraphSearchInputProps & GraphSearchContextProviderProps> = ({
+  minisearchOptions,
+  ...props
+}) => (
+  <GraphSearchContextProvider minisearchOptions={minisearchOptions}>
     <GraphSearchInput {...props} />
   </GraphSearchContextProvider>
 );

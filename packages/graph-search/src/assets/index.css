@@ -1,3 +1,7 @@
+:root {
+  --sigma-grey-color: #ccc;
+}
+
 .react-sigma .option.hoverable {
   cursor: pointer !important;
 }
@@ -13,7 +17,7 @@
 }
 
 .react-sigma .text-muted {
-  color: #CCC;
+  color: var(--sigma-grey-color)
 }
 
 .react-sigma .text-italic {
@@ -38,7 +42,7 @@
 }
 
 .react-sigma .graph-search .option.selected {
-  background-color: #ccc;
+  background-color: var(--sigma-grey-color)
 }
 
 .react-sigma .node .render {
@@ -47,7 +51,7 @@
   width: 1em;
   height: 1em;
   border-radius: 1em;
-  background-color: #ccc;
+  background-color: var(--sigma-grey-color);
   margin-right: 8px;
 }
 
