@@ -1,6 +1,6 @@
 {
   "name": "@react-sigma/graph-search",
-  "version": "0.0.1",
+  "version": "5.0.0",
   "description": "React Sigma - Graph Search",
   "author": "Benoit Simard",
   "license": "MIT",
@@ -37,7 +37,7 @@
     "start": "nodemon --watch src -e ts,tsx --exec npm run build"
   },
   "dependencies": {
-    "@react-sigma/core": "^4.0.4"
+    "@react-sigma/core": "^5.0.0"
   },
   "peerDependencies": {
     "minisearch": "^6.3.0",

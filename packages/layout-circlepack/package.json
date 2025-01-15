@@ -1,6 +1,6 @@
 {
   "name": "@react-sigma/layout-circlepack",
-  "version": "4.0.4",
+  "version": "5.0.0",
   "description": "React Sigma - Layout circlepack",
   "author": "Benoit Simard",
   "license": "MIT",
@@ -36,7 +36,7 @@
     "start": "nodemon --watch src -e ts,tsx --exec npm run build"
   },
   "dependencies": {
-    "@react-sigma/layout-core": "^4.0.4"
+    "@react-sigma/layout-core": "^5.0.0"
   },
   "peerDependencies": {
     "graphology-layout": "^0.6.1"

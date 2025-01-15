@@ -1,7 +1,5 @@
 {
-  "version": "4.0.3",
+  "version": "5.0.0",
   "private": true,
-  "packages": [
-    "packages/*"
-  ]
+  "packages": ["packages/*"]
 }
