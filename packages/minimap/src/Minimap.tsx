@@ -118,8 +118,8 @@ export const MiniMap: FC<MiniMapProps> = ({ width, height, debounceTime }) => {
       >
         <div
           style={{
-            border: '1px solid #000',
-            backgroundColor: '#CCC',
+            border: '1px solid var(--sigma-controls-color)',
+            backgroundColor: 'var(--sigma-controls-color)',
             opacity: 0.5,
             position: 'absolute',
             ...view,
