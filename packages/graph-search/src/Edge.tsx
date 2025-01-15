@@ -4,6 +4,11 @@ import React, { FC, ReactNode, useMemo } from 'react';
 import { Node, NodeProps } from './Node';
 import { Labels } from './types';
 
+/**
+ * Component that display an edge.
+ *
+ * @category Component
+ */
 export const Edge: FC<{
   source: NodeProps;
   target: NodeProps;
@@ -31,6 +36,11 @@ export const Edge: FC<{
   );
 };
 
+/**
+ * Component that display an edge by its id.
+ *
+ * @category Component
+ */
 export const EdgeById: FC<{ id: string; labels?: Labels }> = ({ id, labels }) => {
   const sigma = useSigma();
 

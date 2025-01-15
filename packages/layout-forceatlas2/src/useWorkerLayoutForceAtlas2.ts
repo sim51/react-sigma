@@ -10,4 +10,6 @@ import FA2Layout from 'graphology-layout-forceatlas2/worker';
  *```
  * @category Hook
  */
-export const useWorkerLayoutForceAtlas2 = useWorkerLayoutFactory<ForceAtlas2LayoutParameters>(FA2Layout);
+export function useWorkerLayoutForceAtlas2(options: ForceAtlas2LayoutParameters = {}) {
+  return useWorkerLayoutFactory<ForceAtlas2LayoutParameters>(FA2Layout, options);
+}

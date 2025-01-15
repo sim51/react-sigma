@@ -1,5 +1,5 @@
 import { SigmaContainer, useLoadGraph } from '@react-sigma/core';
-import '@react-sigma/core/lib/react-sigma.min.css';
+import '@react-sigma/core/lib/style.css';
 import { useLayoutCircular } from '@react-sigma/layout-circular';
 import Graph from 'graphology';
 import { CSSProperties, FC, useEffect } from 'react';
@@ -40,7 +40,7 @@ const RandomCircleGraph: FC = () => {
     assign();
     // Display in the console the node's position for the layout
     console.log(positions());
-  }, [assign, loadGraph, faker.datatype, faker, randomColor]);
+  }, [assign, loadGraph, faker.datatype, faker, randomColor, positions]);
 
   return null;
 };

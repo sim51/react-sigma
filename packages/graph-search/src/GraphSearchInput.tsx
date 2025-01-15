@@ -39,7 +39,7 @@ export interface GraphSearchInputProps {
    * It's possible to customize the drop down indicator, by passing a JSX Element.
    * First one is for the "zoom in", second for "zoom out" and third for "view whole graph".
    */
-  children?: [JSX.Element];
+  children?: [React.JSX.Element];
 
   /**
    * Map of the labels we use in the component.
@@ -80,13 +80,18 @@ function getDropdownIndicatorComponent(Icon: ReactNode): FC {
   };
 }
 
+/**
+ *
+ * @param onFocus
+ * @returns
+ */
 function getOptionComponent(onFocus: GraphSearchInputProps['onFocus']): FC<OptionProps<GraphSearchOption, false>> {
   return function OptionComponent(props: OptionProps<GraphSearchOption, false>) {
     const { data, innerProps, className, isFocused, innerRef, getStyles } = props;
 
     useEffect(() => {
       if (onFocus && isFocused) onFocus(data);
-    }, [isFocused, onFocus]);
+    }, [isFocused, data]);
 
     return (
       <div
@@ -103,6 +108,11 @@ function getOptionComponent(onFocus: GraphSearchInputProps['onFocus']): FC<Optio
   };
 }
 
+/**
+ * Component thats display the search input.
+ *
+ * @category Component
+ */
 export const GraphSearchInput: FC<GraphSearchInputProps> = ({
   className,
   onChange,
@@ -120,7 +130,7 @@ export const GraphSearchInput: FC<GraphSearchInputProps> = ({
    */
   const loadOptions = useCallback(
     async (query: string) => {
-      onFocus && onFocus(null);
+      if (onFocus) onFocus(null);
       const result = await search(query, type);
       return postSearchResult ? postSearchResult(result) : result;
     },

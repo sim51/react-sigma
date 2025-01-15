@@ -1,5 +1,5 @@
 import { SigmaContainer, useLoadGraph } from '@react-sigma/core';
-import '@react-sigma/core/lib/react-sigma.min.css';
+import '@react-sigma/core/lib/style.css';
 import EdgeCurveProgram, { DEFAULT_EDGE_CURVATURE, indexParallelEdgesIndex } from '@sigma/edge-curve';
 import { MultiDirectedGraph as MultiGraphConstructor } from 'graphology';
 import { CSSProperties, FC, useEffect, useMemo } from 'react';

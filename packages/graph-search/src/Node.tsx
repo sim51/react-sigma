@@ -3,6 +3,11 @@ import React, { FC, ReactNode, useMemo } from 'react';
 
 import { Labels } from './types';
 
+/**
+ * Component that display a node.
+ *
+ * @category Component
+ */
 export interface NodeProps {
   label?: ReactNode;
   color?: string;
@@ -21,6 +26,11 @@ export const Node: FC<NodeProps> = ({ label, color, hidden, labels = {} }) => {
   );
 };
 
+/**
+ * Component that display a node by its id.
+ *
+ * @category Component
+ */
 export const NodeById: FC<{ id: string; labels?: Labels }> = ({ id, labels }) => {
   const sigma = useSigma();
 

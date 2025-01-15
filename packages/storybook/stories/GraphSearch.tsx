@@ -1,21 +1,15 @@
-import {
-  ControlsContainer,
-  FullScreenControl,
-  SigmaContainer,
-  ZoomControl,
-  useCamera,
-  useSigma,
-} from '@react-sigma/core';
-import '@react-sigma/core/lib/react-sigma.min.css';
+import { ControlsContainer, FullScreenControl, SigmaContainer, ZoomControl } from '@react-sigma/core';
+import '@react-sigma/core/lib/style.css';
 import { GraphSearch, GraphSearchOption } from '@react-sigma/graph-search';
 import '@react-sigma/graph-search/lib/style.css';
 import { LayoutForceAtlas2Control } from '@react-sigma/layout-forceatlas2';
 import { NodeImageProgram } from '@sigma/node-image';
 import Graph from 'graphology';
 import { SerializedGraph } from 'graphology-types';
-import { CSSProperties, FC, useCallback, useEffect, useState } from 'react';
+import { CSSProperties, FC, useCallback, useState } from 'react';
 
 import jsonGraph from '../public/react-sigma/demo/dataset.json';
+import { FocusOnNode } from './common/FocusOnNode';
 
 // Sigma settings
 const sigmaSettings = {
@@ -28,31 +22,6 @@ const sigmaSettings = {
   labelRenderedSizeThreshold: 15,
   labelFont: 'Lato, sans-serif',
   zIndex: true,
-};
-
-const FocusOnNode: FC<{ node: string | null; move?: boolean }> = ({ node, move }) => {
-  // Get sigma
-  const sigma = useSigma();
-  // Get camera hook
-  const { gotoNode } = useCamera();
-
-  /**
-   * When the selected item changes, highlighted the node and center the camera on it.
-   */
-  useEffect(() => {
-    if (!node) {
-      return;
-    }
-
-    sigma.getGraph().setNodeAttribute(node, 'highlighted', true);
-    if (move) gotoNode(node);
-
-    return () => {
-      sigma.getGraph().setNodeAttribute(node, 'highlighted', false);
-    };
-  }, [node, move, sigma]);
-
-  return null;
 };
 
 export const GraphSearchDemo: FC<{ style?: CSSProperties }> = ({ style }) => {
@@ -82,6 +51,7 @@ export const GraphSearchDemo: FC<{ style?: CSSProperties }> = ({ style }) => {
           },
         ];
   }, []);
+
   return (
     <SigmaContainer settings={sigmaSettings} style={style} graph={graph}>
       <FocusOnNode node={focusNode ?? selectedNode} move={focusNode ? false : true} />

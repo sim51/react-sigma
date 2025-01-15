@@ -2,7 +2,7 @@ import { SigmaContainer, debounce, useSigma } from '@react-sigma/core';
 import React, { FC, useCallback, useEffect, useState } from 'react';
 import { Sigma } from 'sigma';
 
-interface MiniMapProps {
+export interface MiniMapProps {
   /**
    * Width of the minimap.
    * Exemple: "200px"
@@ -19,6 +19,13 @@ interface MiniMapProps {
    */
   debounceTime?: number;
 }
+
+/**
+ * Component to display a minimap of the graph.
+ * This component must be used inside a {@link SigmaProvider}.
+ *
+ * @category Component
+ */
 export const MiniMap: FC<MiniMapProps> = ({ width, height, debounceTime }) => {
   const sigma = useSigma();
   const [minimap, setMinimap] = useState<Sigma | null>(null);
@@ -33,7 +40,7 @@ export const MiniMap: FC<MiniMapProps> = ({ width, height, debounceTime }) => {
       minimap.getCamera().disable();
       setRatioHeight(minimap.getContainer().clientHeight / sigma.getContainer().clientHeight);
     }
-  }, [minimap]);
+  }, [minimap, sigma]);
 
   /**
    * Minimap node reducer based on the one used in the main sigma instance.
@@ -84,7 +91,7 @@ export const MiniMap: FC<MiniMapProps> = ({ width, height, debounceTime }) => {
     return () => {
       sigma.getCamera().off('updated', fnUpdateViewbox);
     };
-  }, [sigma, minimap, setView, debounce]);
+  }, [sigma, minimap, setView, debounceTime]);
 
   return (
     <SigmaContainer

@@ -9,4 +9,6 @@ import NoverlapLayout, { NoverlapLayoutSupervisorParameters } from 'graphology-l
  *```
  * @category Hook
  */
-export const useWorkerLayoutNoverlap = useWorkerLayoutFactory<NoverlapLayoutSupervisorParameters>(NoverlapLayout);
+export function useWorkerLayoutNoverlap(options: NoverlapLayoutSupervisorParameters = {}) {
+  return useWorkerLayoutFactory<NoverlapLayoutSupervisorParameters>(NoverlapLayout, options);
+}

@@ -10,7 +10,7 @@ type WorkerLayoutLabelKeys = 'start' | 'stop';
 /**
  * Properties for `WorkerLayoutControl` component
  */
-export interface WorkerLayoutControlProps<T> {
+export interface WorkerLayoutControlProps {
   /**
    * HTML id
    */
@@ -29,12 +29,7 @@ export interface WorkerLayoutControlProps<T> {
   /**
    * The layout hook to use
    */
-  layout: LayoutWorkerHook<T>;
-
-  /**
-   * Settings of the layout.
-   */
-  settings: T;
+  layout: LayoutWorkerHook;
 
   /**
    * Option to tell what we do when the component is mounted
@@ -57,7 +52,7 @@ export interface WorkerLayoutControlProps<T> {
    * </WorkerLayoutControl>
    * ```
    */
-  children?: [JSX.Element, JSX.Element];
+  children?: [React.JSX.Element, React.JSX.Element];
 
   /**
    * Map of the labels we use in the component.
@@ -66,20 +61,19 @@ export interface WorkerLayoutControlProps<T> {
   labels?: { [Key in WorkerLayoutLabelKeys]?: string };
 }
 
-export function WorkerLayoutControl<T>({
+export function WorkerLayoutControl({
   id,
   className,
   style,
   layout,
-  settings,
   autoRunFor,
   children,
   labels = {},
-}: WorkerLayoutControlProps<T>) {
+}: WorkerLayoutControlProps) {
   // Get Sigma
   const sigma = useSigma();
   // Get layout
-  const { stop, start, isRunning } = layout(settings);
+  const { stop, start, isRunning } = layout;
   // Common html props for the div
   const props = {
     className: `react-sigma-control ${className || ''}`,

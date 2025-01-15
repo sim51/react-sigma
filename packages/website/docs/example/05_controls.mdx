@@ -1,11 +1,10 @@
-import { CodePreview } from "@site/src/components/CodePreview";
-import CompleteSource from "!!raw-loader!../../../storybook/stories/Complete";
-import CustomRenderSource from "!!raw-loader!../../../storybook/stories/CustomRender";
+import CompleteSource from '!!raw-loader!../../../storybook/stories/Complete';
+import CustomRenderSource from '!!raw-loader!../../../storybook/stories/CustomRender';
+import { CodePreview } from '@site/src/components/CodePreview';
 
 # Controls
 
-The library comes with a system of controls,
-that helps you to control / interact with the graph, out of the box.
+The library comes with a system of controls, that helps you to control / interact with the graph, out of the box.
 
 ## List of controls
 
@@ -17,16 +16,16 @@ This is the list of available controls :
 
 ## ControlContainer
 
-A _control_ component must be include into a `ControlContainer` component.
-This component takes a property called `position` which determinate where the controls will be displayed.
-Values are : `top-right`, `top-left`, `bottom-right`, `bottom-left` ;
+A _control_ component must be include into a [ControlContainer](/docs/api/core/functions/ControlsContainer) component.
+This component takes a property called `position` which determinate where the controls will be displayed. Values are :
+`top-right`, `top-left`, `bottom-right`, `bottom-left` ;
 
 <CodePreview
   code={CompleteSource}
   title="Control container example"
   component={() => {
-    const { Complete } = require("../../../storybook/stories/Complete");
-    return <Complete style={{ height: "400px" }} />;
+    const { Complete } = require('../../../storybook/stories/Complete');
+    return <Complete style={{ height: '400px' }} />;
   }}
 />
 
@@ -34,9 +33,8 @@ Values are : `top-right`, `top-left`, `bottom-right`, `bottom-left` ;
 
 Controls have pre-defined style and icon, but you can define your own one, by specifying children component.
 
-On the `FullScreenControl` you must defined two children,
-the first one will be the JSX element for the "enter fullscreen"
-and the second for the "exit fullscreen".
+On the [FullScreenControl](/docs/api/core/functions/FullScreenControl) you must defined two children, the first one will
+be the JSX element for the "enter fullscreen" and the second for the "exit fullscreen".
 
 On the `ZoomControl` you must defined three children :
 
@@ -53,15 +51,14 @@ On the Worker layout you must defined two children :
   code={CustomRenderSource}
   title="Custom render for control"
   component={() => {
-    const { CustomRender } = require("../../../storybook/stories/CustomRender");
-    return <CustomRender style={{ height: "400px" }} />;
+    const { CustomRender } = require('../../../storybook/stories/CustomRender');
+    return <CustomRender style={{ height: '400px' }} />;
   }}
 />
 
 ## Custom labels for I18N
 
-Every component that display a label in a way accepts a property called `labels`,
-which is a map of key/value.
+Every component that display a label in a way accepts a property called `labels`, which is a map of key/value.
 
 For example, you can change the labels of the zoom control like that :
 

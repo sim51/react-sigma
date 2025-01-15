@@ -9,6 +9,10 @@ import forceAtlas2, { ForceAtlas2SynchronousLayoutParameters } from 'graphology-
  *```
  * @category Hook
  */
-export const useLayoutForceAtlas2 = useLayoutFactory<ForceAtlas2SynchronousLayoutParameters>(forceAtlas2, {
-  iterations: 100,
-});
+export function useLayoutForceAtlas2(
+  options: ForceAtlas2SynchronousLayoutParameters = {
+    iterations: 100,
+  },
+) {
+  return useLayoutFactory<ForceAtlas2SynchronousLayoutParameters>(forceAtlas2, options);
+}

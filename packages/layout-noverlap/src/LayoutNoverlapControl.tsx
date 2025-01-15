@@ -7,10 +7,7 @@ import { useWorkerLayoutNoverlap } from './useWorkerLayoutNoverlap';
 /**
  * Properties for `NoverlapControl` component
  */
-export type LayoutNoverlapControlProps = Omit<
-  WorkerLayoutControlProps<NoverlapLayoutSupervisorParameters>,
-  'layout' | 'settings'
-> & {
+export type LayoutNoverlapControlProps = Omit<WorkerLayoutControlProps, 'layout' | 'settings'> & {
   settings?: NoverlapLayoutSupervisorParameters;
 };
 
@@ -26,6 +23,7 @@ export const LayoutNoverlapControl: React.FC<LayoutNoverlapControlProps> = ({
   children,
   labels,
 }) => {
-  const workerLayoutProps = { id, className, style, settings, autoRunFor, labels, layout: useWorkerLayoutNoverlap };
+  const layout = useWorkerLayoutNoverlap(settings);
+  const workerLayoutProps = { id, className, style, autoRunFor, labels, layout };
   return <WorkerLayoutControl {...workerLayoutProps}>{children}</WorkerLayoutControl>;
 };

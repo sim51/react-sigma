@@ -3,7 +3,7 @@
 1. Follow all the steps from the [installation page](start-installation.md)
 2. Import the React Sigma style file in your application.
    Depending on your React app setup, the way to import a CSS file might differ.
-   Here is an example with "create react app" setup : `import "@react-sigma/core/lib/react-sigma.min.css"`
+   Here is an example with "create react app" setup : `import "@react-sigma/core/lib/style.css"`
 
 3. Create the following components into your app and check it displays correctly:
 
@@ -11,7 +11,7 @@
 import { useEffect } from "react";
 import Graph from "graphology";
 import { SigmaContainer, useLoadGraph } from "@react-sigma/core";
-import "@react-sigma/core/lib/react-sigma.min.css";
+import "@react-sigma/core/lib/style.css";
 
 const sigmaStyle = { height: "500px", width: "500px" };
 
@@ -110,7 +110,7 @@ Examples :
 ```tsx
 import Graph from "graphology";
 import { SigmaContainer, useLoadGraph } from "@react-sigma/core";
-import "@react-sigma/core/lib/react-sigma.min.css";
+import "@react-sigma/core/lib/style.css";
 
 export const DisplayGraph = () => {
   const graph = new Graph();

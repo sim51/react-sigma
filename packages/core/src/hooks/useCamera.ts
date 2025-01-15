@@ -27,7 +27,10 @@ export function useCamera(options?: CameraOptions): {
   // Default camera options
   const [defaultOptions, setDefaultOptions] = useState<CameraOptions>(options || {});
   useEffect(() => {
-    if (!isEqual(defaultOptions, options || {})) setDefaultOptions(options || {});
+    setDefaultOptions((prev) => {
+      if (!isEqual(prev, options || {})) return options || {};
+      return prev;
+    });
   }, [options]);
 
   const zoomIn = useCallback(

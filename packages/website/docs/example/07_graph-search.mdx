@@ -1,0 +1,51 @@
+import { CodePreview } from '@site/src/components/CodePreview';
+
+import GraphSearchSource from '!!raw-loader!../../../storybook/stories/GraphSearch';
+
+# Graph Search
+
+You can search for nodes and/or edges in the graph by using the package `@react-sigma/graph-search`.
+
+You need to install it
+
+```bash
+npm install @react-sigma/graph-search
+```
+
+This package also export a CSS file that must be imported :
+
+```tsx
+import '@react-sigma/graph-search/lib/style.css';
+```
+
+Now you can use it the component [GraphSearch](/docs/api/graph-search/functions/GraphSearch) like in this example :
+
+<CodePreview
+  code={GraphSearchSource}
+  title="Graph Search"
+  component={() => {
+    const { GraphSearchDemo } = require('../../../storybook/stories/GraphSearch');
+    return <GraphSearchDemo style={{ height: '400px' }} />;
+  }}
+/>
+
+## The graph index
+
+Under the hood, this package is using [minisearch](https://www.npmjs.com/package/minisearch). It build a minisearch
+index and keep it in sync with the graphology instance of sigma.
+
+If you need it, you can use this index in your own component. To do this, you need to :
+
+- Use the [GraphSearchContextProvider](/docs/api/graph-search/functions/GraphSearchContextProvider) in the children of
+  [SigmaContainer](/docs/api/core/functions/SigmaContainer)
+- Use the hook [useGraphSearch](/docs/api/graph-search/functions/useGraphSearch) which return a
+  [search function](/docs/api/graph-search/functions/useGraphSearch#search).
+
+## Node & Edge display
+
+This package also exposes components to display `Node` and `Edge` like they are displayed in the graph :
+
+- [NodeById](/docs/api/graph-search/functions/NodeById) component
+- [EdgeById](/docs/api/graph-search/functions/EdgeById) component
+
+Those components must be used inside a [SigmaContainer](/docs/api/core/functions/SigmaContainer).

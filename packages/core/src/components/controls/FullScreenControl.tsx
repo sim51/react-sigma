@@ -28,7 +28,7 @@ export interface FullScreenControlProps {
   /**
    * If defined, this container will be taken for the fullscreen instead of the sigma one.
    */
-  container?: RefObject<HTMLElement>;
+  container?: RefObject<HTMLElement | null>;
 
   /**
    * It's possible to customize the button, by passing to JSX Element.
@@ -41,7 +41,7 @@ export interface FullScreenControlProps {
    * </FullScreenControl>
    * ```
    */
-  children?: [JSX.Element, JSX.Element];
+  children?: [React.JSX.Element, React.JSX.Element];
 
   /**
    * Map of the labels we use in the component.
@@ -60,7 +60,8 @@ export interface FullScreenControlProps {
  *   </ControlsContainer>
  * </SigmaContainer>
  * ```
- * See [[FullScreenControlProps]] for more information.
+ *
+ * See {@link FullScreenControlProps} for the component's properties.
  *
  * @category Component
  */

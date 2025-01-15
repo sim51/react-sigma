@@ -3,12 +3,12 @@
   "version": "4.0.4",
   "private": true,
   "scripts": {
-    "build": "TYPEDOC_WATCH=false docusaurus build",
-    "clean": "docusaurus clear && rimraf docs/api/*",
+    "build": "docusaurus build",
+    "clean": "docusaurus clear && rimraf docs/api/* .docusaurus node_modules",
     "deploy": "docusaurus deploy",
     "docusaurus": "docusaurus",
-    "serve": "TYPEDOC_WATCH=false docusaurus serve --port=4000",
-    "start": "TYPEDOC_WATCH=true docusaurus start --port=4000",
+    "serve": "docusaurus serve --port=4000",
+    "start": "docusaurus start --port=4000",
     "swizzle": "docusaurus swizzle",
     "typecheck": "tsc",
     "write-heading-ids": "docusaurus write-heading-ids",
@@ -26,11 +26,15 @@
       "last 1 safari version"
     ]
   },
+  "overrides": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
   "dependencies": {
-    "@docusaurus/core": "^3.4.0",
-    "@docusaurus/module-type-aliases": "^3.4.0",
-    "@docusaurus/preset-classic": "^3.4.0",
-    "@docusaurus/tsconfig": "^3.4.0",
+    "@docusaurus/core": "^3.7.0",
+    "@docusaurus/module-type-aliases": "^3.7.0",
+    "@docusaurus/preset-classic": "^3.7.0",
+    "@docusaurus/tsconfig": "^3.7.0",
     "@react-sigma/core": "^4.0.4",
     "@react-sigma/layout-circlepack": "^4.0.4",
     "@react-sigma/layout-circular": "^4.0.4",
@@ -41,13 +45,13 @@
     "@react-sigma/layout-random": "^4.0.4",
     "clsx": "^2.1.1",
     "docusaurus-plugin-matomo": "^0.0.8",
-    "docusaurus-plugin-sass": "^0.2.2",
-    "docusaurus-plugin-typedoc": "^1.0.4",
+    "docusaurus-plugin-sass": "^0.2.6",
+    "docusaurus-plugin-typedoc": "^1.2.1",
     "jsx-to-string": "^1.4.0",
     "node-sass": "^9.0.0",
-    "prism-react-renderer": "^2.3.1",
+    "prism-react-renderer": "^2.4.1",
     "raw-loader": "^4.0.2",
-    "react-live": "^4.1.7",
-    "typedoc-plugin-markdown": "^4.2.3"
+    "react-live": "^4.1.8",
+    "typedoc-plugin-markdown": "^4.4.1"
   }
 }

@@ -1,5 +1,5 @@
 import { ControlsContainer, FullScreenControl, SigmaContainer, ZoomControl } from '@react-sigma/core';
-import '@react-sigma/core/lib/react-sigma.min.css';
+import '@react-sigma/core/lib/style.css';
 import { LayoutForceAtlas2Control } from '@react-sigma/layout-forceatlas2';
 import { CSSProperties, FC, useEffect, useState } from 'react';
 import {
@@ -22,7 +22,7 @@ export const CustomRender: FC<{ style?: CSSProperties }> = ({ style }) => {
     const params = new URLSearchParams(window.location.search);
     const time = params.get('faTime');
     setFaTime(Number.parseInt(time ?? '2000') || 2000);
-  }, [window.location]);
+  }, []);
 
   return (
     <SigmaContainer style={style} settings={{ allowInvalidContainer: true }}>

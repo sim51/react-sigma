@@ -27,7 +27,8 @@ export function useFullScreen(container?: HTMLElement | null): {
   const context = useSigmaContext();
   const [isFullScreen, setFullScreen] = useState<boolean>(false);
   const [element, setElement] = useState<HTMLElement>(container ? container : context.container);
-  const toggleState = () => setFullScreen((v) => !v);
+
+  const toggleState = useCallback(() => setFullScreen((v) => !v), []);
 
   useEffect(() => {
     document.addEventListener('fullscreenchange', toggleState);

@@ -27,7 +27,8 @@ export const SigmaProvider = SigmaContext.Provider;
  * ```typescript
  * const {sigma, container} = useSigmaContext();
  *```
- * See [[SigmaContextInterface]] for more information.
+ *
+ * See {@link SigmaContextInterface} for more information.
  *
  * @category Hook
  */

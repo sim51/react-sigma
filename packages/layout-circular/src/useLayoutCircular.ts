@@ -9,4 +9,6 @@ import circular, { CircularLayoutOptions } from 'graphology-layout/circular';
  *```
  * @category Hook
  */
-export const useLayoutCircular = useLayoutFactory<CircularLayoutOptions>(circular, {});
+export function useLayoutCircular(options: CircularLayoutOptions = {}) {
+  return useLayoutFactory<CircularLayoutOptions>(circular, options);
+}

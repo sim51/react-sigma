@@ -1,7 +1,8 @@
-export function getUniqueKey(): string {
-  return Math.random().toString(36).slice(2);
-}
-
+/**
+ * Deeply check if two objects are equals or not.
+ *
+ * @category Utils
+ */
 export function isEqual(x: unknown, y: unknown): boolean {
   // check the ref
   if (x === y) return true;
@@ -24,6 +25,11 @@ export function isEqual(x: unknown, y: unknown): boolean {
   return false;
 }
 
+/**
+ * Debounce a function.
+ *
+ * @category Utils
+ */
 export function debounce<A = unknown, R = void>(fn: (args: A) => R, ms: number): (args: A) => Promise<Awaited<R>> {
   let timer: NodeJS.Timeout;
 

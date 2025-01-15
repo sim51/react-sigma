@@ -37,7 +37,8 @@ export interface ControlsContainerProps {
  *   </ControlsContainer>
  * </SigmaContainer>
  * ```
- * See [[ControlsContainerProps]] for more information.
+ *
+ * See {@link ControlsContainerProps} for the component's properties.
  *
  * @category Component
  */

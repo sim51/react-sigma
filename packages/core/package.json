@@ -30,7 +30,7 @@
   },
   "scripts": {
     "clean": "rimraf lib tsconfig.tsbuildinfo .rollup.cache",
-    "lint": "esw --ext .ts ./src",
+    "lint": "eslint",
     "compile": "tsc -b",
     "assets": "copyfiles -u 1 src/assets/** src/assets/**/* lib/",
     "build": "npm run lint && npm run compile && npm run assets && rollup -c",
@@ -38,7 +38,7 @@
   },
   "peerDependencies": {
     "graphology": "^0.25.4",
-    "react": "^18.0.0",
+    "react": "^18.0.0 || ^19.0.0",
     "sigma": "^3.0.0"
   }
 }

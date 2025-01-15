@@ -1,4 +1,3 @@
-import eslint from '@rollup/plugin-eslint';
 import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 import url from '@rollup/plugin-url';
@@ -26,7 +25,6 @@ function getRollupConfig(packageName) {
       css({ output: 'style.css', minify: true }),
       url(),
       svgr({ icon: true }),
-      eslint({ exclude: './src/assets/**' }),
       typescript({ tsconfig: './tsconfig.json', outputToFilesystem: true }),
       terser(),
     ],

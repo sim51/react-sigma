@@ -1,5 +1,5 @@
-import { CodePreview } from "@site/src/components/CodePreview";
-import EventsSource from "!!raw-loader!../../../storybook/stories/Events";
+import EventsSource from '!!raw-loader!../../../storybook/stories/Events';
+import { CodePreview } from '@site/src/components/CodePreview';
 
 # Events
 
@@ -11,16 +11,17 @@ Sigma dispatch various events that you can listen :
 - graph events
 - ...
 
-With **react-sigma** you can listen to all those events with the help of the hook `useRegisterEvents`.
+With **react-sigma** you can listen to all those events with the help of the hook
+[useRegisterEvents](/docs/api/core/functions/useRegisterEvents).
 
-This hook helps you to register your listeners (and also do the remove for you).
-Check the code below to see how to do it, and don't forget to open your browser console in preview mode.
+This hook helps you to register your listeners (and also do the remove for you). Check the code below to see how to do
+it, and don't forget to open your browser console in preview mode.
 
 <CodePreview
   code={EventsSource}
   title="Display in the console all sigma events"
   component={() => {
-    const { Events } = require("../../../storybook/stories/Events");
-    return <Events style={{ height: "400px" }} />;
+    const { Events } = require('../../../storybook/stories/Events');
+    return <Events style={{ height: '400px' }} />;
   }}
 />

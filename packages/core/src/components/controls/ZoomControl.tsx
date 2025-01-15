@@ -38,7 +38,7 @@ export interface ZoomControlProps {
    * </FullScreenControl>
    * ```
    */
-  children?: [JSX.Element, JSX.Element, JSX.Element];
+  children?: [React.JSX.Element, React.JSX.Element, React.JSX.Element];
 
   /**
    * Map of the labels we use in the component.
@@ -60,7 +60,8 @@ export interface ZoomControlProps {
  *   </ControlsContainer>
  * </SigmaContainer>
  * ```
- * See [[ZoomControlProps]] for more information.
+ *
+ * See {@link ZoomControlProps} for the component's properties.
  *
  * @category Component
  */

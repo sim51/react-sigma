@@ -1,5 +1,5 @@
 import { SigmaContainer } from '@react-sigma/core';
-import '@react-sigma/core/lib/react-sigma.min.css';
+import '@react-sigma/core/lib/style.css';
 import { MultiDirectedGraph } from 'graphology';
 import { CSSProperties, FC } from 'react';
 

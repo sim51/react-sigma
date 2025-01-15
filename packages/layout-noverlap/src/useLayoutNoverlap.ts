@@ -9,4 +9,6 @@ import noverlap, { NoverlapLayoutParameters } from 'graphology-layout-noverlap';
  *```
  * @category Hook
  */
-export const useLayoutNoverlap = useLayoutFactory<NoverlapLayoutParameters>(noverlap, {});
+export function useLayoutNoverlap(options: NoverlapLayoutParameters = {}) {
+  return useLayoutFactory<NoverlapLayoutParameters>(noverlap, options);
+}

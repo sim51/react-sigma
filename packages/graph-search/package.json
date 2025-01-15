@@ -31,7 +31,7 @@
   },
   "scripts": {
     "clean": "rimraf lib tsconfig.tsbuildinfo .rollup.cache",
-    "lint": "esw --ext .ts ./src",
+    "lint": "eslint",
     "compile": "tsc -b",
     "build": "npm run lint && npm run compile && rollup -c",
     "start": "nodemon --watch src -e ts,tsx --exec npm run build"

@@ -1,14 +1,14 @@
-import { CodePreview } from "@site/src/components/CodePreview";
+import { CodePreview } from '@site/src/components/CodePreview';
 
-import ExternalStateSource from "!!raw-loader!../../../storybook/stories/External";
+import ExternalStateSource from '!!raw-loader!../../../storybook/stories/External';
 
 # External State
 
-If you want to control the sigma instance outside the `SigmaContainer` component,
-you can use the forward reference feature on it.
+If you want to control the sigma instance outside the [SigmaContainer](/docs/api/core/functions/SigmaContainer)
+component, you can use the forward reference feature on it.
 
-The reference is the instance of `sigma` used in the component,
-and so with it, you can what ever you want, but MUST know the API of sigma.
+The reference is the instance of `sigma` used in the component, and so with it, you can what ever you want, but MUST
+know the API of sigma.
 
 Here is an example that load a graph
 
@@ -16,7 +16,7 @@ Here is an example that load a graph
   code={ExternalStateSource}
   title="External state"
   component={() => {
-    const { External } = require("../../../storybook/stories/External");
-    return <External style={{ height: "400px" }} />;
+    const { External } = require('../../../storybook/stories/External');
+    return <External style={{ height: '400px' }} />;
   }}
 />

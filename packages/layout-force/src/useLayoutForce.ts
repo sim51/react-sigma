@@ -9,6 +9,10 @@ import force, { ForceLayoutParameters } from 'graphology-layout-force';
  *```
  * @category Hook
  */
-export const useLayoutForce = useLayoutFactory<ForceLayoutParameters>(force, {
-  maxIterations: 100,
-});
+export function useLayoutForce(
+  options: ForceLayoutParameters = {
+    maxIterations: 100,
+  },
+) {
+  return useLayoutFactory<ForceLayoutParameters>(force, options);
+}

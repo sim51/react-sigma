@@ -3,6 +3,7 @@ import { Attributes } from 'graphology-types';
 import React, {
   CSSProperties,
   PropsWithChildren,
+  PropsWithoutRef,
   ReactElement,
   Ref,
   forwardRef,
@@ -14,6 +15,7 @@ import React, {
 } from 'react';
 import { Sigma } from 'sigma';
 import { Settings } from 'sigma/settings';
+import { CameraState } from 'sigma/types';
 
 import { SigmaContextInterface, SigmaProvider } from '../hooks/context';
 import { GraphType } from '../types';
@@ -53,7 +55,8 @@ export interface SigmaContainerProps<N extends Attributes, E extends Attributes,
  *   <MyCustomGraph />
  * </SigmaContainer>
  *```
- * See [[SigmaContainerProps]] for more information.
+ *
+ * See {@link SigmaContainerProps} for the component's properties.
  *
  * @category Component
  */
@@ -76,7 +79,10 @@ const SigmaContainerComponent = <
   // Sigma settings
   const [sigmaSettings, setSigmaSettings] = useState<Partial<Settings<N, E, G>>>(settings);
   useEffect(() => {
-    if (!isEqual(sigmaSettings, settings)) setSigmaSettings(settings);
+    setSigmaSettings((prev) => {
+      if (!isEqual(prev, settings)) return settings;
+      return prev;
+    });
   }, [settings]);
 
   /**
@@ -84,39 +90,37 @@ const SigmaContainerComponent = <
    * => create sigma
    */
   useEffect(() => {
-    let instance: Sigma<N, E, G> | null = null;
-
-    if (containerRef.current !== null) {
-      let sigGraph = new Graph<N, E, G>();
-      if (graph) {
-        sigGraph = typeof graph === 'function' ? new graph() : graph;
+    setSigma((prev) => {
+      let instance: Sigma<N, E, G> | null = null;
+      if (containerRef.current !== null) {
+        let sigGraph = new Graph<N, E, G>();
+        if (graph) {
+          sigGraph = typeof graph === 'function' ? new graph() : graph;
+        }
+        console.log('new sigma instance', sigmaSettings);
+        let prevCameraState: CameraState | null = null;
+        if (prev) {
+          prevCameraState = prev.getCamera().getState();
+          prev.kill();
+        }
+        instance = new Sigma(sigGraph, containerRef.current, sigmaSettings);
+        if (prevCameraState) instance.getCamera().setState(prevCameraState);
       }
-
-      instance = new Sigma(sigGraph, containerRef.current, sigmaSettings);
-      if (sigma) instance.getCamera().setState(sigma.getCamera().getState());
-    }
-    setSigma(instance);
-
-    return () => {
-      if (instance) {
-        instance.kill();
-      }
-      setSigma(null);
-    };
+      return instance;
+    });
   }, [containerRef, graph, sigmaSettings]);
 
   /**
    * Forward the sigma ref
    */
-  useImperativeHandle(ref, () => sigma, [sigma]);
+  useImperativeHandle<Sigma<N, E, G> | null, Sigma<N, E, G> | null>(ref, () => sigma, [sigma]);
 
   /**
    * Memoify the context
    */
-  const context = useMemo(
-    () => (sigma && rootRef.current ? { sigma, container: rootRef.current as HTMLElement } : null),
-    [sigma, rootRef.current],
-  ) as SigmaContextInterface | null;
+  const context = useMemo(() => {
+    return sigma && rootRef.current ? { sigma, container: rootRef.current as HTMLElement } : null;
+  }, [sigma, rootRef]) as SigmaContextInterface | null;
 
   // When context is created we provide it to children
   const contents = context !== null ? <SigmaProvider value={context}>{children}</SigmaProvider> : null;
@@ -133,9 +137,22 @@ const SigmaContainerComponent = <
  * Redefine forwardRef for generics
  */
 function fixedForwardRef<T, P = unknown>(
-  render: (props: P, ref: React.Ref<T>) => ReactElement,
+  render: (props: PropsWithoutRef<P>, ref: React.Ref<T>) => ReactElement,
 ): (props: P & React.RefAttributes<T>) => ReactElement {
   return forwardRef(render) as (props: P & React.RefAttributes<T>) => ReactElement;
 }
 
+/**
+ * The `SigmaContainer` component is responsible of create the Sigma instance, and provide it to its child components using a React Context that can be accessible via the hook {@link useSigma}.
+ *
+ * ```jsx
+ * <SigmaContainer id="sigma-graph">
+ *   <MyCustomGraph />
+ * </SigmaContainer>
+ *```
+ *
+ * See {@link SigmaContainerProps} for the component's properties.
+ *
+ * @category Component
+ */
 export const SigmaContainer = fixedForwardRef(SigmaContainerComponent);

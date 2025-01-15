@@ -3,7 +3,9 @@ import Sigma from 'sigma';
 import { Document } from './types';
 
 /**
- * Cast a node to a document to index
+ * Cast a node to a document to index.
+ *
+ * @category Utils
  */
 export function nodeToDocument(sigma: Sigma, id: string): Document {
   const graph = sigma.getGraph();
@@ -20,7 +22,9 @@ export function nodeToDocument(sigma: Sigma, id: string): Document {
 }
 
 /**
- * Cast an edge to a document to index
+ * Cast an edge to a document to index.
+ *
+ * @category Utils
  */
 export function edgeToDocument(sigma: Sigma, id: string): Document {
   const graph = sigma.getGraph();

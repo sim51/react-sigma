@@ -1,44 +1,37 @@
-import {
-  ControlsContainer,
-  FullScreenControl,
-  SigmaContainer,
-  ZoomControl,
-  useCamera,
-  useSigma,
-} from '@react-sigma/core';
-import '@react-sigma/core/lib/react-sigma.min.css';
-import { GraphSearch } from '@react-sigma/graph-search';
+import { ControlsContainer, FullScreenControl, SigmaContainer, ZoomControl } from '@react-sigma/core';
+import '@react-sigma/core/lib/style.css';
+import { GraphSearch, GraphSearchOption } from '@react-sigma/graph-search';
+import '@react-sigma/graph-search/lib/style.css';
 import { MiniMap } from '@react-sigma/minimap';
-import { CSSProperties, FC, useEffect, useState } from 'react';
+import { CSSProperties, FC, useCallback, useState } from 'react';
 
+import { FocusOnNode } from './common/FocusOnNode';
 import { LayoutsControl } from './common/LayoutsControl';
 import { SampleGraph } from './common/SampleGraph';
-
-const FocusOnNode: FC<{ node: string | null; move?: boolean }> = ({ node, move }) => {
-  // Get sigma
-  const sigma = useSigma();
-  // Get camera hook
-  const { gotoNode } = useCamera();
-
-  /**
-   * When the selected item changes, highlighted the node and center the camera on it.
-   */
-  useEffect(() => {
-    if (!node) return;
-    sigma.getGraph().setNodeAttribute(node, 'highlighted', true);
-    if (move) gotoNode(node);
-
-    return () => {
-      sigma.getGraph().setNodeAttribute(node, 'highlighted', false);
-    };
-  }, [node, move, sigma]);
-
-  return null;
-};
 
 export const Complete: FC<{ style?: CSSProperties }> = ({ style }) => {
   const [selectedNode, setSelectedNode] = useState<string | null>(null);
   const [focusNode, setFocusNode] = useState<string | null>(null);
+
+  const onFocus = useCallback((value: GraphSearchOption | null) => {
+    if (value === null) setFocusNode(null);
+    else if (value.type === 'nodes') setFocusNode(value.id);
+  }, []);
+  const onChange = useCallback((value: GraphSearchOption | null) => {
+    if (value === null) setSelectedNode(null);
+    else if (value.type === 'nodes') setSelectedNode(value.id);
+  }, []);
+  const postSearchResult = useCallback((options: GraphSearchOption[]): GraphSearchOption[] => {
+    return options.length <= 10
+      ? options
+      : [
+          ...options.slice(0, 10),
+          {
+            type: 'message',
+            message: <span className="text-center text-muted">And {options.length - 10} others</span>,
+          },
+        ];
+  }, []);
 
   return (
     <SigmaContainer settings={{ allowInvalidContainer: true }} style={style}>
@@ -51,15 +44,11 @@ export const Complete: FC<{ style?: CSSProperties }> = ({ style }) => {
       </ControlsContainer>
       <ControlsContainer position={'top-right'}>
         <GraphSearch
+          type="nodes"
           value={selectedNode ? { type: 'nodes', id: selectedNode } : null}
-          onFocus={(value) => {
-            if (value === null) setFocusNode(null);
-            else if (value.type === 'nodes') setFocusNode(value.id);
-          }}
-          onChange={(value) => {
-            if (value === null) setSelectedNode(null);
-            else if (value.type === 'nodes') setSelectedNode(value.id);
-          }}
+          onFocus={onFocus}
+          onChange={onChange}
+          postSearchResult={postSearchResult}
         />
       </ControlsContainer>
 

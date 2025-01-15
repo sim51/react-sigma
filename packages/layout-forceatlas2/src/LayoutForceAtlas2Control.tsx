@@ -7,10 +7,7 @@ import { useWorkerLayoutForceAtlas2 } from './useWorkerLayoutForceAtlas2';
 /**
  * Properties for `LayoutForceAtlas2Control` component
  */
-export type LayoutForceAtlas2ControlProps = Omit<
-  WorkerLayoutControlProps<ForceAtlas2LayoutParameters>,
-  'layout' | 'settings'
-> & {
+export type LayoutForceAtlas2ControlProps = Omit<WorkerLayoutControlProps, 'layout' | 'settings'> & {
   settings?: ForceAtlas2LayoutParameters;
 };
 
@@ -26,6 +23,7 @@ export const LayoutForceAtlas2Control: React.FC<LayoutForceAtlas2ControlProps> =
   children,
   labels,
 }) => {
-  const workerLayoutProps = { id, className, style, settings, autoRunFor, labels, layout: useWorkerLayoutForceAtlas2 };
+  const layout = useWorkerLayoutForceAtlas2(settings);
+  const workerLayoutProps = { id, className, style, autoRunFor, labels, layout };
   return <WorkerLayoutControl {...workerLayoutProps}>{children}</WorkerLayoutControl>;
 };

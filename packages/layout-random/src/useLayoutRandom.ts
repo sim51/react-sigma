@@ -9,5 +9,6 @@ import random, { RandomLayoutOptions } from 'graphology-layout/random';
  *```
  * @category Hook
  */
-const defaultRandomLayoutOptions: RandomLayoutOptions = {};
-export const useLayoutRandom = useLayoutFactory<RandomLayoutOptions>(random, defaultRandomLayoutOptions);
+export function useLayoutRandom(options: RandomLayoutOptions = {}) {
+  return useLayoutFactory<RandomLayoutOptions>(random, options);
+}

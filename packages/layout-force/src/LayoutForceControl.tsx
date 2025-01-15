@@ -7,10 +7,7 @@ import { useWorkerLayoutForce } from './useWorkerLayoutForce';
 /**
  * Properties for `ForceDirectedControl` component
  */
-export type LayoutForceControlProps = Omit<
-  WorkerLayoutControlProps<ForceLayoutSupervisorParameters>,
-  'layout' | 'settings'
-> & {
+export type LayoutForceControlProps = Omit<WorkerLayoutControlProps, 'layout' | 'settings'> & {
   settings?: ForceLayoutSupervisorParameters;
 };
 
@@ -28,6 +25,7 @@ export const LayoutForceControl: React.FC<LayoutForceControlProps> = ({
   children,
   labels,
 }) => {
-  const workerLayoutProps = { id, className, style, settings, autoRunFor, labels, layout: useWorkerLayoutForce };
+  const layout = useWorkerLayoutForce(settings);
+  const workerLayoutProps = { id, className, style, autoRunFor, labels, layout };
   return <WorkerLayoutControl {...workerLayoutProps}>{children}</WorkerLayoutControl>;
 };

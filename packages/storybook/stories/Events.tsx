@@ -1,5 +1,5 @@
 import { SigmaContainer, useRegisterEvents } from '@react-sigma/core';
-import '@react-sigma/core/lib/react-sigma.min.css';
+import '@react-sigma/core/lib/style.css';
 import { CSSProperties, FC, useEffect } from 'react';
 
 import { SampleGraph } from './common/SampleGraph';

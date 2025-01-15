@@ -3,7 +3,7 @@
   "version": "4.0.4",
   "private": true,
   "scripts": {
-    "clean": "rimraf storybook-static playwright-report test-results",
+    "clean": "rimraf storybook-static playwright-report test-results dist",
     "test": "playwright test",
     "build": "storybook build",
     "start": "storybook dev -p 6006"

@@ -1,7 +1,7 @@
 import { useSigma } from '@react-sigma/core';
 import { useLayoutCirclepack } from '@react-sigma/layout-circlepack';
 import { useLayoutCircular } from '@react-sigma/layout-circular';
-import { WorkerLayoutControl } from '@react-sigma/layout-core';
+import { LayoutHook, LayoutWorkerHook, WorkerLayoutControl } from '@react-sigma/layout-core';
 import { useLayoutForce, useWorkerLayoutForce } from '@react-sigma/layout-force';
 import { useLayoutForceAtlas2, useWorkerLayoutForceAtlas2 } from '@react-sigma/layout-forceatlas2';
 import { useLayoutNoverlap, useWorkerLayoutNoverlap } from '@react-sigma/layout-noverlap';
@@ -10,9 +10,11 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { FaProjectDiagram } from 'react-icons/fa';
 import { animateNodes } from 'sigma/utils';
 
+type LayoutName = 'circular' | 'circlepack' | 'random' | 'noverlaps' | 'forceDirected' | 'forceAtlas';
+
 export const LayoutsControl: React.FC = () => {
   const sigma = useSigma();
-  const [layout, setLayout] = useState<string>('circular');
+  const [layout, setLayout] = useState<LayoutName>('circular');
   const [opened, setOpened] = useState<boolean>(false);
   const layoutCircular = useLayoutCircular();
   const layoutCirclepack = useLayoutCirclepack();
@@ -20,9 +22,11 @@ export const LayoutsControl: React.FC = () => {
   const layoutNoverlap = useLayoutNoverlap();
   const layoutForce = useLayoutForce({ maxIterations: 100 });
   const layoutForceAtlas2 = useLayoutForceAtlas2({ iterations: 100 });
+  const workerNoverlap = useWorkerLayoutNoverlap();
+  const workerForce = useWorkerLayoutForce();
+  const workerForceAtlas2 = useWorkerLayoutForceAtlas2();
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const layouts: { [key: string]: { layout: any; worker?: any } } = useMemo(() => {
+  const layouts = useMemo(() => {
     return {
       circular: {
         layout: layoutCircular,
@@ -35,18 +39,28 @@ export const LayoutsControl: React.FC = () => {
       },
       noverlaps: {
         layout: layoutNoverlap,
-        worker: useWorkerLayoutNoverlap,
+        worker: workerNoverlap,
       },
       forceDirected: {
         layout: layoutForce,
-        worker: useWorkerLayoutForce,
+        worker: workerForce,
       },
       forceAtlas: {
         layout: layoutForceAtlas2,
-        worker: useWorkerLayoutForceAtlas2,
+        worker: workerForceAtlas2,
       },
-    };
-  }, []);
+    } as { [key: string]: { layout: LayoutHook; worker?: LayoutWorkerHook } };
+  }, [
+    layoutCirclepack,
+    layoutCircular,
+    layoutForce,
+    layoutForceAtlas2,
+    layoutNoverlap,
+    layoutRandom,
+    workerForce,
+    workerNoverlap,
+    workerForceAtlas2,
+  ]);
 
   useEffect(() => {
     const { positions } = layouts[layout].layout;
@@ -66,9 +80,7 @@ export const LayoutsControl: React.FC = () => {
   return (
     <>
       <div>
-        {layouts[layout] && layouts[layout].worker && (
-          <WorkerLayoutControl layout={layouts[layout].worker} settings={{}} />
-        )}
+        {layouts[layout] && 'worker' in layouts[layout] && <WorkerLayoutControl layout={layouts[layout].worker!} />}
       </div>
       <div>
         <div className="react-sigma-control">
@@ -94,7 +106,7 @@ export const LayoutsControl: React.FC = () => {
                       className="btn btn-link"
                       style={{ fontWeight: layout === name ? 'bold' : 'normal', width: '100%' }}
                       onClick={() => {
-                        setLayout(name);
+                        setLayout(name as LayoutName);
                       }}
                     >
                       {name}

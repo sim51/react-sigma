@@ -2,7 +2,7 @@ import DemoGraphSource from '!!raw-loader!../../../storybook/stories/Demo';
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import '@react-sigma/core/lib/react-sigma.min.css';
+import '@react-sigma/core/lib/style.css';
 import Layout from '@theme/Layout';
 import clsx from 'clsx';
 import React from 'react';

@@ -16,6 +16,5 @@ export * from './components/SigmaContainer';
 export * from './components/controls/ControlsContainer';
 export * from './components/controls/ZoomControl';
 export * from './components/controls/FullScreenControl';
-export * from './components/controls/SearchControl';
 export * from './types';
 export * from './utils';

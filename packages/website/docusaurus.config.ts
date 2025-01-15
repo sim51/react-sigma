@@ -144,7 +144,7 @@ const config: Config = {
         id: 'core',
         entryPoints: ['../core/src/index.ts'],
         tsconfig: '../core/tsconfig.json',
-        watch: process.env.TYPEDOC_WATCH,
+        watch: false,
         out: 'docs/api/core',
         readme: 'none',
         sidebar: {
@@ -161,7 +161,7 @@ const config: Config = {
         id: 'layout-core',
         entryPoints: ['../layout-core/src/index.ts'],
         tsconfig: '../layout-core/tsconfig.json',
-        watch: process.env.TYPEDOC_WATCH,
+        watch: false,
         out: 'docs/api/layout-core',
         readme: 'none',
         sidebar: {
@@ -178,7 +178,7 @@ const config: Config = {
         id: 'layout-random',
         entryPoints: ['../layout-random/src/index.ts'],
         tsconfig: '../layout-random/tsconfig.json',
-        watch: process.env.TYPEDOC_WATCH,
+        watch: false,
         out: 'docs/api/layout-random',
         readme: 'none',
         sidebar: {
@@ -195,7 +195,7 @@ const config: Config = {
         id: 'layout-circular',
         entryPoints: ['../layout-circular/src/index.ts'],
         tsconfig: '../layout-circular/tsconfig.json',
-        watch: process.env.TYPEDOC_WATCH,
+        watch: false,
         out: 'docs/api/layout-circular',
         readme: 'none',
         sidebar: {
@@ -212,7 +212,7 @@ const config: Config = {
         id: 'layout-circlepack',
         entryPoints: ['../layout-circlepack/src/index.ts'],
         tsconfig: '../layout-circlepack/tsconfig.json',
-        watch: process.env.TYPEDOC_WATCH,
+        watch: false,
         out: 'docs/api/layout-circlepack',
         readme: 'none',
         sidebar: {
@@ -229,7 +229,7 @@ const config: Config = {
         id: 'layout-forceatlas2',
         entryPoints: ['../layout-forceatlas2/src/index.ts'],
         tsconfig: '../layout-forceatlas2/tsconfig.json',
-        watch: process.env.TYPEDOC_WATCH,
+        watch: false,
         out: 'docs/api/layout-forceatlas2',
         readme: 'none',
         sidebar: {
@@ -246,7 +246,7 @@ const config: Config = {
         id: 'layout-force',
         entryPoints: ['../layout-force/src/index.ts'],
         tsconfig: '../layout-force/tsconfig.json',
-        watch: process.env.TYPEDOC_WATCH,
+        watch: false,
         out: 'docs/api/layout-force',
         readme: 'none',
         sidebar: {
@@ -263,13 +263,47 @@ const config: Config = {
         id: 'layout-noverlap',
         entryPoints: ['../layout-noverlap/src/index.ts'],
         tsconfig: '../layout-noverlap/tsconfig.json',
-        watch: process.env.TYPEDOC_WATCH,
+        watch: false,
         out: 'docs/api/layout-noverlap',
         readme: 'none',
         sidebar: {
           categoryLabel: 'layout-noverlap',
           indexLabel: 'layout-noverlap',
           position: 7,
+          fullNames: true,
+        },
+      },
+    ],
+    [
+      'docusaurus-plugin-typedoc',
+      {
+        id: 'graph-search',
+        entryPoints: ['../graph-search/src/index.ts'],
+        tsconfig: '../graph-search/tsconfig.json',
+        watch: false,
+        out: 'docs/api/graph-search',
+        readme: 'none',
+        sidebar: {
+          categoryLabel: 'graph-search',
+          indexLabel: 'graph-search',
+          position: 8,
+          fullNames: true,
+        },
+      },
+    ],
+    [
+      'docusaurus-plugin-typedoc',
+      {
+        id: 'minimap',
+        entryPoints: ['../minimap/src/index.ts'],
+        tsconfig: '../minimap/tsconfig.json',
+        watch: false,
+        out: 'docs/api/minimap',
+        readme: 'none',
+        sidebar: {
+          categoryLabel: 'minimap',
+          indexLabel: 'graph-minimap',
+          position: 9,
           fullNames: true,
         },
       },

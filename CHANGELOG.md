@@ -1,5 +1,22 @@
 # Changelog
 
+## Version 5.0.0
+
+### Breaking changes
+
+- CSS has been renamed `style.css`, so you must change `import "@react-sigma/core/lib/style.css";` by `import "@react-sigma/core/lib/react-sigma.min.css";`. Now the rollup config is shared, and for each module that export a css file, it will be named `style.css`.
+- `SearchControl` in `core` has been removed. A new module called `graph-search` replace it.
+
+### Features
+
+- Upgrade to the latest stable release of Sigma (ie. `3.0.0`)
+- Upgrade all librairies to their latest version
+- Adding `minimap` module
+- Adding `graph-search` module
+- Upgrade all project dependencies
+- Review prettier configuration
+- Sharing rollup configuration across modules
+
 ## Version 4.0.3
 
 - Upgrade to lastest beta of Sigma 3

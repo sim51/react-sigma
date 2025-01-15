@@ -1,0 +1,25 @@
+import { CodePreview } from '@site/src/components/CodePreview';
+
+import MinimapSource from '!!raw-loader!../../../storybook/stories/Minimap';
+
+# Minimap
+
+You can display a minimap of the graph, to know which portion of the graph you are viewing.
+
+To use it, you need to install the package `@react-sigma/minimap`.
+
+```bash
+npm install @react-sigma/minimap
+```
+
+The you can use the [Minimap](/docs/api/minimap/functions/MiniMap) component provided by the package like in this
+example :
+
+<CodePreview
+  code={MinimapSource}
+  title="Minimap"
+  component={() => {
+    const { MinimapDemo } = require('../../../storybook/stories/Minimap');
+    return <MinimapDemo style={{ height: '400px' }} />;
+  }}
+/>

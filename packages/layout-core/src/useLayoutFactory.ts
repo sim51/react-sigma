@@ -5,7 +5,7 @@ import { useCallback, useRef } from 'react';
 /**
  * Generic type for Graphology layout.
  */
-interface GraphologyLayout<T> {
+export interface GraphologyLayout<T> {
   (graph: Graph, options: T): { [node: string]: { [dimension: string]: number } };
   assign(graph: Graph, options: T): void;
 }
@@ -13,7 +13,7 @@ interface GraphologyLayout<T> {
 /**
  * Generic type for layout hooks.
  */
-export type LayoutHook<T> = (settings?: T) => {
+export type LayoutHook = {
   /**
    * Returns a positions map by node key.
    */
@@ -27,27 +27,23 @@ export type LayoutHook<T> = (settings?: T) => {
 /**
  * Factory for layout hook.
  */
-export function useLayoutFactory<T>(layout: GraphologyLayout<T>, defaultSettings: T): LayoutHook<T> {
-  const hook: LayoutHook<T> = (parameter: T = defaultSettings) => {
-    const sigma = useSigma();
+export function useLayoutFactory<T>(layout: GraphologyLayout<T>, parameter: T): LayoutHook {
+  const sigma = useSigma();
 
-    // Default layout settings
-    const settings = useRef<T>(defaultSettings);
-    if (!isEqual(settings.current, parameter)) settings.current = parameter;
+  // Default layout settings
+  const settings = useRef<T>(parameter);
+  if (!isEqual(settings.current, parameter)) settings.current = parameter;
 
-    const positions = useCallback(() => {
-      if (settings.current) return layout(sigma.getGraph(), settings.current);
-      else return {};
-    }, [sigma, settings]);
+  const positions = useCallback(() => {
+    if (settings.current) return layout(sigma.getGraph(), settings.current);
+    else return {};
+  }, [sigma, settings, layout]);
 
-    const assign = useCallback(() => {
-      if (settings.current) {
-        layout.assign(sigma.getGraph(), settings.current);
-      }
-    }, [sigma, settings]);
+  const assign = useCallback(() => {
+    if (settings.current) {
+      layout.assign(sigma.getGraph(), settings.current);
+    }
+  }, [sigma, settings, layout]);
 
-    return { positions, assign };
-  };
-
-  return hook;
+  return { positions, assign };
 }

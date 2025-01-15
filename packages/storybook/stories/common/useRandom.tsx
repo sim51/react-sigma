@@ -30,7 +30,7 @@ export const useRandom = () => {
       f.seed(Math.random());
       setFaker(f);
     }
-  }, [document.location]);
+  }, []);
 
   const randomColor = useCallback(() => {
     const digits = '0123456789abcdef';
@@ -39,7 +39,7 @@ export const useRandom = () => {
       code += digits.charAt(Math.floor(Math.random() * 16));
     }
     return code;
-  }, [faker]);
+  }, []);
 
   const randomGraph = useCallback(() => {
     // Create the graph
@@ -60,7 +60,7 @@ export const useRandom = () => {
       });
     });
     return graph as Graph<NodeType, EdgeType>;
-  }, [faker]);
+  }, [faker, randomColor]);
 
   return { faker, randomColor, randomGraph };
 };

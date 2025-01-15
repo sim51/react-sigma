@@ -86,6 +86,9 @@ const cameraEvents = keySet<CameraEvents>({ updated: true });
  *  });
  * }, []);
  *```
+ *
+ * See {@link EventHandlers} for the events.
+ *
  * @category Hook
  */
 export function useRegisterEvents<

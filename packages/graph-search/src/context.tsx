@@ -12,10 +12,18 @@ export interface GraphSearchContextType {
 const initialContext: GraphSearchContextType = {
   index: new MiniSearch({ fields: [] }),
 };
+
+/**
+ * @hidden
+ */
 export const GraphSearchContext = createContext(initialContext);
 
 /**
  * Search context provider.
+ * It exposes the minisearch instance to search in the graph and
+ * is also responsible to keep the index up to date with the graph.
+ *
+ * @category Component
  */
 export const GraphSearchContextProvider: FC<PropsWithChildren> = ({ children }) => {
   const [context, setContext] = useState(initialContext);

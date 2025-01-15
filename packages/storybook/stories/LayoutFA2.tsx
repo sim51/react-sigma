@@ -1,5 +1,5 @@
 import { SigmaContainer } from '@react-sigma/core';
-import '@react-sigma/core/lib/react-sigma.min.css';
+import '@react-sigma/core/lib/style.css';
 import { useWorkerLayoutForceAtlas2 } from '@react-sigma/layout-forceatlas2';
 import { CSSProperties, FC, useEffect } from 'react';
 

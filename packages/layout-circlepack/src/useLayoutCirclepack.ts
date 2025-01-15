@@ -9,4 +9,6 @@ import circlepack, { CirclePackLayoutOptions } from 'graphology-layout/circlepac
  *```
  * @category Hook
  */
-export const useLayoutCirclepack = useLayoutFactory<CirclePackLayoutOptions>(circlepack, {});
+export function useLayoutCirclepack(options: CirclePackLayoutOptions = {}) {
+  return useLayoutFactory<CirclePackLayoutOptions>(circlepack, options);
+}

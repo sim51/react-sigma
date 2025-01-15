@@ -9,4 +9,6 @@ import ForceSupervisor, { ForceLayoutSupervisorParameters } from 'graphology-lay
  *```
  * @category Hook
  */
-export const useWorkerLayoutForce = useWorkerLayoutFactory<ForceLayoutSupervisorParameters>(ForceSupervisor);
+export function useWorkerLayoutForce(options: ForceLayoutSupervisorParameters = {}) {
+  return useWorkerLayoutFactory<ForceLayoutSupervisorParameters>(ForceSupervisor, options);
+}

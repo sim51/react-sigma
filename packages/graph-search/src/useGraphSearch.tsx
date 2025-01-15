@@ -5,6 +5,9 @@ import { GraphSearchOption, ItemType } from './types';
 
 /**
  * Hooks that returns a function to search in the graph index.
+ * This hook must be used in a component that is a descendant of `GraphSearchContextProvider`.
+ *
+ * @category Hook
  */
 export function useGraphSearch() {
   const { index } = useContext(GraphSearchContext);

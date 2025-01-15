@@ -1,5 +1,5 @@
-import { ControlsContainer, FullScreenControl, SearchControl, SigmaContainer, ZoomControl } from '@react-sigma/core';
-import '@react-sigma/core/lib/react-sigma.min.css';
+import { ControlsContainer, FullScreenControl, SigmaContainer, ZoomControl } from '@react-sigma/core';
+import '@react-sigma/core/lib/style.css';
 import { LayoutForceAtlas2Control } from '@react-sigma/layout-forceatlas2';
 import { CSSProperties, FC, useEffect, useRef, useState } from 'react';
 
@@ -19,7 +19,7 @@ export const Multiple: FC<{ style?: CSSProperties }> = ({ style }) => {
     const params = new URLSearchParams(window.location.search);
     const time = params.get('faTime');
     setFaTime(Number.parseInt(time ?? '2000') || 2000);
-  }, [window.location]);
+  }, []);
 
   return (
     <div ref={containerRef} style={{ height: '100%', ...style }}>
@@ -30,9 +30,6 @@ export const Multiple: FC<{ style?: CSSProperties }> = ({ style }) => {
           <FullScreenControl container={containerRef} />
           <LayoutForceAtlas2Control autoRunFor={faTime || 2000} />
         </ControlsContainer>
-        <ControlsContainer position={'bottom-left'}>
-          <SearchControl style={{ width: '150px' }} />
-        </ControlsContainer>
       </SigmaContainer>
       <SigmaContainer settings={sigmaSettings} style={sigmaStyle}>
         <SampleGraph />
@@ -40,9 +37,6 @@ export const Multiple: FC<{ style?: CSSProperties }> = ({ style }) => {
           <ZoomControl />
           <FullScreenControl />
           <LayoutForceAtlas2Control autoRunFor={faTime || 2000} />
-        </ControlsContainer>
-        <ControlsContainer position={'bottom-right'}>
-          <SearchControl style={{ width: '150px' }} />
         </ControlsContainer>
       </SigmaContainer>
       <SigmaContainer settings={sigmaSettings} style={sigmaStyle}>
@@ -52,9 +46,6 @@ export const Multiple: FC<{ style?: CSSProperties }> = ({ style }) => {
           <FullScreenControl />
           <LayoutForceAtlas2Control autoRunFor={faTime || 2000} />
         </ControlsContainer>
-        <ControlsContainer position={'top-left'}>
-          <SearchControl style={{ width: '150px' }} />
-        </ControlsContainer>
       </SigmaContainer>
       <SigmaContainer settings={sigmaSettings} style={sigmaStyle}>
         <SampleGraph />
@@ -62,9 +53,6 @@ export const Multiple: FC<{ style?: CSSProperties }> = ({ style }) => {
           <ZoomControl />
           <FullScreenControl />
           <LayoutForceAtlas2Control autoRunFor={faTime || 2000} />
-        </ControlsContainer>
-        <ControlsContainer position={'top-right'}>
-          <SearchControl style={{ width: '150px' }} />
         </ControlsContainer>
       </SigmaContainer>
     </div>
