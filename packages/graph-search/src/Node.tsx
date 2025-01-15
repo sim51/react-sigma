@@ -3,11 +3,6 @@ import React, { FC, ReactNode, useMemo } from 'react';
 
 import { Labels } from './types';
 
-/**
- * Component that display a node.
- *
- * @category Component
- */
 export interface NodeProps {
   label?: ReactNode;
   color?: string;
@@ -15,6 +10,12 @@ export interface NodeProps {
   // Dynamic labels (for i18n for example)
   labels?: Labels;
 }
+
+/**
+ * Component that display a node.
+ *
+ * @category Component
+ */
 export const Node: FC<NodeProps> = ({ label, color, hidden, labels = {} }) => {
   return (
     <div className="node">

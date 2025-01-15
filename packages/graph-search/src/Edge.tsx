@@ -4,12 +4,7 @@ import React, { FC, ReactNode, useMemo } from 'react';
 import { Node, NodeProps } from './Node';
 import { Labels } from './types';
 
-/**
- * Component that display an edge.
- *
- * @category Component
- */
-export const Edge: FC<{
+interface EdgeProps {
   source: NodeProps;
   target: NodeProps;
   label?: ReactNode;
@@ -18,7 +13,14 @@ export const Edge: FC<{
   directed?: boolean;
   // Dynamic labels (for i18n for example)
   labels?: Labels;
-}> = ({ label, color, source, target, hidden, directed, labels = {} }) => {
+}
+
+/**
+ * Component that display an edge.
+ *
+ * @category Component
+ */
+export const Edge: FC<EdgeProps> = ({ label, color, source, target, hidden, directed, labels = {} }) => {
   return (
     <div className="edge">
       <Node {...source} labels={labels} />

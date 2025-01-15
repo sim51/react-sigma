@@ -48,12 +48,12 @@ const config: Config = {
           to: 'docs/start-introduction',
         },
         {
-          label: 'API',
-          to: 'docs/api/core',
-        },
-        {
           label: 'Example',
           to: 'docs/example/load-graph',
+        },
+        {
+          label: 'Api',
+          to: 'docs/api/core',
         },
         {
           type: 'doc',
@@ -69,6 +69,11 @@ const config: Config = {
         {
           href: 'https://github.com/sim51/react-sigma',
           label: 'GitHub',
+          position: 'right',
+        },
+        {
+          href: 'https://www.npmjs.com/org/react-sigma',
+          label: 'NPM',
           position: 'right',
         },
       ],
@@ -147,131 +152,6 @@ const config: Config = {
         watch: false,
         out: 'docs/api/core',
         readme: 'none',
-        sidebar: {
-          categoryLabel: 'core',
-          indexLabel: 'core',
-          position: 0,
-          fullNames: true,
-        },
-      },
-    ],
-    [
-      'docusaurus-plugin-typedoc',
-      {
-        id: 'layout-core',
-        entryPoints: ['../layout-core/src/index.ts'],
-        tsconfig: '../layout-core/tsconfig.json',
-        watch: false,
-        out: 'docs/api/layout-core',
-        readme: 'none',
-        sidebar: {
-          categoryLabel: 'layout-core',
-          indexLabel: 'layout-core',
-          position: 1,
-          fullNames: true,
-        },
-      },
-    ],
-    [
-      'docusaurus-plugin-typedoc',
-      {
-        id: 'layout-random',
-        entryPoints: ['../layout-random/src/index.ts'],
-        tsconfig: '../layout-random/tsconfig.json',
-        watch: false,
-        out: 'docs/api/layout-random',
-        readme: 'none',
-        sidebar: {
-          categoryLabel: 'layout-random',
-          indexLabel: 'layout-random',
-          position: 2,
-          fullNames: true,
-        },
-      },
-    ],
-    [
-      'docusaurus-plugin-typedoc',
-      {
-        id: 'layout-circular',
-        entryPoints: ['../layout-circular/src/index.ts'],
-        tsconfig: '../layout-circular/tsconfig.json',
-        watch: false,
-        out: 'docs/api/layout-circular',
-        readme: 'none',
-        sidebar: {
-          categoryLabel: 'layout-circular',
-          indexLabel: 'layout-circular',
-          position: 3,
-          fullNames: true,
-        },
-      },
-    ],
-    [
-      'docusaurus-plugin-typedoc',
-      {
-        id: 'layout-circlepack',
-        entryPoints: ['../layout-circlepack/src/index.ts'],
-        tsconfig: '../layout-circlepack/tsconfig.json',
-        watch: false,
-        out: 'docs/api/layout-circlepack',
-        readme: 'none',
-        sidebar: {
-          categoryLabel: 'layout-circlepack',
-          indexLabel: 'layout-circlepack',
-          position: 4,
-          fullNames: true,
-        },
-      },
-    ],
-    [
-      'docusaurus-plugin-typedoc',
-      {
-        id: 'layout-forceatlas2',
-        entryPoints: ['../layout-forceatlas2/src/index.ts'],
-        tsconfig: '../layout-forceatlas2/tsconfig.json',
-        watch: false,
-        out: 'docs/api/layout-forceatlas2',
-        readme: 'none',
-        sidebar: {
-          categoryLabel: 'layout-forceatlas2',
-          indexLabel: 'layout-forceatlas2',
-          position: 5,
-          fullNames: true,
-        },
-      },
-    ],
-    [
-      'docusaurus-plugin-typedoc',
-      {
-        id: 'layout-force',
-        entryPoints: ['../layout-force/src/index.ts'],
-        tsconfig: '../layout-force/tsconfig.json',
-        watch: false,
-        out: 'docs/api/layout-force',
-        readme: 'none',
-        sidebar: {
-          categoryLabel: 'layout-force',
-          indexLabel: 'layout-force',
-          position: 6,
-          fullNames: true,
-        },
-      },
-    ],
-    [
-      'docusaurus-plugin-typedoc',
-      {
-        id: 'layout-noverlap',
-        entryPoints: ['../layout-noverlap/src/index.ts'],
-        tsconfig: '../layout-noverlap/tsconfig.json',
-        watch: false,
-        out: 'docs/api/layout-noverlap',
-        readme: 'none',
-        sidebar: {
-          categoryLabel: 'layout-noverlap',
-          indexLabel: 'layout-noverlap',
-          position: 7,
-          fullNames: true,
-        },
       },
     ],
     [
@@ -283,12 +163,6 @@ const config: Config = {
         watch: false,
         out: 'docs/api/graph-search',
         readme: 'none',
-        sidebar: {
-          categoryLabel: 'graph-search',
-          indexLabel: 'graph-search',
-          position: 8,
-          fullNames: true,
-        },
       },
     ],
     [
@@ -300,12 +174,83 @@ const config: Config = {
         watch: false,
         out: 'docs/api/minimap',
         readme: 'none',
-        sidebar: {
-          categoryLabel: 'minimap',
-          indexLabel: 'graph-minimap',
-          position: 9,
-          fullNames: true,
-        },
+      },
+    ],
+    [
+      'docusaurus-plugin-typedoc',
+      {
+        id: 'layout-core',
+        entryPoints: ['../layout-core/src/index.ts'],
+        tsconfig: '../layout-core/tsconfig.json',
+        watch: false,
+        out: 'docs/api/layout-core',
+        readme: 'none',
+      },
+    ],
+    [
+      'docusaurus-plugin-typedoc',
+      {
+        id: 'layout-random',
+        entryPoints: ['../layout-random/src/index.ts'],
+        tsconfig: '../layout-random/tsconfig.json',
+        watch: false,
+        out: 'docs/api/layout-random',
+        readme: 'none',
+      },
+    ],
+    [
+      'docusaurus-plugin-typedoc',
+      {
+        id: 'layout-circular',
+        entryPoints: ['../layout-circular/src/index.ts'],
+        tsconfig: '../layout-circular/tsconfig.json',
+        watch: false,
+        out: 'docs/api/layout-circular',
+        readme: 'none',
+      },
+    ],
+    [
+      'docusaurus-plugin-typedoc',
+      {
+        id: 'layout-circlepack',
+        entryPoints: ['../layout-circlepack/src/index.ts'],
+        tsconfig: '../layout-circlepack/tsconfig.json',
+        watch: false,
+        out: 'docs/api/layout-circlepack',
+        readme: 'none',
+      },
+    ],
+    [
+      'docusaurus-plugin-typedoc',
+      {
+        id: 'layout-forceatlas2',
+        entryPoints: ['../layout-forceatlas2/src/index.ts'],
+        tsconfig: '../layout-forceatlas2/tsconfig.json',
+        watch: false,
+        out: 'docs/api/layout-forceatlas2',
+        readme: 'none',
+      },
+    ],
+    [
+      'docusaurus-plugin-typedoc',
+      {
+        id: 'layout-force',
+        entryPoints: ['../layout-force/src/index.ts'],
+        tsconfig: '../layout-force/tsconfig.json',
+        watch: false,
+        out: 'docs/api/layout-force',
+        readme: 'none',
+      },
+    ],
+    [
+      'docusaurus-plugin-typedoc',
+      {
+        id: 'layout-noverlap',
+        entryPoints: ['../layout-noverlap/src/index.ts'],
+        tsconfig: '../layout-noverlap/tsconfig.json',
+        watch: false,
+        out: 'docs/api/layout-noverlap',
+        readme: 'none',
       },
     ],
     function (_context, _options) {

@@ -3,6 +3,7 @@ import '@react-sigma/core/lib/style.css';
 import { GraphSearch, GraphSearchOption } from '@react-sigma/graph-search';
 import '@react-sigma/graph-search/lib/style.css';
 import { LayoutForceAtlas2Control } from '@react-sigma/layout-forceatlas2';
+import { MiniMap } from '@react-sigma/minimap';
 import { NodeImageProgram } from '@sigma/node-image';
 import Graph from 'graphology';
 import { SerializedGraph } from 'graphology-types';
@@ -57,6 +58,9 @@ export const Demo: FC<{ style?: CSSProperties }> = ({ style }) => {
         <ZoomControl />
         <FullScreenControl />
         <LayoutForceAtlas2Control />
+      </ControlsContainer>
+      <ControlsContainer position={'bottom-left'}>
+        <MiniMap width="100px" height="100px" />
       </ControlsContainer>
       <ControlsContainer position={'top-right'}>
         <GraphSearch
