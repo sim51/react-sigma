@@ -1,6 +1,6 @@
 {
   "name": "@react-sigma/layout-forceatlas2",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "description": "React Sigma - Layout Force Atlas 2",
   "author": "Benoit Simard",
   "license": "MIT",
@@ -38,7 +38,7 @@
     "start": "nodemon --watch src -e ts,tsx --exec npm run build"
   },
   "dependencies": {
-    "@react-sigma/layout-core": "^5.0.1"
+    "@react-sigma/layout-core": "^5.0.2"
   },
   "peerDependencies": {
     "graphology-layout-forceatlas2": "^0.10.1"
