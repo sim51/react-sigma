@@ -30,7 +30,6 @@ export const GraphSearchDemo: FC<{ style?: CSSProperties }> = ({ style }) => {
   const [focusNode, setFocusNode] = useState<string | null>(null);
 
   const onFocus = useCallback((value: GraphSearchOption | null) => {
-    console.log('onfocus', value);
     if (value === null) setFocusNode(null);
     else if (value.type === 'nodes') setFocusNode(value.id);
   }, []);

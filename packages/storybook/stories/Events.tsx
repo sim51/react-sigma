@@ -11,8 +11,8 @@ const sigmaSettings = { allowInvalidContainer: true };
 const GraphEvents: React.FC = () => {
   const registerEvents = useRegisterEvents();
 
+  /* eslint-disable no-console */
   useEffect(() => {
-    console.log('register events');
     // Register the events
     registerEvents({
       // node events
@@ -58,6 +58,7 @@ const GraphEvents: React.FC = () => {
       updated: (event) => console.log('updated', event.x, event.y, event.angle, event.ratio),
     });
   }, [registerEvents]);
+  /* eslint-enable no-console */
 
   return null;
 };

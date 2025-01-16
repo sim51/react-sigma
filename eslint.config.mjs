@@ -20,6 +20,7 @@ export default tseslint.config(
       ...reactHooks.configs.recommended.rules,
       "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
       "react/react-in-jsx-scope": "off",
+      "no-console": ["error", { allow: ["warn", "error"] }]
     },
   },
 );

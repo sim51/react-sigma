@@ -65,7 +65,7 @@ export function useCamera(options?: CameraOptions): {
     (nodeKey: string, options?: Partial<AnimateOptions>) => {
       const nodeDisplayData = sigma.getNodeDisplayData(nodeKey);
       if (nodeDisplayData) sigma.getCamera().animate(nodeDisplayData, { ...defaultOptions, ...options });
-      else console.log(`Node ${nodeKey} not found`);
+      else console.warn(`Node ${nodeKey} not found`);
     },
     [sigma, defaultOptions],
   );

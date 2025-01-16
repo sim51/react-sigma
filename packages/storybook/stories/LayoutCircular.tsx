@@ -39,6 +39,7 @@ const RandomCircleGraph: FC = () => {
     // Apply the layout
     assign();
     // Display in the console the node's position for the layout
+    // eslint-disable-next-line no-console
     console.log(positions());
   }, [assign, loadGraph, faker.datatype, faker, randomColor, positions]);
 

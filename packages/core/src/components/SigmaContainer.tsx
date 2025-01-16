@@ -97,7 +97,6 @@ const SigmaContainerComponent = <
         if (graph) {
           sigGraph = typeof graph === 'function' ? new graph() : graph;
         }
-        console.log('new sigma instance', sigmaSettings);
         let prevCameraState: CameraState | null = null;
         if (prev) {
           prevCameraState = prev.getCamera().getState();

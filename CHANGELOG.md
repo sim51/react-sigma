@@ -1,5 +1,15 @@
 # Changelog
 
+## Version 5.0.2
+
+### Fixes
+
+- Remove some `console.log` and prevent it with an eslint config
+
+## Version 5.0.1
+
+Due to some issues with lerna when releasing the v5.0.0, I did this version.
+
 ## Version 5.0.0
 
 ### Breaking changes

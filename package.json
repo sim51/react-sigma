@@ -26,7 +26,7 @@
     "lerna:changed": "lerna changed",
     "lerna:diff": "lerna diff",
     "lerna:ls": "lerna ls",
-    "lerna:publish": "lerna publish --no-private from-package",
+    "lerna:publish": "npm run clean && npm run build && lerna publish --no-private from-package",
     "lerna:version": "lerna version",
     "lint": "eslint",
     "start": "lerna run start --parallel",
