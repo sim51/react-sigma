@@ -1,6 +1,6 @@
 {
   "name": "@react-sigma/storybook",
-  "version": "5.0.2",
+  "version": "5.0.3",
   "private": true,
   "scripts": {
     "clean": "rimraf storybook-static playwright-report test-results dist",
@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@react-sigma/core": "^5.0.2",
-    "@react-sigma/graph-search": "^5.0.2",
+    "@react-sigma/graph-search": "^5.0.3",
     "@react-sigma/layout-circlepack": "^5.0.2",
     "@react-sigma/layout-circular": "^5.0.2",
     "@react-sigma/layout-core": "^5.0.2",
