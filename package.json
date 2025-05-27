@@ -35,9 +35,9 @@
     "website": "npm run build -w @react-sigma/storybook && npm run build -w @react-sigma/website"
   },
   "dependencies": {
-    "graphology": "^0.25.4",
+    "graphology": "^0.26.0",
     "graphology-types": "^0.24.8",
-    "sigma": "^3.0.0"
+    "sigma": "^3.0.2"
   },
   "devDependencies": {
     "@faker-js/faker": "^9.3.0",
