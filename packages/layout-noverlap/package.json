@@ -1,6 +1,6 @@
 {
   "name": "@react-sigma/layout-noverlap",
-  "version": "5.0.2",
+  "version": "5.0.4",
   "description": "React Sigma - Layout noverlap",
   "author": "Benoit Simard",
   "license": "MIT",
@@ -38,7 +38,7 @@
     "start": "nodemon --watch src -e ts,tsx --exec npm run build"
   },
   "dependencies": {
-    "@react-sigma/layout-core": "^5.0.2"
+    "@react-sigma/layout-core": "^5.0.4"
   },
   "peerDependencies": {
     "graphology-layout-noverlap": "^0.4.2"
