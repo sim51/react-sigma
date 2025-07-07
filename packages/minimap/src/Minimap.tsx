@@ -47,11 +47,14 @@ export const MiniMap: FC<MiniMapProps> = ({ width, height, debounceTime }) => {
    */
   const nodeReducer = useCallback(
     (node: string) => {
-      const data = sigma.getNodeDisplayData(node)!;
+      const data = sigma.getNodeDisplayData(node);
       return {
-        ...data,
+        x: 0,
+        y: 0,
+        ...(data || {}),
         type: 'circle',
-        size: data.size * ratioHeight,
+        size: (data?.size || 1) * ratioHeight,
+        label: undefined,
       };
     },
     [sigma, ratioHeight],
