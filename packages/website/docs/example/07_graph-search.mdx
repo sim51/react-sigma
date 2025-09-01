@@ -41,6 +41,13 @@ If you need it, you can use this index in your own component. To do this, you ne
 - Use the hook [useGraphSearch](/docs/api/graph-search/functions/useGraphSearch) which return a
   [search function](/docs/api/graph-search/functions/useGraphSearch#search).
 
+:::warning
+
+Node & edge attributes are indexed with the prefix `prop_` to avoid name collision. So if you want to use the index by
+yourself, or to customize the `minisearchOptions` in the `GraphSearch` component, be ware of that.
+
+:::
+
 ## Node & Edge display
 
 This package also exposes components to display `Node` and `Edge` like they are displayed in the graph :

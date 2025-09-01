@@ -60,12 +60,15 @@ export const GraphSearchDemo: FC<{ style?: CSSProperties }> = ({ style }) => {
         <LayoutForceAtlas2Control />
       </ControlsContainer>
       <ControlsContainer position={'top-right'}>
+        {/* In this example we set minisearch options to allow searching on the node's attribute named `tag`.
+            Node & edge attributes are indexed with the prefix `prop_` to avoid name collision. */}
         <GraphSearch
           type="nodes"
           value={selectedNode ? { type: 'nodes', id: selectedNode } : null}
           onFocus={onFocus}
           onChange={onChange}
           postSearchResult={postSearchResult}
+          minisearchOptions={{ fields: ['prop_tag'] }}
         />
       </ControlsContainer>
     </SigmaContainer>
