@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 5.0.3
+
+### Fixes
+
+- Fix `sigma` killing process when `SigmaContainer` is unmount.
+
 ## Version 5.0.2
 
 ### Fixes

@@ -90,23 +90,27 @@ const SigmaContainerComponent = <
    * => create sigma
    */
   useEffect(() => {
-    setSigma((prev) => {
-      let instance: Sigma<N, E, G> | null = null;
-      if (containerRef.current !== null) {
-        let sigGraph = new Graph<N, E, G>();
-        if (graph) {
-          sigGraph = typeof graph === 'function' ? new graph() : graph;
-        }
+    let instance: Sigma<N, E, G> | null = null;
+    if (containerRef.current !== null) {
+      let sigGraph = new Graph<N, E, G>();
+      if (graph) {
+        sigGraph = typeof graph === 'function' ? new graph() : graph;
+      }
+      instance = new Sigma(sigGraph, containerRef.current, sigmaSettings);
+      setSigma((prev) => {
         let prevCameraState: CameraState | null = null;
         if (prev) {
           prevCameraState = prev.getCamera().getState();
-          prev.kill();
         }
-        instance = new Sigma(sigGraph, containerRef.current, sigmaSettings);
-        if (prevCameraState) instance.getCamera().setState(prevCameraState);
+        if (prevCameraState) instance!.getCamera().setState(prevCameraState);
+        return instance;
+      });
+    }
+    return () => {
+      if (instance) {
+        instance.kill();
       }
-      return instance;
-    });
+    };
   }, [containerRef, graph, sigmaSettings]);
 
   /**
