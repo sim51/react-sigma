@@ -1,10 +1,28 @@
 # Changelog
 
-## Version 5.0.3
+## Version 5.0.6
 
 ### Fixes
 
 - Fix `sigma` killing process when `SigmaContainer` is unmount.
+
+## Version 5.0.5
+
+### Fixes
+
+- Fix #78 on minimap
+- 
+## Version 5.0.4
+
+### Features
+
+- Upgrade deps of Sigmajs & graphology
+
+## Version 5.0.3
+
+### Features
+
+- Upgrade minsearch dep
 
 ## Version 5.0.2
 
