@@ -37,7 +37,7 @@ export interface SigmaContainerProps<
    */
   graph?: GraphType<N, E, G>;
   /**
-   * Sigma settings
+   * Sigma options
    */
   options?: Partial<SigmaOptions<N, E, G, NS, ES, GS, P>>;
   /**
@@ -104,7 +104,7 @@ const SigmaContainerComponent = <
   }, [options]);
 
   /**
-   * When graph or settings changed
+   * When graph or options changed
    * => create sigma
    */
   useEffect(() => {
