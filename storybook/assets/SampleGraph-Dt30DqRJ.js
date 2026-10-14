@@ -1,0 +1,1 @@
+import{C as t}from"./style-CJTJwj8w.js";import{t as m}from"./react-sigma_layout-circular.esm.min-J5L-4AKg.js";import{r as n}from"./index-nBX9XC1j.js";import{u as p}from"./useRandom-sd8fEZq-.js";const l=()=>{const{randomGraph:r}=p(),o=t(),{assign:a}=m({scale:100});return n.useEffect(()=>{const s=r();o(s),a()},[a,o,r]),null};export{l as S};
