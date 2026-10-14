@@ -25,7 +25,7 @@ export const CustomRender: FC<{ style?: CSSProperties }> = ({ style }) => {
   }, []);
 
   return (
-    <SigmaContainer style={style} settings={{ allowInvalidContainer: true }}>
+    <SigmaContainer style={style}>
       <SampleGraph />
       <ControlsContainer position={'bottom-right'}>
         <ZoomControl labels={{ zoomIn: 'PLUS', zoomOut: 'MINUS', reset: 'RESET' }}>

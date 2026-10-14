@@ -1,63 +1,17 @@
-import {
-  ControlsContainer,
-  FullScreenControl,
-  SigmaContainer,
-  ZoomControl,
-  useRegisterEvents,
-  useSigma,
-} from '@react-sigma/core';
+import { ControlsContainer, FullScreenControl, SigmaContainer, ZoomControl } from '@react-sigma/core';
 import '@react-sigma/core/lib/style.css';
-import { CSSProperties, FC, useEffect, useState } from 'react';
+import { CSSProperties, FC } from 'react';
 
 import { SampleGraph } from './common/SampleGraph';
 
-const GraphEvents: React.FC = () => {
-  const registerEvents = useRegisterEvents();
-  const sigma = useSigma();
-  const [draggedNode, setDraggedNode] = useState<string | null>(null);
-
-  useEffect(() => {
-    // Register the events
-    registerEvents({
-      downNode: (e) => {
-        setDraggedNode(e.node);
-        sigma.getGraph().setNodeAttribute(e.node, 'highlighted', true);
-      },
-      // On mouse move, if the drag mode is enabled, we change the position of the draggedNode
-      mousemovebody: (e) => {
-        if (!draggedNode) return;
-        // Get new position of node
-        const pos = sigma.viewportToGraph(e);
-        sigma.getGraph().setNodeAttribute(draggedNode, 'x', pos.x);
-        sigma.getGraph().setNodeAttribute(draggedNode, 'y', pos.y);
-
-        // Prevent sigma to move camera:
-        e.preventSigmaDefault();
-        e.original.preventDefault();
-        e.original.stopPropagation();
-      },
-      // On mouse up, we reset the autoscale and the dragging mode
-      mouseup: () => {
-        if (draggedNode) {
-          setDraggedNode(null);
-          sigma.getGraph().removeNodeAttribute(draggedNode, 'highlighted');
-        }
-      },
-      // Disable the autoscale at the first down interaction
-      mousedown: () => {
-        if (!sigma.getCustomBBox()) sigma.setCustomBBox(sigma.getBBox());
-      },
-    });
-  }, [registerEvents, sigma, draggedNode]);
-
-  return null;
-};
-
+/**
+ * With sigma v4, drag'n'drop feature is free, you just have to enabled it via the setting `enableNodeDrag`.
+ * Check the documentation: https://www.sigmajs.org/how-to/interactivity/drag-drop/
+ */
 export const DragNdrop: FC<{ style: CSSProperties }> = ({ style }) => {
   return (
-    <SigmaContainer style={style} settings={{ allowInvalidContainer: true }}>
-      <SampleGraph disableHoverEffect />
-      <GraphEvents />
+    <SigmaContainer style={style} options={{ settings: { enableNodeDrag: true } }}>
+      <SampleGraph />
       <ControlsContainer position={'bottom-right'}>
         <ZoomControl />
         <FullScreenControl />

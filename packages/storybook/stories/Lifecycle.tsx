@@ -20,7 +20,5 @@ export const Lifecycle: FC<{ style?: CSSProperties }> = ({ style }) => {
     };
   }, [randomGraph]);
 
-  return (
-    <>{graph ? <SigmaContainer style={style} graph={graph} settings={{ allowInvalidContainer: true }} /> : null}</>
-  );
+  return <>{graph ? <SigmaContainer style={style} graph={graph} /> : null}</>;
 };

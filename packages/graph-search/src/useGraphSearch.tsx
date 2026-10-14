@@ -2,7 +2,7 @@ import { SearchOptions } from 'minisearch';
 import { useCallback, useContext } from 'react';
 
 import { GraphSearchContext } from './context';
-import { GraphSearchOption, ItemType } from './types';
+import { GraphSearchOption, ItemsType } from './types';
 
 /**
  * Hooks that returns a function to search in the graph index.
@@ -16,7 +16,7 @@ export function useGraphSearch(searchOption?: SearchOptions) {
   const { index } = useContext(GraphSearchContext);
 
   const search = useCallback(
-    async (query: string, type?: ItemType): Promise<GraphSearchOption[]> => {
+    async (query: string, type?: ItemsType): Promise<GraphSearchOption[]> => {
       const result = index
         .search(query, {
           prefix: true,
@@ -25,7 +25,9 @@ export function useGraphSearch(searchOption?: SearchOptions) {
             label: 2,
           },
           ...(searchOption || {}),
-          filter: type ? (result) => result.type === type : undefined,
+          filter: type
+            ? (result) => (result.type === 'node' && type === 'nodes') || (result.type === 'edge' && type === 'edges')
+            : undefined,
         })
         .map((item) => ({ id: item.id, type: item.type }));
       return result;

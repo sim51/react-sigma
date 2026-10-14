@@ -1,5 +1,6 @@
 import { Attributes } from 'graphology-types';
 import Sigma from 'sigma';
+import { PrimitivesDeclaration } from 'sigma/types';
 
 import { useSigmaContext } from './context';
 
@@ -15,6 +16,10 @@ export function useSigma<
   N extends Attributes = Attributes,
   E extends Attributes = Attributes,
   G extends Attributes = Attributes,
->(): Sigma<N, E, G> {
-  return useSigmaContext<N, E, G>().sigma;
+  NS = unknown,
+  ES = unknown,
+  GS = unknown,
+  P extends PrimitivesDeclaration = PrimitivesDeclaration,
+>(): Sigma<N, E, G, NS, ES, GS, P> {
+  return useSigmaContext<N, E, G, NS, ES, GS, P>().sigma;
 }

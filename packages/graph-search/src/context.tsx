@@ -5,7 +5,7 @@ import React from 'react';
 import { FC, PropsWithChildren, createContext, useEffect, useState } from 'react';
 
 import { Document } from './types';
-import { edgeToDocument, nodeToDocument } from './utils';
+import { edgeIndexId, edgeToDocument, nodeIndexId, nodeToDocument } from './utils';
 
 export interface GraphSearchContextType {
   index: MiniSearch;
@@ -80,27 +80,27 @@ export const GraphSearchContextProvider: FC<PropsWithChildren<GraphSearchContext
 
     // Listerns to sync graphology with minisearch
     function indexNode(payload: { key: string; attributes: Attributes }) {
-      if (index.has(`nodes-${payload.key}`)) {
+      if (index.has(nodeIndexId(payload.key))) {
         index.replace(nodeToDocument(sigma, payload.key));
       } else {
         index.add(nodeToDocument(sigma, payload.key));
       }
     }
     function deleteNode(payload: { key: string; attributes: Attributes }) {
-      if (index.has(`nodes-${payload.key}`)) {
-        index.discard(`nodes-${payload.key}`);
+      if (index.has(nodeIndexId(payload.key))) {
+        index.discard(nodeIndexId(payload.key));
       }
     }
     function indexEdge(payload: { key: string; attributes: Attributes }) {
-      if (index.has(`edges-${payload.key}`)) {
+      if (index.has(edgeIndexId(payload.key))) {
         index.replace(edgeToDocument(sigma, payload.key));
       } else {
         index.add(edgeToDocument(sigma, payload.key));
       }
     }
     function deleteEdge(payload: { key: string; attributes: Attributes }) {
-      if (index.has(`edges-${payload.key}`)) {
-        index.discard(`edges-${payload.key}`);
+      if (index.has(edgeIndexId(payload.key))) {
+        index.discard(edgeIndexId(payload.key));
       }
     }
     graph.on('nodeAdded', indexNode);

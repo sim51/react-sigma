@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 
-export type ItemType = 'nodes' | 'edges';
+export type ItemType = 'node' | 'edge';
+export type ItemsType = 'nodes' | 'edges';
 
 export type Document = { itemId: string; id: string; type: ItemType; label?: string | null } & {
   [key: string]: unknown;

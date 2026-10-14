@@ -16,9 +16,9 @@ export const LayoutsControl: React.FC = () => {
   const sigma = useSigma();
   const [layout, setLayout] = useState<LayoutName>('circular');
   const [opened, setOpened] = useState<boolean>(false);
-  const layoutCircular = useLayoutCircular();
+  const layoutCircular = useLayoutCircular({ scale: 100 });
   const layoutCirclepack = useLayoutCirclepack();
-  const layoutRandom = useLayoutRandom();
+  const layoutRandom = useLayoutRandom({ scale: 100 });
   const layoutNoverlap = useLayoutNoverlap();
   const layoutForce = useLayoutForce({ maxIterations: 100 });
   const layoutForceAtlas2 = useLayoutForceAtlas2({ iterations: 100 });

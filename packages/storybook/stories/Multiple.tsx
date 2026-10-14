@@ -2,13 +2,14 @@ import { ControlsContainer, FullScreenControl, SigmaContainer, ZoomControl } fro
 import '@react-sigma/core/lib/style.css';
 import { LayoutForceAtlas2Control } from '@react-sigma/layout-forceatlas2';
 import { CSSProperties, FC, useEffect, useRef, useState } from 'react';
+import { SigmaOptions } from 'sigma/types';
 
 import { SampleGraph } from './common/SampleGraph';
 
-// Sigma settings
-const sigmaSettings = { allowInvalidContainer: true };
 // Sigma style
 const sigmaStyle: CSSProperties = { height: '50%', width: '50%', float: 'left' };
+
+const sigmaOptions: SigmaOptions = { settings: {} };
 
 export const Multiple: FC<{ style?: CSSProperties }> = ({ style }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -23,7 +24,7 @@ export const Multiple: FC<{ style?: CSSProperties }> = ({ style }) => {
 
   return (
     <div ref={containerRef} style={{ height: '100%', ...style }}>
-      <SigmaContainer style={sigmaStyle} settings={sigmaSettings}>
+      <SigmaContainer style={sigmaStyle} options={sigmaOptions}>
         <SampleGraph />
         <ControlsContainer position={'top-left'}>
           <ZoomControl />
@@ -31,7 +32,7 @@ export const Multiple: FC<{ style?: CSSProperties }> = ({ style }) => {
           <LayoutForceAtlas2Control autoRunFor={faTime || 2000} />
         </ControlsContainer>
       </SigmaContainer>
-      <SigmaContainer settings={sigmaSettings} style={sigmaStyle}>
+      <SigmaContainer style={sigmaStyle} options={sigmaOptions}>
         <SampleGraph />
         <ControlsContainer position={'top-right'}>
           <ZoomControl />
@@ -39,7 +40,7 @@ export const Multiple: FC<{ style?: CSSProperties }> = ({ style }) => {
           <LayoutForceAtlas2Control autoRunFor={faTime || 2000} />
         </ControlsContainer>
       </SigmaContainer>
-      <SigmaContainer settings={sigmaSettings} style={sigmaStyle}>
+      <SigmaContainer style={sigmaStyle} options={sigmaOptions}>
         <SampleGraph />
         <ControlsContainer position={'bottom-left'}>
           <ZoomControl />
@@ -47,7 +48,7 @@ export const Multiple: FC<{ style?: CSSProperties }> = ({ style }) => {
           <LayoutForceAtlas2Control autoRunFor={faTime || 2000} />
         </ControlsContainer>
       </SigmaContainer>
-      <SigmaContainer settings={sigmaSettings} style={sigmaStyle}>
+      <SigmaContainer style={sigmaStyle} options={sigmaOptions}>
         <SampleGraph />
         <ControlsContainer position={'bottom-right'}>
           <ZoomControl />

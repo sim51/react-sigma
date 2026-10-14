@@ -1,4 +1,3 @@
-import { Attributes } from 'graphology-types';
 import { useCallback } from 'react';
 import { Settings } from 'sigma/settings';
 
@@ -19,17 +18,13 @@ import { useSigmaContext } from './context';
  *```
  * @category Hook
  */
-export function useSetSettings<
-  N extends Attributes = Attributes,
-  E extends Attributes = Attributes,
-  G extends Attributes = Attributes,
->(): (newSettings: Partial<Settings<N, E, G>>) => void {
-  const { sigma } = useSigmaContext<N, E, G>();
+export function useSetSettings(): (newSettings: Partial<Settings>) => void {
+  const { sigma } = useSigmaContext();
 
   const setSettings = useCallback(
-    (newSettings: Partial<Settings<N, E, G>>) => {
+    (newSettings: Partial<Settings>) => {
       if (!sigma) return;
-      (Object.keys(newSettings) as Array<keyof Settings<N, E, G>>).forEach((key) => {
+      (Object.keys(newSettings) as Array<keyof Settings>).forEach((key) => {
         // as never because of https://stackoverflow.com/questions/58656353/how-to-avoid-dynamic-keyof-object-assign-error-in-typescript
         sigma.setSetting(key, newSettings[key] as never);
       });

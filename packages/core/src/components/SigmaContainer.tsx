@@ -14,8 +14,7 @@ import React, {
   useState,
 } from 'react';
 import { Sigma } from 'sigma';
-import { Settings } from 'sigma/settings';
-import { CameraState } from 'sigma/types';
+import { CameraState, PrimitivesDeclaration, SigmaOptions } from 'sigma/types';
 
 import { SigmaContextInterface, SigmaProvider } from '../hooks/context';
 import { GraphType } from '../types';
@@ -24,7 +23,15 @@ import { isEqual } from '../utils';
 /**
  * Properties for `SigmaContainer` component
  */
-export interface SigmaContainerProps<N extends Attributes, E extends Attributes, G extends Attributes> {
+export interface SigmaContainerProps<
+  N extends Attributes = Attributes,
+  E extends Attributes = Attributes,
+  G extends Attributes = Attributes,
+  NS = unknown,
+  ES = unknown,
+  GS = unknown,
+  P extends PrimitivesDeclaration = PrimitivesDeclaration,
+> {
   /**
    * Graphology instance or constructor
    */
@@ -32,7 +39,7 @@ export interface SigmaContainerProps<N extends Attributes, E extends Attributes,
   /**
    * Sigma settings
    */
-  settings?: Partial<Settings<N, E, G>>;
+  options?: Partial<SigmaOptions<N, E, G, NS, ES, GS, P>>;
   /**
    * HTML id
    */
@@ -64,9 +71,20 @@ const SigmaContainerComponent = <
   N extends Attributes = Attributes,
   E extends Attributes = Attributes,
   G extends Attributes = Attributes,
+  NS = unknown,
+  ES = unknown,
+  GS = unknown,
+  P extends PrimitivesDeclaration = PrimitivesDeclaration,
 >(
-  { graph, id, className, style, settings = {}, children }: PropsWithChildren<SigmaContainerProps<N, E, G>>,
-  ref: Ref<Sigma<N, E, G> | null>,
+  {
+    graph,
+    id,
+    className,
+    style,
+    options: options = {},
+    children,
+  }: PropsWithChildren<SigmaContainerProps<N, E, G, NS, ES, GS, P>>,
+  ref: Ref<Sigma<N, E, G, NS, ES, GS, P> | null>,
 ) => {
   // Root HTML element
   const rootRef = useRef<HTMLDivElement>(null);
@@ -75,28 +93,28 @@ const SigmaContainerComponent = <
   // Common html props for the container
   const props = { className: `react-sigma ${className ? className : ''}`, id, style };
   // Sigma instance
-  const [sigma, setSigma] = useState<Sigma<N, E, G> | null>(null);
+  const [sigma, setSigma] = useState<Sigma<N, E, G, NS, ES, GS, P> | null>(null);
   // Sigma settings
-  const [sigmaSettings, setSigmaSettings] = useState<Partial<Settings<N, E, G>>>(settings);
+  const [sigmaOptions, setSigmaOptions] = useState<SigmaOptions<N, E, G, NS, ES, GS, P>>(options);
   useEffect(() => {
-    setSigmaSettings((prev) => {
-      if (!isEqual(prev, settings)) return settings;
+    setSigmaOptions((prev) => {
+      if (!isEqual(prev, options)) return options;
       return prev;
     });
-  }, [settings]);
+  }, [options]);
 
   /**
    * When graph or settings changed
    * => create sigma
    */
   useEffect(() => {
-    let instance: Sigma<N, E, G> | null = null;
+    let instance: Sigma<N, E, G, NS, ES, GS, P> | null = null;
     if (containerRef.current !== null) {
       let sigGraph = new Graph<N, E, G>();
       if (graph) {
         sigGraph = typeof graph === 'function' ? new graph() : graph;
       }
-      instance = new Sigma(sigGraph, containerRef.current, sigmaSettings);
+      instance = new Sigma<N, E, G, NS, ES, GS, P>(sigGraph, containerRef.current, sigmaOptions);
       setSigma((prev) => {
         let prevCameraState: CameraState | null = null;
         if (prev) {
@@ -111,12 +129,14 @@ const SigmaContainerComponent = <
         instance.kill();
       }
     };
-  }, [containerRef, graph, sigmaSettings]);
+  }, [containerRef, graph, sigmaOptions]);
 
   /**
    * Forward the sigma ref
    */
-  useImperativeHandle<Sigma<N, E, G> | null, Sigma<N, E, G> | null>(ref, () => sigma, [sigma]);
+  useImperativeHandle<Sigma<N, E, G, NS, ES, GS, P> | null, Sigma<N, E, G, NS, ES, GS, P> | null>(ref, () => sigma, [
+    sigma,
+  ]);
 
   /**
    * Memoify the context

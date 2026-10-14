@@ -47,28 +47,14 @@ export const EdgeById: FC<{ id: string; labels?: Labels }> = ({ id, labels }) =>
   const sigma = useSigma();
 
   const edgeProps = useMemo(() => {
-    const attrs = sigma.getGraph().getEdgeAttributes(id);
-    const nodeReducer = sigma.getSetting('nodeReducer');
-    const edgeReducer = sigma.getSetting('edgeReducer');
-
-    const sourceAttrs = sigma.getGraph().getNodeAttributes(sigma.getGraph().source(id));
-    const targetAttrs = sigma.getGraph().getNodeAttributes(sigma.getGraph().target(id));
+    const attrs = sigma.getEdgeDisplayData(id);
+    const source = sigma.getNodeDisplayData(sigma.getGraph().source(id))!;
+    const target = sigma.getNodeDisplayData(sigma.getGraph().target(id))!;
 
     return {
-      color: sigma.getSetting('defaultEdgeColor'),
-      directed: sigma.getGraph().isDirected(id),
       ...attrs,
-      ...(edgeReducer ? edgeReducer(id, attrs) : {}),
-      source: {
-        color: sigma.getSetting('defaultNodeColor'),
-        ...sourceAttrs,
-        ...(nodeReducer ? nodeReducer(id, sourceAttrs) : {}),
-      },
-      target: {
-        color: sigma.getSetting('defaultNodeColor'),
-        ...targetAttrs,
-        ...(nodeReducer ? nodeReducer(id, targetAttrs) : {}),
-      },
+      source,
+      target,
     };
   }, [sigma, id]);
   return <Edge {...edgeProps} labels={labels} />;

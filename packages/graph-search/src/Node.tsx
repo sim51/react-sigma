@@ -34,15 +34,6 @@ export const Node: FC<NodeProps> = ({ label, color, hidden, labels = {} }) => {
  */
 export const NodeById: FC<{ id: string; labels?: Labels }> = ({ id, labels }) => {
   const sigma = useSigma();
-
-  const nodeProps = useMemo(() => {
-    const attrs = sigma.getGraph().getNodeAttributes(id);
-    const reducer = sigma.getSetting('nodeReducer');
-    return {
-      color: sigma.getSetting('defaultNodeColor'),
-      ...attrs,
-      ...(reducer ? reducer(id, attrs) : {}),
-    };
-  }, [sigma, id]);
+  const nodeProps = useMemo(() => sigma.getNodeDisplayData(id), [sigma, id]);
   return <Node {...nodeProps} labels={labels} />;
 };

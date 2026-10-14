@@ -42,7 +42,7 @@
   "peerDependencies": {
     "graphology": "^0.26.0",
     "react": "^18.0.0 || ^19.0.0",
-    "sigma": "^3.0.2"
+    "sigma": "^4.0.0"
   },
   "gitHead": "a64711826b2ee03f4ddd702a87b693ac94e9ae70"
 }

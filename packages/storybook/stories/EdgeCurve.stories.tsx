@@ -6,7 +6,7 @@ import source from './MultiDirectedGraph?raw';
 const meta: Meta<typeof MultiDirectedGraph> = {
   component: MultiDirectedGraph,
   id: 'edge-curve',
-  title: 'Sigma programs',
+  title: 'Sigma rendering',
 };
 
 export default meta;

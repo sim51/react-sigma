@@ -31,7 +31,7 @@ export function isEqual(x: unknown, y: unknown): boolean {
  * @category Utils
  */
 export function debounce<A = unknown, R = void>(fn: (args: A) => R, ms: number): (args: A) => Promise<Awaited<R>> {
-  let timer: NodeJS.Timeout;
+  let timer: number | null;
 
   const debouncedFunc = (args: A): Promise<Awaited<R>> =>
     new Promise((resolve) => {

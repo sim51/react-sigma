@@ -1,9 +1,8 @@
 import { Attributes } from 'graphology-types';
 import { useEffect, useState } from 'react';
-import { CameraEvents, MouseCaptorEvents, SigmaEvents, TouchCaptorEvents } from 'sigma/types';
+import { CameraEvents, MouseCaptorEvents, PrimitivesDeclaration, SigmaEvents, TouchCaptorEvents } from 'sigma/types';
 
 import { EventHandlers } from '../types';
-import { useSetSettings } from './useSetSettings';
 import { useSigma } from './useSigma';
 
 type EventType = keyof EventHandlers;
@@ -13,39 +12,67 @@ function keySet<T>(record: Record<keyof T, unknown>): Set<string> {
 }
 
 const sigmaEvents = keySet<SigmaEvents>({
+  // node events
   clickNode: true,
   rightClickNode: true,
   downNode: true,
+  upNode: true,
   enterNode: true,
   leaveNode: true,
   doubleClickNode: true,
   wheelNode: true,
+  // node's label events
+  clickNodeLabel: true,
+  rightClickNodeLabel: true,
+  doubleClickNodeLabel: true,
+  wheelNodeLabel: true,
+  downNodeLabel: true,
+  upNodeLabel: true,
+  enterNodeLabel: true,
+  leaveNodeLabel: true,
+  // edge events
   clickEdge: true,
   rightClickEdge: true,
   downEdge: true,
+  upEdge: true,
   enterEdge: true,
   leaveEdge: true,
   doubleClickEdge: true,
   wheelEdge: true,
+  // edge's label event
+  clickEdgeLabel: true,
+  rightClickEdgeLabel: true,
+  doubleClickEdgeLabel: true,
+  wheelEdgeLabel: true,
+  downEdgeLabel: true,
+  upEdgeLabel: true,
+  enterEdgeLabel: true,
+  leaveEdgeLabel: true,
+  // stage events
   clickStage: true,
   rightClickStage: true,
   downStage: true,
   doubleClickStage: true,
   wheelStage: true,
+  upStage: true,
+  enterStage: true,
+  leaveStage: true,
+  // misc
   beforeRender: true,
   afterRender: true,
   kill: true,
-  upStage: true,
-  upEdge: true,
-  upNode: true,
-  enterStage: true,
-  leaveStage: true,
   resize: true,
   afterClear: true,
   afterProcess: true,
   beforeClear: true,
   beforeProcess: true,
   moveBody: true,
+  nodeDragStart: true,
+  nodeDrag: true,
+  nodeDragEnd: true,
+  afterTexturesUpload: true,
+  webglContextLost: true,
+  webglContextRestored: true,
 });
 
 const mouseEvents = keySet<MouseCaptorEvents>({
@@ -69,7 +96,11 @@ const touchEvents = keySet<TouchCaptorEvents>({
   tap: true,
   doubletap: true,
 });
-const cameraEvents = keySet<CameraEvents>({ updated: true });
+const cameraEvents = keySet<CameraEvents>({
+  updated: true,
+  animationStart: undefined,
+  animationEnd: undefined,
+});
 
 /**
  * React hook that helps you to listen Sigma’s events.
@@ -95,9 +126,12 @@ export function useRegisterEvents<
   N extends Attributes = Attributes,
   E extends Attributes = Attributes,
   G extends Attributes = Attributes,
+  NS = unknown,
+  ES = unknown,
+  GS = unknown,
+  P extends PrimitivesDeclaration = PrimitivesDeclaration,
 >(): (eventHandlers: Partial<EventHandlers>) => void {
-  const sigma = useSigma<N, E, G>();
-  const setSettings = useSetSettings<N, E, G>();
+  const sigma = useSigma<N, E, G, NS, ES, GS, P>();
   const [eventHandlers, setEventHandlers] = useState<Partial<EventHandlers>>({});
 
   useEffect(() => {
@@ -148,7 +182,7 @@ export function useRegisterEvents<
         });
       }
     };
-  }, [sigma, eventHandlers, setSettings]);
+  }, [sigma, eventHandlers]);
 
   return setEventHandlers;
 }

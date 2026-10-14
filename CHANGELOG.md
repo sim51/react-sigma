@@ -1,5 +1,20 @@
 # Changelog
 
+## Version 6.0.0
+
+### Features
+
+- Upgrade to the v4 of Sigma.js. Please check its
+  [changelog](https://github.com/jacomyal/sigma.js/blob/main/CHANGELOG.md#400) and its
+  [migration guide](https://www.sigmajs.org/how-to/technical/migration-v3-v4/)
+
+### Breaking changes
+
+- `SigmaContainer` takes an `options` instead of a `settings` to reflect sigma.js constructor. For an easy upgrade, you
+  can change your code to `<SigmaContainer options={{settings}} ...>`
+- `graph-search` index has changed, node/edge ID are stored in the format `node¤{ID}` (resp. `edge¤{id}`) and the `type`
+  have changed from `nodes` to `node` (resp. `edges` to `edge`)
+
 ## Version 5.0.6
 
 ### Fixes
@@ -11,7 +26,7 @@
 ### Fixes
 
 - Fix #78 on minimap
-- 
+
 ## Version 5.0.4
 
 ### Features
@@ -38,7 +53,9 @@ Due to some issues with lerna when releasing the v5.0.0, I did this version.
 
 ### Breaking changes
 
-- CSS has been renamed `style.css`, so you must change `import "@react-sigma/core/lib/style.css";` by `import "@react-sigma/core/lib/react-sigma.min.css";`. Now the rollup config is shared, and for each module that export a css file, it will be named `style.css`.
+- CSS has been renamed `style.css`, so you must change `import "@react-sigma/core/lib/style.css";` by
+  `import "@react-sigma/core/lib/react-sigma.min.css";`. Now the rollup config is shared, and for each module that
+  export a css file, it will be named `style.css`.
 - `SearchControl` in `core` has been removed. A new module called `graph-search` replace it.
 
 ### Features
@@ -77,25 +94,30 @@ Due to some issues with lerna when releasing the v5.0.0, I did this version.
 - Refacto project structure
 - Replace `example` project by a storybook
 - Replace E2E framework by playwright, and run it on the storybook
-- Using stories in website example 
-- Fully graph typed API (see [#58](https://github.com/sim51/react-sigma/issues/58)). Component & hooks take generic types for node, edge & graph attributs. Exemple for the load graph hook :
+- Using stories in website example
+- Fully graph typed API (see [#58](https://github.com/sim51/react-sigma/issues/58)). Component & hooks take generic
+  types for node, edge & graph attributs. Exemple for the load graph hook :
+
 ```tsx
-const loadGraph = useLoadGraph<{label:string, x:number, y:number}, {label:string, size:number}>();
+const loadGraph = useLoadGraph<{ label: string; x: number; y: number }, { label: string; size: number }>();
 ```
 
 ### Breaking changes
 
 - React-sigma doesn't depends anymore to lodash.
 
-- The sigma setting `allowInvalidContainer` is no more set per default. You have to pass it to the container (check above). 
+- The sigma setting `allowInvalidContainer` is no more set per default. You have to pass it to the container (check
+  above).
 
-- When you register events on edges, we don't set the correspondig settings anymore, like `enableEdgeClickEvents` (see [#49](https://github.com/sim51/react-sigma/issues/49)).
+- When you register events on edges, we don't set the correspondig settings anymore, like `enableEdgeClickEvents` (see
+  [#49](https://github.com/sim51/react-sigma/issues/49)).
 
 ## Version 3.4.2
 
 ### Fixes
 
-- [#55](https://github.com/sim51/react-sigma/issues/55) Fix the order in export in package.json (default entry should be the last)
+- [#55](https://github.com/sim51/react-sigma/issues/55) Fix the order in export in package.json (default entry should be
+  the last)
 
 ## Version 3.4.1
 
@@ -114,7 +136,8 @@ const loadGraph = useLoadGraph<{label:string, x:number, y:number}, {label:string
 ### Feature
 
 - [#43](https://github.com/sim51/react-sigma/issues/43) Allow giving a different container for fullscreen control
-- [#46](https://github.com/sim51/react-sigma/issues/46) Adding `resize`, `beforeRender` & `afterRender` to `useRegisterEvents`
+- [#46](https://github.com/sim51/react-sigma/issues/46) Adding `resize`, `beforeRender` & `afterRender` to
+  `useRegisterEvents`
 
 ## Version 3.2.0
 
@@ -130,7 +153,8 @@ const loadGraph = useLoadGraph<{label:string, x:number, y:number}, {label:string
 
 ### Fixes
 
-- [#38](https://github.com/sim51/react-sigma/pull/38) Adding `mousemovebody` to `useRegisterEvents` (thanks [jakobhansen-blai](https://github.com/jakobhansen-blai) !)
+- [#38](https://github.com/sim51/react-sigma/pull/38) Adding `mousemovebody` to `useRegisterEvents` (thanks
+  [jakobhansen-blai](https://github.com/jakobhansen-blai) !)
 
 ### Features
 
@@ -163,7 +187,8 @@ const loadGraph = useLoadGraph<{label:string, x:number, y:number}, {label:string
 
 ### Fixes
 
-- Fix touch events - [#28](https://github.com/sim51/react-sigma/pull/28) (thanks to [@grothendeick](https://github.com/grothendeick))
+- Fix touch events - [#28](https://github.com/sim51/react-sigma/pull/28) (thanks to
+  [@grothendeick](https://github.com/grothendeick))
 - Fix `autoRunFor` on layout worker when value is set to `0` (ie. no timer)
 - Fix CSS for borders issues
 
@@ -173,8 +198,7 @@ Version 3.0.1 has missing files in npm binaries.
 
 ## Version 3.0.0
 
-Version 3.0.0 has been partially published due npm OTP issue.
-That's why the version 3.0.1 has been released.
+Version 3.0.0 has been partially published due npm OTP issue. That's why the version 3.0.1 has been released.
 
 ## Version 2.0.2
 
@@ -194,13 +218,15 @@ That's why the version 3.0.1 has been released.
 - **Project structure :** mono-repo with multiple projects
 - Possibility to initialize the `SigmaContainer` with a graph
 - Adding all layouts that are available in graphology
-- Adding hooks to manage camera, zoom, fullscreen, context. Standard component are using those hooks, so it's easy to rewrite them (if needed)
+- Adding hooks to manage camera, zoom, fullscreen, context. Standard component are using those hooks, so it's easy to
+  rewrite them (if needed)
 
 ### Breaking changes
 
 - Sigma React div class name has changed from `react-sigma-v2` to `react-sigma`
 - Component `ForceAtlasControl` has been rename `LayoutForceAtlasControl`
-- Components of type control don't take anymore properties to customize the DOM button. We use children instead now. For controls with multiple button, the child order is important.
+- Components of type control don't take anymore properties to customize the DOM button. We use children instead now. For
+  controls with multiple button, the child order is important.
 
 ```jsx
 <FullScreenControl customEnterFullScreen={<BsArrowsFullscreen />} customExitFullScreen={<BsFullscreenExit />} />

@@ -21,7 +21,7 @@ const RandomCircleGraph: FC = () => {
     for (let i = 0; i < order; i++) {
       graph.addNode(i, {
         label: faker.person.fullName(),
-        size: faker.number.int({ min: 4, max: 20 }),
+        size: faker.number.int({ min: 1, max: 20 }),
         color: randomColor(),
         x: 0,
         y: 0,
@@ -48,7 +48,7 @@ const RandomCircleGraph: FC = () => {
 
 export const LayoutCircular: FC<{ style: CSSProperties }> = ({ style }) => {
   return (
-    <SigmaContainer style={style} settings={{ allowInvalidContainer: true }}>
+    <SigmaContainer style={style} options={{ settings: { itemSizesReference: 'screen' } }}>
       <RandomCircleGraph />
     </SigmaContainer>
   );

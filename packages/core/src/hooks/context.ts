@@ -1,13 +1,18 @@
 import { Attributes } from 'graphology-types';
 import { createContext, useContext } from 'react';
 import Sigma from 'sigma';
+import { PrimitivesDeclaration } from 'sigma/types';
 
 export interface SigmaContextInterface<
   N extends Attributes = Attributes,
   E extends Attributes = Attributes,
   G extends Attributes = Attributes,
+  NS = unknown,
+  ES = unknown,
+  GS = unknown,
+  P extends PrimitivesDeclaration = PrimitivesDeclaration,
 > {
-  sigma: Sigma<N, E, G>;
+  sigma: Sigma<N, E, G, NS, ES, GS, P>;
   container: HTMLElement;
 }
 
@@ -36,11 +41,15 @@ export function useSigmaContext<
   N extends Attributes = Attributes,
   E extends Attributes = Attributes,
   G extends Attributes = Attributes,
->(): SigmaContextInterface<N, E, G> {
+  NS = unknown,
+  ES = unknown,
+  GS = unknown,
+  P extends PrimitivesDeclaration = PrimitivesDeclaration,
+>(): SigmaContextInterface<N, E, G, NS, ES, GS, P> {
   const context = useContext(SigmaContext);
   if (context == null) {
     throw new Error('No context provided: useSigmaContext() can only be used in a descendant of <SigmaContainer>');
   }
   // cast context to the one with good generics
-  return context as unknown as SigmaContextInterface<N, E, G>;
+  return context as unknown as SigmaContextInterface<N, E, G, NS, ES, GS, P>;
 }

@@ -1,6 +1,8 @@
 import { SigmaContainer, debounce, useSigma } from '@react-sigma/core';
-import React, { FC, useCallback, useEffect, useState } from 'react';
-import { Sigma } from 'sigma';
+import { Attributes } from 'graphology-types';
+import React, { FC, useEffect, useMemo, useState } from 'react';
+import { DEFAULT_STYLES, Sigma } from 'sigma';
+import { SigmaOptions } from 'sigma/types';
 
 export interface MiniMapProps {
   /**
@@ -37,33 +39,42 @@ export const MiniMap: FC<MiniMapProps> = ({ width, height, debounceTime }) => {
    */
   useEffect(() => {
     if (minimap) {
-      minimap.getCamera().disable();
+      minimap.getCamera().enabled = false;
       setRatioHeight(minimap.getContainer().clientHeight / sigma.getContainer().clientHeight);
     }
   }, [minimap, sigma]);
 
-  /**
-   * Minimap node reducer based on the one used in the main sigma instance.
-   */
-  const nodeReducer = useCallback(
-    (node: string) => {
-      const data = sigma.getNodeDisplayData(node);
-      return {
-        x: 0,
-        y: 0,
-        ...(data || {}),
-        type: 'circle',
-        size: (data?.size || 1) * ratioHeight,
-        label: undefined,
-      };
-    },
-    [sigma, ratioHeight],
-  );
-
-  /**
-   * Minimap edge reducer => do not display edges.
-   */
-  const edgeReducer = useCallback((_edge: string) => ({ hidden: true }), []);
+  const sigmaOptions: SigmaOptions = useMemo(() => {
+    const settings = sigma.getSettings();
+    return {
+      settings: {
+        ...settings,
+        renderLabels: false,
+        maxCameraRatio: 1,
+        minCameraRatio: 1,
+        stagePadding: 2,
+        enableEdgeEvents: false,
+        enableNodeDrag: false,
+        enableCameraRotation: true,
+      },
+      styles: {
+        edges: [{ visibility: 'hidden' }],
+        nodes: [
+          DEFAULT_STYLES.nodes,
+          ...(settings.itemSizesReference === 'screen'
+            ? [
+                {
+                  size: (attributes: Attributes) => {
+                    return (attributes.size as number) * ratioHeight;
+                  },
+                },
+              ]
+            : []),
+          //,
+        ],
+      },
+    };
+  }, [sigma, ratioHeight]);
 
   /**
    * Update the viewbox of the minimap based on the main sigma instance camera,
@@ -97,19 +108,7 @@ export const MiniMap: FC<MiniMapProps> = ({ width, height, debounceTime }) => {
   }, [sigma, minimap, setView, debounceTime]);
 
   return (
-    <SigmaContainer
-      ref={setMinimap}
-      settings={{
-        renderLabels: false,
-        maxCameraRatio: 1,
-        minCameraRatio: 1,
-        stagePadding: 2,
-        nodeReducer,
-        edgeReducer,
-      }}
-      style={{ width, height }}
-      graph={sigma.getGraph()}
-    >
+    <SigmaContainer ref={setMinimap} options={sigmaOptions} style={{ width, height }} graph={sigma.getGraph()}>
       <div
         className="overlay"
         style={{

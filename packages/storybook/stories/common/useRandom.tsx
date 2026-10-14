@@ -47,16 +47,16 @@ export const useRandom = () => {
     graph.nodes().forEach((node: string) => {
       graph.mergeNodeAttributes(node, {
         label: faker.person.fullName(),
-        size: faker.number.int({ min: 4, max: 20 }),
+        size: faker.number.int({ min: 1, max: 5 }),
         color: randomColor(),
-        x: Math.random(),
-        y: Math.random(),
+        x: Math.random() * 100,
+        y: Math.random() * 100,
         // for node-border
         borderColor: randomColor(),
         borderSize: faker.number.float({ min: 0, max: 1, multipleOf: 0.1 }),
         // for node-image
         pictoColor: randomColor(),
-        image: faker.image.urlLoremFlickr(),
+        image: faker.image.url(),
       });
     });
     return graph as Graph<NodeType, EdgeType>;

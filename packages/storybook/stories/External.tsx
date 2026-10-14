@@ -21,7 +21,5 @@ export const External: FC<{ style?: CSSProperties }> = ({ style }) => {
     }
   }, [sigma]);
 
-  return (
-    <SigmaContainer ref={setSigma} settings={{ allowInvalidContainer: true, renderLabels: false }} style={style} />
-  );
+  return <SigmaContainer ref={setSigma} options={{ settings: { itemSizesReference: 'screen' } }} style={style} />;
 };

@@ -35,21 +35,21 @@ export function useCamera(options?: CameraOptions): {
 
   const zoomIn = useCallback(
     (options?: CameraOptions) => {
-      sigma.getCamera().animatedZoom({ ...defaultOptions, ...options });
+      sigma.getCamera().zoomIn({ ...defaultOptions, ...options });
     },
     [sigma, defaultOptions],
   );
 
   const zoomOut = useCallback(
     (options?: CameraOptions) => {
-      sigma.getCamera().animatedUnzoom({ ...defaultOptions, ...options });
+      sigma.getCamera().zoomOut({ ...defaultOptions, ...options });
     },
     [sigma, defaultOptions],
   );
 
   const reset = useCallback(
     (options?: Partial<AnimateOptions>) => {
-      sigma.getCamera().animatedReset({ ...defaultOptions, ...options });
+      sigma.getCamera().reset({ ...defaultOptions, ...options });
     },
     [sigma, defaultOptions],
   );

@@ -37,18 +37,17 @@
   "dependencies": {
     "graphology": "^0.26.0",
     "graphology-types": "^0.24.8",
-    "sigma": "^3.0.2"
+    "sigma": "^4.0.1"
   },
   "devDependencies": {
-    "@faker-js/faker": "^9.3.0",
+    "@faker-js/faker": "^10.6.0",
     "@playwright/test": "^1.49.1",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.1.2",
     "@rollup/plugin-url": "^8.0.2",
-    "@sigma/edge-curve": "^3.1.0",
-    "@sigma/node-border": "^3.0.0",
-    "@sigma/node-image": "^3.0.0",
-    "@sigma/node-piechart": "^3.0.0",
+    "@sigma/node-border": "^4.0.0",
+    "@sigma/node-image": "^4.0.0",
+    "@sigma/node-piechart": "^4.0.0",
     "@storybook/addon-essentials": "^8.4.7",
     "@storybook/addon-interactions": "^8.4.7",
     "@storybook/addon-links": "^8.4.7",
@@ -87,7 +86,7 @@
     "seedrandom": "^3.0.5",
     "storybook": "^8.4.7",
     "tslib": "^2.8.1",
-    "typescript": "^5.7.3",
-    "typescript-eslint": "^8.20.0"
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.71.2"
   }
 }

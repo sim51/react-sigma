@@ -6,7 +6,7 @@ import source from './NodeBorder?raw';
 const meta: Meta<typeof NodeBorder> = {
   component: NodeBorder,
   id: 'node-border',
-  title: 'Sigma programs',
+  title: 'Sigma rendering',
 };
 
 export default meta;

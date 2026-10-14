@@ -4,9 +4,6 @@ import { CSSProperties, FC, useEffect } from 'react';
 
 import { SampleGraph } from './common/SampleGraph';
 
-// Sigma settings
-const sigmaSettings = { allowInvalidContainer: true };
-
 // Create the Component that listen to all events
 const GraphEvents: React.FC = () => {
   const registerEvents = useRegisterEvents();
@@ -65,7 +62,7 @@ const GraphEvents: React.FC = () => {
 
 export const Events: FC<{ style?: CSSProperties }> = ({ style }) => {
   return (
-    <SigmaContainer style={style} settings={sigmaSettings}>
+    <SigmaContainer style={style}>
       <SampleGraph />
       <GraphEvents />
     </SigmaContainer>

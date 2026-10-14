@@ -1,27 +1,28 @@
 import { SigmaContainer, useLoadGraph } from '@react-sigma/core';
 import '@react-sigma/core/lib/style.css';
-import EdgeCurveProgram, { DEFAULT_EDGE_CURVATURE, indexParallelEdgesIndex } from '@sigma/edge-curve';
 import { MultiDirectedGraph as MultiGraphConstructor } from 'graphology';
-import { CSSProperties, FC, useEffect, useMemo } from 'react';
-import { EdgeArrowProgram } from 'sigma/rendering';
+import { CSSProperties, FC, useEffect } from 'react';
+import { DEFAULT_STYLES } from 'sigma';
+import { extremityArrow, layerPlain, pathCurved, pathLine, pathLoop } from 'sigma/rendering';
+import { SigmaOptions } from 'sigma/types';
 
 import { useRandom } from './common/useRandom';
 
-interface NodeType {
+type NodeType = {
   x: number;
   y: number;
   label: string;
   size: number;
   color: string;
-}
-interface EdgeType {
+};
+type EdgeType = {
   type?: string;
   label?: string;
   size?: number;
   curvature?: number;
   parallelIndex?: number;
   parallelMaxIndex?: number;
-}
+};
 
 const MyGraph: React.FC = () => {
   const { faker, randomColor } = useRandom();
@@ -34,74 +35,101 @@ const MyGraph: React.FC = () => {
     graph.addNode('a', {
       x: 0,
       y: 0,
-      size: faker.number.int({ min: 4, max: 20 }),
+      size: faker.number.float({ min: 0.1, max: 0.3, multipleOf: 0.05 }),
       color: randomColor(),
       label: faker.person.fullName(),
     });
     graph.addNode('b', {
       x: 1,
       y: -1,
-      size: faker.number.int({ min: 4, max: 20 }),
+      size: faker.number.float({ min: 0.1, max: 0.3, multipleOf: 0.05 }),
       color: randomColor(),
       label: faker.person.fullName(),
     });
     graph.addNode('c', {
       x: 3,
       y: -2,
-      size: faker.number.int({ min: 4, max: 20 }),
+      size: faker.number.float({ min: 0.1, max: 0.3, multipleOf: 0.05 }),
       color: randomColor(),
       label: faker.person.fullName(),
     });
     graph.addNode('d', {
       x: 1,
       y: -3,
-      size: faker.number.int({ min: 4, max: 20 }),
+      size: faker.number.float({ min: 0.1, max: 0.3, multipleOf: 0.05 }),
       color: randomColor(),
       label: faker.person.fullName(),
     });
     graph.addNode('e', {
       x: 3,
       y: -4,
-      size: faker.number.int({ min: 4, max: 20 }),
+      size: faker.number.float({ min: 0.1, max: 0.3, multipleOf: 0.05 }),
       color: randomColor(),
       label: faker.person.fullName(),
     });
     graph.addNode('f', {
       x: 4,
       y: -5,
-      size: faker.number.int({ min: 4, max: 20 }),
+      size: faker.number.float({ min: 0.1, max: 0.3, multipleOf: 0.05 }),
       color: randomColor(),
       label: faker.person.fullName(),
     });
 
-    graph.addEdge('a', 'b', { label: faker.date.anytime().toISOString(), size: faker.number.int({ min: 1, max: 5 }) });
-    graph.addEdge('b', 'c', { label: faker.date.anytime().toISOString(), size: faker.number.int({ min: 1, max: 5 }) });
-    graph.addEdge('b', 'd', { label: faker.date.anytime().toISOString(), size: faker.number.int({ min: 1, max: 5 }) });
-    graph.addEdge('c', 'b', { label: faker.date.anytime().toISOString(), size: faker.number.int({ min: 1, max: 5 }) });
-    graph.addEdge('c', 'e', { label: faker.date.anytime().toISOString(), size: faker.number.int({ min: 1, max: 5 }) });
-    graph.addEdge('d', 'c', { label: faker.date.anytime().toISOString(), size: faker.number.int({ min: 1, max: 5 }) });
-    graph.addEdge('d', 'e', { label: faker.date.anytime().toISOString(), size: faker.number.int({ min: 1, max: 5 }) });
-    graph.addEdge('d', 'e', { label: faker.date.anytime().toISOString(), size: faker.number.int({ min: 1, max: 5 }) });
-    graph.addEdge('d', 'e', { label: faker.date.anytime().toISOString(), size: faker.number.int({ min: 1, max: 5 }) });
-    graph.addEdge('d', 'e', { label: faker.date.anytime().toISOString(), size: faker.number.int({ min: 1, max: 5 }) });
-    graph.addEdge('e', 'd', { label: faker.date.anytime().toISOString(), size: faker.number.int({ min: 1, max: 5 }) });
-    graph.addEdge('e', 'f', { label: faker.date.anytime().toISOString(), size: faker.number.int({ min: 1, max: 5 }) });
-    graph.addEdge('f', 'e', { label: faker.date.anytime().toISOString(), size: faker.number.int({ min: 1, max: 5 }) });
-    graph.addEdge('f', 'e', { label: faker.date.anytime().toISOString(), size: faker.number.int({ min: 1, max: 5 }) });
-
-    // Use dedicated helper to identify parallel edges:
-    indexParallelEdgesIndex(graph, { edgeIndexAttribute: 'parallelIndex', edgeMaxIndexAttribute: 'parallelMaxIndex' });
-
-    // Adapt types and curvature of parallel edges for rendering:
-    graph.forEachEdge((edge, { parallelIndex, parallelMaxIndex }) => {
-      if (typeof parallelIndex === 'number') {
-        graph.mergeEdgeAttributes(edge, {
-          type: 'curved',
-          curvature: DEFAULT_EDGE_CURVATURE + (3 * DEFAULT_EDGE_CURVATURE * parallelIndex) / (parallelMaxIndex || 1),
-        });
-      } else {
-        graph.setEdgeAttribute(edge, 'type', 'straight');
-      }
+    graph.addEdge('a', 'b', {
+      label: faker.date.anytime().toISOString(),
+      size: faker.number.float({ min: 0.01, max: 0.1, multipleOf: 0.01 }),
+    });
+    graph.addEdge('b', 'c', {
+      label: faker.date.anytime().toISOString(),
+      size: faker.number.float({ min: 0.01, max: 0.1, multipleOf: 0.01 }),
+    });
+    graph.addEdge('b', 'd', {
+      label: faker.date.anytime().toISOString(),
+      size: faker.number.float({ min: 0.01, max: 0.1, multipleOf: 0.01 }),
+    });
+    graph.addEdge('c', 'b', {
+      label: faker.date.anytime().toISOString(),
+      size: faker.number.float({ min: 0.01, max: 0.1, multipleOf: 0.01 }),
+    });
+    graph.addEdge('c', 'e', {
+      label: faker.date.anytime().toISOString(),
+      size: faker.number.float({ min: 0.01, max: 0.1, multipleOf: 0.01 }),
+    });
+    graph.addEdge('d', 'c', {
+      label: faker.date.anytime().toISOString(),
+      size: faker.number.float({ min: 0.01, max: 0.1, multipleOf: 0.01 }),
+    });
+    graph.addEdge('d', 'e', {
+      label: faker.date.anytime().toISOString(),
+      size: faker.number.float({ min: 0.01, max: 0.1, multipleOf: 0.01 }),
+    });
+    graph.addEdge('d', 'e', {
+      label: faker.date.anytime().toISOString(),
+      size: faker.number.float({ min: 0.01, max: 0.1, multipleOf: 0.01 }),
+    });
+    graph.addEdge('d', 'e', {
+      label: faker.date.anytime().toISOString(),
+      size: faker.number.float({ min: 0.01, max: 0.1, multipleOf: 0.01 }),
+    });
+    graph.addEdge('d', 'e', {
+      label: faker.date.anytime().toISOString(),
+      size: faker.number.float({ min: 0.01, max: 0.1, multipleOf: 0.01 }),
+    });
+    graph.addEdge('e', 'd', {
+      label: faker.date.anytime().toISOString(),
+      size: faker.number.float({ min: 0.01, max: 0.1, multipleOf: 0.01 }),
+    });
+    graph.addEdge('e', 'f', {
+      label: faker.date.anytime().toISOString(),
+      size: faker.number.float({ min: 0.01, max: 0.1, multipleOf: 0.01 }),
+    });
+    graph.addEdge('f', 'e', {
+      label: faker.date.anytime().toISOString(),
+      size: faker.number.float({ min: 0.01, max: 0.1, multipleOf: 0.01 }),
+    });
+    graph.addEdge('f', 'e', {
+      label: faker.date.anytime().toISOString(),
+      size: faker.number.float({ min: 0.01, max: 0.1, multipleOf: 0.01 }),
     });
 
     // load the graph in sigma
@@ -111,24 +139,42 @@ const MyGraph: React.FC = () => {
   return null;
 };
 
-export const MultiDirectedGraph: FC<{ style?: CSSProperties }> = ({ style }) => {
-  // Sigma settings
-  const settings = useMemo(
-    () => ({
-      allowInvalidContainer: true,
-      renderEdgeLabels: true,
-      defaultEdgeType: 'straight',
-      edgeProgramClasses: {
-        straight: EdgeArrowProgram,
-        curved: EdgeCurveProgram,
+const sigmaOptions: SigmaOptions<NodeType, EdgeType> = {
+  primitives: {
+    edges: {
+      paths: [pathLine(), pathCurved(), pathLoop()],
+      extremities: [extremityArrow()],
+      layers: [layerPlain()],
+    },
+  },
+  styles: {
+    nodes: [
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      DEFAULT_STYLES.nodes as any,
+      {
+        color: { attribute: 'color' },
+        size: { attribute: 'size' },
       },
-    }),
-    [],
-  );
-
-  return (
-    <SigmaContainer style={style} graph={MultiGraphConstructor<NodeType, EdgeType>} settings={settings}>
-      <MyGraph />
-    </SigmaContainer>
-  );
+    ],
+    edges: [
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      DEFAULT_STYLES.edges as any,
+      {
+        color: { attribute: 'color' },
+        size: { attribute: 'size' },
+        path: 'straight',
+        selfLoopPath: 'loop',
+        parallelPath: 'curved',
+        head: { attribute: 'head', defaultValue: 'arrow' },
+      },
+    ],
+  },
+  settings: {
+    autoRescale: true,
+  },
 };
+export const MultiDirectedGraph: FC<{ style?: CSSProperties }> = ({ style }) => (
+  <SigmaContainer style={style} graph={MultiGraphConstructor<NodeType, EdgeType>} options={sigmaOptions}>
+    <MyGraph />
+  </SigmaContainer>
+);

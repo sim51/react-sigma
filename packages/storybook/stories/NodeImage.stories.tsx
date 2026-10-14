@@ -6,7 +6,7 @@ import source from './NodeImage?raw';
 const meta: Meta<typeof NodeImage> = {
   component: NodeImage,
   id: 'node-image',
-  title: 'Sigma programs',
+  title: 'Sigma rendering',
 };
 
 export default meta;

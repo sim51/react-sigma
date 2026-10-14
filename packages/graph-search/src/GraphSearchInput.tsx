@@ -6,7 +6,7 @@ import AsyncSelect from 'react-select/async';
 import { EdgeById } from './Edge';
 import { NodeById } from './Node';
 import { ReactComponent as SearchIcon } from './assets/icons/magnifying-glass.svg';
-import { GraphSearchOption, ItemType, Labels } from './types';
+import { GraphSearchOption, ItemsType, Labels } from './types';
 import { useGraphSearch } from './useGraphSearch';
 
 export interface GraphSearchInputProps {
@@ -18,7 +18,7 @@ export interface GraphSearchInputProps {
   /**
    * If not specified, we search on nodes & edges
    */
-  type?: ItemType;
+  type?: ItemsType;
   /**
    * What we do when user select an item
    */
@@ -53,8 +53,8 @@ function getSingleValueComponent(labels: Labels) {
     const { getStyles, innerProps } = props;
     return (
       <div {...innerProps} style={getStyles('singleValue', props) as CSSProperties}>
-        {props.data.type === 'nodes' && <NodeById id={props.data.id} labels={labels} />}
-        {props.data.type === 'edges' && <EdgeById id={props.data.id} labels={labels} />}
+        {props.data.type === 'node' && <NodeById id={props.data.id} labels={labels} />}
+        {props.data.type === 'edge' && <EdgeById id={props.data.id} labels={labels} />}
       </div>
     );
   };
@@ -100,8 +100,8 @@ function getOptionComponent(onFocus: GraphSearchInputProps['onFocus']): FC<Optio
         className={`${className || ''} ${isFocused ? 'selected' : ''} option hoverable text-ellipsis`}
         ref={innerRef}
       >
-        {data.type === 'nodes' && <NodeById id={data.id} />}
-        {data.type === 'edges' && <EdgeById id={data.id} />}
+        {data.type === 'node' && <NodeById id={data.id} />}
+        {data.type === 'edge' && <EdgeById id={data.id} />}
         {data.type === 'message' && <div className="message">{data.message}</div>}
       </div>
     );

@@ -18,5 +18,5 @@ export const UpdatedGraphReference: FC<{ style?: CSSProperties }> = ({ style }) 
     };
   }, [randomGraph]);
 
-  return <SigmaContainer style={style} graph={graph} settings={{ allowInvalidContainer: true }} />;
+  return <SigmaContainer style={style} graph={graph} />;
 };
